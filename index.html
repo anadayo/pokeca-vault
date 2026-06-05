@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POKÉCA VAULT — カード検索・売買シミュレーター</title>
+<meta name="description" content="ポケカの人気カードを検索して、5万円/10万円コースで売買シミュレーションできるカード投資ツール。価格推移、所持金、含み損益、メルカリPRリンクに対応。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="POKÉCA VAULT">
+<meta property="og:title" content="POKÉCA VAULT — ポケカ投資シミュレーター">
+<meta property="og:description" content="ポケカの人気カードを検索して、疑似資金で売買・損益管理できる無料シミュレーター。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@anaday_o">
+<meta name="twitter:creator" content="@anaday_o">
+<meta name="twitter:title" content="POKÉCA VAULT — ポケカ投資シミュレーター">
+<meta name="twitter:description" content="5万円/10万円コースでポケカ投資を疑似体験。人気カード100種類、価格推移、損益管理、メルカリPRリンク対応。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg:        #080a0f;
+    --surface:   #0e1118;
+    --surface2:  #141820;
+    --surface3:  #1a1f2e;
+    --border:    #1e2535;
+    --border2:   #28304a;
+    --text:      #e8eaf0;
+    --muted:     #4a5270;
+    --accent:    #f5c518;
+    --accent2:   #ff6b35;
+    --gain:      #22d87a;
+    --loss:      #ff4d6d;
+    --gain-bg:   rgba(34,216,122,.1);
+    --loss-bg:   rgba(255,77,109,.1);
+    --sar-a:     #ff6bff;
+    --sar-b:     #ffd700;
+    --sar-c:     #00ffcc;
+    --font-head: 'Rajdhani', sans-serif;
+    --font-body: 'Noto Sans JP', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --radius:    12px;
+    --shadow:    0 8px 32px rgba(0,0,0,.6);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 15px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse 60% 30% at 50% -5%, rgba(245,197,24,.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 20% at 85% 110%, rgba(100,80,255,.05) 0%, transparent 60%),
+      repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,.012) 60px),
+      repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,.012) 60px);
+  }
+
+  /* ── ANIMATIONS ────────────────────────────── */
+  @keyframes fadeUp   { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeIn   { from{opacity:0} to{opacity:1} }
+  @keyframes scaleIn  { from{opacity:0;transform:scale(.94)} to{opacity:1;transform:scale(1)} }
+  @keyframes shimmer  {
+    0%   { background-position: -200% center }
+    100% { background-position:  200% center }
+  }
+  @keyframes holoRotate {
+    0%   { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
+  }
+  @keyframes pulse { 0%,100%{opacity:.6} 50%{opacity:1} }
+  @keyframes countUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ── HEADER ────────────────────────────────── */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(8,10,15,.94);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .logo {
+    font-family: var(--font-head); font-size: 1.5rem; font-weight: 700;
+    letter-spacing: .14em; color: var(--accent); text-transform: uppercase;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .logo span { color: var(--muted); font-weight: 500; letter-spacing: .08em; }
+  .logo-ver {
+    font-family: var(--font-mono); font-size: .6rem; color: var(--muted);
+    border: 1px solid var(--border2); border-radius: 4px; padding: .1rem .35rem;
+    margin-left: .2rem; align-self: center;
+  }
+  .header-actions { display: flex; gap: .45rem; align-items: center; }
+
+  /* ── BUTTONS ───────────────────────────────── */
+  .btn {
+    font-family: var(--font-body); font-size: .8rem; font-weight: 700;
+    padding: .45rem 1rem; border-radius: 8px; border: 1px solid var(--border2);
+    cursor: pointer; transition: all .15s;
+    background: var(--surface2); color: var(--text); letter-spacing: .04em;
+    -webkit-tap-highlight-color: transparent; white-space: nowrap;
+  }
+  .btn:hover  { border-color: var(--accent); color: var(--accent); background: rgba(245,197,24,.06); }
+  .btn:active { transform: scale(.95); }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), #ffb800);
+    color: #080a0f; border-color: transparent;
+    box-shadow: 0 2px 12px rgba(245,197,24,.25);
+  }
+  .btn-primary:hover { background: linear-gradient(135deg,#ffd040,#ffc000); color: #080a0f; border-color: transparent; box-shadow: 0 4px 20px rgba(245,197,24,.35); }
+  .btn-sell {
+    background: linear-gradient(135deg, var(--gain), #1ab868);
+    color: #07120c; border-color: transparent;
+    box-shadow: 0 2px 10px rgba(34,216,122,.2);
+  }
+  .btn-sell:hover { background: linear-gradient(135deg,#3ee592,#22d87a); color: #07120c; border-color: transparent; }
+  .btn-block { width: 100%; padding: .75rem; font-size: .92rem; }
+  .btn-icon {
+    padding: .4rem .55rem; font-size: .85rem;
+    background: none; border-color: var(--border); color: var(--muted);
+  }
+  .btn-icon:hover { color: var(--text); border-color: var(--border2); background: var(--surface2); }
+
+  /* ── LAYOUT ────────────────────────────────── */
+  main { max-width: 1140px; margin: 0 auto; padding: 1.5rem 1.25rem 6rem; }
+
+  /* ── SUMMARY ───────────────────────────────── */
+  .summary-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(155px,1fr));
+    gap: .7rem; margin-bottom: 1.25rem;
+    animation: fadeUp .4s ease both;
+  }
+  .summary-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+    position: relative; overflow: hidden;
+    transition: border-color .2s, transform .2s, box-shadow .2s;
+  }
+  .summary-card:hover { border-color: var(--border2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.4); }
+  .summary-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent); opacity: .6; transition: opacity .2s;
+  }
+  .summary-card:hover::before { opacity: 1; }
+  .summary-card.gain-card { border-color: rgba(34,216,122,.2); }
+  .summary-card.gain-card::before { background: linear-gradient(90deg,var(--gain),transparent); opacity:1; }
+  .summary-card.loss-card { border-color: rgba(255,77,109,.2); }
+  .summary-card.loss-card::before { background: linear-gradient(90deg,var(--loss),transparent); opacity:1; }
+  .summary-card-glow {
+    position: absolute; top: -40px; right: -40px;
+    width: 100px; height: 100px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,197,24,.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .summary-card.gain-card .summary-card-glow { background: radial-gradient(circle,rgba(34,216,122,.08) 0%,transparent 70%); }
+  .summary-card.loss-card .summary-card-glow { background: radial-gradient(circle,rgba(255,77,109,.08) 0%,transparent 70%); }
+  .summary-label {
+    font-size: .65rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: .4rem;
+  }
+  .summary-value {
+    font-family: var(--font-mono); font-size: 1.2rem; font-weight: 600;
+    color: var(--text); animation: countUp .5s ease both;
+  }
+  .summary-value.gain { color: var(--gain); }
+  .summary-value.loss { color: var(--loss); }
+  .summary-sub { font-size: .68rem; color: var(--muted); margin-top: .25rem; font-family: var(--font-mono); }
+  .summary-badge {
+    display: inline-flex; align-items: center; gap: .2rem;
+    font-size: .65rem; font-weight: 700; padding: .15rem .45rem;
+    border-radius: 20px; margin-top: .35rem; font-family: var(--font-mono);
+  }
+  .summary-badge.gain { background: var(--gain-bg); color: var(--gain); }
+  .summary-badge.loss { background: var(--loss-bg); color: var(--loss); }
+  .course-actions { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .55rem; }
+  .course-btn {
+    font-size: .72rem; padding: .32rem .55rem; border-radius: 6px;
+    border: 1px solid rgba(245,197,24,.35); background: rgba(245,197,24,.08);
+    color: var(--accent); cursor: pointer; font-family: var(--font-body); font-weight: 700;
+  }
+  .course-btn:hover { background: rgba(245,197,24,.14); }
+
+  /* ── CHART & DONUT ─────────────────────────── */
+  .charts-row {
+    display: grid; grid-template-columns: 1fr 300px; gap: 1rem;
+    margin-bottom: 1.25rem; animation: fadeUp .45s .05s ease both;
+  }
+  .chart-panel, .donut-panel {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+  }
+  .chart-header {
+    padding: .85rem 1.25rem; display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border); flex-wrap: wrap; gap: .5rem;
+  }
+  .chart-title {
+    font-family: var(--font-head); font-size: 1rem; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--text);
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .chart-controls { display: flex; gap: .4rem; flex-wrap: wrap; }
+  .chart-select {
+    background: var(--bg); border: 1px solid var(--border2); border-radius: 6px;
+    padding: .32rem .65rem; color: var(--text); font-family: var(--font-body);
+    font-size: .78rem; outline: none; -webkit-appearance: none; max-width: 160px;
+    cursor: pointer; transition: border-color .15s;
+  }
+  .chart-select:focus { border-color: var(--accent); }
+  .chart-body { padding: 1rem 1.25rem; position: relative; height: 260px; }
+  .chart-empty { padding: 3rem 1rem; text-align: center; color: var(--muted); font-size: .85rem; line-height: 1.8; }
+  .chart-meta {
+    padding: .5rem 1.25rem 1rem; display: flex; gap: 1.2rem; flex-wrap: wrap;
+    font-size: .72rem; color: var(--muted); font-family: var(--font-mono);
+  }
+  .chart-meta b { color: var(--text); font-weight: 600; }
+  .chart-meta .gain { color: var(--gain); }
+  .chart-meta .loss { color: var(--loss); }
+
+  .donut-panel { display: flex; flex-direction: column; }
+  .donut-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .donut-canvas-wrap { position: relative; width: 160px; height: 160px; }
+  .donut-center {
+    position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; pointer-events: none;
+  }
+  .donut-center-val { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 600; color: var(--text); }
+  .donut-center-label { font-size: .62rem; color: var(--muted); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-top: .15rem; }
+  .donut-legend { width: 100%; margin-top: 1rem; }
+  .donut-legend-item {
+    display: flex; align-items: center; gap: .5rem;
+    padding: .3rem 0; border-bottom: 1px solid var(--border);
+    font-size: .72rem;
+  }
+  .donut-legend-item:last-child { border-bottom: none; }
+  .donut-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .donut-legend-name { flex: 1; color: var(--text); font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .donut-legend-pct { font-family: var(--font-mono); color: var(--muted); font-size: .68rem; }
+
+  /* ── FORM PANEL ────────────────────────────── */
+  .form-panel {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); margin-bottom: 1.25rem; overflow: hidden;
+    transition: border-color .2s; animation: fadeUp .5s .08s ease both;
+  }
+  .form-panel:focus-within { border-color: var(--border2); }
+  .form-toggle-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.5rem; cursor: pointer; user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .form-toggle-icon { font-size: .75rem; color: var(--muted); transition: transform .25s; flex-shrink: 0; }
+  .form-panel.collapsed .form-toggle-icon { transform: rotate(-90deg); }
+  .form-body { padding: 0 1.5rem 1.5rem; }
+  .form-panel.collapsed .form-body { display: none; }
+  .form-title {
+    font-family: var(--font-head); font-size: 1.05rem; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--accent);
+    display: flex; align-items: center; gap: .55rem;
+  }
+  .form-title-bar {
+    width: 3px; height: 1.1em; background: linear-gradient(180deg,var(--accent),#ffb800);
+    border-radius: 2px;
+  }
+  .field { display: flex; flex-direction: column; gap: .3rem; }
+  .field label {
+    font-size: .65rem; font-weight: 700; letter-spacing: .09em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .field input, .field select, .field textarea {
+    background: var(--bg); border: 1px solid var(--border2); border-radius: 8px;
+    padding: .55rem .85rem; color: var(--text); font-family: var(--font-body); font-size: .9rem;
+    transition: border-color .15s, box-shadow .15s; outline: none; width: 100%; -webkit-appearance: none;
+  }
+  .field input:focus, .field select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(245,197,24,.07); }
+  .form-footer { display: flex; justify-content: flex-end; gap: .6rem; margin-top: 1.1rem; }
+
+  /* ── SEARCH RESULTS ────────────────────────── */
+  .search-bar-wrap { position: relative; }
+  .search-bar-icon {
+    position: absolute; left: .85rem; top: 50%; transform: translateY(-50%);
+    color: var(--muted); pointer-events: none; font-size: .9rem;
+  }
+  #cardSearch { padding-left: 2.4rem; }
+
+  .search-results {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(135px,1fr));
+    gap: .75rem; margin-top: .85rem;
+  }
+  .search-results-head {
+    grid-column: 1 / -1; display: flex; justify-content: space-between; gap: .75rem;
+    align-items: center; color: var(--muted); font-size: .72rem; font-weight: 700;
+    letter-spacing: .05em; text-transform: uppercase; padding: .1rem .05rem .2rem;
+  }
+  .search-results-head span:first-child { color: var(--text); }
+  /* 3D Tilt card */
+  .search-card {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 12px; padding: .75rem; cursor: pointer;
+    transition: transform .15s, border-color .15s, box-shadow .2s;
+    animation: scaleIn .2s ease both; position: relative; overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+  .search-card:hover { border-color: var(--accent); box-shadow: 0 8px 28px rgba(0,0,0,.5); }
+  .search-card.selected { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(245,197,24,.25); }
+
+  /* Holographic shimmer for premium rarities */
+  .search-card.holo::after {
+    content: ''; position: absolute; inset: -50%;
+    width: 200%; height: 200%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0%, rgba(255,107,255,.08) 15%, rgba(255,215,0,.1) 30%,
+      rgba(0,255,200,.08) 45%, rgba(100,150,255,.08) 60%,
+      rgba(255,107,255,.08) 75%, transparent 100%
+    );
+    opacity: 0; transition: opacity .3s;
+    pointer-events: none; border-radius: 50%;
+    animation: holoRotate 4s linear infinite paused;
+  }
+  .search-card.holo:hover::after { opacity: 1; animation-play-state: running; }
+  .search-card.holo-gold::after {
+    background: conic-gradient(
+      from 0deg,
+      transparent 0%, rgba(255,215,0,.12) 25%,
+      rgba(255,180,0,.08) 50%, rgba(255,215,0,.12) 75%, transparent 100%
+    );
+  }
+
+  .search-card img {
+    width: 100%; aspect-ratio: 3/4; object-fit: contain;
+    border-radius: 8px; background: var(--bg); margin-bottom: .55rem;
+    transition: transform .2s;
+  }
+  .search-card:hover img { transform: scale(1.04); }
+  .search-card-name { font-weight: 700; font-size: .84rem; line-height: 1.3; }
+  .search-card-meta { color: var(--muted); font-size: .67rem; margin-top: .15rem; }
+  .search-card-price { font-family: var(--font-mono); color: var(--accent); font-size: .8rem; margin-top: .3rem; font-weight: 600; }
+  .search-card-buy { font-family: var(--font-mono); color: var(--gain); font-size: .72rem; margin-top: .1rem; }
+  .price-source-link { color: var(--muted); text-decoration: none; font-size: .68rem; }
+  .price-source-link:hover { color: var(--accent); }
+  .search-card-rarity { margin-top: .3rem; }
+  .search-card-actions {
+    display: flex; gap: .35rem; margin-top: .55rem; position: relative; z-index: 2;
+  }
+  .mercari-mini-btn {
+    flex: 1; border: 1px solid var(--border2); border-radius: 7px;
+    background: rgba(255,255,255,.03); color: var(--text);
+    font-family: var(--font-body); font-size: .68rem; font-weight: 700;
+    padding: .32rem .35rem; cursor: pointer; transition: all .15s;
+    white-space: nowrap;
+  }
+  .mercari-mini-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(245,197,24,.07); }
+  .mercari-mini-btn.pr { color: var(--accent); border-color: rgba(245,197,24,.45); }
+  .search-empty { color: var(--muted); font-size: .82rem; padding: 2rem 0; text-align: center; grid-column: 1/-1; }
+
+  /* ── RARITY BADGES ─────────────────────────── */
+  .badge {
+    display: inline-block; padding: .15rem .55rem; border-radius: 5px;
+    font-size: .68rem; font-weight: 700; letter-spacing: .05em;
+    font-family: var(--font-mono); white-space: nowrap;
+  }
+  .badge-SAR, .badge-HR {
+    background: linear-gradient(90deg,rgba(255,107,255,.2),rgba(255,215,0,.2),rgba(0,255,200,.15));
+    color: #e0c0ff; border: 1px solid rgba(255,107,255,.3);
+    background-size: 200% auto;
+    animation: shimmer 2.5s linear infinite;
+  }
+  .badge-SR  { background: rgba(245,197,24,.18); color: #f5c518; border: 1px solid rgba(245,197,24,.35); }
+  .badge-SSR { background: rgba(255,165,0,.18); color: #ffaa00; border: 1px solid rgba(255,165,0,.35); }
+  .badge-UR  { background: linear-gradient(90deg,rgba(245,197,24,.25),rgba(255,255,255,.12),rgba(245,197,24,.25)); color: #ffd95a; border: 1px solid rgba(245,197,24,.45); }
+  .badge-RRR { background: rgba(160,100,255,.18); color: #c084fc; border: 1px solid rgba(160,100,255,.35); }
+  .badge-RR  { background: rgba(59,130,246,.18); color: #7eb3f7; border: 1px solid rgba(59,130,246,.35); }
+  .badge-R   { background: rgba(34,197,94,.15); color: #4ade80; border: 1px solid rgba(34,197,94,.3); }
+  .badge-AR, .badge-S { background: rgba(20,184,166,.16); color: #5eead4; border: 1px solid rgba(20,184,166,.32); }
+  .badge-C   { background: rgba(100,116,139,.15); color: #94a3b8; border: 1px solid rgba(100,116,139,.3); }
+
+  /* ── SELECTED CARD ─────────────────────────── */
+  .selected-card-panel {
+    display: flex; gap: 1rem; align-items: center;
+    background: var(--surface2); border: 1px solid var(--border2);
+    border-radius: 12px; padding: 1rem; margin: 1rem 0;
+    animation: scaleIn .2s ease both;
+  }
+  .selected-card-panel.hidden { display: none; }
+  .selected-card-img {
+    width: 88px; height: 118px; object-fit: contain; border-radius: 8px;
+    background: var(--bg); flex-shrink: 0; box-shadow: 0 4px 16px rgba(0,0,0,.4);
+  }
+  .selected-card-name { font-weight: 700; font-size: 1.08rem; }
+  .selected-card-meta { color: var(--muted); font-size: .78rem; margin-top: .25rem; display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
+  .selected-card-price { font-family: var(--font-mono); color: var(--accent); margin-top: .55rem; font-size: 1.05rem; font-weight: 600; }
+  .selected-card-buy { font-family: var(--font-mono); color: var(--gain); margin-top: .15rem; font-size: .9rem; }
+  .selected-card-actions {
+    display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; margin-top: .75rem;
+  }
+  .mercari-pr-badge {
+    display: inline-flex; align-items: center; height: 28px;
+    padding: 0 .55rem; border-radius: 999px; border: 1px solid rgba(245,197,24,.35);
+    color: var(--accent); background: rgba(245,197,24,.08);
+    font-size: .68rem; font-weight: 700; letter-spacing: .05em;
+  }
+
+  /* ── BUY PANEL ─────────────────────────────── */
+  .buy-panel { margin-top: 1rem; animation: scaleIn .2s ease both; }
+  .buy-panel.hidden { display: none; }
+  .buy-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: .75rem 0; border-bottom: 1px solid var(--border);
+  }
+  .buy-row-label { font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .buy-total { font-family: var(--font-mono); font-size: 1.45rem; font-weight: 600; color: var(--accent); }
+  .stepper {
+    display: flex; align-items: center;
+    border: 1px solid var(--border2); border-radius: 10px; overflow: hidden;
+    background: var(--bg);
+  }
+  .stepper-btn {
+    background: var(--surface2); border: none; color: var(--text);
+    width: 42px; height: 42px; font-size: 1.2rem; font-weight: 700; cursor: pointer;
+    transition: background .12s, color .12s; -webkit-tap-highlight-color: transparent;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .stepper-btn:hover { background: var(--accent); color: #080a0f; }
+  .stepper-btn:active { transform: scale(.9); }
+  .stepper-val {
+    min-width: 58px; text-align: center; font-family: var(--font-mono);
+    font-size: 1.1rem; font-weight: 600; color: var(--text);
+    background: var(--bg); height: 42px; line-height: 42px;
+  }
+  .buy-cta { margin-top: 1.1rem; padding: .9rem; font-size: .95rem; letter-spacing: .06em; }
+
+  /* ── TABLE PANEL ───────────────────────────── */
+  .table-panel {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    animation: fadeUp .5s .12s ease both;
+  }
+  .table-header {
+    padding: .9rem 1.25rem; display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border); flex-wrap: wrap; gap: .5rem;
+  }
+  .table-title {
+    font-family: var(--font-head); font-size: 1rem; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--text);
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .table-count {
+    font-family: var(--font-mono); font-size: .7rem; color: var(--muted);
+    background: var(--surface2); border: 1px solid var(--border);
+    padding: .15rem .5rem; border-radius: 20px;
+  }
+  .filter-row { display: flex; gap: .45rem; flex-wrap: wrap; }
+  .filter-row select, .filter-row input {
+    background: var(--bg); border: 1px solid var(--border2); border-radius: 7px;
+    padding: .35rem .7rem; color: var(--text); font-family: var(--font-body); font-size: .78rem;
+    outline: none; -webkit-appearance: none; transition: border-color .15s;
+  }
+  .filter-row select:focus, .filter-row input:focus { border-color: var(--accent); }
+  .tag-updated { font-size: .62rem; color: var(--muted); font-family: var(--font-mono); margin-left: .3em; opacity: .55; }
+
+  /* ── TABLE (desktop) ───────────────────────── */
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+  thead tr { background: var(--surface2); border-bottom: 1px solid var(--border); }
+  th {
+    padding: .65rem 1rem; text-align: left; font-size: .62rem; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+    white-space: nowrap; cursor: pointer; user-select: none; transition: color .15s;
+  }
+  th:hover { color: var(--accent); }
+  th .sort-icon { margin-left: .25em; opacity: .35; }
+  th.sorted { color: var(--accent); }
+  th.sorted .sort-icon { opacity: 1; }
+  tbody tr {
+    border-bottom: 1px solid var(--border); transition: background .12s;
+    animation: fadeIn .25s ease both;
+    border-left: 3px solid transparent;
+  }
+  tbody tr:hover { background: var(--surface2); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr.row-gain { border-left-color: rgba(34,216,122,.4); }
+  tbody tr.row-loss { border-left-color: rgba(255,77,109,.4); }
+  td { padding: .7rem 1rem; vertical-align: middle; }
+
+  .hold-img {
+    width: 44px; height: 60px; object-fit: contain; border-radius: 5px;
+    background: var(--bg); vertical-align: middle;
+    box-shadow: 0 2px 8px rgba(0,0,0,.4);
+    transition: transform .15s;
+  }
+  tbody tr:hover .hold-img { transform: scale(1.08) rotate(-2deg); }
+  .card-name { font-weight: 700; color: var(--text); }
+  .card-set  { font-size: .7rem; color: var(--muted); margin-top: .12rem; }
+
+  .price { font-family: var(--font-mono); }
+  .profit-cell { font-family: var(--font-mono); font-weight: 600; }
+  .profit-cell.gain { color: var(--gain); }
+  .profit-cell.loss { color: var(--loss); }
+  .rate-pill {
+    display: inline-flex; align-items: center; gap: .25em; padding: .22rem .55rem;
+    border-radius: 20px; font-family: var(--font-mono); font-size: .76rem; font-weight: 600;
+  }
+  .rate-pill.gain { background: var(--gain-bg); color: var(--gain); }
+  .rate-pill.loss { background: var(--loss-bg); color: var(--loss); }
+  .rate-pill.zero { background: rgba(74,82,112,.12); color: var(--muted); }
+
+  .actions-cell { white-space: nowrap; min-width: 136px; }
+  .icon-btn {
+    background: none; border: none; cursor: pointer; padding: .3rem .45rem;
+    border-radius: 7px; color: var(--muted); font-size: .88rem; transition: all .12s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .icon-btn:hover { color: var(--text); background: var(--surface3); }
+  .icon-btn:active { transform: scale(.88); }
+  .icon-btn.del:hover { color: var(--loss); background: var(--loss-bg); }
+  .sell-action-btn {
+    display: inline-flex; align-items: center; gap: .35rem;
+    min-width: 108px; justify-content: center;
+    padding-left: .65rem; padding-right: .65rem;
+  }
+
+  /* ── MOBILE CARD LIST ──────────────────────── */
+  .card-list { display: none; }
+  .hold-item {
+    border-bottom: 1px solid var(--border); padding: 1rem;
+    animation: scaleIn .2s ease both; display: flex; gap: .9rem;
+  }
+  .hold-item:last-child { border-bottom: none; }
+  .hold-item-img {
+    width: 68px; height: 94px; object-fit: contain; border-radius: 7px;
+    background: var(--bg); flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,.4);
+  }
+  .hold-item-body { flex: 1; min-width: 0; }
+  .hold-item-name { font-weight: 700; font-size: .95rem; }
+  .hold-item-meta { font-size: .7rem; color: var(--muted); margin-top: .12rem; margin-bottom: .55rem; display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
+  .hold-item-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .38rem .65rem; }
+  .hold-item-row { display: flex; flex-direction: column; gap: .05rem; }
+  .hold-item-label { font-size: .58rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+  .hold-item-val { font-family: var(--font-mono); font-size: .82rem; }
+  .hold-item-actions { margin-top: .65rem; display: flex; gap: .4rem; }
+
+  /* ── EMPTY STATE ───────────────────────────── */
+  .empty-state { text-align: center; padding: 4rem 1rem; color: var(--muted); }
+  .empty-state .big { font-size: 3rem; margin-bottom: .85rem; }
+  .empty-state p { font-size: .85rem; line-height: 1.8; }
+
+  /* ── SELL MODAL ────────────────────────────── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,.8); backdrop-filter: blur(8px);
+    align-items: flex-end; justify-content: center; padding: 0;
+  }
+  .modal-overlay.open { display: flex; animation: fadeIn .15s ease; }
+  .modal {
+    background: var(--surface); border: 1px solid var(--border2);
+    border-radius: 18px 18px 0 0; padding: 1.5rem 1.5rem 2.5rem;
+    width: 100%; max-width: 100%; max-height: 92vh; overflow-y: auto;
+    box-shadow: 0 -12px 48px rgba(0,0,0,.7);
+    animation: sheetUp .25s cubic-bezier(.32,0,.67,0) both;
+  }
+  @keyframes sheetUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
+  .modal-handle {
+    width: 40px; height: 4px; background: var(--border2); border-radius: 2px;
+    margin: 0 auto 1.25rem;
+  }
+  .modal-title {
+    font-family: var(--font-head); font-size: 1.1rem; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem;
+  }
+  .sell-card-info {
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 10px;
+    padding: .8rem 1rem; margin-bottom: 1rem; display: flex; gap: .85rem; align-items: center;
+  }
+  .sell-card-info img { width: 58px; height: 80px; object-fit: contain; border-radius: 7px; background: var(--bg); }
+  .sell-card-name { font-weight: 700; font-size: .95rem; }
+  .sell-card-meta { font-size: .72rem; color: var(--muted); font-family: var(--font-mono); margin-top: .2rem; }
+  .form-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap: .7rem; }
+  .sell-result {
+    margin-top: 1.1rem; background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden;
+  }
+  .sell-result-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: .65rem 1rem; border-bottom: 1px solid var(--border);
+  }
+  .sell-result-row:last-child { border-bottom: none; }
+  .sell-result-highlight { background: rgba(245,197,24,.04); }
+  .sell-result-label { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .sell-result-val { font-family: var(--font-mono); font-size: .95rem; font-weight: 600; color: var(--text); }
+  .sell-result-val.gain { color: var(--gain); }
+  .sell-result-val.loss { color: var(--loss); }
+  .sell-result-highlight .sell-result-val { font-size: 1.12rem; }
+  .sell-result-highlight .sell-result-label { color: var(--text); font-size: .78rem; }
+  .mercari-actions {
+    display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; margin-top: .8rem;
+  }
+  .mercari-note {
+    margin-top: .8rem; color: var(--muted); font-size: .75rem; line-height: 1.7;
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 9px;
+    padding: .75rem .9rem;
+  }
+  .mercari-search-url {
+    margin-top: .35rem; color: var(--muted); font-family: var(--font-mono);
+    font-size: .68rem; word-break: break-all;
+  }
+  .share-copy {
+    min-height: 138px; resize: vertical; line-height: 1.65;
+  }
+  .share-preview {
+    margin-top: .8rem; background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 10px; padding: .9rem; color: var(--text); font-size: .84rem;
+    line-height: 1.65; white-space: pre-wrap;
+  }
+  .share-actions {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: .55rem; margin-top: .8rem;
+  }
+  .share-note {
+    margin-top: .75rem; color: var(--muted); font-size: .72rem; line-height: 1.7;
+  }
+
+  /* ── TOAST ─────────────────────────────────── */
+  .toast {
+    position: fixed; bottom: 1.5rem; left: 50%;
+    transform: translateX(-50%) translateY(14px);
+    background: var(--surface2); border: 1px solid var(--border2);
+    border-radius: 28px; padding: .7rem 1.5rem; font-size: .82rem; white-space: nowrap;
+    box-shadow: var(--shadow); opacity: 0; transition: opacity .25s, transform .25s;
+    pointer-events: none; z-index: 300;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast.ok  { border-left: 3px solid var(--gain); }
+  .toast.err { border-left: 3px solid var(--loss); }
+
+  /* ── SCROLLBAR ─────────────────────────────── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+  /* ── RESPONSIVE ────────────────────────────── */
+  @media (max-width: 860px) {
+    .charts-row { grid-template-columns: 1fr; }
+    .donut-panel { display: none; }
+  }
+  @media (max-width: 640px) {
+    html { font-size: 14px; }
+    main { padding: 1rem .85rem 5rem; }
+    .summary-grid { grid-template-columns: 1fr 1fr; gap: .5rem; }
+    .summary-value { font-size: 1.05rem; }
+    .form-toggle-header { padding: .85rem 1.1rem; }
+    .form-body { padding: 0 1.1rem 1.1rem; }
+    .search-results { grid-template-columns: repeat(auto-fill, minmax(108px,1fr)); gap: .5rem; }
+    .table-wrap { display: none; }
+    .card-list { display: block; }
+    .table-header { padding: .75rem 1rem; }
+    .filter-row { width: 100%; }
+    .filter-row select, .filter-row input { flex: 1; min-width: 0; }
+    .mercari-actions { grid-template-columns: 1fr; }
+    .share-actions { grid-template-columns: 1fr; }
+    .btn { padding: .5rem .9rem; font-size: .78rem; }
+    .header-actions .btn { padding: .4rem .72rem; font-size: .74rem; }
+    .logo-ver { display: none; }
+  }
+  @media (min-width: 641px) {
+    .modal-overlay { align-items: center; padding: 1rem; }
+    .modal { border-radius: 16px; max-width: 500px; animation: modalIn .2s ease both; }
+    .modal-handle { display: none; }
+    @keyframes modalIn {
+      from { transform: translateY(14px) scale(.97); opacity: 0; }
+      to   { transform: translateY(0) scale(1); opacity: 1; }
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    POKÉCA <span>VAULT</span>
+    <span class="logo-ver">v2</span>
+  </div>
+  <div class="header-actions">
+    <button class="btn btn-icon btn-share" onclick="openShareModal()">Xで宣伝</button>
+    <button class="btn btn-icon" onclick="openMercariGuide()">Mercari</button>
+    <button class="btn btn-icon" onclick="exportJSON()">⬇ JSON</button>
+    <button class="btn btn-icon" onclick="triggerImport()">⬆ インポート</button>
+    <input type="file" id="importInput" accept=".json" style="display:none" onchange="importJSON(event)">
+  </div>
+</header>
+
+<main>
+
+  <!-- ポートフォリオ合計 -->
+  <div class="summary-grid" id="summaryGrid"></div>
+
+  <!-- 価格推移グラフ + ポートフォリオ円グラフ -->
+  <div class="charts-row">
+    <div class="chart-panel">
+      <div class="chart-header">
+        <div class="chart-title">📈 価格推移</div>
+        <div class="chart-controls">
+          <select class="chart-select" id="chartCardSelect" onchange="renderChart()"></select>
+          <select class="chart-select" id="chartRangeSelect" onchange="renderChart()">
+            <option value="1">直近1時間</option>
+            <option value="3">直近3時間</option>
+            <option value="6" selected>直近6時間</option>
+            <option value="12">直近12時間</option>
+            <option value="24">直近24時間</option>
+            <option value="168">直近1週間</option>
+            <option value="720">直近1ヶ月</option>
+            <option value="2160">直近3ヶ月</option>
+            <option value="4320">直近半年</option>
+            <option value="8760">直近1年</option>
+          </select>
+        </div>
+      </div>
+      <div class="chart-body">
+        <canvas id="priceChart"></canvas>
+        <div class="chart-empty" id="chartEmpty" style="display:none">
+          🃏<br>カードを購入すると<br>価格推移チャートが表示されます
+        </div>
+      </div>
+      <div class="chart-meta" id="chartMeta"></div>
+    </div>
+
+    <div class="donut-panel">
+      <div class="chart-header">
+        <div class="chart-title">🥧 資産配分</div>
+      </div>
+      <div class="donut-body">
+        <div class="donut-canvas-wrap">
+          <canvas id="donutChart" width="160" height="160"></canvas>
+          <div class="donut-center" id="donutCenter">
+            <div class="donut-center-val" id="donutCenterVal">—</div>
+            <div class="donut-center-label">評価額合計</div>
+          </div>
+        </div>
+        <div class="donut-legend" id="donutLegend"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- カード検索・売買パネル -->
+  <div class="form-panel" id="formPanel">
+    <div class="form-toggle-header" onclick="toggleForm()">
+      <div class="form-title">
+        <span class="form-title-bar"></span>
+        カードを検索して売買
+      </div>
+      <span class="form-toggle-icon">▼</span>
+    </div>
+    <div class="form-body">
+      <div class="field">
+        <label>カード一覧 / 絞り込み検索</label>
+        <div class="search-bar-wrap">
+          <span class="search-bar-icon">🔍</span>
+          <input type="text" id="cardSearch" placeholder="カード名・レアリティ・パック名で絞り込み" oninput="searchCards()">
+        </div>
+      </div>
+
+      <div id="searchResults" class="search-results"></div>
+
+      <div id="selectedCardPanel" class="selected-card-panel hidden">
+        <img id="selectedCardImage" class="selected-card-img" alt="">
+        <div>
+          <div id="selectedCardName" class="selected-card-name"></div>
+          <div id="selectedCardMeta" class="selected-card-meta"></div>
+          <div id="selectedCardPrice" class="selected-card-price"></div>
+        </div>
+      </div>
+
+      <div id="buyPanel" class="buy-panel hidden">
+        <div class="buy-row">
+          <span class="buy-row-label">枚数</span>
+          <div class="stepper">
+            <button class="stepper-btn" onclick="changeQty(-1)">−</button>
+            <span class="stepper-val" id="buyQtyDisplay">1</span>
+            <button class="stepper-btn" onclick="changeQty(1)">＋</button>
+          </div>
+        </div>
+        <div class="buy-row">
+          <span class="buy-row-label">合計（販売価格）</span>
+          <span class="buy-total" id="buyTotal">¥0</span>
+        </div>
+        <button class="btn btn-primary btn-block buy-cta" onclick="buySelectedCard()">
+          <span id="buyCtaLabel">この価格で買う</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 保有カード一覧 -->
+  <div class="table-panel">
+    <div class="table-header">
+      <div class="table-title">
+        保有カード一覧
+        <span class="table-count" id="holdCount">0 種類</span>
+        <span class="tag-updated" id="lastUpdated"></span>
+      </div>
+      <div class="filter-row">
+        <select id="filterResult" onchange="renderHoldings()">
+          <option value="">すべての損益</option>
+          <option value="gain">利益のみ</option>
+          <option value="loss">損失のみ</option>
+        </select>
+        <input type="text" id="filterName" placeholder="🔍 カード名" oninput="renderHoldings()">
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th onclick="sortBy(event,'name')">カード名 <span class="sort-icon">↕</span></th>
+            <th>操作</th>
+            <th onclick="sortBy(event,'rarity')">レアリティ <span class="sort-icon">↕</span></th>
+            <th onclick="sortBy(event,'qty')">枚数 <span class="sort-icon">↕</span></th>
+            <th onclick="sortBy(event,'avgCost')">平均取得単価 <span class="sort-icon">↕</span></th>
+            <th onclick="sortBy(event,'nowPrice')">販売価格 <span class="sort-icon">↕</span></th>
+            <th onclick="sortBy(event,'marketValue')">評価額 <span class="sort-icon">↕</span></th>
+            <th onclick="sortBy(event,'profit')">含み損益 <span class="sort-icon">↕</span></th>
+            <th onclick="sortBy(event,'rate')">利益率 <span class="sort-icon">↕</span></th>
+          </tr>
+        </thead>
+        <tbody id="holdTableBody"></tbody>
+      </table>
+    </div>
+    <div class="card-list" id="holdList"></div>
+  </div>
+
+</main>
+
+<!-- 売却モーダル -->
+<div class="modal-overlay" id="sellModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">💴 買取価格で売る</div>
+    <div class="sell-card-info" id="sellCardInfo"></div>
+    <div class="form-grid">
+      <div class="field">
+        <label>売値 (1枚あたり / 円・初期値は買取価格)</label>
+        <input type="number" id="sellPrice" placeholder="例: 2000" min="0" oninput="calcSell()">
+      </div>
+      <div class="field">
+        <label>売却枚数</label>
+        <div class="stepper">
+          <button class="stepper-btn" onclick="changeSellQty(-1)">−</button>
+          <span class="stepper-val" id="sellQtyDisplay">1</span>
+          <button class="stepper-btn" onclick="changeSellQty(1)">＋</button>
+        </div>
+      </div>
+    </div>
+    <div class="sell-result">
+      <div class="sell-result-row"><span class="sell-result-label">売却額</span><span class="sell-result-val" id="r-gross">—</span></div>
+      <div class="sell-result-row"><span class="sell-result-label">取得原価（売却分）</span><span class="sell-result-val" id="r-cost">—</span></div>
+      <div class="sell-result-row sell-result-highlight"><span class="sell-result-label">実現損益</span><span class="sell-result-val" id="r-profit">—</span></div>
+      <div class="sell-result-row"><span class="sell-result-label">実現利益率</span><span class="sell-result-val" id="r-rate">—</span></div>
+    </div>
+    <div class="form-footer">
+      <button class="btn" onclick="closeSellModal()">キャンセル</button>
+      <button class="btn btn-sell" onclick="confirmSell()">買取で売る</button>
+    </div>
+  </div>
+</div>
+
+<!-- メルカリアンバサダー モーダル -->
+<div class="modal-overlay" id="mercariModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Mercari Ambassador</div>
+    <div class="sell-card-info" id="mercariCardInfo"></div>
+    <div class="field">
+      <label>あなたのメルカリアンバサダーID</label>
+      <input type="text" id="mercariAffiliateId" inputmode="numeric" placeholder="例: 2427775577">
+    </div>
+    <div class="field">
+      <label>カード別リンク（任意）</label>
+      <input type="url" id="mercariAffiliateUrl" placeholder="公式生成リンクで上書きしたい場合だけ貼り付け">
+      <div class="mercari-search-url" id="mercariSearchUrlText"></div>
+    </div>
+    <div class="mercari-actions">
+      <button class="btn" onclick="openMercariSearchForEditing()">メルカリ検索を開く</button>
+      <button class="btn" onclick="copyMercariSearchForEditing()">検索URLコピー</button>
+    </div>
+    <div class="mercari-note">
+      IDを保存すると、カードごとのメルカリ検索URLに afid を自動付与します。カード別リンク欄は、公式で生成した個別URLを使いたい時だけ入力します。
+    </div>
+    <div class="form-footer">
+      <button class="btn" onclick="clearMercariLink()">リンク削除</button>
+      <button class="btn" onclick="closeMercariModal()">キャンセル</button>
+      <button class="btn btn-primary" onclick="saveMercariLink()">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- 公開・宣伝モーダル -->
+<div class="modal-overlay" id="shareModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Share POKÉCA VAULT</div>
+    <div class="field">
+      <label>公開URL</label>
+      <input type="url" id="publicAppUrl" placeholder="https://example.com/pokeca-vault.html" oninput="updateSharePreview()">
+    </div>
+    <div class="field" style="margin-top:.8rem">
+      <label>X投稿文</label>
+      <textarea id="sharePostText" class="share-copy" oninput="updateSharePreview()"></textarea>
+    </div>
+    <div class="share-preview" id="sharePreview"></div>
+    <div class="share-actions">
+      <button class="btn" onclick="savePublicUrl()">URL保存</button>
+      <button class="btn" onclick="copySharePost()">投稿文コピー</button>
+      <button class="btn btn-primary" onclick="openXPost()">Xで投稿</button>
+    </div>
+    <div class="share-note">
+      `file://` のままだと他の人は開けません。Netlify / GitHub Pages / Cloudflare Pages などに置いたURLを保存してから投稿してください。
+    </div>
+    <div class="form-footer">
+      <button class="btn" onclick="closeShareModal()">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ═══════════════════════════════════════
+   CARD CATALOG (100 cards)
+   TCGdex Japanese CDN: assets.tcgdex.net/ja/...
+═══════════════════════════════════════ */
+/* TCGdex Japanese CDN — API で確認した正確な大文字パス + /high.webp */
+const cdn = path => `https://assets.tcgdex.net/ja/${path}/high.webp`;
+
+const SOURCE_DATE = '2026-06-05';
+const h2 = productId => `https://www.hareruya2.com/products/${productId}`;
+const h2b = productId => productId ? `https://www.hare2buy.com/product/${productId}` : '';
+
+const cardCatalog = [
+  /* ── サポーター / トレーナー ───────────── */
+  { id:'SV4a-350', name:'ナンジャモ', nameEn:'Iono', set:'SV4a シャイニートレジャーex', rarity:'SAR', nowPrice:11000, buyPrice:7500, image:cdn('SV/SV4a/350'), saleUrl:h2('9017544442176'), buyUrl:h2b('17909') },
+  { id:'SV2D-096', name:'ナンジャモ', nameEn:'Iono', set:'SV2D クレイバースト', rarity:'SAR', nowPrice:56000, buyPrice:38000, image:cdn('SV/SV2D/096'), saleUrl:h2('9017415172416'), buyUrl:h2b('15858') },
+  { id:'S12a-242', name:'ツツジ', nameEn:'Roxanne', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:1200, buyPrice:550, image:cdn('S/S12a/242'), saleUrl:h2('9017325257024'), buyUrl:h2b('15173') },
+  { id:'SV1S-099', name:'博士の研究（オーリム博士）', nameEn:'Professor Research', set:'SV1S スカーレットex', rarity:'SR', nowPrice:900, buyPrice:400, image:cdn('SV/SV1S/099'), saleUrl:h2('9017350095168'), buyUrl:h2b('15494') },
+  { id:'SV1V-098', name:'博士の研究（フトゥー博士）', nameEn:'Professor Research', set:'SV1V バイオレットex', rarity:'SR', nowPrice:500, buyPrice:null, image:cdn('SV/SV1V/098'), saleUrl:h2('9017295929664'), buyUrl:'' },
+
+  /* ── ポケモン（SV era） ───────────────── */
+  { id:'SV4a-349', name:'リザードンex', nameEn:'Charizard ex', set:'SV4a シャイニートレジャーex', rarity:'SAR', nowPrice:60000, buyPrice:46000, image:cdn('SV/SV4a/349'), saleUrl:h2('9017544245568'), buyUrl:h2b('17908') },
+  { id:'SV3-139', name:'リザードンex', nameEn:'Charizard ex', set:'SV3 黒炎の支配者', rarity:'UR', nowPrice:22000, buyPrice:17000, image:cdn('SV/SV3/139'), saleUrl:h2('9017399116096'), buyUrl:h2b('16763') },
+  { id:'SV2a-201', name:'リザードンex', nameEn:'Charizard ex', set:'SV2a ポケモンカード151', rarity:'SAR', nowPrice:82000, buyPrice:65000, image:cdn('SV/SV2a/201'), saleUrl:h2('9017521013056'), buyUrl:h2b('16476') },
+  { id:'SV4a-347', name:'ミュウex', nameEn:'Mew ex', set:'SV4a シャイニートレジャーex', rarity:'SAR', nowPrice:98000, buyPrice:76000, image:cdn('SV/SV4a/347'), saleUrl:h2('9017573278016'), buyUrl:h2b('17906') },
+  { id:'SV2a-205', name:'ミュウex', nameEn:'Mew ex', set:'SV2a ポケモンカード151', rarity:'SAR', nowPrice:62000, buyPrice:45000, image:cdn('SV/SV2a/205'), saleUrl:h2('9017521733952'), buyUrl:h2b('16480') },
+  { id:'SV4a-358', name:'ミライドンex', nameEn:'Miraidon ex', set:'SV4a シャイニートレジャーex', rarity:'UR', nowPrice:1200, buyPrice:800, image:cdn('SV/SV4a/358'), saleUrl:h2('9017500041536'), buyUrl:h2b('17917') },
+  { id:'SV1V-106', name:'ミライドンex', nameEn:'Miraidon ex', set:'SV1V バイオレットex', rarity:'UR', nowPrice:1500, buyPrice:800, image:cdn('SV/SV1V/106'), saleUrl:h2('9017238815040'), buyUrl:h2b('15531') },
+  { id:'SV4a-360', name:'コライドンex', nameEn:'Koraidon ex', set:'SV4a シャイニートレジャーex', rarity:'UR', nowPrice:800, buyPrice:450, image:cdn('SV/SV4a/360'), saleUrl:h2('9017500893504'), buyUrl:h2b('17919') },
+  { id:'SV1S-106', name:'コライドンex', nameEn:'Koraidon ex', set:'SV1S スカーレットex', rarity:'UR', nowPrice:1500, buyPrice:850, image:cdn('SV/SV1S/106'), saleUrl:h2('9017289146688'), buyUrl:h2b('15501') },
+  { id:'SV7-133', name:'テラパゴスex', nameEn:'Terapagos ex', set:'SV7 ステラミラクル', rarity:'UR', nowPrice:850, buyPrice:400, image:cdn('SV/SV7/133'), saleUrl:h2('9501512106304'), buyUrl:h2b('18822') },
+  { id:'SV7-130', name:'テラパゴスex', nameEn:'Terapagos ex', set:'SV7 ステラミラクル', rarity:'SAR', nowPrice:5000, buyPrice:3500, image:cdn('SV/SV7/130'), saleUrl:h2('9501512335680'), buyUrl:h2b('18819') },
+  { id:'SV2a-183', name:'ミュウツー', nameEn:'Mewtwo', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:6000, buyPrice:4500, image:cdn('SV/SV2a/183'), saleUrl:h2('9017517375808'), buyUrl:h2b('16458') },
+  { id:'SV2a-173', name:'ピカチュウ', nameEn:'Pikachu', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:8500, buyPrice:6000, image:cdn('SV/SV2a/173'), saleUrl:h2('9017514230080'), buyUrl:h2b('16448') },
+  { id:'SV4a-236', name:'ピカチュウ', nameEn:'Pikachu', set:'SV4a シャイニートレジャーex', rarity:'S', nowPrice:15000, buyPrice:11000, image:cdn('SV/SV4a/236'), saleUrl:h2('9017594118464'), buyUrl:h2b('17795') },
+  { id:'SV4a-310', name:'カビゴン', nameEn:'Snorlax', set:'SV4a シャイニートレジャーex', rarity:'S', nowPrice:2100, buyPrice:1400, image:cdn('SV/SV4a/310'), saleUrl:h2('9017591497024'), buyUrl:h2b('17869') },
+  { id:'SV2a-181', name:'カビゴン', nameEn:'Snorlax', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:3500, buyPrice:2500, image:cdn('SV/SV2a/181'), saleUrl:h2('9017517048128'), buyUrl:h2b('16456') },
+  { id:'SV2a-149', name:'カイリュー', nameEn:'Dragonite', set:'SV2a ポケモンカード151', rarity:'R', nowPrice:100, buyPrice:null, image:cdn('SV/SV2a/149'), saleUrl:h2('9017476710720'), buyUrl:'' },
+
+  /* ── ポケモン（S = Sword/Shield era） ─── */
+  { id:'S12a-262', name:'アルセウスVSTAR', nameEn:'Arceus VSTAR', set:'S12a VSTARユニバース', rarity:'UR', nowPrice:22000, buyPrice:17000, image:cdn('S/S12a/262'), saleUrl:h2('9017284985152'), buyUrl:h2b('15193') },
+  { id:'S12a-221', name:'ミュウツーVSTAR', nameEn:'Mewtwo VSTAR', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:24000, buyPrice:19000, image:cdn('S/S12a/221'), saleUrl:h2('9017186812224'), buyUrl:h2b('15152') },
+  { id:'S12a-212', name:'リザードンVSTAR', nameEn:'Charizard VSTAR', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:22000, buyPrice:15000, image:cdn('S/S12a/212'), saleUrl:h2('9017183240512'), buyUrl:h2b('15143') },
+  { id:'S12a-211', name:'リザードンV', nameEn:'Charizard V', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:8900, buyPrice:6000, image:cdn('S/S12a/211'), saleUrl:h2('9017182945600'), buyUrl:h2b('15142') },
+  { id:'S12a-216', name:'ネオラントV', nameEn:'Lumineon V', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:1400, buyPrice:900, image:cdn('S/S12a/216'), saleUrl:h2('9017185108288'), buyUrl:h2b('15147') },
+  { id:'S12a-108', name:'レックウザVMAX', nameEn:'Rayquaza VMAX', set:'S12a VSTARユニバース', rarity:'RRR', nowPrice:1100, buyPrice:500, image:cdn('S/S12a/108'), saleUrl:h2('9017311297856'), buyUrl:h2b('14950') },
+  { id:'S12a-054', name:'ミュウVMAX', nameEn:'Mew VMAX', set:'S12a VSTARユニバース', rarity:'RRR', nowPrice:1400, buyPrice:1000, image:cdn('S/S12a/054'), saleUrl:h2('9017270141248'), buyUrl:h2b('14896') },
+  { id:'S9-125', name:'アルセウスVSTAR', nameEn:'Arceus VSTAR', set:'S9 スターバース', rarity:'UR', nowPrice:2600, buyPrice:1800, image:cdn('S/S9/125'), saleUrl:h2('9016929386816'), buyUrl:h2b('8757') },
+
+  /* ── 追加人気カード（SV/S 拡張枠） ─────── */
+  { id:'SV9-114', name:'ナンジャモのハラバリーex', nameEn:'', setCode:'SV9', cardNo:'114/100', set:'SV9 バトルパートナーズ', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV9/114'), saleUrl:'', buyUrl:'' },
+  { id:'SV9-115', name:'リーリエのピッピex', nameEn:'', setCode:'SV9', cardNo:'115/100', set:'SV9 バトルパートナーズ', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV9/115'), saleUrl:'', buyUrl:'' },
+  { id:'SV9-125', name:'ナンジャモのハラバリーex', nameEn:'', setCode:'SV9', cardNo:'125/100', set:'SV9 バトルパートナーズ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV9/125'), saleUrl:'', buyUrl:'' },
+  { id:'SV9-126', name:'リーリエのピッピex', nameEn:'', setCode:'SV9', cardNo:'126/100', set:'SV9 バトルパートナーズ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV9/126'), saleUrl:'', buyUrl:'' },
+  { id:'SV9-130', name:'ナンジャモのハラバリーex', nameEn:'', setCode:'SV9', cardNo:'130/100', set:'SV9 バトルパートナーズ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV9/130'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-200', name:'リーフィアex', nameEn:'', setCode:'SV8a', cardNo:'200/187', set:'SV8a テラスタルフェスex', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV8a/200'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-201', name:'オーガポン みどりのめんex', nameEn:'', setCode:'SV8a', cardNo:'201/187', set:'SV8a テラスタルフェスex', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV8a/201'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-202', name:'ブースターex', nameEn:'', setCode:'SV8a', cardNo:'202/187', set:'SV8a テラスタルフェスex', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV8a/202'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-204', name:'オーガポン かまどのめんex', nameEn:'', setCode:'SV8a', cardNo:'204/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/204'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-205', name:'シャワーズex', nameEn:'', setCode:'SV8a', cardNo:'205/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/205'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-206', name:'グレイシアex', nameEn:'', setCode:'SV8a', cardNo:'206/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/206'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-208', name:'オーガポン いどのめんex', nameEn:'', setCode:'SV8a', cardNo:'208/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/208'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-209', name:'サンダースex', nameEn:'', setCode:'SV8a', cardNo:'209/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/209'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-210', name:'テツノカイナex', nameEn:'', setCode:'SV8a', cardNo:'210/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/210'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-211', name:'エーフィex', nameEn:'', setCode:'SV8a', cardNo:'211/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/211'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-212', name:'ニンフィアex', nameEn:'', setCode:'SV8a', cardNo:'212/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/212'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-216', name:'オーガポン いしずえのめんex', nameEn:'', setCode:'SV8a', cardNo:'216/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/216'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-217', name:'ブラッキーex', nameEn:'', setCode:'SV8a', cardNo:'217/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/217'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-221', name:'ドラパルトex', nameEn:'', setCode:'SV8a', cardNo:'221/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/221'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-223', name:'イーブイex', nameEn:'', setCode:'SV8a', cardNo:'223/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV8a/223'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-224', name:'イーブイex', nameEn:'', setCode:'SV8a', cardNo:'224/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV8a/224'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-226', name:'テラパゴスex', nameEn:'', setCode:'SV8a', cardNo:'226/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV8a/226'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-234', name:'オーガポン みどりのめんex', nameEn:'', setCode:'SV8a', cardNo:'234/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV8a/234'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-236', name:'ピカチュウex', nameEn:'', setCode:'SV8a', cardNo:'236/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV8a/236'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-237', name:'テラパゴスex', nameEn:'', setCode:'SV8a', cardNo:'237/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV8a/237'), saleUrl:'', buyUrl:'' },
+  { id:'SV7a-078', name:'ラティアスex', nameEn:'', setCode:'SV7a', cardNo:'078/064', set:'SV7a 楽園ドラゴーナ', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV7a/078'), saleUrl:'', buyUrl:'' },
+  { id:'SV7a-087', name:'ラティアスex', nameEn:'', setCode:'SV7a', cardNo:'087/064', set:'SV7a 楽園ドラゴーナ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV7a/087'), saleUrl:'', buyUrl:'' },
+  { id:'SV7-122', name:'テラパゴスex', nameEn:'', setCode:'SV7', cardNo:'122/102', set:'SV7 ステラミラクル', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV7/122'), saleUrl:'', buyUrl:'' },
+  { id:'SV5a-083', name:'ゲッコウガex', nameEn:'', setCode:'SV5a', cardNo:'083/066', set:'SV5a クリムゾンヘイズ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV5a/083'), saleUrl:'', buyUrl:'' },
+  { id:'SV5a-090', name:'ゲッコウガex', nameEn:'', setCode:'SV5a', cardNo:'090/066', set:'SV5a クリムゾンヘイズ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV5a/090'), saleUrl:'', buyUrl:'' },
+  { id:'SV4a-327', name:'ミュウex', nameEn:'', setCode:'SV4a', cardNo:'327/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/327'), saleUrl:'', buyUrl:'' },
+  { id:'SV4a-328', name:'サーナイトex', nameEn:'', setCode:'SV4a', cardNo:'328/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/328'), saleUrl:'', buyUrl:'' },
+  { id:'SV4a-331', name:'リザードンex', nameEn:'', setCode:'SV4a', cardNo:'331/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/331'), saleUrl:'', buyUrl:'' },
+  { id:'SV4a-348', name:'サーナイトex', nameEn:'', setCode:'SV4a', cardNo:'348/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/348'), saleUrl:'', buyUrl:'' },
+  { id:'SV3-125', name:'リザードンex', nameEn:'', setCode:'SV3', cardNo:'125/108', set:'SV3 黒炎の支配者', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV3/125'), saleUrl:'', buyUrl:'' },
+  { id:'SV3-134', name:'リザードンex', nameEn:'', setCode:'SV3', cardNo:'134/108', set:'SV3 黒炎の支配者', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV3/134'), saleUrl:'', buyUrl:'' },
+  { id:'SV2a-195', name:'ミュウex', nameEn:'', setCode:'SV2a', cardNo:'195/165', set:'SV2a ポケモンカード151', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV2a/195'), saleUrl:'', buyUrl:'' },
+  { id:'SV2a-208', name:'ミュウex', nameEn:'', setCode:'SV2a', cardNo:'208/165', set:'SV2a ポケモンカード151', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV2a/208'), saleUrl:'', buyUrl:'' },
+  { id:'SV1S-092', name:'サーナイトex', nameEn:'', setCode:'SV1S', cardNo:'092/078', set:'SV1S スカーレットex', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV1S/092'), saleUrl:'', buyUrl:'' },
+  { id:'S12a-210', name:'リーフィアVSTAR', nameEn:'', setCode:'S12a', cardNo:'210/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('S/S12a/210'), saleUrl:'', buyUrl:'' },
+  { id:'S12a-217', name:'グレイシアVSTAR', nameEn:'', setCode:'S12a', cardNo:'217/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('S/S12a/217'), saleUrl:'', buyUrl:'' },
+  { id:'S12a-226', name:'ルカリオVSTAR', nameEn:'', setCode:'S12a', cardNo:'226/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('S/S12a/226'), saleUrl:'', buyUrl:'' },
+  { id:'S12a-261', name:'ギラティナVSTAR', nameEn:'', setCode:'S12a', cardNo:'261/172', set:'S12a VSTARユニバース', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('S/S12a/261'), saleUrl:'', buyUrl:'' },
+  { id:'S9-111', name:'アルセウスV', nameEn:'', setCode:'S9', cardNo:'111/100', set:'S9 スターバース', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('S/S9/111'), saleUrl:'', buyUrl:'' },
+  { id:'S9-112', name:'アルセウスV', nameEn:'', setCode:'S9', cardNo:'112/100', set:'S9 スターバース', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('S/S9/112'), saleUrl:'', buyUrl:'' },
+  { id:'S9-120', name:'アルセウスVSTAR', nameEn:'', setCode:'S9', cardNo:'120/100', set:'S9 スターバース', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('S/S9/120'), saleUrl:'', buyUrl:'' },
+  { id:'SV9-104', name:'ナンジャモのタイカイデン', nameEn:'', setCode:'SV9', cardNo:'104/100', set:'SV9 バトルパートナーズ', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV9/104'), saleUrl:'', buyUrl:'' },
+  { id:'SV9-105', name:'リーリエのアブリボン', nameEn:'', setCode:'SV9', cardNo:'105/100', set:'SV9 バトルパートナーズ', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV9/105'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-230', name:'スグリ', nameEn:'', setCode:'SV8a', cardNo:'230/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV8a/230'), saleUrl:'', buyUrl:'' },
+  { id:'SV8a-231', name:'タロ', nameEn:'', setCode:'SV8a', cardNo:'231/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV8a/231'), saleUrl:'', buyUrl:'' },
+  { id:'SV7a-086', name:'ルチアのアピール', nameEn:'', setCode:'SV7a', cardNo:'086/064', set:'SV7a 楽園ドラゴーナ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV7a/086'), saleUrl:'', buyUrl:'' },
+  { id:'SV7a-091', name:'ルチアのアピール', nameEn:'', setCode:'SV7a', cardNo:'091/064', set:'SV7a 楽園ドラゴーナ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV7a/091'), saleUrl:'', buyUrl:'' },
+  { id:'SV7-124', name:'タロ', nameEn:'', setCode:'SV7', cardNo:'124/102', set:'SV7 ステラミラクル', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV7/124'), saleUrl:'', buyUrl:'' },
+  { id:'SV7-131', name:'タロ', nameEn:'', setCode:'SV7', cardNo:'131/102', set:'SV7 ステラミラクル', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV7/131'), saleUrl:'', buyUrl:'' },
+  { id:'SV5a-067', name:'カイロス', nameEn:'', setCode:'SV5a', cardNo:'067/066', set:'SV5a クリムゾンヘイズ', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV5a/067'), saleUrl:'', buyUrl:'' },
+  { id:'SV5a-078', name:'イーブイ', nameEn:'', setCode:'SV5a', cardNo:'078/066', set:'SV5a クリムゾンヘイズ', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV5a/078'), saleUrl:'', buyUrl:'' },
+  { id:'SV4a-212', name:'パルデア ケンタロス', nameEn:'', setCode:'SV4a', cardNo:'212/190', set:'SV4a レイジングサーフ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV4a/212'), saleUrl:'', buyUrl:'' },
+  { id:'SV4a-223', name:'パルデア ケンタロス', nameEn:'', setCode:'SV4a', cardNo:'223/190', set:'SV4a レイジングサーフ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV4a/223'), saleUrl:'', buyUrl:'' },
+  { id:'SV4a-250', name:'カイデン', nameEn:'', setCode:'SV4a', cardNo:'250/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/250'), saleUrl:'', buyUrl:'' },
+  { id:'SV4a-251', name:'タイカイデン', nameEn:'', setCode:'SV4a', cardNo:'251/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/251'), saleUrl:'', buyUrl:'' },
+  { id:'SV4a-279', name:'パルデア ケンタロス', nameEn:'', setCode:'SV4a', cardNo:'279/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/279'), saleUrl:'', buyUrl:'' },
+  { id:'SV4a-281', name:'ルカリオ', nameEn:'', setCode:'SV4a', cardNo:'281/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/281'), saleUrl:'', buyUrl:'' },
+  { id:'SV4a-353', name:'ペパー', nameEn:'', setCode:'SV4a', cardNo:'353/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/353'), saleUrl:'', buyUrl:'' },
+  { id:'SV4a-354', name:'ボタン', nameEn:'', setCode:'SV4a', cardNo:'354/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/354'), saleUrl:'', buyUrl:'' },
+  { id:'SV3a-071', name:'イベルタル', nameEn:'', setCode:'SV3a', cardNo:'071/062', set:'SV3a レイジングサーフ', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV3a/071'), saleUrl:'', buyUrl:'' },
+  { id:'SV3-129', name:'オモダカ', nameEn:'', setCode:'SV3', cardNo:'129/108', set:'SV3 黒炎の支配者', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV3/129'), saleUrl:'', buyUrl:'' },
+  { id:'SV3-137', name:'オモダカ', nameEn:'', setCode:'SV3', cardNo:'137/108', set:'SV3 黒炎の支配者', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV3/137'), saleUrl:'', buyUrl:'' },
+  { id:'SV2a-197', name:'サカキのカリスマ', nameEn:'', setCode:'SV2a', cardNo:'197/165', set:'SV2a ポケモンカード151', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV2a/197'), saleUrl:'', buyUrl:'' },
+  { id:'SV2a-207', name:'サカキのカリスマ', nameEn:'', setCode:'SV2a', cardNo:'207/165', set:'SV2a ポケモンカード151', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV2a/207'), saleUrl:'', buyUrl:'' },
+  { id:'SV2D-091', name:'ナンジャモ', nameEn:'', setCode:'SV2D', cardNo:'091/071', set:'SV2D クレイバースト', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV2D/091'), saleUrl:'', buyUrl:'' },
+];
+
+const legacyCardRefs = {
+  'SV4a-350':['SV4a','350/190'], 'SV2D-096':['SV2D','096/071'], 'S12a-242':['S12a','242/172'],
+  'SV1S-099':['SV1S','099/078'], 'SV1V-098':['SV1V','098/078'], 'SV4a-349':['SV4a','349/190'],
+  'SV3-139':['SV3','139/108'], 'SV2a-201':['SV2a','201/165'], 'SV4a-347':['SV4a','347/190'],
+  'SV2a-205':['SV2a','205/165'], 'SV4a-358':['SV4a','358/190'], 'SV1V-106':['SV1V','106/078'],
+  'SV4a-360':['SV4a','360/190'], 'SV1S-106':['SV1S','106/078'], 'SV7-133':['SV7','133/102'],
+  'SV7-130':['SV7','130/102'], 'SV2a-183':['SV2a','183/165'], 'SV2a-173':['SV2a','173/165'],
+  'SV4a-236':['SV4a','236/190'], 'SV4a-310':['SV4a','310/190'], 'SV2a-181':['SV2a','181/165'],
+  'SV2a-149':['SV2a','149/165'], 'S12a-262':['S12a','262/172'], 'S12a-221':['S12a','221/172'],
+  'S12a-212':['S12a','212/172'], 'S12a-211':['S12a','211/172'], 'S12a-216':['S12a','216/172'],
+  'S12a-108':['S12a','108/172'], 'S12a-054':['S12a','054/172'], 'S9-125':['S9','125/100'],
+};
+cardCatalog.forEach(c => {
+  const ref = legacyCardRefs[c.id];
+  if (ref) { c.setCode = ref[0]; c.cardNo = ref[1]; }
+});
+const VERIFIED_PRICE_DATE = '2026-06-05';
+const verifiedMarketOverrides = {
+  'SV4a-350':{rarity:'SAR',nowPrice:11000,buyPrice:7500,saleUrl:'https://www.hareruya2.com/products/9017544442176',buyUrl:'https://www.hare2buy.com/product/17909'},
+  'SV2D-096':{rarity:'SAR',nowPrice:56000,buyPrice:38000,saleUrl:'https://www.hareruya2.com/products/9017415172416',buyUrl:'https://www.hare2buy.com/product/15858'},
+  'S12a-242':{rarity:'SAR',nowPrice:1200,buyPrice:550,saleUrl:'https://www.hareruya2.com/products/9017325257024',buyUrl:'https://www.hare2buy.com/product/15173'},
+  'SV1S-099':{rarity:'SR',nowPrice:900,buyPrice:400,saleUrl:'https://www.hareruya2.com/products/9017350095168',buyUrl:'https://www.hare2buy.com/product/15494'},
+  'SV1V-098':{rarity:'SR',nowPrice:500,buyPrice:null,saleUrl:'https://www.hareruya2.com/products/9017295929664',buyUrl:''},
+  'SV4a-349':{rarity:'SAR',nowPrice:60000,buyPrice:46000,saleUrl:'https://www.hareruya2.com/products/9017544245568',buyUrl:'https://www.hare2buy.com/product/17908'},
+  'SV3-139':{rarity:'UR',nowPrice:22000,buyPrice:17000,saleUrl:'https://www.hareruya2.com/products/9017399116096',buyUrl:'https://www.hare2buy.com/product/16763'},
+  'SV2a-201':{rarity:'SAR',nowPrice:82000,buyPrice:65000,saleUrl:'https://www.hareruya2.com/products/9017521013056',buyUrl:'https://www.hare2buy.com/product/16476'},
+  'SV4a-347':{rarity:'SAR',nowPrice:98000,buyPrice:76000,saleUrl:'https://www.hareruya2.com/products/9017573278016',buyUrl:'https://www.hare2buy.com/product/17906'},
+  'SV2a-205':{rarity:'SAR',nowPrice:62000,buyPrice:45000,saleUrl:'https://www.hareruya2.com/products/9017521733952',buyUrl:'https://www.hare2buy.com/product/16480'},
+  'SV4a-358':{rarity:'UR',nowPrice:1200,buyPrice:800,saleUrl:'https://www.hareruya2.com/products/9017500041536',buyUrl:'https://www.hare2buy.com/product/17917'},
+  'SV1V-106':{rarity:'UR',nowPrice:1500,buyPrice:800,saleUrl:'https://www.hareruya2.com/products/9017238815040',buyUrl:'https://www.hare2buy.com/product/15531'},
+  'SV4a-360':{rarity:'UR',nowPrice:800,buyPrice:450,saleUrl:'https://www.hareruya2.com/products/9017500893504',buyUrl:'https://www.hare2buy.com/product/17919'},
+  'SV1S-106':{rarity:'UR',nowPrice:1500,buyPrice:850,saleUrl:'https://www.hareruya2.com/products/9017289146688',buyUrl:'https://www.hare2buy.com/product/15501'},
+  'SV7-133':{rarity:'UR',nowPrice:850,buyPrice:400,saleUrl:'https://www.hareruya2.com/products/9501512106304',buyUrl:'https://www.hare2buy.com/product/18822'},
+  'SV7-130':{rarity:'SAR',nowPrice:5000,buyPrice:3500,saleUrl:'https://www.hareruya2.com/products/9501512335680',buyUrl:'https://www.hare2buy.com/product/18819'},
+  'SV2a-183':{rarity:'AR',nowPrice:6000,buyPrice:4500,saleUrl:'https://www.hareruya2.com/products/9017517375808',buyUrl:'https://www.hare2buy.com/product/16458'},
+  'SV2a-173':{rarity:'AR',nowPrice:8500,buyPrice:6000,saleUrl:'https://www.hareruya2.com/products/9017514230080',buyUrl:'https://www.hare2buy.com/product/16448'},
+  'SV4a-236':{rarity:'S',nowPrice:15000,buyPrice:11000,saleUrl:'https://www.hareruya2.com/products/9017594118464',buyUrl:'https://www.hare2buy.com/product/17795'},
+  'SV4a-310':{rarity:'S',nowPrice:2100,buyPrice:1400,saleUrl:'https://www.hareruya2.com/products/9017591497024',buyUrl:'https://www.hare2buy.com/product/17869'},
+  'SV2a-181':{rarity:'AR',nowPrice:3500,buyPrice:2500,saleUrl:'https://www.hareruya2.com/products/9017517048128',buyUrl:'https://www.hare2buy.com/product/16456'},
+  'SV2a-149':{rarity:'R',nowPrice:100,buyPrice:null,saleUrl:'https://www.hareruya2.com/products/9017476710720',buyUrl:''},
+  'S12a-262':{rarity:'UR',nowPrice:22000,buyPrice:17000,saleUrl:'https://www.hareruya2.com/products/9017284985152',buyUrl:'https://www.hare2buy.com/product/15193'},
+  'S12a-221':{rarity:'SAR',nowPrice:24000,buyPrice:19000,saleUrl:'https://www.hareruya2.com/products/9017186812224',buyUrl:'https://www.hare2buy.com/product/15152'},
+  'S12a-212':{rarity:'SAR',nowPrice:22000,buyPrice:15000,saleUrl:'https://www.hareruya2.com/products/9017183240512',buyUrl:'https://www.hare2buy.com/product/15143'},
+  'S12a-211':{rarity:'SAR',nowPrice:8900,buyPrice:6000,saleUrl:'https://www.hareruya2.com/products/9017182945600',buyUrl:'https://www.hare2buy.com/product/15142'},
+  'S12a-216':{rarity:'SAR',nowPrice:1400,buyPrice:900,saleUrl:'https://www.hareruya2.com/products/9017185108288',buyUrl:'https://www.hare2buy.com/product/15147'},
+  'S12a-108':{rarity:'RRR',nowPrice:1100,buyPrice:500,saleUrl:'https://www.hareruya2.com/products/9017311297856',buyUrl:'https://www.hare2buy.com/product/14950'},
+  'S12a-054':{rarity:'RRR',nowPrice:1400,buyPrice:1000,saleUrl:'https://www.hareruya2.com/products/9017270141248',buyUrl:'https://www.hare2buy.com/product/14896'},
+  'S9-125':{rarity:'UR',nowPrice:2600,buyPrice:1800,saleUrl:'https://www.hareruya2.com/products/9016929386816',buyUrl:'https://www.hare2buy.com/product/8757'},
+  'SV9-114':{rarity:'SR',nowPrice:800,buyPrice:400,saleUrl:'https://www.hareruya2.com/products/9708383928640',buyUrl:'https://www.hare2buy.com/product/20003'},
+  'SV9-115':{rarity:'SR',nowPrice:3000,buyPrice:2000,saleUrl:'https://www.hareruya2.com/products/9708384059712',buyUrl:'https://www.hare2buy.com/product/20004'},
+  'SV9-125':{rarity:'SAR',nowPrice:22000,buyPrice:10000,saleUrl:'https://www.hareruya2.com/products/9708382093632',buyUrl:'https://www.hare2buy.com/product/20014'},
+  'SV9-126':{rarity:'SAR',nowPrice:35000,buyPrice:25000,saleUrl:'https://www.hareruya2.com/products/9708382388544',buyUrl:'https://www.hare2buy.com/product/20015'},
+  'SV9-130':{rarity:'UR',nowPrice:4000,buyPrice:3000,saleUrl:'https://www.hareruya2.com/products/9708382683456',buyUrl:'https://www.hare2buy.com/product/20019'},
+  'SV8a-200':{rarity:'SAR',nowPrice:10000,buyPrice:8000,saleUrl:'https://www.hareruya2.com/products/9667472359744',buyUrl:'https://www.hare2buy.com/product/19632'},
+  'SV8a-201':{rarity:'SAR',nowPrice:1100,buyPrice:700,saleUrl:'https://www.hareruya2.com/products/9667471147328',buyUrl:'https://www.hare2buy.com/product/19633'},
+  'SV8a-202':{rarity:'SAR',nowPrice:9000,buyPrice:6800,saleUrl:'https://www.hareruya2.com/products/9667471212864',buyUrl:'https://www.hare2buy.com/product/19634'},
+  'SV8a-204':{rarity:'SAR',nowPrice:900,buyPrice:550,saleUrl:'https://www.hareruya2.com/products/9667471278400',buyUrl:'https://www.hare2buy.com/product/19636'},
+  'SV8a-205':{rarity:'SAR',nowPrice:9000,buyPrice:6200,saleUrl:'https://www.hareruya2.com/products/9667471343936',buyUrl:'https://www.hare2buy.com/product/19637'},
+  'SV8a-206':{rarity:'SAR',nowPrice:10000,buyPrice:8000,saleUrl:'https://www.hareruya2.com/products/9667472490816',buyUrl:'https://www.hare2buy.com/product/19638'},
+  'SV8a-208':{rarity:'SAR',nowPrice:1000,buyPrice:600,saleUrl:'https://www.hareruya2.com/products/9667471475008',buyUrl:'https://www.hare2buy.com/product/19640'},
+  'SV8a-209':{rarity:'SAR',nowPrice:9000,buyPrice:6800,saleUrl:'https://www.hareruya2.com/products/9667471573312',buyUrl:'https://www.hare2buy.com/product/19641'},
+  'SV8a-210':{rarity:'SAR',nowPrice:1200,buyPrice:400,saleUrl:'https://www.hareruya2.com/products/9667472523584',buyUrl:'https://www.hare2buy.com/product/19642'},
+  'SV8a-211':{rarity:'SAR',nowPrice:10500,buyPrice:8000,saleUrl:'https://www.hareruya2.com/products/9667472556352',buyUrl:'https://www.hare2buy.com/product/19643'},
+  'SV8a-212':{rarity:'SAR',nowPrice:22000,buyPrice:16000,saleUrl:'https://www.hareruya2.com/products/9667471638848',buyUrl:'https://www.hare2buy.com/product/19644'},
+  'SV8a-216':{rarity:'SAR',nowPrice:900,buyPrice:500,saleUrl:'https://www.hareruya2.com/products/9667472654656',buyUrl:'https://www.hare2buy.com/product/19648'},
+  'SV8a-217':{rarity:'SAR',nowPrice:72000,buyPrice:55000,saleUrl:'https://www.hareruya2.com/products/9667471835456',buyUrl:'https://www.hare2buy.com/product/19649'},
+  'SV8a-221':{rarity:'SAR',nowPrice:2600,buyPrice:1700,saleUrl:'https://www.hareruya2.com/products/9667471966528',buyUrl:'https://www.hare2buy.com/product/19653'},
+  'SV8a-223':{rarity:'SAR',nowPrice:7100,buyPrice:5000,saleUrl:'https://www.hareruya2.com/products/9667472097600',buyUrl:'https://www.hare2buy.com/product/19655'},
+  'SV8a-224':{rarity:'SAR',nowPrice:6500,buyPrice:4700,saleUrl:'https://www.hareruya2.com/products/9667472163136',buyUrl:'https://www.hare2buy.com/product/19656'},
+  'SV8a-226':{rarity:'SAR',nowPrice:1000,buyPrice:600,saleUrl:'https://www.hareruya2.com/products/9667472818496',buyUrl:'https://www.hare2buy.com/product/19658'},
+  'SV8a-234':{rarity:'UR',nowPrice:700,buyPrice:300,saleUrl:'https://www.hareruya2.com/products/9667473047872',buyUrl:'https://www.hare2buy.com/product/19666'},
+  'SV8a-236':{rarity:'UR',nowPrice:17000,buyPrice:11000,saleUrl:'https://www.hareruya2.com/products/9667473080640',buyUrl:'https://www.hare2buy.com/product/19668'},
+  'SV8a-237':{rarity:'UR',nowPrice:900,buyPrice:450,saleUrl:'https://www.hareruya2.com/products/9667473146176',buyUrl:'https://www.hare2buy.com/product/19669'},
+  'SV7a-078':{rarity:'SR',nowPrice:3000,buyPrice:2100,saleUrl:'https://www.hareruya2.com/products/9586615386432',buyUrl:'https://www.hare2buy.com/product/19020'},
+  'SV7a-087':{rarity:'SAR',nowPrice:30000,buyPrice:24000,saleUrl:'https://www.hareruya2.com/products/9586617385280',buyUrl:'https://www.hare2buy.com/product/19029'},
+  'SV7-122':{rarity:'SR',nowPrice:500,buyPrice:null,saleUrl:'https://www.hareruya2.com/products/9501512827200',buyUrl:''},
+  'SV5a-083':{rarity:'SR',nowPrice:2900,buyPrice:2000,saleUrl:'https://www.hareruya2.com/products/9123436527936',buyUrl:'https://www.hare2buy.com/product/18439'},
+  'SV5a-090':{rarity:'SAR',nowPrice:53000,buyPrice:40000,saleUrl:'https://www.hareruya2.com/products/9123437412672',buyUrl:'https://www.hare2buy.com/product/18446'},
+  'SV4a-327':{rarity:'SSR',nowPrice:4800,buyPrice:3700,saleUrl:'https://www.hareruya2.com/products/9017569149248',buyUrl:'https://www.hare2buy.com/product/17886'},
+  'SV4a-328':{rarity:'SSR',nowPrice:1200,buyPrice:650,saleUrl:'https://www.hareruya2.com/products/9017569345856',buyUrl:'https://www.hare2buy.com/product/17887'},
+  'SV4a-331':{rarity:'SSR',nowPrice:4300,buyPrice:2800,saleUrl:'https://www.hareruya2.com/products/9017570328896',buyUrl:'https://www.hare2buy.com/product/17890'},
+  'SV4a-348':{rarity:'SAR',nowPrice:20000,buyPrice:15000,saleUrl:'https://www.hareruya2.com/products/9017543950656',buyUrl:'https://www.hare2buy.com/product/17907'},
+  'SV3-125':{rarity:'SR',nowPrice:5000,buyPrice:3500,saleUrl:'https://www.hareruya2.com/products/9017488048448',buyUrl:'https://www.hare2buy.com/product/16749'},
+  'SV3-134':{rarity:'SAR',nowPrice:58000,buyPrice:45000,saleUrl:'https://www.hareruya2.com/products/9017393807680',buyUrl:'https://www.hare2buy.com/product/16758'},
+  'SV2a-195':{rarity:'SR',nowPrice:4300,buyPrice:3300,saleUrl:'https://www.hareruya2.com/products/9017519702336',buyUrl:'https://www.hare2buy.com/product/16470'},
+  'SV2a-208':{rarity:'UR',nowPrice:22000,buyPrice:16000,saleUrl:'https://www.hareruya2.com/products/9017522389312',buyUrl:'https://www.hare2buy.com/product/16483'},
+  'SV1S-092':{rarity:'SR',nowPrice:650,buyPrice:350,saleUrl:'https://www.hareruya2.com/products/9017345245504',buyUrl:'https://www.hare2buy.com/product/15487'},
+  'S12a-210':{rarity:'SAR',nowPrice:7500,buyPrice:6000,saleUrl:'https://www.hareruya2.com/products/9017182519616',buyUrl:'https://www.hare2buy.com/product/15141'},
+  'S12a-217':{rarity:'SAR',nowPrice:6700,buyPrice:4600,saleUrl:'https://www.hareruya2.com/products/9017185239360',buyUrl:'https://www.hare2buy.com/product/15148'},
+  'S12a-226':{rarity:'SAR',nowPrice:4800,buyPrice:3500,saleUrl:'https://www.hareruya2.com/products/9017312969024',buyUrl:'https://www.hare2buy.com/product/15157'},
+  'S12a-261':{rarity:'UR',nowPrice:35000,buyPrice:28000,saleUrl:'https://www.hareruya2.com/products/9017284395328',buyUrl:'https://www.hare2buy.com/product/15192'},
+  'S9-111':{rarity:'SR',nowPrice:800,buyPrice:null,saleUrl:'https://www.hareruya2.com/products/9016906744128',buyUrl:''},
+  'S9-112':{rarity:'SR',nowPrice:11000,buyPrice:8000,saleUrl:'https://www.hareruya2.com/products/9016908087616',buyUrl:'https://www.hare2buy.com/product/8744'},
+  'S9-120':{rarity:'HR',nowPrice:2500,buyPrice:1300,saleUrl:'https://www.hareruya2.com/products/9016923160896',buyUrl:'https://www.hare2buy.com/product/8752'},
+  'SV9-104':{rarity:'AR',nowPrice:650,buyPrice:200,saleUrl:'https://www.hareruya2.com/products/9708382421312',buyUrl:'https://www.hare2buy.com/product/19993'},
+  'SV9-105':{rarity:'AR',nowPrice:950,buyPrice:500,saleUrl:'https://www.hareruya2.com/products/9708382585152',buyUrl:'https://www.hare2buy.com/product/19994'},
+  'SV8a-230':{rarity:'SAR',nowPrice:1100,buyPrice:650,saleUrl:'https://www.hareruya2.com/products/9667472949568',buyUrl:'https://www.hare2buy.com/product/19662'},
+  'SV8a-231':{rarity:'SAR',nowPrice:1000,buyPrice:550,saleUrl:'https://www.hareruya2.com/products/9667472392512',buyUrl:'https://www.hare2buy.com/product/19663'},
+  'SV7a-086':{rarity:'SR',nowPrice:5000,buyPrice:3500,saleUrl:'https://www.hareruya2.com/products/9586617123136',buyUrl:'https://www.hare2buy.com/product/19028'},
+  'SV7a-091':{rarity:'SAR',nowPrice:28000,buyPrice:21000,saleUrl:'https://www.hareruya2.com/products/9586617844032',buyUrl:'https://www.hare2buy.com/product/19033'},
+  'SV7-124':{rarity:'SR',nowPrice:1400,buyPrice:900,saleUrl:'https://www.hareruya2.com/products/9501512696128',buyUrl:'https://www.hare2buy.com/product/18813'},
+  'SV7-131':{rarity:'SAR',nowPrice:7000,buyPrice:5000,saleUrl:'https://www.hareruya2.com/products/9501512073536',buyUrl:'https://www.hare2buy.com/product/18820'},
+  'SV5a-067':{rarity:'AR',nowPrice:550,buyPrice:250,saleUrl:'https://www.hareruya2.com/products/9123434398016',buyUrl:'https://www.hare2buy.com/product/18423'},
+  'SV5a-078':{rarity:'AR',nowPrice:6000,buyPrice:4500,saleUrl:'https://www.hareruya2.com/products/9123435610432',buyUrl:'https://www.hare2buy.com/product/18434'},
+  'SV4a-212':{rarity:'S',nowPrice:200,buyPrice:null,saleUrl:'https://www.hareruya2.com/products/9017585598784',buyUrl:''},
+  'SV4a-223':{rarity:'S',nowPrice:150,buyPrice:null,saleUrl:'https://www.hareruya2.com/products/9017589236032',buyUrl:''},
+  'SV4a-250':{rarity:'S',nowPrice:100,buyPrice:null,saleUrl:'https://www.hareruya2.com/products/9017542050112',buyUrl:''},
+  'SV4a-251':{rarity:'S',nowPrice:100,buyPrice:null,saleUrl:'https://www.hareruya2.com/products/9017542639936',buyUrl:''},
+  'SV4a-279':{rarity:'S',nowPrice:150,buyPrice:null,saleUrl:'https://www.hareruya2.com/products/9017504530752',buyUrl:''},
+  'SV4a-281':{rarity:'S',nowPrice:1300,buyPrice:650,saleUrl:'https://www.hareruya2.com/products/9017505186112',buyUrl:'https://www.hare2buy.com/product/17840'},
+  'SV4a-353':{rarity:'SAR',nowPrice:850,buyPrice:300,saleUrl:'https://www.hareruya2.com/products/9017498042688',buyUrl:'https://www.hare2buy.com/product/17912'},
+  'SV4a-354':{rarity:'SAR',nowPrice:3500,buyPrice:2400,saleUrl:'https://www.hareruya2.com/products/9017498337600',buyUrl:'https://www.hare2buy.com/product/17913'},
+  'SV3a-071':{rarity:'AR',nowPrice:1300,buyPrice:650,saleUrl:'https://www.hareruya2.com/products/9017553322304',buyUrl:'https://www.hare2buy.com/product/16906'},
+  'SV3-129':{rarity:'SR',nowPrice:600,buyPrice:null,saleUrl:'https://www.hareruya2.com/products/9017492144448',buyUrl:''},
+  'SV3-137':{rarity:'SAR',nowPrice:900,buyPrice:400,saleUrl:'https://www.hareruya2.com/products/9017396887872',buyUrl:'https://www.hare2buy.com/product/16761'},
+  'SV2a-197':{rarity:'SR',nowPrice:600,buyPrice:null,saleUrl:'https://www.hareruya2.com/products/9017520095552',buyUrl:''},
+  'SV2a-207':{rarity:'SAR',nowPrice:3200,buyPrice:2200,saleUrl:'https://www.hareruya2.com/products/9017522192704',buyUrl:'https://www.hare2buy.com/product/16482'},
+  'SV2D-091':{rarity:'SR',nowPrice:6300,buyPrice:4000,saleUrl:'https://www.hareruya2.com/products/9017411567936',buyUrl:'https://www.hare2buy.com/product/15853'},
+};
+cardCatalog.forEach(c => {
+  const override = verifiedMarketOverrides[c.id];
+  if (override) Object.assign(c, override, { priceSource:'晴れる屋2', priceUpdatedAt:VERIFIED_PRICE_DATE });
+});
+
+/* ═══════════════════════════════════════
+   RARITY CONFIG
+═══════════════════════════════════════ */
+const rarityClass = r => {
+  if (r === 'SAR' || r === 'HR') return 'SAR';
+  if (r === 'SSR') return 'SSR';
+  if (r === 'UR')  return 'UR';
+  if (r === 'SR')  return 'SR';
+  if (r === 'RRR') return 'RRR';
+  if (r === 'RR')  return 'RR';
+  if (r === 'AR')  return 'AR';
+  if (r === 'S')   return 'S';
+  if (r === 'R')   return 'R';
+  return 'C';
+};
+const isHolo      = r => ['SAR','HR'].includes(r);
+const isHoloGold  = r => ['SR','SSR'].includes(r);
+const DONUT_COLORS = [
+  '#f5c518','#22d87a','#3b82f6','#a855f7','#f97316',
+  '#06b6d4','#ec4899','#84cc16','#f59e0b','#6366f1',
+];
+
+/* ═══════════════════════════════════════
+   STATE
+═══════════════════════════════════════ */
+let holdings   = JSON.parse(localStorage.getItem('pokecaVault') || '[]');
+let cashBalance = localStorage.getItem('pokecaVaultCash') === null ? null : Number(localStorage.getItem('pokecaVaultCash')) || 0;
+let courseAmount = localStorage.getItem('pokecaVaultCourse') === null ? null : Number(localStorage.getItem('pokecaVaultCourse')) || null;
+let selectedCard = null;
+let sortKey    = 'name';
+let sortDir    = 1;
+let sellingId  = null;
+let mercariEditingId = null;
+let mercariLinks = JSON.parse(localStorage.getItem('pokecaVaultMercariLinks') || '{}');
+let mercariAmbassadorId = localStorage.getItem('pokecaVaultMercariAmbassadorId') || '2427775577';
+let publicAppUrl = localStorage.getItem('pokecaVaultPublicUrl') || '';
+let priceChart = null;
+let donutChart = null;
+
+/* ── UTILS ── */
+const yen        = n => '¥' + Math.round(Number(n)).toLocaleString('ja-JP');
+const signedYen  = n => { const v=Number(n)||0; return v<0?'-¥'+Math.abs(Math.round(v)).toLocaleString('ja-JP'):'+¥'+Math.round(v).toLocaleString('ja-JP'); };
+const pct        = n => (n>=0?'+':'')+n.toFixed(1)+'%';
+const escHtml    = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const premiumRarities = ['SR','SSR','SAR','UR','HR'];
+const guaranteeBuyPrice = c => premiumRarities.includes(c?.rarity) ? 500 : 50;
+const effectiveBuyPrice = c => Number(c?.buyPrice) > 0 ? Number(c.buyPrice) : guaranteeBuyPrice(c);
+const buyPriceText = c => Number(c?.buyPrice) > 0 ? yen(c.buyPrice) : `最低保証 ${yen(guaranteeBuyPrice(c))}`;
+const sourceLink = (url, text) => url ? `<a class="price-source-link" href="${url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${text}</a>` : `<span class="price-source-link">${text}</span>`;
+const cardById = id => cardCatalog.find(c=>c.id===id) || holdings.find(h=>h.id===id);
+const mercariKeyword = c => [c?.name, c?.cardNo, c?.rarity].filter(Boolean).join(' ');
+const mercariSearchUrl = c => `https://jp.mercari.com/search?keyword=${encodeURIComponent(mercariKeyword(c))}`;
+const addMercariAfid = (url, id=mercariAmbassadorId) => {
+  const cleanId = String(id || '').replace(/\D/g, '');
+  if (!cleanId) return url;
+  const u = new URL(url);
+  u.searchParams.set('afid', cleanId);
+  return u.toString();
+};
+const hasMercariAmbassadorLink = c => !!(c && mercariLinks[c.id]);
+const mercariOpenUrl = c => hasMercariAmbassadorLink(c) ? mercariLinks[c.id] : addMercariAfid(mercariSearchUrl(c));
+const PRICE_REFRESH_MS = 60 * 60 * 1000;
+const PRICE_REFRESH_KEY = 'pokecaVaultPriceRefreshAt';
+const PRICE_REFRESH_STATUS_KEY = 'pokecaVaultPriceRefreshStatus';
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+const parseYenNumber = s => Number(String(s || '').replace(/[^\d]/g, '')) || null;
+const X_ACCOUNT = 'anaday_o';
+const defaultSharePost = url => `ポケカ投資シミュレーター「POKÉCA VAULT」を公開しました。\n\n5万円/10万円コースで人気カード100種類を売買して、所持金・評価額・含み損益・価格推移を見ながら疑似投資できます。\n\n${url}\n\n#ポケカ #ポケモンカード #ポケカ投資 @${X_ACCOUNT}`;
+const isPublicHttpUrl = url => /^https?:\/\//i.test(url) && !/^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(?::|\/|$)/i.test(url);
+const currentShareUrl = () => publicAppUrl || (isPublicHttpUrl(location.href) ? location.href : '');
+
+async function fetchText(url) {
+  const res = await fetch(url, { cache:'no-store', credentials:'omit' });
+  if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+  return await res.text();
+}
+
+async function fetchHareruyaSale(card) {
+  if (!card.cardNo || !card.setCode) return null;
+  const html = await fetchText(`https://www.hareruya2.com/search?q=${encodeURIComponent(card.cardNo)}`);
+  const metaMatch = html.match(/var meta = (\{"products":[\s\S]*?\});/);
+  if (!metaMatch) return null;
+  const data = JSON.parse(metaMatch[1]);
+  const product = (data.products || []).find(p => {
+    const title = p?.variants?.[0]?.name || '';
+    return title.includes(card.cardNo) && title.includes(`[${card.setCode}]`) && !/PSA|鑑定/.test(title);
+  });
+  if (!product) return null;
+  const variant = product.variants[0];
+  return { price: Math.round((Number(variant.price) || 0) / 100), url: h2(product.id) };
+}
+
+async function fetchHareruyaBuy(card) {
+  if (!card.cardNo || !card.setCode) return null;
+  const html = await fetchText(`https://www.hare2buy.com/product-list?keyword=${encodeURIComponent(card.cardNo)}`);
+  const blocks = [...html.matchAll(/<a href="(https:\/\/www\.hare2buy\.com\/product\/\d+)" class="item_data_link">([\s\S]*?)<\/a>/g)];
+  for (const [, url, block] of blocks) {
+    const nameMatch = block.match(/<span class="goods_name">([\s\S]*?)<\/span>\s*<span class="model_number">/);
+    const priceMatch = block.match(/<span class="currency_label before_price">￥<\/span>([0-9,]+)/);
+    if (!nameMatch || !priceMatch) continue;
+    const title = nameMatch[1].replace(/<[^>]+>/g, '');
+    if (title.includes(card.cardNo) && title.includes(`[${card.setCode}]`)) {
+      return { price: parseYenNumber(priceMatch[1]), url };
+    }
+  }
+  return null;
+}
+
+async function refreshMarketPrices({ force=false } = {}) {
+  const last = Number(localStorage.getItem(PRICE_REFRESH_KEY)) || 0;
+  if (!force && Date.now() - last < PRICE_REFRESH_MS) return;
+  localStorage.setItem(PRICE_REFRESH_KEY, String(Date.now()));
+
+  let changed = false, checked = 0, failed = 0;
+  for (const card of cardCatalog) {
+    checked++;
+    try {
+      const [sale, buy] = await Promise.all([
+        fetchHareruyaSale(card).catch(() => null),
+        fetchHareruyaBuy(card).catch(() => null),
+      ]);
+      if (sale?.price && sale.price !== card.nowPrice) { card.nowPrice = sale.price; changed = true; }
+      if (sale?.url && sale.url !== card.saleUrl) { card.saleUrl = sale.url; changed = true; }
+      if (buy?.price && buy.price !== card.buyPrice) { card.buyPrice = buy.price; changed = true; }
+      if (buy?.url && buy.url !== card.buyUrl) { card.buyUrl = buy.url; changed = true; }
+      if (sale || buy) card.priceUpdatedAt = new Date().toISOString();
+    } catch {
+      failed++;
+    }
+    await delay(120);
+  }
+  localStorage.setItem(PRICE_REFRESH_STATUS_KEY, JSON.stringify({ checked, failed, updatedAt:new Date().toISOString() }));
+  if (changed) {
+    updatePriceHistories();
+    renderSummary();
+    renderHoldings();
+    renderChart();
+    renderDonut();
+    searchCards();
+    showToast('価格を更新しました');
+  }
+}
+
+function save() {
+  localStorage.setItem('pokecaVault', JSON.stringify(holdings));
+  if (cashBalance === null) localStorage.removeItem('pokecaVaultCash');
+  else localStorage.setItem('pokecaVaultCash', String(Math.round(cashBalance)));
+  if (courseAmount === null) localStorage.removeItem('pokecaVaultCourse');
+  else localStorage.setItem('pokecaVaultCourse', String(Math.round(courseAmount)));
+  localStorage.setItem('pokecaVaultUpdated', new Date().toISOString());
+}
+function showToast(msg, type='ok') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast '+type+' show';
+  setTimeout(()=>{ el.className='toast'; }, 2600);
+}
+function toggleForm() { document.getElementById('formPanel').classList.toggle('collapsed'); }
+function startCourse(amount) {
+  if ((holdings.length || cashBalance !== null) && !confirm(`${yen(amount)}コースで最初から始めます。保有カードと所持金をリセットしてよろしいですか？`)) return;
+  holdings = [];
+  cashBalance = amount;
+  courseAmount = amount;
+  selectedCard = null;
+  document.getElementById('selectedCardPanel').classList.add('hidden');
+  document.getElementById('buyPanel').classList.add('hidden');
+  document.getElementById('cardSearch').value = '';
+  save();
+  renderAll();
+  searchCards();
+  showToast(`${yen(amount)}コースで開始しました`);
+}
+
+/* 派生値 */
+const marketValue = h => h.nowPrice * h.qty;
+const costBasis   = h => h.avgCost * h.qty;
+const profitOf    = h => marketValue(h) - costBasis(h);
+const rateOf      = h => h.avgCost > 0 ? (profitOf(h)/costBasis(h))*100 : 0;
+
+/* ═══════════════════════════════════════
+   SEARCH
+═══════════════════════════════════════ */
+function searchCards() {
+  const q  = document.getElementById('cardSearch').value.trim().toLowerCase();
+  const el = document.getElementById('searchResults');
+
+  const hits = q ? cardCatalog.filter(c =>
+    c.name.toLowerCase().includes(q) ||
+    (c.nameEn && c.nameEn.toLowerCase().includes(q)) ||
+    c.set.toLowerCase().includes(q) ||
+    c.rarity.toLowerCase().includes(q)
+  ) : cardCatalog;
+
+  if (!hits.length) {
+    el.innerHTML=`<div class="search-empty">「${escHtml(q)}」に一致するカードがありません</div>`;
+    return;
+  }
+
+  el.innerHTML = `
+    <div class="search-results-head">
+      <span>${q ? `検索結果 ${hits.length}件` : `売買できるカード ${hits.length}件`}</span>
+      <span>${q ? '条件に一致するカード' : 'カードを押すと購入パネルへ移動'}</span>
+    </div>
+  ` + hits.map(c => {
+    const rc = rarityClass(c.rarity);
+    const holoClass = isHolo(c.rarity) ? 'holo' : isHoloGold(c.rarity) ? 'holo holo-gold' : '';
+    const sel = selectedCard && selectedCard.id===c.id ? 'selected' : '';
+    const mPr = hasMercariAmbassadorLink(c) || !!mercariAmbassadorId;
+    return `<div class="search-card ${holoClass} ${sel}" onclick="selectCard('${c.id}')" data-id="${c.id}">
+      <img src="${c.image}" alt="${escHtml(c.name)}" loading="lazy" onerror="this.style.opacity=.25;this.alt='画像なし'">
+      <div class="search-card-name">${escHtml(c.name)}</div>
+      <div class="search-card-meta">${escHtml(c.set.split(' ')[0])}</div>
+      <div class="search-card-rarity"><span class="badge badge-${rc}">${escHtml(c.rarity)}</span></div>
+      <div class="search-card-price">販売 ${yen(c.nowPrice)}</div>
+      <div class="search-card-buy">買取 ${buyPriceText(c)}</div>
+      <div>${sourceLink(c.saleUrl, '晴れる屋2')}</div>
+      <div class="search-card-actions">
+        <button class="mercari-mini-btn ${mPr?'pr':''}" onclick="event.stopPropagation();openMercari('${c.id}')">${mPr?'PR Mercari':'Mercari'}</button>
+        <button class="mercari-mini-btn" onclick="event.stopPropagation();openMercariModal('${c.id}')">登録</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  /* 3D tilt effect */
+  document.querySelectorAll('.search-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r  = card.getBoundingClientRect();
+      const x  = ((e.clientX - r.left) / r.width  - .5) * 16;
+      const y  = ((e.clientY - r.top)  / r.height - .5) * -16;
+      card.style.transform = `perspective(600px) rotateX(${y}deg) rotateY(${x}deg) scale(1.03)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+}
+
+function selectCard(id) {
+  selectedCard = cardCatalog.find(c => c.id===id);
+  if (!selectedCard) return;
+  const rc = rarityClass(selectedCard.rarity);
+  document.getElementById('selectedCardImage').src = selectedCard.image;
+  document.getElementById('selectedCardName').textContent = selectedCard.name;
+  document.getElementById('selectedCardMeta').innerHTML =
+    `${escHtml(selectedCard.set)} &nbsp;<span class="badge badge-${rc}">${escHtml(selectedCard.rarity)}</span>`;
+  document.getElementById('selectedCardPrice').innerHTML =
+    `販売価格 ${yen(selectedCard.nowPrice)} ${sourceLink(selectedCard.saleUrl, '晴れる屋2')}`;
+  document.getElementById('selectedCardBuy')?.remove();
+  document.getElementById('selectedCardMercariActions')?.remove();
+  document.getElementById('selectedCardPrice').insertAdjacentHTML('afterend',
+    `<div class="selected-card-buy" id="selectedCardBuy">買取価格 ${buyPriceText(selectedCard)} ${sourceLink(selectedCard.buyUrl, 'ネット買取')}</div>`);
+  document.getElementById('selectedCardBuy').insertAdjacentHTML('afterend', `
+    <div class="selected-card-actions" id="selectedCardMercariActions">
+      <button class="btn" onclick="openMercari('${selectedCard.id}')">${hasMercariAmbassadorLink(selectedCard)||!!mercariAmbassadorId?'PRリンクを開く':'メルカリで探す'}</button>
+      <button class="btn" onclick="openMercariModal('${selectedCard.id}')">アンバサダーリンク登録</button>
+      ${hasMercariAmbassadorLink(selectedCard)||!!mercariAmbassadorId?'<span class="mercari-pr-badge">PR有効</span>':''}
+    </div>`);
+  document.getElementById('selectedCardPanel').classList.remove('hidden');
+  document.getElementById('buyPanel').classList.remove('hidden');
+  buyQty = 1;
+  document.getElementById('buyQtyDisplay').textContent = buyQty;
+  updateBuyTotal();
+  searchCards();
+  setTimeout(() => {
+    document.getElementById('selectedCardPanel').scrollIntoView({ behavior:'smooth', block:'center' });
+  }, 80);
+}
+
+function openMercari(id) {
+  const card = cardById(id);
+  if (!card) return;
+  window.open(mercariOpenUrl(card), '_blank', 'noopener');
+}
+
+function openMercariGuide() {
+  if (selectedCard) { openMercariModal(selectedCard.id); return; }
+  showToast(`Mercari ID ${mercariAmbassadorId} を使用中です`);
+  document.getElementById('formPanel').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+function openMercariModal(id) {
+  const card = cardById(id);
+  if (!card) return;
+  mercariEditingId = id;
+  document.getElementById('mercariCardInfo').innerHTML = `
+    <img src="${card.image || ''}" alt="" onerror="this.style.opacity=.25">
+    <div>
+      <div class="sell-card-name">${escHtml(card.name)}</div>
+      <div class="sell-card-meta">${escHtml(card.rarity)} · ${escHtml(card.set || '')}</div>
+    </div>`;
+  document.getElementById('mercariAffiliateId').value = mercariAmbassadorId;
+  document.getElementById('mercariAffiliateUrl').value = mercariLinks[id] || '';
+  document.getElementById('mercariSearchUrlText').textContent = `自動生成URL: ${addMercariAfid(mercariSearchUrl(card))}`;
+  document.getElementById('mercariModal').classList.add('open');
+}
+
+function closeMercariModal() {
+  document.getElementById('mercariModal').classList.remove('open');
+  mercariEditingId = null;
+}
+
+function saveMercariLinks() {
+  localStorage.setItem('pokecaVaultMercariLinks', JSON.stringify(mercariLinks));
+}
+
+function saveMercariLink() {
+  if (!mercariEditingId) return;
+  mercariAmbassadorId = document.getElementById('mercariAffiliateId').value.trim().replace(/\D/g, '');
+  if (mercariAmbassadorId) localStorage.setItem('pokecaVaultMercariAmbassadorId', mercariAmbassadorId);
+  else localStorage.removeItem('pokecaVaultMercariAmbassadorId');
+  const url = document.getElementById('mercariAffiliateUrl').value.trim();
+  if (url) {
+    if (!/^https?:\/\//i.test(url)) { showToast('httpsで始まるリンクを貼ってください', 'err'); return; }
+    mercariLinks[mercariEditingId] = url;
+  } else {
+    delete mercariLinks[mercariEditingId];
+  }
+  saveMercariLinks();
+  closeMercariModal();
+  searchCards();
+  if (selectedCard) selectCard(selectedCard.id);
+  showToast(mercariAmbassadorId ? `Mercari ID ${mercariAmbassadorId} を保存しました` : 'Mercari IDを空にしました');
+}
+
+function clearMercariLink() {
+  if (!mercariEditingId) return;
+  delete mercariLinks[mercariEditingId];
+  saveMercariLinks();
+  closeMercariModal();
+  searchCards();
+  if (selectedCard) selectCard(selectedCard.id);
+  showToast('Mercariリンクを削除しました');
+}
+
+function openMercariSearchForEditing() {
+  const card = cardById(mercariEditingId);
+  if (!card) return;
+  const id = document.getElementById('mercariAffiliateId').value.trim().replace(/\D/g, '');
+  window.open(addMercariAfid(mercariSearchUrl(card), id), '_blank', 'noopener');
+}
+
+async function copyMercariSearchForEditing() {
+  const card = cardById(mercariEditingId);
+  if (!card) return;
+  try {
+    const id = document.getElementById('mercariAffiliateId').value.trim().replace(/\D/g, '');
+    await navigator.clipboard.writeText(addMercariAfid(mercariSearchUrl(card), id));
+    showToast('ID付き検索URLをコピーしました');
+  } catch {
+    showToast('コピーできませんでした', 'err');
+  }
+}
+
+function openShareModal() {
+  const url = currentShareUrl();
+  document.getElementById('publicAppUrl').value = publicAppUrl || '';
+  document.getElementById('sharePostText').value = defaultSharePost(url || '公開URLをここに入れてください');
+  updateSharePreview();
+  document.getElementById('shareModal').classList.add('open');
+}
+
+function closeShareModal() {
+  document.getElementById('shareModal').classList.remove('open');
+}
+
+function updateSharePreview() {
+  const urlInput = document.getElementById('publicAppUrl');
+  const textEl = document.getElementById('sharePostText');
+  const url = urlInput.value.trim();
+  if (url && !textEl.value.includes(url)) {
+    textEl.value = defaultSharePost(url);
+  }
+  document.getElementById('sharePreview').textContent = textEl.value;
+}
+
+function savePublicUrl() {
+  const url = document.getElementById('publicAppUrl').value.trim();
+  if (url && !/^https?:\/\//i.test(url)) { showToast('公開URLはhttps://から入力してください', 'err'); return; }
+  publicAppUrl = url;
+  if (url) localStorage.setItem('pokecaVaultPublicUrl', url);
+  else localStorage.removeItem('pokecaVaultPublicUrl');
+  document.getElementById('sharePostText').value = defaultSharePost(currentShareUrl() || '公開URLをここに入れてください');
+  updateSharePreview();
+  showToast(url ? '公開URLを保存しました' : '公開URLを空にしました');
+}
+
+async function copySharePost() {
+  try {
+    await navigator.clipboard.writeText(document.getElementById('sharePostText').value);
+    showToast('投稿文をコピーしました');
+  } catch {
+    showToast('コピーできませんでした', 'err');
+  }
+}
+
+function openXPost() {
+  const url = document.getElementById('publicAppUrl').value.trim() || currentShareUrl();
+  if (!url || /^file:/.test(url)) {
+    showToast('先に公開URLを入力してください', 'err');
+    return;
+  }
+  publicAppUrl = url;
+  localStorage.setItem('pokecaVaultPublicUrl', url);
+  const text = document.getElementById('sharePostText').value;
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+}
+
+let buyQty = 1;
+function changeQty(delta) {
+  buyQty = Math.max(1, buyQty+delta);
+  document.getElementById('buyQtyDisplay').textContent = buyQty;
+  updateBuyTotal();
+}
+function updateBuyTotal() {
+  if (!selectedCard) return;
+  document.getElementById('buyTotal').textContent = yen(selectedCard.nowPrice*buyQty);
+  document.getElementById('buyCtaLabel').textContent = `${yen(selectedCard.nowPrice)} × ${buyQty}枚 を買う`;
+}
+
+/* ═══════════════════════════════════════
+   BUY
+═══════════════════════════════════════ */
+function buySelectedCard() {
+  if (!selectedCard) { showToast('先にカードを選んでください','err'); return; }
+  const price=selectedCard.nowPrice, qty=buyQty;
+  const total=price*qty;
+  if (qty<1) { showToast('枚数は1以上で','err'); return; }
+  if (cashBalance === null) { showToast('先に5万円/10万円コースを選んでください','err'); return; }
+  if (total > cashBalance) { showToast(`所持金が足りません（不足 ${yen(total-cashBalance)}）`,'err'); return; }
+
+  const existing = holdings.find(h=>h.id===selectedCard.id);
+  const nowT = Date.now();
+  cashBalance -= total;
+  if (existing) {
+    const totalCost = existing.avgCost*existing.qty + price*qty;
+    existing.qty += qty;
+    existing.avgCost = totalCost/existing.qty;
+    existing.nowPrice = selectedCard.nowPrice;
+    existing.buyPrice = selectedCard.buyPrice;
+    existing.saleUrl = selectedCard.saleUrl;
+    existing.buyUrl = selectedCard.buyUrl;
+    existing.priceSource = '晴れる屋2';
+    existing.priceUpdatedAt = SOURCE_DATE;
+    (existing.buys=existing.buys||[]).push({t:nowT,price,qty});
+  } else {
+    holdings.unshift({
+      id:selectedCard.id, name:selectedCard.name, set:selectedCard.set,
+      rarity:selectedCard.rarity, image:selectedCard.image,
+      nowPrice:selectedCard.nowPrice, qty, avgCost:price, boughtAt:nowT,
+      buyPrice:selectedCard.buyPrice, saleUrl:selectedCard.saleUrl, buyUrl:selectedCard.buyUrl,
+      priceSource:'晴れる屋2', priceUpdatedAt:SOURCE_DATE,
+      history:seedPastHistory(selectedCard.nowPrice, nowT),
+      buys:[{t:nowT,price,qty}],
+    });
+  }
+  save(); renderAll();
+  showToast(`✓ ${selectedCard.name} を${qty}枚 購入しました`);
+  buyQty=1;
+  document.getElementById('buyQtyDisplay').textContent=buyQty;
+  updateBuyTotal();
+}
+
+/* ═══════════════════════════════════════
+   SELL
+═══════════════════════════════════════ */
+function openSell(id) {
+  const h=holdings.find(x=>x.id===id); if(!h) return;
+  sellingId=id; sellQty=1;
+  const rc=rarityClass(h.rarity);
+  document.getElementById('sellCardInfo').innerHTML=`
+    <img src="${h.image}" alt="" onerror="this.style.opacity=.25">
+    <div>
+      <div class="sell-card-name">${escHtml(h.name)}</div>
+      <div class="sell-card-meta">保有 ${h.qty}枚 · 平均取得 ${yen(h.avgCost)} · 買取 ${buyPriceText(h)} · <span class="badge badge-${rc}">${escHtml(h.rarity)}</span></div>
+    </div>`;
+  document.getElementById('sellPrice').value=effectiveBuyPrice(h);
+  document.getElementById('sellQtyDisplay').textContent=sellQty;
+  calcSell();
+  document.getElementById('sellModal').classList.add('open');
+}
+function closeSellModal() { document.getElementById('sellModal').classList.remove('open'); sellingId=null; }
+
+let sellQty=1;
+function changeSellQty(delta) {
+  const h=holdings.find(x=>x.id===sellingId); if(!h) return;
+  sellQty=Math.min(h.qty,Math.max(1,sellQty+delta));
+  document.getElementById('sellQtyDisplay').textContent=sellQty;
+  calcSell();
+}
+function calcSell() {
+  const h=holdings.find(x=>x.id===sellingId); if(!h) return;
+  const price=Number(document.getElementById('sellPrice').value)||0;
+  const qty=Math.min(sellQty,h.qty);
+  const gross=price*qty, cost=h.avgCost*qty, profit=gross-cost;
+  const rate=cost>0?(profit/cost)*100:0;
+  const pc=profit>0?'gain':profit<0?'loss':'';
+  document.getElementById('r-gross').textContent  = gross?yen(gross):'—';
+  document.getElementById('r-cost').textContent   = gross?yen(cost):'—';
+  document.getElementById('r-profit').textContent = gross?signedYen(profit):'—';
+  document.getElementById('r-rate').textContent   = gross?pct(rate):'—';
+  document.getElementById('r-profit').className='sell-result-val '+pc;
+  document.getElementById('r-rate').className  ='sell-result-val '+pc;
+}
+function confirmSell() {
+  const h=holdings.find(x=>x.id===sellingId); if(!h) return;
+  const price=Number(document.getElementById('sellPrice').value);
+  let qty=Math.min(sellQty,h.qty);
+  if(!price||price<0){showToast('売値を入力してください','err');return;}
+  if(qty<1){showToast('売却枚数は1以上で','err');return;}
+  const profit=(price-h.avgCost)*qty;
+  const gross=price*qty;
+  h.qty-=qty;
+  if (cashBalance === null) cashBalance = 0;
+  cashBalance += gross;
+  if(h.qty<=0) holdings=holdings.filter(x=>x.id!==sellingId);
+  save(); closeSellModal(); renderAll();
+  showToast(`✓ ${qty}枚 売却 / 実現損益 ${signedYen(profit)}`);
+}
+
+/* ── DELETE ── */
+function deleteHolding(id) {
+  const h=holdings.find(x=>x.id===id); if(!h) return;
+  if(!confirm(`「${h.name}」を一覧から削除しますか？`)) return;
+  holdings=holdings.filter(x=>x.id!==id);
+  save(); renderAll(); showToast('削除しました');
+}
+
+/* ── SORT ── */
+function sortBy(e,key) {
+  if(sortKey===key){sortDir*=-1;}else{sortKey=key;sortDir=1;}
+  document.querySelectorAll('th').forEach(th=>th.classList.remove('sorted'));
+  e.currentTarget.classList.add('sorted');
+  renderHoldings();
+}
+
+function getFilteredHoldings() {
+  const rf=document.getElementById('filterResult').value;
+  const nf=document.getElementById('filterName').value.toLowerCase();
+  const derived=key=>h=>{
+    if(key==='marketValue') return marketValue(h);
+    if(key==='profit')      return profitOf(h);
+    if(key==='rate')        return rateOf(h);
+    return h[key];
+  };
+  return holdings
+    .filter(h=>!rf||(rf==='gain'?profitOf(h)>0:profitOf(h)<0))
+    .filter(h=>!nf||h.name.toLowerCase().includes(nf))
+    .sort((a,b)=>{
+      let va=derived(sortKey)(a)??'';
+      let vb=derived(sortKey)(b)??'';
+      if(typeof va==='string') va=va.toLowerCase();
+      if(typeof vb==='string') vb=vb.toLowerCase();
+      return va<vb?-sortDir:va>vb?sortDir:0;
+    });
+}
+
+/* ═══════════════════════════════════════
+   SUMMARY
+═══════════════════════════════════════ */
+function renderSummary() {
+  const totalCost   = holdings.reduce((s,h)=>s+costBasis(h),0);
+  const totalValue  = holdings.reduce((s,h)=>s+marketValue(h),0);
+  const totalProfit = totalValue-totalCost;
+  const totalRate   = totalCost>0?(totalProfit/totalCost)*100:0;
+  const totalQty    = holdings.reduce((s,h)=>s+h.qty,0);
+  const cash = cashBalance ?? 0;
+  const totalAssets = cash + totalValue;
+  const investmentProfit = courseAmount ? totalAssets - courseAmount : 0;
+  const investmentRate = courseAmount ? (investmentProfit / courseAmount) * 100 : 0;
+  const pc  = totalProfit>0?'gain':totalProfit<0?'loss':'';
+  const ipc = investmentProfit>0?'gain':investmentProfit<0?'loss':'';
+  const sign= totalProfit>0?'▲':totalProfit<0?'▼':'';
+  const iSign= investmentProfit>0?'▲':investmentProfit<0?'▼':'';
+  const panel=totalProfit>0?'gain-card':totalProfit<0?'loss-card':'';
+  const iPanel=investmentProfit>0?'gain-card':investmentProfit<0?'loss-card':'';
+
+  document.getElementById('summaryGrid').innerHTML=`
+    <div class="summary-card">
+      <div class="summary-card-glow"></div>
+      <div class="summary-label">投資コース</div>
+      <div class="summary-value">${courseAmount ? yen(courseAmount) : '未選択'}</div>
+      <div class="summary-sub">${courseAmount ? '疑似ポケカ投資中' : 'スタート資金を選択'}</div>
+      <div class="course-actions">
+        ${courseAmount ? `<button class="course-btn" onclick="startCourse(50000)">5万円で再開始</button><button class="course-btn" onclick="startCourse(100000)">10万円で再開始</button>`
+        : `<button class="course-btn" onclick="startCourse(50000)">5万円コース</button><button class="course-btn" onclick="startCourse(100000)">10万円コース</button>`}
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-card-glow"></div>
+      <div class="summary-label">所持金</div>
+      <div class="summary-value">${cashBalance === null ? '—' : yen(cash)}</div>
+      <div class="summary-sub">売却後ここに加算</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-card-glow"></div>
+      <div class="summary-label">カード評価額</div>
+      <div class="summary-value">${yen(totalValue)}</div>
+      <div class="summary-sub">${holdings.length} 種類 / ${totalQty} 枚</div>
+    </div>
+    <div class="summary-card ${iPanel}">
+      <div class="summary-card-glow"></div>
+      <div class="summary-label">総資産</div>
+      <div class="summary-value ${ipc}">${courseAmount ? `${iSign} ${yen(totalAssets)}` : yen(totalAssets)}</div>
+      <div class="summary-sub">${courseAmount ? `開始比 ${signedYen(investmentProfit)}（${pct(investmentRate)}）` : 'コース未選択'}</div>
+    </div>
+    <div class="summary-card ${panel}">
+      <div class="summary-card-glow"></div>
+      <div class="summary-label">カード含み損益</div>
+      <div class="summary-value ${pc}">${sign} ${yen(Math.abs(totalProfit))}</div>
+      <div class="summary-sub">
+        ${pc?`<span class="summary-badge ${pc}">${pc==='gain'?'▲':'▼'} ${pct(totalRate)}</span>`:'—'}
+      </div>
+    </div>`;
+}
+
+/* ═══════════════════════════════════════
+   HOLDINGS
+═══════════════════════════════════════ */
+function renderHoldings() {
+  const filtered = getFilteredHoldings();
+  const tbody    = document.getElementById('holdTableBody');
+  const list     = document.getElementById('holdList');
+  const countEl  = document.getElementById('holdCount');
+  countEl.textContent = filtered.length+' 種類';
+
+  if(!filtered.length){
+    const empty=`<div class="empty-state"><div class="big">📦</div>
+      <p>保有カードがありません。<br>5万円/10万円コースを選び、上の検索からカードを買ってください。</p></div>`;
+    tbody.innerHTML=`<tr><td colspan="10">${empty}</td></tr>`;
+    list.innerHTML=empty; updateTimestamp(); return;
+  }
+
+  tbody.innerHTML=filtered.map(h=>{
+    const profit=profitOf(h), rate=rateOf(h);
+    const pc=profit>0?'gain':profit<0?'loss':'';
+    const rc=rate>0?'gain':rate<0?'loss':'zero';
+    const arrow=rate>0?'▲':rate<0?'▼':'—';
+    const rowClass=profit>0?'row-gain':profit<0?'row-loss':'';
+    const rBadge=rarityClass(h.rarity);
+    return `<tr class="${rowClass}">
+      <td><img class="hold-img" src="${h.image}" alt="" onerror="this.style.opacity=.25"></td>
+      <td><div class="card-name">${escHtml(h.name)}</div><div class="card-set">${escHtml(h.set)}</div></td>
+      <td class="actions-cell">
+        <button class="btn btn-sell sell-action-btn" onclick="openSell('${h.id}')" title="買取価格で売る">💴 買取で売る</button>
+        <button class="icon-btn del" onclick="deleteHolding('${h.id}')" title="削除">🗑</button>
+      </td>
+      <td><span class="badge badge-${rBadge}">${escHtml(h.rarity)}</span></td>
+      <td class="price">${h.qty}枚</td>
+      <td class="price">${yen(h.avgCost)}</td>
+      <td class="price">${yen(h.nowPrice)}<div class="card-set">買取 ${buyPriceText(h)}</div></td>
+      <td class="price">${yen(marketValue(h))}</td>
+      <td class="profit-cell ${pc}">${signedYen(profit)}</td>
+      <td><span class="rate-pill ${rc}">${arrow} ${Math.abs(rate).toFixed(1)}%</span></td>
+    </tr>`;
+  }).join('');
+
+  list.innerHTML=filtered.map((h,i)=>{
+    const profit=profitOf(h), rate=rateOf(h);
+    const pc=profit>0?'gain':profit<0?'loss':'';
+    const rc=rate>0?'gain':rate<0?'loss':'zero';
+    const arrow=rate>0?'▲':rate<0?'▼':'—';
+    const rBadge=rarityClass(h.rarity);
+    return `<div class="hold-item" style="animation-delay:${i*.04}s">
+      <img class="hold-item-img" src="${h.image}" alt="" onerror="this.style.opacity=.25">
+      <div class="hold-item-body">
+        <div class="hold-item-name">${escHtml(h.name)}</div>
+        <div class="hold-item-meta">${escHtml(h.set.split(' ')[0])} · <span class="badge badge-${rBadge}">${escHtml(h.rarity)}</span></div>
+        <div class="hold-item-grid">
+          <div class="hold-item-row"><span class="hold-item-label">保有枚数</span><span class="hold-item-val">${h.qty}枚</span></div>
+          <div class="hold-item-row"><span class="hold-item-label">平均取得単価</span><span class="hold-item-val">${yen(h.avgCost)}</span></div>
+          <div class="hold-item-row"><span class="hold-item-label">販売 / 買取</span><span class="hold-item-val">${yen(h.nowPrice)} / ${buyPriceText(h)}</span></div>
+          <div class="hold-item-row"><span class="hold-item-label">評価額</span><span class="hold-item-val">${yen(marketValue(h))}</span></div>
+          <div class="hold-item-row"><span class="hold-item-label">含み損益</span><span class="hold-item-val profit-cell ${pc}">${signedYen(profit)}</span></div>
+          <div class="hold-item-row"><span class="hold-item-label">利益率</span><span class="hold-item-val"><span class="rate-pill ${rc}">${arrow} ${Math.abs(rate).toFixed(1)}%</span></span></div>
+        </div>
+        <div class="hold-item-actions">
+          <button class="btn btn-sell" onclick="openSell('${h.id}')">💴 買取で売る</button>
+          <button class="btn" onclick="deleteHolding('${h.id}')">削除</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  updateTimestamp();
+}
+
+function updateTimestamp() {
+  const u=localStorage.getItem('pokecaVaultUpdated');
+  if(u){
+    const d=new Date(u);
+    document.getElementById('lastUpdated').textContent=
+      `更新: ${d.toLocaleDateString('ja-JP')} ${d.toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'})}`;
+  }
+}
+
+/* ═══════════════════════════════════════
+   EXPORT / IMPORT
+═══════════════════════════════════════ */
+function exportJSON() {
+  if(!holdings.length){showToast('保有カードがありません','err');return;}
+  const blob=new Blob([JSON.stringify({version:'2.1',exportedAt:new Date().toISOString(),source:'POKÉCA VAULT',cashBalance,courseAmount,holdings},null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download=`pokeca-vault-${new Date().toISOString().slice(0,10)}.json`; a.click();
+  URL.revokeObjectURL(url); showToast('⬇ JSONをエクスポートしました');
+}
+function triggerImport() { document.getElementById('importInput').click(); }
+function importJSON(event) {
+  const file=event.target.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try {
+      const data=JSON.parse(e.target.result);
+      let imported=Array.isArray(data)?data:(data.holdings||data.cards||[]);
+      if(!imported.length){showToast('データが見つかりません','err');return;}
+      if(!confirm(`${imported.length}件をインポートします。現在のデータと統合されます。よろしいですか？`)) return;
+      if (data && !Array.isArray(data)) {
+        if (data.cashBalance !== undefined && data.cashBalance !== null) cashBalance = Number(data.cashBalance) || 0;
+        if (data.courseAmount !== undefined && data.courseAmount !== null) courseAmount = Number(data.courseAmount) || null;
+      }
+      imported.forEach(item=>{
+        const catalog=cardCatalog.find(c=>c.id===item.id);
+        const norm={
+          id:item.id||('imp-'+Math.random().toString(36).slice(2,8)),
+          name:catalog?.name||item.name||'不明なカード',
+          set:catalog?.set||item.set||'',
+          rarity:catalog?.rarity||item.rarity||item.grade||'—',
+          image:catalog?.image||item.image||'',
+          nowPrice:Number(catalog?.nowPrice??item.nowPrice)||0,
+          qty:Number(item.qty)||1, avgCost:Number(item.avgCost??item.buyPrice)||0,
+          boughtAt:item.boughtAt||Date.now(),
+          buyPrice:catalog?.buyPrice??item.buyPrice??null,
+          saleUrl:catalog?.saleUrl||item.saleUrl||'',
+          buyUrl:catalog?.buyUrl||item.buyUrl||'',
+          priceSource:catalog?'晴れる屋2':(item.priceSource||''),
+          priceUpdatedAt:catalog?SOURCE_DATE:(item.priceUpdatedAt||''),
+          history:Array.isArray(item.history)&&item.history.length?item.history:seedPastHistory(Number(catalog?.nowPrice??item.nowPrice)||0,item.boughtAt||Date.now()),
+          buys:Array.isArray(item.buys)&&item.buys.length?item.buys:[{t:item.boughtAt||Date.now(),price:Number(item.avgCost??item.buyPrice)||0,qty:Number(item.qty)||1}],
+        };
+        const existing=holdings.find(h=>h.id===norm.id);
+        if(existing){
+          const tc=existing.avgCost*existing.qty+norm.avgCost*norm.qty;
+          existing.qty+=norm.qty; existing.avgCost=tc/existing.qty;
+          Object.assign(existing,{nowPrice:norm.nowPrice,buyPrice:norm.buyPrice,saleUrl:norm.saleUrl,buyUrl:norm.buyUrl,priceSource:norm.priceSource,priceUpdatedAt:norm.priceUpdatedAt});
+        }
+        else holdings.push(norm);
+      });
+      save(); renderAll(); showToast(`✓ ${imported.length}件をインポートしました`);
+    } catch { showToast('JSONの読み込みに失敗しました','err'); }
+  };
+  reader.readAsText(file);
+  event.target.value='';
+}
+
+document.getElementById('sellModal').addEventListener('click',function(e){if(e.target===this)closeSellModal();});
+document.getElementById('mercariModal').addEventListener('click',function(e){if(e.target===this)closeMercariModal();});
+document.getElementById('shareModal').addEventListener('click',function(e){if(e.target===this)closeShareModal();});
+
+/* ═══════════════════════════════════════
+   PRICE HISTORY ENGINE
+═══════════════════════════════════════ */
+const STEP_MS  = 60*60*1000;
+const PAST_DAYS = 365;
+
+function nextPrice(prev) {
+  const drift=(Math.random()-.49)*.025;
+  return Math.max(50,Math.round(prev*(1+drift)/10)*10);
+}
+function seedPastHistory(currentPrice,nowT) {
+  const points=PAST_DAYS*24;
+  const arr=new Array(points+1);
+  let price=currentPrice;
+  arr[points]={t:nowT,price};
+  for(let i=points-1;i>=0;i--){
+    const drift=(Math.random()-.49)*.025;
+    price=Math.max(50,Math.round(price/(1+drift)/10)*10);
+    arr[i]={t:nowT-(points-i)*STEP_MS,price};
+  }
+  return arr;
+}
+function updatePriceHistories() {
+  const now=Date.now(); let changed=false;
+  holdings.forEach(h=>{
+    const catalog=cardCatalog.find(c=>c.id===h.id);
+    const marketPrice=Number(catalog?.nowPrice??h.nowPrice)||0;
+    if(catalog){
+      h.name=catalog.name; h.set=catalog.set; h.rarity=catalog.rarity; h.image=catalog.image;
+      h.buyPrice=catalog.buyPrice; h.saleUrl=catalog.saleUrl; h.buyUrl=catalog.buyUrl;
+      h.priceSource='晴れる屋2'; h.priceUpdatedAt=catalog.priceUpdatedAt || SOURCE_DATE;
+    }
+    if(!h.history||h.history.length<2){h.history=seedPastHistory(marketPrice,h.boughtAt||now);changed=true;}
+    if(!h.buys||!h.buys.length){h.buys=[{t:h.boughtAt||now,price:h.avgCost,qty:h.qty}];changed=true;}
+    let last=h.history[h.history.length-1];
+    if(marketPrice>0 && (last.price!==marketPrice || now-last.t>=12*STEP_MS)){
+      if(now-last.t<5*60*1000) last.price=marketPrice;
+      else h.history.push({t:now,price:marketPrice});
+      changed=true;
+    }
+    if(h.nowPrice!==marketPrice){h.nowPrice=marketPrice;changed=true;}
+    const MAX=(PAST_DAYS+365)*24;
+    if(h.history.length>MAX) h.history=h.history.slice(-MAX);
+  });
+  if(changed) save();
+}
+
+/* ═══════════════════════════════════════
+   PRICE CHART
+═══════════════════════════════════════ */
+function refreshChartSelect() {
+  const sel=document.getElementById('chartCardSelect');
+  const prev=sel.value;
+  sel.innerHTML=holdings.map(h=>`<option value="${h.id}">${escHtml(h.name)}（${escHtml(h.rarity)}）</option>`).join('');
+  if(holdings.find(h=>h.id===prev)) sel.value=prev;
+}
+
+function chartRangeLabel(hours) {
+  switch (Number(hours)) {
+    case 1: return '直近1時間';
+    case 3: return '直近3時間';
+    case 6: return '直近6時間';
+    case 12: return '直近12時間';
+    case 24: return '直近24時間';
+    case 168: return '直近1週間';
+    case 720: return '直近1ヶ月';
+    case 2160: return '直近3ヶ月';
+    case 4320: return '直近半年';
+    case 8760: return '直近1年';
+    default: return `直近${hours}時間`;
+  }
+}
+
+function sampleChartPoints(points, maxPoints=240) {
+  if (points.length <= maxPoints) return points;
+  const step = Math.ceil((points.length - 1) / (maxPoints - 1));
+  const sampled = points.filter((_, i) => i % step === 0);
+  const last = points[points.length - 1];
+  if (sampled[sampled.length - 1] !== last) sampled.push(last);
+  return sampled;
+}
+
+function chartTimeLabel(t, dateOnly=false) {
+  const d = new Date(t);
+  return dateOnly
+    ? `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`
+    : `${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:00`;
+}
+
+function renderChart() {
+  const emptyEl=document.getElementById('chartEmpty');
+  const canvas =document.getElementById('priceChart');
+  const meta   =document.getElementById('chartMeta');
+
+  if(!holdings.length){
+    emptyEl.style.display='block'; canvas.style.display='none';
+    meta.innerHTML=''; if(priceChart){priceChart.destroy();priceChart=null;}
+    document.getElementById('chartCardSelect').innerHTML=''; return;
+  }
+  emptyEl.style.display='none'; canvas.style.display='block';
+  refreshChartSelect();
+  const id=document.getElementById('chartCardSelect').value||holdings[0].id;
+  const h=holdings.find(x=>x.id===id); if(!h) return;
+
+  const rangeHours=Number(document.getElementById('chartRangeSelect').value)||6;
+  const all=Array.isArray(h.history) ? h.history : [];
+  const latestT=all[all.length-1]?.t || Date.now();
+  const startT=latestT - rangeHours * STEP_MS;
+  const visible=all.filter(p=>p.t>=startT&&p.t<=latestT);
+  let pts=sampleChartPoints(visible.length>=2 ? visible : all.slice(-2));
+  if(pts.length<2) pts=[{t:latestT-STEP_MS,price:h.nowPrice},{t:latestT,price:h.nowPrice}];
+
+  const longRange=rangeHours>=24;
+  const labels=pts.map(p=>chartTimeLabel(p.t,longRange));
+  const data=pts.map(p=>p.price);
+  const firstT=pts[0].t;
+  const lastT=pts[pts.length-1].t;
+  const buyPoints=(h.buys||[]).filter(b=>b.t>=firstT&&b.t<=lastT).map(b=>{
+    let nearest=0,best=Infinity;
+    pts.forEach((p,i)=>{const d=Math.abs(p.t-b.t);if(d<best){best=d;nearest=i;}});
+    return {x:nearest,y:b.price,qty:b.qty,t:b.t};
+  });
+
+  const first=data[0]??0, last=data[data.length-1]??0;
+  const up=last>=first;
+  const lineColor=up?'#22d87a':'#ff4d6d';
+
+  if(priceChart) priceChart.destroy();
+  priceChart=new Chart(canvas,{
+    type:'line',
+    data:{
+      labels,
+      datasets:[
+        {
+          label:'価格', data, borderColor:lineColor,
+          backgroundColor: ctx=>{
+            const g=ctx.chart.ctx.createLinearGradient(0,0,0,ctx.chart.height);
+            g.addColorStop(0, up?'rgba(34,216,122,.18)':'rgba(255,77,109,.18)');
+            g.addColorStop(1,'rgba(0,0,0,0)');
+            return g;
+          },
+          borderWidth:2.5, fill:true, tension:.3,
+          pointRadius:0, pointHoverRadius:5, pointHoverBackgroundColor:lineColor, order:2,
+        },
+        {
+          label:'購入', type:'scatter', data:buyPoints, parsing:false,
+          pointStyle:'triangle', radius:9, hoverRadius:12, rotation:0,
+          backgroundColor:'#f5c518', borderColor:'#080a0f', borderWidth:1.5, order:1,
+        },
+      ],
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      interaction:{intersect:false,mode:'index'},
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          backgroundColor:'#141820', borderColor:'#28304a', borderWidth:1,
+          titleColor:'#4a5270', bodyColor:'#e8eaf0', padding:12, cornerRadius:10,
+          callbacks:{
+            label:ctx=>{
+              if(ctx.dataset.label==='購入'){
+                const b=ctx.raw; const d=new Date(b.t);
+                return `🔺 購入 ${b.qty}枚 @ ${yen(b.y)}（${d.getMonth()+1}/${d.getDate()}）`;
+              }
+              return '¥'+ctx.parsed.y.toLocaleString('ja-JP');
+            },
+          },
+        },
+      },
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,.035'},ticks:{color:'#4a5270',font:{size:10},maxTicksLimit:7}},
+        y:{grid:{color:'rgba(255,255,255,.035'},ticks:{color:'#4a5270',font:{size:10},callback:v=>'¥'+v.toLocaleString('ja-JP')}},
+      },
+    },
+  });
+
+  const diff=last-first;
+  const diffRate=first>0?(diff/first)*100:0;
+  const cls=diff>0?'gain':diff<0?'loss':'';
+  meta.innerHTML=`
+    <span>販売価格 <b>${yen(last)}</b></span>
+    <span>表示期間 <b>${chartRangeLabel(rangeHours)}</b></span>
+    <span>範囲 <b>${chartTimeLabel(firstT,longRange)}〜${chartTimeLabel(lastT,longRange)}</b></span>
+    <span>起点から <b class="${cls}">${signedYen(diff)}（${pct(diffRate)}）</b></span>
+    <span>平均取得 <b>${yen(h.avgCost)}</b></span>
+    <span>🔺 表示中の購入 <b>${buyPoints.length}回</b></span>`;
+}
+
+/* ═══════════════════════════════════════
+   DONUT CHART
+═══════════════════════════════════════ */
+function renderDonut() {
+  const canvas=document.getElementById('donutChart');
+  const centerVal=document.getElementById('donutCenterVal');
+  const legend   =document.getElementById('donutLegend');
+
+  if(!holdings.length){
+    centerVal.textContent='—'; legend.innerHTML='';
+    if(donutChart){donutChart.destroy();donutChart=null;} return;
+  }
+
+  const totalValue=holdings.reduce((s,h)=>s+marketValue(h),0);
+  centerVal.textContent=yen(totalValue);
+
+  const sorted=[...holdings].sort((a,b)=>marketValue(b)-marketValue(a)).slice(0,8);
+  const labels=sorted.map(h=>h.name);
+  const data  =sorted.map(h=>marketValue(h));
+  const colors=sorted.map((_,i)=>DONUT_COLORS[i%DONUT_COLORS.length]);
+
+  if(donutChart) donutChart.destroy();
+  donutChart=new Chart(canvas,{
+    type:'doughnut',
+    data:{labels,datasets:[{data,backgroundColor:colors,borderColor:'#0e1118',borderWidth:2,hoverBorderWidth:0}]},
+    options:{
+      responsive:false, cutout:'72%',
+      plugins:{legend:{display:false},tooltip:{
+        backgroundColor:'#141820',borderColor:'#28304a',borderWidth:1,
+        titleColor:'#e8eaf0',bodyColor:'#4a5270',padding:10,cornerRadius:8,
+        callbacks:{label:ctx=>`${yen(ctx.raw)} (${((ctx.raw/totalValue)*100).toFixed(1)}%)`},
+      }},
+    },
+  });
+
+  legend.innerHTML=sorted.map((h,i)=>{
+    const pct=totalValue>0?((marketValue(h)/totalValue)*100).toFixed(1):'0';
+    return `<div class="donut-legend-item">
+      <div class="donut-dot" style="background:${colors[i]}"></div>
+      <span class="donut-legend-name" title="${escHtml(h.name)}">${escHtml(h.name)}</span>
+      <span class="donut-legend-pct">${pct}%</span>
+    </div>`;
+  }).join('');
+}
+
+/* ═══════════════════════════════════════
+   RENDER ALL
+═══════════════════════════════════════ */
+function renderAll() {
+  updatePriceHistories();
+  renderSummary();
+  renderHoldings();
+  renderChart();
+  renderDonut();
+}
+renderAll();
+searchCards();
+setTimeout(() => { refreshMarketPrices().catch(() => {}); }, 1500);
+
+setInterval(()=>{ renderAll(); }, 60*1000);
+setInterval(()=>{ refreshMarketPrices({force:true}).catch(() => {}); }, PRICE_REFRESH_MS);
+</script>
+</body>
+</html>

@@ -124,6 +124,8 @@
     background: none; border-color: var(--border); color: var(--muted);
   }
   .btn-icon:hover { color: var(--text); border-color: var(--border2); background: var(--surface2); }
+  .btn-sound.on { color: var(--accent); border-color: rgba(245,197,24,.55); background: rgba(245,197,24,.08); }
+  .btn-sound.off { color: var(--muted); opacity: .72; }
 
   /* ── LAYOUT ────────────────────────────────── */
   main { max-width: 1140px; margin: 0 auto; padding: 1.5rem 1.25rem 6rem; }
@@ -185,6 +187,40 @@
     color: var(--accent); cursor: pointer; font-family: var(--font-body); font-weight: 700;
   }
   .course-btn:hover { background: rgba(245,197,24,.14); }
+
+  .achievement-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: .9rem 1rem;
+    margin: -.45rem 0 1.25rem;
+    animation: fadeUp .42s .04s ease both;
+  }
+  .achievement-head {
+    display: flex; justify-content: space-between; align-items: center; gap: .75rem;
+    color: var(--muted); font-size: .65rem; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase; margin-bottom: .65rem;
+  }
+  .achievement-count { font-family: var(--font-mono); color: var(--accent); letter-spacing: 0; }
+  .achievement-list { display: flex; flex-wrap: wrap; gap: .45rem; }
+  .achievement-badge {
+    display: inline-flex; align-items: center; gap: .35rem;
+    border: 1px solid var(--border2);
+    border-radius: 999px; padding: .36rem .68rem;
+    background: rgba(255,255,255,.025);
+    color: var(--muted); font-size: .74rem; font-weight: 700;
+    transition: transform .18s, border-color .18s, color .18s, background .18s;
+  }
+  .achievement-badge.unlocked {
+    color: var(--text);
+    border-color: rgba(245,197,24,.45);
+    background: linear-gradient(135deg,rgba(245,197,24,.16),rgba(34,216,122,.07));
+    box-shadow: 0 0 18px rgba(245,197,24,.08);
+  }
+  .achievement-badge.next {
+    color: var(--accent); border-color: rgba(245,197,24,.35);
+  }
+  .achievement-badge .mark { font-size: .86rem; }
 
   /* ── CHART & DONUT ─────────────────────────── */
   .charts-row {
@@ -688,8 +724,8 @@
     <span class="logo-ver">v2</span>
   </div>
   <div class="header-actions">
+    <button class="btn btn-icon btn-sound on" id="soundToggle" onclick="toggleSound()">SE ON</button>
     <button class="btn btn-icon btn-share" onclick="openShareModal()">Xで宣伝</button>
-    <button class="btn btn-icon" onclick="openMercariGuide()">Mercari</button>
     <button class="btn btn-icon" onclick="exportJSON()">⬇ JSON</button>
     <button class="btn btn-icon" onclick="triggerImport()">⬆ インポート</button>
     <input type="file" id="importInput" accept=".json" style="display:none" onchange="importJSON(event)">
@@ -700,6 +736,7 @@
 
   <!-- ポートフォリオ合計 -->
   <div class="summary-grid" id="summaryGrid"></div>
+  <div class="achievement-panel" id="achievementPanel"></div>
 
   <!-- 価格推移グラフ + ポートフォリオ円グラフ -->
   <div class="charts-row">
@@ -867,36 +904,6 @@
     <div class="form-footer">
       <button class="btn" onclick="closeSellModal()">キャンセル</button>
       <button class="btn btn-sell" onclick="confirmSell()">買取で売る</button>
-    </div>
-  </div>
-</div>
-
-<!-- メルカリアンバサダー モーダル -->
-<div class="modal-overlay" id="mercariModal">
-  <div class="modal">
-    <div class="modal-handle"></div>
-    <div class="modal-title">Mercari Ambassador</div>
-    <div class="sell-card-info" id="mercariCardInfo"></div>
-    <div class="field">
-      <label>あなたのメルカリアンバサダーID</label>
-      <input type="text" id="mercariAffiliateId" inputmode="numeric" placeholder="例: 2427775577">
-    </div>
-    <div class="field">
-      <label>カード別リンク（任意）</label>
-      <input type="url" id="mercariAffiliateUrl" placeholder="公式生成リンクで上書きしたい場合だけ貼り付け">
-      <div class="mercari-search-url" id="mercariSearchUrlText"></div>
-    </div>
-    <div class="mercari-actions">
-      <button class="btn" onclick="openMercariSearchForEditing()">メルカリ検索を開く</button>
-      <button class="btn" onclick="copyMercariSearchForEditing()">検索URLコピー</button>
-    </div>
-    <div class="mercari-note">
-      IDを保存すると、カードごとのメルカリ検索URLに afid を自動付与します。カード別リンク欄は、公式で生成した個別URLを使いたい時だけ入力します。
-    </div>
-    <div class="form-footer">
-      <button class="btn" onclick="clearMercariLink()">リンク削除</button>
-      <button class="btn" onclick="closeMercariModal()">キャンセル</button>
-      <button class="btn btn-primary" onclick="saveMercariLink()">保存</button>
     </div>
   </div>
 </div>
@@ -1209,10 +1216,10 @@ let selectedCard = null;
 let sortKey    = 'name';
 let sortDir    = 1;
 let sellingId  = null;
-let mercariEditingId = null;
-let mercariLinks = JSON.parse(localStorage.getItem('pokecaVaultMercariLinks') || '{}');
-let mercariAmbassadorId = localStorage.getItem('pokecaVaultMercariAmbassadorId') || '2427775577';
 let publicAppUrl = localStorage.getItem('pokecaVaultPublicUrl') || '';
+let soundEnabled = localStorage.getItem('pokecaVaultSound') !== 'off';
+let unlockedAchievements = JSON.parse(localStorage.getItem('pokecaVaultAchievements') || '[]');
+let audioCtx = null;
 let priceChart = null;
 let donutChart = null;
 
@@ -1227,26 +1234,119 @@ const effectiveBuyPrice = c => Number(c?.buyPrice) > 0 ? Number(c.buyPrice) : gu
 const buyPriceText = c => Number(c?.buyPrice) > 0 ? yen(c.buyPrice) : `最低保証 ${yen(guaranteeBuyPrice(c))}`;
 const sourceLink = (url, text) => url ? `<a class="price-source-link" href="${url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${text}</a>` : `<span class="price-source-link">${text}</span>`;
 const cardById = id => cardCatalog.find(c=>c.id===id) || holdings.find(h=>h.id===id);
+const OWNER_MERCARI_AMBASSADOR_ID = '2427775577';
 const mercariKeyword = c => [c?.name, c?.cardNo, c?.rarity].filter(Boolean).join(' ');
 const mercariSearchUrl = c => `https://jp.mercari.com/search?keyword=${encodeURIComponent(mercariKeyword(c))}`;
-const addMercariAfid = (url, id=mercariAmbassadorId) => {
+const addMercariAfid = (url, id=OWNER_MERCARI_AMBASSADOR_ID) => {
   const cleanId = String(id || '').replace(/\D/g, '');
   if (!cleanId) return url;
   const u = new URL(url);
   u.searchParams.set('afid', cleanId);
   return u.toString();
 };
-const hasMercariAmbassadorLink = c => !!(c && mercariLinks[c.id]);
-const mercariOpenUrl = c => hasMercariAmbassadorLink(c) ? mercariLinks[c.id] : addMercariAfid(mercariSearchUrl(c));
+const mercariOpenUrl = c => addMercariAfid(mercariSearchUrl(c));
 const PRICE_REFRESH_MS = 60 * 60 * 1000;
 const PRICE_REFRESH_KEY = 'pokecaVaultPriceRefreshAt';
 const PRICE_REFRESH_STATUS_KEY = 'pokecaVaultPriceRefreshStatus';
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 const parseYenNumber = s => Number(String(s || '').replace(/[^\d]/g, '')) || null;
 const X_ACCOUNT = 'anaday_o';
+const ASSET_ACHIEVEMENTS = [
+  { id:'asset-100k',  threshold:100000,   title:'10万円到達',  icon:'BRONZE', course:50000 },
+  { id:'asset-300k',  threshold:300000,   title:'30万円到達',  icon:'SILVER' },
+  { id:'asset-500k',  threshold:500000,   title:'50万円到達',  icon:'GOLD' },
+  { id:'asset-1m',    threshold:1000000,  title:'100万円到達', icon:'PLATINUM' },
+  { id:'asset-3m',    threshold:3000000,  title:'300万円到達', icon:'DIAMOND' },
+  { id:'asset-5m',    threshold:5000000,  title:'500万円到達', icon:'MASTER' },
+  { id:'asset-10m',   threshold:10000000, title:'1000万円到達', icon:'VAULT' },
+];
 const defaultSharePost = url => `ポケカ投資シミュレーター「POKÉCA VAULT」を公開しました。\n\n5万円/10万円コースで人気カード100種類を売買して、所持金・評価額・含み損益・価格推移を見ながら疑似投資できます。\n\n${url}\n\n#ポケカ #ポケモンカード #ポケカ投資 @${X_ACCOUNT}`;
 const isPublicHttpUrl = url => /^https?:\/\//i.test(url) && !/^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(?::|\/|$)/i.test(url);
 const currentShareUrl = () => publicAppUrl || (isPublicHttpUrl(location.href) ? location.href : '');
+
+function ensureAudio() {
+  if (!soundEnabled) return null;
+  const Audio = window.AudioContext || window.webkitAudioContext;
+  if (!Audio) return null;
+  if (!audioCtx) audioCtx = new Audio();
+  if (audioCtx.state === 'suspended') audioCtx.resume().catch(() => {});
+  return audioCtx;
+}
+
+function playTone(ctx, freq, start, dur, type='sine', gain=.045) {
+  const osc = ctx.createOscillator();
+  const amp = ctx.createGain();
+  osc.type = type;
+  osc.frequency.setValueAtTime(freq, start);
+  amp.gain.setValueAtTime(0.0001, start);
+  amp.gain.exponentialRampToValueAtTime(gain, start + .012);
+  amp.gain.exponentialRampToValueAtTime(0.0001, start + dur);
+  osc.connect(amp);
+  amp.connect(ctx.destination);
+  osc.start(start);
+  osc.stop(start + dur + .02);
+}
+
+function playNoise(ctx, start, dur=.08, gain=.025) {
+  const buffer = ctx.createBuffer(1, Math.floor(ctx.sampleRate * dur), ctx.sampleRate);
+  const data = buffer.getChannelData(0);
+  for (let i=0; i<data.length; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / data.length);
+  const source = ctx.createBufferSource();
+  const amp = ctx.createGain();
+  source.buffer = buffer;
+  amp.gain.setValueAtTime(gain, start);
+  amp.gain.exponentialRampToValueAtTime(0.0001, start + dur);
+  source.connect(amp);
+  amp.connect(ctx.destination);
+  source.start(start);
+}
+
+function playSound(kind='click') {
+  const ctx = ensureAudio();
+  if (!ctx) return;
+  const now = ctx.currentTime;
+  if (kind === 'buy') {
+    playTone(ctx, 620, now, .08, 'triangle', .045);
+    playTone(ctx, 780, now + .075, .09, 'triangle', .045);
+    playTone(ctx, 1040, now + .155, .12, 'triangle', .05);
+    return;
+  }
+  if (kind === 'sell') {
+    playTone(ctx, 880, now, .07, 'square', .032);
+    playTone(ctx, 1320, now + .07, .08, 'square', .028);
+    playTone(ctx, 660, now + .145, .14, 'triangle', .04);
+    playNoise(ctx, now + .03, .07, .015);
+    return;
+  }
+  if (kind === 'error') {
+    playTone(ctx, 220, now, .09, 'sawtooth', .035);
+    playTone(ctx, 180, now + .08, .12, 'sawtooth', .03);
+    return;
+  }
+  if (kind === 'delete') {
+    playTone(ctx, 330, now, .07, 'square', .028);
+    playTone(ctx, 220, now + .06, .1, 'square', .025);
+    return;
+  }
+  playTone(ctx, 900, now, .045, 'square', .018);
+  playTone(ctx, 1250, now + .035, .045, 'triangle', .014);
+}
+
+function updateSoundButton() {
+  const btn = document.getElementById('soundToggle');
+  if (!btn) return;
+  btn.textContent = soundEnabled ? 'SE ON' : 'SE OFF';
+  btn.classList.toggle('on', soundEnabled);
+  btn.classList.toggle('off', !soundEnabled);
+}
+
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+  localStorage.setItem('pokecaVaultSound', soundEnabled ? 'on' : 'off');
+  updateSoundButton();
+  if (soundEnabled) playSound('buy');
+  else showToast('SE OFF');
+}
 
 async function fetchText(url) {
   const res = await fetch(url, { cache:'no-store', credentials:'omit' });
@@ -1326,9 +1426,11 @@ function save() {
   else localStorage.setItem('pokecaVaultCash', String(Math.round(cashBalance)));
   if (courseAmount === null) localStorage.removeItem('pokecaVaultCourse');
   else localStorage.setItem('pokecaVaultCourse', String(Math.round(courseAmount)));
+  localStorage.setItem('pokecaVaultAchievements', JSON.stringify(unlockedAchievements));
   localStorage.setItem('pokecaVaultUpdated', new Date().toISOString());
 }
 function showToast(msg, type='ok') {
+  if (type === 'err') playSound('error');
   const el = document.getElementById('toast');
   el.textContent = msg;
   el.className = 'toast '+type+' show';
@@ -1340,6 +1442,7 @@ function startCourse(amount) {
   holdings = [];
   cashBalance = amount;
   courseAmount = amount;
+  unlockedAchievements = [];
   selectedCard = null;
   document.getElementById('selectedCardPanel').classList.add('hidden');
   document.getElementById('buyPanel').classList.add('hidden');
@@ -1347,6 +1450,7 @@ function startCourse(amount) {
   save();
   renderAll();
   searchCards();
+  playSound('buy');
   showToast(`${yen(amount)}コースで開始しました`);
 }
 
@@ -1384,7 +1488,6 @@ function searchCards() {
     const rc = rarityClass(c.rarity);
     const holoClass = isHolo(c.rarity) ? 'holo' : isHoloGold(c.rarity) ? 'holo holo-gold' : '';
     const sel = selectedCard && selectedCard.id===c.id ? 'selected' : '';
-    const mPr = hasMercariAmbassadorLink(c) || !!mercariAmbassadorId;
     return `<div class="search-card ${holoClass} ${sel}" onclick="selectCard('${c.id}')" data-id="${c.id}">
       <img src="${c.image}" alt="${escHtml(c.name)}" loading="lazy" onerror="this.style.opacity=.25;this.alt='画像なし'">
       <div class="search-card-name">${escHtml(c.name)}</div>
@@ -1394,8 +1497,7 @@ function searchCards() {
       <div class="search-card-buy">買取 ${buyPriceText(c)}</div>
       <div>${sourceLink(c.saleUrl, '晴れる屋2')}</div>
       <div class="search-card-actions">
-        <button class="mercari-mini-btn ${mPr?'pr':''}" onclick="event.stopPropagation();openMercari('${c.id}')">${mPr?'PR Mercari':'Mercari'}</button>
-        <button class="mercari-mini-btn" onclick="event.stopPropagation();openMercariModal('${c.id}')">登録</button>
+        <button class="mercari-mini-btn pr" onclick="event.stopPropagation();openMercari('${c.id}')">PR Mercari</button>
       </div>
     </div>`;
   }).join('');
@@ -1428,9 +1530,8 @@ function selectCard(id) {
     `<div class="selected-card-buy" id="selectedCardBuy">買取価格 ${buyPriceText(selectedCard)} ${sourceLink(selectedCard.buyUrl, 'ネット買取')}</div>`);
   document.getElementById('selectedCardBuy').insertAdjacentHTML('afterend', `
     <div class="selected-card-actions" id="selectedCardMercariActions">
-      <button class="btn" onclick="openMercari('${selectedCard.id}')">${hasMercariAmbassadorLink(selectedCard)||!!mercariAmbassadorId?'PRリンクを開く':'メルカリで探す'}</button>
-      <button class="btn" onclick="openMercariModal('${selectedCard.id}')">アンバサダーリンク登録</button>
-      ${hasMercariAmbassadorLink(selectedCard)||!!mercariAmbassadorId?'<span class="mercari-pr-badge">PR有効</span>':''}
+      <button class="btn" onclick="openMercari('${selectedCard.id}')">PRリンクを開く</button>
+      <span class="mercari-pr-badge">PR有効</span>
     </div>`);
   document.getElementById('selectedCardPanel').classList.remove('hidden');
   document.getElementById('buyPanel').classList.remove('hidden');
@@ -1447,85 +1548,6 @@ function openMercari(id) {
   const card = cardById(id);
   if (!card) return;
   window.open(mercariOpenUrl(card), '_blank', 'noopener');
-}
-
-function openMercariGuide() {
-  if (selectedCard) { openMercariModal(selectedCard.id); return; }
-  showToast(`Mercari ID ${mercariAmbassadorId} を使用中です`);
-  document.getElementById('formPanel').scrollIntoView({ behavior:'smooth', block:'start' });
-}
-
-function openMercariModal(id) {
-  const card = cardById(id);
-  if (!card) return;
-  mercariEditingId = id;
-  document.getElementById('mercariCardInfo').innerHTML = `
-    <img src="${card.image || ''}" alt="" onerror="this.style.opacity=.25">
-    <div>
-      <div class="sell-card-name">${escHtml(card.name)}</div>
-      <div class="sell-card-meta">${escHtml(card.rarity)} · ${escHtml(card.set || '')}</div>
-    </div>`;
-  document.getElementById('mercariAffiliateId').value = mercariAmbassadorId;
-  document.getElementById('mercariAffiliateUrl').value = mercariLinks[id] || '';
-  document.getElementById('mercariSearchUrlText').textContent = `自動生成URL: ${addMercariAfid(mercariSearchUrl(card))}`;
-  document.getElementById('mercariModal').classList.add('open');
-}
-
-function closeMercariModal() {
-  document.getElementById('mercariModal').classList.remove('open');
-  mercariEditingId = null;
-}
-
-function saveMercariLinks() {
-  localStorage.setItem('pokecaVaultMercariLinks', JSON.stringify(mercariLinks));
-}
-
-function saveMercariLink() {
-  if (!mercariEditingId) return;
-  mercariAmbassadorId = document.getElementById('mercariAffiliateId').value.trim().replace(/\D/g, '');
-  if (mercariAmbassadorId) localStorage.setItem('pokecaVaultMercariAmbassadorId', mercariAmbassadorId);
-  else localStorage.removeItem('pokecaVaultMercariAmbassadorId');
-  const url = document.getElementById('mercariAffiliateUrl').value.trim();
-  if (url) {
-    if (!/^https?:\/\//i.test(url)) { showToast('httpsで始まるリンクを貼ってください', 'err'); return; }
-    mercariLinks[mercariEditingId] = url;
-  } else {
-    delete mercariLinks[mercariEditingId];
-  }
-  saveMercariLinks();
-  closeMercariModal();
-  searchCards();
-  if (selectedCard) selectCard(selectedCard.id);
-  showToast(mercariAmbassadorId ? `Mercari ID ${mercariAmbassadorId} を保存しました` : 'Mercari IDを空にしました');
-}
-
-function clearMercariLink() {
-  if (!mercariEditingId) return;
-  delete mercariLinks[mercariEditingId];
-  saveMercariLinks();
-  closeMercariModal();
-  searchCards();
-  if (selectedCard) selectCard(selectedCard.id);
-  showToast('Mercariリンクを削除しました');
-}
-
-function openMercariSearchForEditing() {
-  const card = cardById(mercariEditingId);
-  if (!card) return;
-  const id = document.getElementById('mercariAffiliateId').value.trim().replace(/\D/g, '');
-  window.open(addMercariAfid(mercariSearchUrl(card), id), '_blank', 'noopener');
-}
-
-async function copyMercariSearchForEditing() {
-  const card = cardById(mercariEditingId);
-  if (!card) return;
-  try {
-    const id = document.getElementById('mercariAffiliateId').value.trim().replace(/\D/g, '');
-    await navigator.clipboard.writeText(addMercariAfid(mercariSearchUrl(card), id));
-    showToast('ID付き検索URLをコピーしました');
-  } catch {
-    showToast('コピーできませんでした', 'err');
-  }
 }
 
 function openShareModal() {
@@ -1631,6 +1653,7 @@ function buySelectedCard() {
     });
   }
   save(); renderAll();
+  playSound('buy');
   showToast(`✓ ${selectedCard.name} を${qty}枚 購入しました`);
   buyQty=1;
   document.getElementById('buyQtyDisplay').textContent=buyQty;
@@ -1691,6 +1714,7 @@ function confirmSell() {
   cashBalance += gross;
   if(h.qty<=0) holdings=holdings.filter(x=>x.id!==sellingId);
   save(); closeSellModal(); renderAll();
+  playSound('sell');
   showToast(`✓ ${qty}枚 売却 / 実現損益 ${signedYen(profit)}`);
 }
 
@@ -1699,7 +1723,7 @@ function deleteHolding(id) {
   const h=holdings.find(x=>x.id===id); if(!h) return;
   if(!confirm(`「${h.name}」を一覧から削除しますか？`)) return;
   holdings=holdings.filter(x=>x.id!==id);
-  save(); renderAll(); showToast('削除しました');
+  save(); renderAll(); playSound('delete'); showToast('削除しました');
 }
 
 /* ── SORT ── */
@@ -1734,6 +1758,48 @@ function getFilteredHoldings() {
 /* ═══════════════════════════════════════
    SUMMARY
 ═══════════════════════════════════════ */
+function renderAchievements(totalAssets) {
+  const panel = document.getElementById('achievementPanel');
+  if (!panel) return;
+  const eligible = a => !a.course || courseAmount === a.course;
+  const validUnlocked = unlockedAchievements.filter(id => {
+    const achievement = ASSET_ACHIEVEMENTS.find(a=>a.id===id);
+    return achievement && eligible(achievement);
+  });
+  if (validUnlocked.length !== unlockedAchievements.length) {
+    unlockedAchievements = validUnlocked;
+    localStorage.setItem('pokecaVaultAchievements', JSON.stringify(unlockedAchievements));
+  }
+  const unlocked = ASSET_ACHIEVEMENTS.filter(a=>eligible(a)&&totalAssets>=a.threshold);
+  const newlyUnlocked = unlocked.filter(a=>!unlockedAchievements.includes(a.id));
+  if (newlyUnlocked.length) {
+    unlockedAchievements = [...new Set([...unlockedAchievements, ...newlyUnlocked.map(a=>a.id)])];
+    localStorage.setItem('pokecaVaultAchievements', JSON.stringify(unlockedAchievements));
+    const latest = newlyUnlocked[newlyUnlocked.length-1];
+    playSound('buy');
+    showToast(`バッジ達成: ${latest.title}`);
+  }
+
+  const unlockedCount = ASSET_ACHIEVEMENTS.filter(a=>unlockedAchievements.includes(a.id)).length;
+  const next = ASSET_ACHIEVEMENTS.find(a=>eligible(a)&&!unlockedAchievements.includes(a.id));
+  panel.innerHTML = `
+    <div class="achievement-head">
+      <span>達成バッジ</span>
+      <span class="achievement-count">${unlockedCount}/${ASSET_ACHIEVEMENTS.length}${next ? ` · 次 ${yen(next.threshold)}` : ' · COMPLETE'}</span>
+    </div>
+    <div class="achievement-list">
+      ${ASSET_ACHIEVEMENTS.map(a=>{
+        const isUnlocked = unlockedAchievements.includes(a.id);
+        const isNext = next && next.id===a.id;
+        const isLimited = a.course && !eligible(a);
+        return `<span class="achievement-badge ${isUnlocked?'unlocked':isNext?'next':''}" title="${yen(a.threshold)}${a.course?` · ${yen(a.course)}スタート限定`:''}">
+          <span class="mark">${isUnlocked?'CLEAR':isNext?'NEXT':'LOCK'}</span>
+          <span>${escHtml(a.title)}${isLimited?' / 5万円限定':''}</span>
+        </span>`;
+      }).join('')}
+    </div>`;
+}
+
 function renderSummary() {
   const totalCost   = holdings.reduce((s,h)=>s+costBasis(h),0);
   const totalValue  = holdings.reduce((s,h)=>s+marketValue(h),0);
@@ -1750,6 +1816,8 @@ function renderSummary() {
   const iSign= investmentProfit>0?'▲':investmentProfit<0?'▼':'';
   const panel=totalProfit>0?'gain-card':totalProfit<0?'loss-card':'';
   const iPanel=investmentProfit>0?'gain-card':investmentProfit<0?'loss-card':'';
+
+  renderAchievements(totalAssets);
 
   document.getElementById('summaryGrid').innerHTML=`
     <div class="summary-card">
@@ -1930,8 +1998,12 @@ function importJSON(event) {
 }
 
 document.getElementById('sellModal').addEventListener('click',function(e){if(e.target===this)closeSellModal();});
-document.getElementById('mercariModal').addEventListener('click',function(e){if(e.target===this)closeMercariModal();});
 document.getElementById('shareModal').addEventListener('click',function(e){if(e.target===this)closeShareModal();});
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('button');
+  if (!btn || btn.disabled || btn.id === 'soundToggle') return;
+  playSound('click');
+}, true);
 
 /* ═══════════════════════════════════════
    PRICE HISTORY ENGINE
@@ -2177,6 +2249,7 @@ function renderAll() {
   renderChart();
   renderDonut();
 }
+updateSoundButton();
 renderAll();
 searchCards();
 setTimeout(() => { refreshMarketPrices().catch(() => {}); }, 1500);

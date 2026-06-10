@@ -2,8 +2,8 @@ name: Update card prices
 
 on:
   schedule:
-    # 03:10 JST every day
-    - cron: '10 18 * * *'
+    ## 10:00, 15:00, 18:00, 21:00 JST every day
+- cron: '0 1,6,9,12 * * *'
   workflow_dispatch:
 
 permissions:

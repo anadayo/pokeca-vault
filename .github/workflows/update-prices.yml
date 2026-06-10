@@ -1,0 +1,32 @@
+name: Update card prices
+
+on:
+  schedule:
+    # 03:10 JST every day
+    - cron: '10 18 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-prices:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Update prices from Hareruya2
+        run: node scripts/update-prices.js
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update card prices'
+          file_pattern: index.html

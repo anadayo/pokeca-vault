@@ -81,7 +81,7 @@ header{
 
 /* ---------- ティッカー（シグネチャー演出） ---------- */
 .ticker{ border-bottom:1px solid var(--line); background:#0E1016; overflow:hidden; }
-.ticker-track{ display:flex; gap:28px; width:max-content; padding:6px 0; animation:tick 90s linear infinite; }
+.ticker-track{ display:flex; gap:28px; width:max-content; padding:6px 0; animation:tick 300s linear infinite; }
 @keyframes tick{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
 .ticker-item{ font-size:12px; color:var(--muted); white-space:nowrap; display:flex; gap:6px; align-items:baseline; }
 .ticker-item b{ color:var(--text); font-weight:500; }
@@ -267,6 +267,10 @@ canvas{ width:100%; display:block; }
 /* ---------- プラン ---------- */
 .plan-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:16px; position:relative; }
 .plan-card.reco{ border-color:var(--gold-deep); box-shadow:0 0 24px rgba(232,193,90,.1); }
+.plan-card.support{ padding:13px 14px; border-color:rgba(232,193,90,.34); box-shadow:none; }
+.support-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.support-row .plan-name{ font-size:15px; }
+.support-copy{ margin-top:3px; color:var(--muted); font-size:12px; line-height:1.45; }
 .plan-card .reco-tag{ position:absolute; top:-10px; left:14px; font-size:10.5px; font-weight:700;
   background:var(--gold); color:#1A1405; padding:2px 10px; border-radius:99px; }
 .plan-name{ font-family:var(--font-disp); font-size:16px; }
@@ -567,6 +571,9 @@ const OLD_COURSE_KEY = 'pokecaVaultCourse';
 const OWNER_MERCARI_AMBASSADOR_ID = '2427775577';
 const X_ACCOUNT = 'anaday_o';
 const SOURCE_DATE = '2026-06-10';
+const SUPPORT_LINKS = {
+  note: 'https://note.com/koban240dayo',
+};
 
 const PLANS = {
   lite:     { label:'フリー', price:0, maxTypes:Infinity, rankVisible:5, chartDays:[7,30,90,365] },
@@ -3787,6 +3794,11 @@ function yen(n){ return '¥' + Math.round(n).toLocaleString('ja-JP'); }
 function signedYen(n){ return (n >= 0 ? '+' : '−') + yen(Math.abs(n)).slice(0); }
 function pct(n){ return (n >= 0 ? '+' : '') + n.toFixed(1) + '%'; }
 function today(){ return new Date().toISOString().slice(0,10); }
+function todayJstKey(){ return new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0,10); }
+function dayNumberJst(){
+  const [y, m, d] = todayJstKey().split('-').map(Number);
+  return Math.floor(Date.UTC(y, m - 1, d) / 86400000);
+}
 function escapeHtml(s){
   return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
@@ -4090,6 +4102,12 @@ function renderTicker(){
   $('#ticker').innerHTML = items + items; // ループ用に2周分
 }
 
+function dailyFeaturedCard(){
+  const ordered = [...CARD_MASTER].sort((a, b) => String(a.id).localeCompare(String(b.id)));
+  const idx = (dayNumberJst() * 37) % ordered.length;
+  return ordered[idx];
+}
+
 /* ---- ホーム ---- */
 function renderHome(){
   const t = portfolioTotals();
@@ -4107,8 +4125,8 @@ function renderHome(){
   // 初回ガイドは保有が増えたら隠す
   $('#guideSection').style.display = t.types > 0 ? 'none' : '';
 
-  // 注目カード = 7日上昇率トップ
-  const featured = [...CARD_MASTER].sort((a,b) => changePct(b,7) - changePct(a,7))[0];
+  // 注目カード = JSTの日付で毎日1枚ローテーション
+  const featured = dailyFeaturedCard();
   const sig = getSignal(featured);
   $('#featuredBox').innerHTML = `
     <div class="featured">
@@ -4118,6 +4136,7 @@ function renderHome(){
         <div class="featured-name">${escapeHtml(featured.name)} <span class="muted">/ ${escapeHtml(featured.set)}</span></div>
         <div class="featured-price num">${yen(currentPrice(featured))}
           <span class="num pos" style="font-size:13px"> 週間 ${pct(changePct(featured,7))}</span></div>
+        <div class="muted">毎日0時に更新 ・ ${todayJstKey()}</div>
         <div class="split-2" style="margin-top:10px">
           <button class="btn btn-gold btn-sm" data-detail="${featured.id}">買う・詳細</button>
           <button class="btn btn-ghost btn-sm" data-detail="${featured.id}">📈 推移を見る</button>
@@ -4297,6 +4316,16 @@ function renderHistory(){
 function renderPlan(){
   const t = portfolioTotals();
   $('#planList').innerHTML = `
+    <div class="plan-card support">
+      <span class="reco-tag">SUPPORT</span>
+      <div class="support-row">
+        <div>
+          <div class="plan-name">POKÉCA VAULTを応援する</div>
+          <div class="support-copy">開発継続のサポートはこちら</div>
+        </div>
+        <button class="btn btn-gold btn-sm" data-support="note">note</button>
+      </div>
+    </div>
     <div class="plan-card reco">
       <span class="reco-tag">START</span>
       <div class="plan-name">5万円コース</div>
@@ -4315,6 +4344,16 @@ function renderPlan(){
       <div class="plan-price num">${state.courseAmount ? yen(state.courseAmount) : '未開始'}</div>
       <ul class="plan-feats"><li>所持金 ${state.cashBalance === null ? '—' : yen(t.cash)}</li><li>カード評価額 ${yen(t.marketValue)}</li><li>総資産 ${yen(t.totalAssets)}</li></ul>
     </div>`;
+}
+
+function openSupport(type){
+  const labels = { note:'note' };
+  const url = SUPPORT_LINKS[type];
+  if (!url) {
+    toast(`${labels[type] || '応援リンク'}は準備中です`);
+    return;
+  }
+  window.open(url, '_blank', 'noopener');
 }
 
 /* ========== 8. シート（モーダル）制御 ========== */
@@ -4613,6 +4652,12 @@ document.addEventListener('click', (e) => {
     state.plan = key;
     saveState(); renderAll();
     toast(`${PLANS[key].label}プランに切り替えました`);
+    return;
+  }
+
+  const support = e.target.closest('[data-support]');
+  if (support){
+    openSupport(support.dataset.support);
     return;
   }
 });

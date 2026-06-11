@@ -13,7 +13,7 @@
 <meta name="twitter:site" content="@anaday_o">
 <meta name="twitter:creator" content="@anaday_o">
 <meta name="twitter:title" content="POKÉCA VAULT — ポケカ投資シミュレーター">
-<meta name="twitter:description" content="5万円/10万円コースでポケカ投資を疑似体験。人気カード100種類、価格推移、損益管理、メルカリPRリンク対応。">
+<meta name="twitter:description" content="5万円/10万円コースでポケカ投資を疑似体験。人気カード200種類、価格推移、損益管理、メルカリPRリンク対応。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -189,38 +189,35 @@
   .course-btn:hover { background: rgba(245,197,24,.14); }
 
   .achievement-panel {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: .9rem 1rem;
-    margin: -.45rem 0 1.25rem;
+    display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+    background: rgba(14,17,24,.72);
+    border: 1px solid rgba(40,48,74,.7);
+    border-radius: 10px;
+    padding: .55rem .8rem;
+    margin: -.5rem 0 1rem;
+    color: var(--muted);
+    font-size: .72rem;
     animation: fadeUp .42s .04s ease both;
   }
   .achievement-head {
-    display: flex; justify-content: space-between; align-items: center; gap: .75rem;
-    color: var(--muted); font-size: .65rem; font-weight: 700;
-    letter-spacing: .1em; text-transform: uppercase; margin-bottom: .65rem;
+    display: flex; align-items: center; gap: .55rem; min-width: 0;
+    font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
   }
-  .achievement-count { font-family: var(--font-mono); color: var(--accent); letter-spacing: 0; }
-  .achievement-list { display: flex; flex-wrap: wrap; gap: .45rem; }
-  .achievement-badge {
-    display: inline-flex; align-items: center; gap: .35rem;
-    border: 1px solid var(--border2);
-    border-radius: 999px; padding: .36rem .68rem;
-    background: rgba(255,255,255,.025);
-    color: var(--muted); font-size: .74rem; font-weight: 700;
-    transition: transform .18s, border-color .18s, color .18s, background .18s;
+  .achievement-count { font-family: var(--font-mono); color: var(--accent); letter-spacing: 0; white-space: nowrap; }
+  .achievement-next { font-family: var(--font-mono); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .achievement-list { display: none; }
+  .achievement-notice {
+    position: fixed; top: 70px; left: 50%; transform: translateX(-50%) translateY(-12px) scale(.98);
+    width: min(420px, calc(100vw - 2rem));
+    background: linear-gradient(135deg, rgba(245,197,24,.96), rgba(255,184,0,.96));
+    color: #080a0f; border: 1px solid rgba(255,255,255,.45); border-radius: 12px;
+    padding: .85rem 1rem; box-shadow: 0 12px 36px rgba(0,0,0,.42);
+    opacity: 0; pointer-events: none; z-index: 320;
+    transition: opacity .22s, transform .22s;
   }
-  .achievement-badge.unlocked {
-    color: var(--text);
-    border-color: rgba(245,197,24,.45);
-    background: linear-gradient(135deg,rgba(245,197,24,.16),rgba(34,216,122,.07));
-    box-shadow: 0 0 18px rgba(245,197,24,.08);
-  }
-  .achievement-badge.next {
-    color: var(--accent); border-color: rgba(245,197,24,.35);
-  }
-  .achievement-badge .mark { font-size: .86rem; }
+  .achievement-notice.show { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+  .achievement-notice-title { font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+  .achievement-notice-body { margin-top: .18rem; font-size: .95rem; font-weight: 800; }
 
   /* ── CHART & DONUT ─────────────────────────── */
   .charts-row {
@@ -675,6 +672,19 @@
   .toast.ok  { border-left: 3px solid var(--gain); }
   .toast.err { border-left: 3px solid var(--loss); }
 
+  .scroll-top-btn {
+    position: fixed; right: 1rem; bottom: 1rem; z-index: 260;
+    width: 46px; height: 46px; border-radius: 50%;
+    border: 1px solid rgba(245,197,24,.45);
+    background: rgba(14,17,24,.92); color: var(--accent);
+    font-family: var(--font-head); font-size: 1.25rem; font-weight: 700;
+    cursor: pointer; box-shadow: var(--shadow);
+    opacity: 0; transform: translateY(10px) scale(.95); pointer-events: none;
+    transition: opacity .2s, transform .2s, background .15s, color .15s;
+  }
+  .scroll-top-btn.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+  .scroll-top-btn:hover { background: var(--accent); color: #080a0f; }
+
   /* ── SCROLLBAR ─────────────────────────────── */
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
@@ -936,11 +946,13 @@
   </div>
 </div>
 
+<div class="achievement-notice" id="achievementNotice"></div>
 <div class="toast" id="toast"></div>
+<button class="scroll-top-btn" id="scrollTopBtn" onclick="scrollToTop()" aria-label="上へ戻る" title="上へ戻る">↑</button>
 
 <script>
 /* ═══════════════════════════════════════
-   CARD CATALOG (100 cards)
+   CARD CATALOG (200 cards)
    TCGdex Japanese CDN: assets.tcgdex.net/ja/...
 ═══════════════════════════════════════ */
 /* TCGdex Japanese CDN — API で確認した正確な大文字パス + /high.webp */
@@ -951,127 +963,210 @@ const h2 = productId => `https://www.hareruya2.com/products/${productId}`;
 const h2b = productId => productId ? `https://www.hare2buy.com/product/${productId}` : '';
 
 const cardCatalog = [
-  /* ── サポーター / トレーナー ───────────── */
-  { id:'SV4a-350', name:'ナンジャモ', nameEn:'Iono', set:'SV4a シャイニートレジャーex', rarity:'SAR', nowPrice:11000, buyPrice:7500, image:cdn('SV/SV4a/350'), saleUrl:h2('9017544442176'), buyUrl:h2b('17909') },
-  { id:'SV2D-096', name:'ナンジャモ', nameEn:'Iono', set:'SV2D クレイバースト', rarity:'SAR', nowPrice:56000, buyPrice:38000, image:cdn('SV/SV2D/096'), saleUrl:h2('9017415172416'), buyUrl:h2b('15858') },
-  { id:'S12a-242', name:'ツツジ', nameEn:'Roxanne', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:1200, buyPrice:550, image:cdn('S/S12a/242'), saleUrl:h2('9017325257024'), buyUrl:h2b('15173') },
-  { id:'SV1S-099', name:'博士の研究（オーリム博士）', nameEn:'Professor Research', set:'SV1S スカーレットex', rarity:'SR', nowPrice:900, buyPrice:400, image:cdn('SV/SV1S/099'), saleUrl:h2('9017350095168'), buyUrl:h2b('15494') },
-  { id:'SV1V-098', name:'博士の研究（フトゥー博士）', nameEn:'Professor Research', set:'SV1V バイオレットex', rarity:'SR', nowPrice:500, buyPrice:null, image:cdn('SV/SV1V/098'), saleUrl:h2('9017295929664'), buyUrl:'' },
-
-  /* ── ポケモン（SV era） ───────────────── */
-  { id:'SV4a-349', name:'リザードンex', nameEn:'Charizard ex', set:'SV4a シャイニートレジャーex', rarity:'SAR', nowPrice:60000, buyPrice:46000, image:cdn('SV/SV4a/349'), saleUrl:h2('9017544245568'), buyUrl:h2b('17908') },
-  { id:'SV3-139', name:'リザードンex', nameEn:'Charizard ex', set:'SV3 黒炎の支配者', rarity:'UR', nowPrice:22000, buyPrice:17000, image:cdn('SV/SV3/139'), saleUrl:h2('9017399116096'), buyUrl:h2b('16763') },
-  { id:'SV2a-201', name:'リザードンex', nameEn:'Charizard ex', set:'SV2a ポケモンカード151', rarity:'SAR', nowPrice:82000, buyPrice:65000, image:cdn('SV/SV2a/201'), saleUrl:h2('9017521013056'), buyUrl:h2b('16476') },
-  { id:'SV4a-347', name:'ミュウex', nameEn:'Mew ex', set:'SV4a シャイニートレジャーex', rarity:'SAR', nowPrice:98000, buyPrice:76000, image:cdn('SV/SV4a/347'), saleUrl:h2('9017573278016'), buyUrl:h2b('17906') },
-  { id:'SV2a-205', name:'ミュウex', nameEn:'Mew ex', set:'SV2a ポケモンカード151', rarity:'SAR', nowPrice:62000, buyPrice:45000, image:cdn('SV/SV2a/205'), saleUrl:h2('9017521733952'), buyUrl:h2b('16480') },
-  { id:'SV4a-358', name:'ミライドンex', nameEn:'Miraidon ex', set:'SV4a シャイニートレジャーex', rarity:'UR', nowPrice:1200, buyPrice:800, image:cdn('SV/SV4a/358'), saleUrl:h2('9017500041536'), buyUrl:h2b('17917') },
-  { id:'SV1V-106', name:'ミライドンex', nameEn:'Miraidon ex', set:'SV1V バイオレットex', rarity:'UR', nowPrice:1500, buyPrice:800, image:cdn('SV/SV1V/106'), saleUrl:h2('9017238815040'), buyUrl:h2b('15531') },
-  { id:'SV4a-360', name:'コライドンex', nameEn:'Koraidon ex', set:'SV4a シャイニートレジャーex', rarity:'UR', nowPrice:800, buyPrice:450, image:cdn('SV/SV4a/360'), saleUrl:h2('9017500893504'), buyUrl:h2b('17919') },
-  { id:'SV1S-106', name:'コライドンex', nameEn:'Koraidon ex', set:'SV1S スカーレットex', rarity:'UR', nowPrice:1500, buyPrice:850, image:cdn('SV/SV1S/106'), saleUrl:h2('9017289146688'), buyUrl:h2b('15501') },
-  { id:'SV7-133', name:'テラパゴスex', nameEn:'Terapagos ex', set:'SV7 ステラミラクル', rarity:'UR', nowPrice:850, buyPrice:400, image:cdn('SV/SV7/133'), saleUrl:h2('9501512106304'), buyUrl:h2b('18822') },
-  { id:'SV7-130', name:'テラパゴスex', nameEn:'Terapagos ex', set:'SV7 ステラミラクル', rarity:'SAR', nowPrice:5000, buyPrice:3500, image:cdn('SV/SV7/130'), saleUrl:h2('9501512335680'), buyUrl:h2b('18819') },
-  { id:'SV2a-183', name:'ミュウツー', nameEn:'Mewtwo', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:6000, buyPrice:4500, image:cdn('SV/SV2a/183'), saleUrl:h2('9017517375808'), buyUrl:h2b('16458') },
-  { id:'SV2a-173', name:'ピカチュウ', nameEn:'Pikachu', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:8500, buyPrice:6000, image:cdn('SV/SV2a/173'), saleUrl:h2('9017514230080'), buyUrl:h2b('16448') },
-  { id:'SV4a-236', name:'ピカチュウ', nameEn:'Pikachu', set:'SV4a シャイニートレジャーex', rarity:'S', nowPrice:15000, buyPrice:11000, image:cdn('SV/SV4a/236'), saleUrl:h2('9017594118464'), buyUrl:h2b('17795') },
-  { id:'SV4a-310', name:'カビゴン', nameEn:'Snorlax', set:'SV4a シャイニートレジャーex', rarity:'S', nowPrice:2100, buyPrice:1400, image:cdn('SV/SV4a/310'), saleUrl:h2('9017591497024'), buyUrl:h2b('17869') },
-  { id:'SV2a-181', name:'カビゴン', nameEn:'Snorlax', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:3500, buyPrice:2500, image:cdn('SV/SV2a/181'), saleUrl:h2('9017517048128'), buyUrl:h2b('16456') },
-  { id:'SV2a-149', name:'カイリュー', nameEn:'Dragonite', set:'SV2a ポケモンカード151', rarity:'R', nowPrice:100, buyPrice:null, image:cdn('SV/SV2a/149'), saleUrl:h2('9017476710720'), buyUrl:'' },
-
-  /* ── ポケモン（S = Sword/Shield era） ─── */
-  { id:'S12a-262', name:'アルセウスVSTAR', nameEn:'Arceus VSTAR', set:'S12a VSTARユニバース', rarity:'UR', nowPrice:22000, buyPrice:17000, image:cdn('S/S12a/262'), saleUrl:h2('9017284985152'), buyUrl:h2b('15193') },
-  { id:'S12a-221', name:'ミュウツーVSTAR', nameEn:'Mewtwo VSTAR', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:24000, buyPrice:19000, image:cdn('S/S12a/221'), saleUrl:h2('9017186812224'), buyUrl:h2b('15152') },
-  { id:'S12a-212', name:'リザードンVSTAR', nameEn:'Charizard VSTAR', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:22000, buyPrice:15000, image:cdn('S/S12a/212'), saleUrl:h2('9017183240512'), buyUrl:h2b('15143') },
-  { id:'S12a-211', name:'リザードンV', nameEn:'Charizard V', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:8900, buyPrice:6000, image:cdn('S/S12a/211'), saleUrl:h2('9017182945600'), buyUrl:h2b('15142') },
-  { id:'S12a-216', name:'ネオラントV', nameEn:'Lumineon V', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:1400, buyPrice:900, image:cdn('S/S12a/216'), saleUrl:h2('9017185108288'), buyUrl:h2b('15147') },
-  { id:'S12a-108', name:'レックウザVMAX', nameEn:'Rayquaza VMAX', set:'S12a VSTARユニバース', rarity:'RRR', nowPrice:1100, buyPrice:500, image:cdn('S/S12a/108'), saleUrl:h2('9017311297856'), buyUrl:h2b('14950') },
-  { id:'S12a-054', name:'ミュウVMAX', nameEn:'Mew VMAX', set:'S12a VSTARユニバース', rarity:'RRR', nowPrice:1400, buyPrice:1000, image:cdn('S/S12a/054'), saleUrl:h2('9017270141248'), buyUrl:h2b('14896') },
-  { id:'S9-125', name:'アルセウスVSTAR', nameEn:'Arceus VSTAR', set:'S9 スターバース', rarity:'UR', nowPrice:2600, buyPrice:1800, image:cdn('S/S9/125'), saleUrl:h2('9016929386816'), buyUrl:h2b('8757') },
-
-  /* ── 追加人気カード（SV/S 拡張枠） ─────── */
-  { id:'SV9-114', name:'ナンジャモのハラバリーex', nameEn:'', setCode:'SV9', cardNo:'114/100', set:'SV9 バトルパートナーズ', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV9/114'), saleUrl:'', buyUrl:'' },
-  { id:'SV9-115', name:'リーリエのピッピex', nameEn:'', setCode:'SV9', cardNo:'115/100', set:'SV9 バトルパートナーズ', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV9/115'), saleUrl:'', buyUrl:'' },
-  { id:'SV9-125', name:'ナンジャモのハラバリーex', nameEn:'', setCode:'SV9', cardNo:'125/100', set:'SV9 バトルパートナーズ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV9/125'), saleUrl:'', buyUrl:'' },
-  { id:'SV9-126', name:'リーリエのピッピex', nameEn:'', setCode:'SV9', cardNo:'126/100', set:'SV9 バトルパートナーズ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV9/126'), saleUrl:'', buyUrl:'' },
-  { id:'SV9-130', name:'ナンジャモのハラバリーex', nameEn:'', setCode:'SV9', cardNo:'130/100', set:'SV9 バトルパートナーズ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV9/130'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-200', name:'リーフィアex', nameEn:'', setCode:'SV8a', cardNo:'200/187', set:'SV8a テラスタルフェスex', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV8a/200'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-201', name:'オーガポン みどりのめんex', nameEn:'', setCode:'SV8a', cardNo:'201/187', set:'SV8a テラスタルフェスex', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV8a/201'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-202', name:'ブースターex', nameEn:'', setCode:'SV8a', cardNo:'202/187', set:'SV8a テラスタルフェスex', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV8a/202'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-204', name:'オーガポン かまどのめんex', nameEn:'', setCode:'SV8a', cardNo:'204/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/204'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-205', name:'シャワーズex', nameEn:'', setCode:'SV8a', cardNo:'205/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/205'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-206', name:'グレイシアex', nameEn:'', setCode:'SV8a', cardNo:'206/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/206'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-208', name:'オーガポン いどのめんex', nameEn:'', setCode:'SV8a', cardNo:'208/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/208'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-209', name:'サンダースex', nameEn:'', setCode:'SV8a', cardNo:'209/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/209'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-210', name:'テツノカイナex', nameEn:'', setCode:'SV8a', cardNo:'210/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/210'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-211', name:'エーフィex', nameEn:'', setCode:'SV8a', cardNo:'211/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/211'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-212', name:'ニンフィアex', nameEn:'', setCode:'SV8a', cardNo:'212/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/212'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-216', name:'オーガポン いしずえのめんex', nameEn:'', setCode:'SV8a', cardNo:'216/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/216'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-217', name:'ブラッキーex', nameEn:'', setCode:'SV8a', cardNo:'217/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/217'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-221', name:'ドラパルトex', nameEn:'', setCode:'SV8a', cardNo:'221/187', set:'SV8a テラスタルフェスex', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/221'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-223', name:'イーブイex', nameEn:'', setCode:'SV8a', cardNo:'223/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV8a/223'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-224', name:'イーブイex', nameEn:'', setCode:'SV8a', cardNo:'224/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV8a/224'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-226', name:'テラパゴスex', nameEn:'', setCode:'SV8a', cardNo:'226/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV8a/226'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-234', name:'オーガポン みどりのめんex', nameEn:'', setCode:'SV8a', cardNo:'234/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV8a/234'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-236', name:'ピカチュウex', nameEn:'', setCode:'SV8a', cardNo:'236/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV8a/236'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-237', name:'テラパゴスex', nameEn:'', setCode:'SV8a', cardNo:'237/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV8a/237'), saleUrl:'', buyUrl:'' },
-  { id:'SV7a-078', name:'ラティアスex', nameEn:'', setCode:'SV7a', cardNo:'078/064', set:'SV7a 楽園ドラゴーナ', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV7a/078'), saleUrl:'', buyUrl:'' },
-  { id:'SV7a-087', name:'ラティアスex', nameEn:'', setCode:'SV7a', cardNo:'087/064', set:'SV7a 楽園ドラゴーナ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV7a/087'), saleUrl:'', buyUrl:'' },
-  { id:'SV7-122', name:'テラパゴスex', nameEn:'', setCode:'SV7', cardNo:'122/102', set:'SV7 ステラミラクル', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV7/122'), saleUrl:'', buyUrl:'' },
-  { id:'SV5a-083', name:'ゲッコウガex', nameEn:'', setCode:'SV5a', cardNo:'083/066', set:'SV5a クリムゾンヘイズ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV5a/083'), saleUrl:'', buyUrl:'' },
-  { id:'SV5a-090', name:'ゲッコウガex', nameEn:'', setCode:'SV5a', cardNo:'090/066', set:'SV5a クリムゾンヘイズ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV5a/090'), saleUrl:'', buyUrl:'' },
-  { id:'SV4a-327', name:'ミュウex', nameEn:'', setCode:'SV4a', cardNo:'327/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/327'), saleUrl:'', buyUrl:'' },
-  { id:'SV4a-328', name:'サーナイトex', nameEn:'', setCode:'SV4a', cardNo:'328/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/328'), saleUrl:'', buyUrl:'' },
-  { id:'SV4a-331', name:'リザードンex', nameEn:'', setCode:'SV4a', cardNo:'331/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/331'), saleUrl:'', buyUrl:'' },
-  { id:'SV4a-348', name:'サーナイトex', nameEn:'', setCode:'SV4a', cardNo:'348/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/348'), saleUrl:'', buyUrl:'' },
-  { id:'SV3-125', name:'リザードンex', nameEn:'', setCode:'SV3', cardNo:'125/108', set:'SV3 黒炎の支配者', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV3/125'), saleUrl:'', buyUrl:'' },
-  { id:'SV3-134', name:'リザードンex', nameEn:'', setCode:'SV3', cardNo:'134/108', set:'SV3 黒炎の支配者', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV3/134'), saleUrl:'', buyUrl:'' },
-  { id:'SV2a-195', name:'ミュウex', nameEn:'', setCode:'SV2a', cardNo:'195/165', set:'SV2a ポケモンカード151', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV2a/195'), saleUrl:'', buyUrl:'' },
-  { id:'SV2a-208', name:'ミュウex', nameEn:'', setCode:'SV2a', cardNo:'208/165', set:'SV2a ポケモンカード151', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV2a/208'), saleUrl:'', buyUrl:'' },
-  { id:'SV1S-092', name:'サーナイトex', nameEn:'', setCode:'SV1S', cardNo:'092/078', set:'SV1S スカーレットex', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV1S/092'), saleUrl:'', buyUrl:'' },
-  { id:'S12a-210', name:'リーフィアVSTAR', nameEn:'', setCode:'S12a', cardNo:'210/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('S/S12a/210'), saleUrl:'', buyUrl:'' },
-  { id:'S12a-217', name:'グレイシアVSTAR', nameEn:'', setCode:'S12a', cardNo:'217/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('S/S12a/217'), saleUrl:'', buyUrl:'' },
-  { id:'S12a-226', name:'ルカリオVSTAR', nameEn:'', setCode:'S12a', cardNo:'226/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('S/S12a/226'), saleUrl:'', buyUrl:'' },
-  { id:'S12a-261', name:'ギラティナVSTAR', nameEn:'', setCode:'S12a', cardNo:'261/172', set:'S12a VSTARユニバース', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('S/S12a/261'), saleUrl:'', buyUrl:'' },
-  { id:'S9-111', name:'アルセウスV', nameEn:'', setCode:'S9', cardNo:'111/100', set:'S9 スターバース', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('S/S9/111'), saleUrl:'', buyUrl:'' },
-  { id:'S9-112', name:'アルセウスV', nameEn:'', setCode:'S9', cardNo:'112/100', set:'S9 スターバース', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('S/S9/112'), saleUrl:'', buyUrl:'' },
-  { id:'S9-120', name:'アルセウスVSTAR', nameEn:'', setCode:'S9', cardNo:'120/100', set:'S9 スターバース', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('S/S9/120'), saleUrl:'', buyUrl:'' },
-  { id:'SV9-104', name:'ナンジャモのタイカイデン', nameEn:'', setCode:'SV9', cardNo:'104/100', set:'SV9 バトルパートナーズ', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV9/104'), saleUrl:'', buyUrl:'' },
-  { id:'SV9-105', name:'リーリエのアブリボン', nameEn:'', setCode:'SV9', cardNo:'105/100', set:'SV9 バトルパートナーズ', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV9/105'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-230', name:'スグリ', nameEn:'', setCode:'SV8a', cardNo:'230/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV8a/230'), saleUrl:'', buyUrl:'' },
-  { id:'SV8a-231', name:'タロ', nameEn:'', setCode:'SV8a', cardNo:'231/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV8a/231'), saleUrl:'', buyUrl:'' },
-  { id:'SV7a-086', name:'ルチアのアピール', nameEn:'', setCode:'SV7a', cardNo:'086/064', set:'SV7a 楽園ドラゴーナ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV7a/086'), saleUrl:'', buyUrl:'' },
-  { id:'SV7a-091', name:'ルチアのアピール', nameEn:'', setCode:'SV7a', cardNo:'091/064', set:'SV7a 楽園ドラゴーナ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV7a/091'), saleUrl:'', buyUrl:'' },
-  { id:'SV7-124', name:'タロ', nameEn:'', setCode:'SV7', cardNo:'124/102', set:'SV7 ステラミラクル', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV7/124'), saleUrl:'', buyUrl:'' },
-  { id:'SV7-131', name:'タロ', nameEn:'', setCode:'SV7', cardNo:'131/102', set:'SV7 ステラミラクル', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV7/131'), saleUrl:'', buyUrl:'' },
-  { id:'SV5a-067', name:'カイロス', nameEn:'', setCode:'SV5a', cardNo:'067/066', set:'SV5a クリムゾンヘイズ', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV5a/067'), saleUrl:'', buyUrl:'' },
-  { id:'SV5a-078', name:'イーブイ', nameEn:'', setCode:'SV5a', cardNo:'078/066', set:'SV5a クリムゾンヘイズ', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV5a/078'), saleUrl:'', buyUrl:'' },
-  { id:'SV4a-212', name:'パルデア ケンタロス', nameEn:'', setCode:'SV4a', cardNo:'212/190', set:'SV4a レイジングサーフ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV4a/212'), saleUrl:'', buyUrl:'' },
-  { id:'SV4a-223', name:'パルデア ケンタロス', nameEn:'', setCode:'SV4a', cardNo:'223/190', set:'SV4a レイジングサーフ', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV4a/223'), saleUrl:'', buyUrl:'' },
-  { id:'SV4a-250', name:'カイデン', nameEn:'', setCode:'SV4a', cardNo:'250/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/250'), saleUrl:'', buyUrl:'' },
-  { id:'SV4a-251', name:'タイカイデン', nameEn:'', setCode:'SV4a', cardNo:'251/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/251'), saleUrl:'', buyUrl:'' },
-  { id:'SV4a-279', name:'パルデア ケンタロス', nameEn:'', setCode:'SV4a', cardNo:'279/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/279'), saleUrl:'', buyUrl:'' },
-  { id:'SV4a-281', name:'ルカリオ', nameEn:'', setCode:'SV4a', cardNo:'281/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/281'), saleUrl:'', buyUrl:'' },
-  { id:'SV4a-353', name:'ペパー', nameEn:'', setCode:'SV4a', cardNo:'353/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/353'), saleUrl:'', buyUrl:'' },
-  { id:'SV4a-354', name:'ボタン', nameEn:'', setCode:'SV4a', cardNo:'354/190', set:'SV4a レイジングサーフ', rarity:'UR', nowPrice:1500, buyPrice:500, image:cdn('SV/SV4a/354'), saleUrl:'', buyUrl:'' },
-  { id:'SV3a-071', name:'イベルタル', nameEn:'', setCode:'SV3a', cardNo:'071/062', set:'SV3a レイジングサーフ', rarity:'AR', nowPrice:500, buyPrice:50, image:cdn('SV/SV3a/071'), saleUrl:'', buyUrl:'' },
-  { id:'SV3-129', name:'オモダカ', nameEn:'', setCode:'SV3', cardNo:'129/108', set:'SV3 黒炎の支配者', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV3/129'), saleUrl:'', buyUrl:'' },
-  { id:'SV3-137', name:'オモダカ', nameEn:'', setCode:'SV3', cardNo:'137/108', set:'SV3 黒炎の支配者', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV3/137'), saleUrl:'', buyUrl:'' },
-  { id:'SV2a-197', name:'サカキのカリスマ', nameEn:'', setCode:'SV2a', cardNo:'197/165', set:'SV2a ポケモンカード151', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV2a/197'), saleUrl:'', buyUrl:'' },
-  { id:'SV2a-207', name:'サカキのカリスマ', nameEn:'', setCode:'SV2a', cardNo:'207/165', set:'SV2a ポケモンカード151', rarity:'SAR', nowPrice:3500, buyPrice:500, image:cdn('SV/SV2a/207'), saleUrl:'', buyUrl:'' },
-  { id:'SV2D-091', name:'ナンジャモ', nameEn:'', setCode:'SV2D', cardNo:'091/071', set:'SV2D クレイバースト', rarity:'SR', nowPrice:900, buyPrice:500, image:cdn('SV/SV2D/091'), saleUrl:'', buyUrl:'' },
+  /* ── Verified cards: Hareruya2 sale + Hare2buy purchase links ── */
+  { id:'SV4a-350', name:'ナンジャモ', nameEn:'Iono', setCode:'SV4a', cardNo:'350/190', set:'SV4a シャイニートレジャーex', rarity:'SAR', nowPrice:11000, buyPrice:7500, image:cdn('SV/SV4a/350'), saleUrl:'https://www.hareruya2.com/products/9017544442176', buyUrl:'https://www.hare2buy.com/product/17909' },
+  { id:'SV2D-096', name:'ナンジャモ', nameEn:'Iono', setCode:'SV2D', cardNo:'096/071', set:'SV2D クレイバースト', rarity:'SAR', nowPrice:55000, buyPrice:30000, image:cdn('SV/SV2D/096'), saleUrl:'https://www.hareruya2.com/products/9017415172416', buyUrl:'https://www.hare2buy.com/product/15858' },
+  { id:'S12a-242', name:'ツツジ', nameEn:'Roxanne', setCode:'S12a', cardNo:'242/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:1200, buyPrice:550, image:cdn('S/S12a/242'), saleUrl:'https://www.hareruya2.com/products/9017325257024', buyUrl:'https://www.hare2buy.com/product/15173' },
+  { id:'SV1S-099', name:'博士の研究（オーリム博士）', nameEn:'Professor Research', setCode:'SV1S', cardNo:'099/078', set:'SV1S スカーレットex', rarity:'SR', nowPrice:900, buyPrice:400, image:cdn('SV/SV1S/099'), saleUrl:'https://www.hareruya2.com/products/9017350095168', buyUrl:'https://www.hare2buy.com/product/15494' },
+  { id:'SV1V-098', name:'博士の研究（フトゥー博士）', nameEn:'Professor Research', setCode:'SV1V', cardNo:'098/078', set:'SV1V バイオレットex', rarity:'SR', nowPrice:500, buyPrice:null, image:cdn('SV/SV1V/098'), saleUrl:'https://www.hareruya2.com/products/9017295929664', buyUrl:'' },
+  { id:'SV4a-349', name:'リザードンex', nameEn:'Charizard ex', setCode:'SV4a', cardNo:'349/190', set:'SV4a シャイニートレジャーex', rarity:'SAR', nowPrice:57000, buyPrice:30000, image:cdn('SV/SV4a/349'), saleUrl:'https://www.hareruya2.com/products/9017544245568', buyUrl:'https://www.hare2buy.com/product/17908' },
+  { id:'SV3-139', name:'リザードンex', nameEn:'Charizard ex', setCode:'SV3', cardNo:'139/108', set:'SV3 黒炎の支配者', rarity:'UR', nowPrice:21000, buyPrice:11000, image:cdn('SV/SV3/139'), saleUrl:'https://www.hareruya2.com/products/9017399116096', buyUrl:'https://www.hare2buy.com/product/16763' },
+  { id:'SV2a-201', name:'リザードンex', nameEn:'Charizard ex', setCode:'SV2a', cardNo:'201/165', set:'SV2a ポケモンカード151', rarity:'SAR', nowPrice:82000, buyPrice:65000, image:cdn('SV/SV2a/201'), saleUrl:'https://www.hareruya2.com/products/9017521013056', buyUrl:'https://www.hare2buy.com/product/16476' },
+  { id:'SV4a-347', name:'ミュウex', nameEn:'Mew ex', setCode:'SV4a', cardNo:'347/190', set:'SV4a シャイニートレジャーex', rarity:'SAR', nowPrice:98000, buyPrice:76000, image:cdn('SV/SV4a/347'), saleUrl:'https://www.hareruya2.com/products/9017573278016', buyUrl:'https://www.hare2buy.com/product/17906' },
+  { id:'SV2a-205', name:'ミュウex', nameEn:'Mew ex', setCode:'SV2a', cardNo:'205/165', set:'SV2a ポケモンカード151', rarity:'SAR', nowPrice:60000, buyPrice:32000, image:cdn('SV/SV2a/205'), saleUrl:'https://www.hareruya2.com/products/9017521733952', buyUrl:'https://www.hare2buy.com/product/16480' },
+  { id:'SV4a-358', name:'ミライドンex', nameEn:'Miraidon ex', setCode:'SV4a', cardNo:'358/190', set:'SV4a シャイニートレジャーex', rarity:'UR', nowPrice:1200, buyPrice:800, image:cdn('SV/SV4a/358'), saleUrl:'https://www.hareruya2.com/products/9017500041536', buyUrl:'https://www.hare2buy.com/product/17917' },
+  { id:'SV1V-106', name:'ミライドンex', nameEn:'Miraidon ex', setCode:'SV1V', cardNo:'106/078', set:'SV1V バイオレットex', rarity:'UR', nowPrice:1500, buyPrice:800, image:cdn('SV/SV1V/106'), saleUrl:'https://www.hareruya2.com/products/9017238815040', buyUrl:'https://www.hare2buy.com/product/15531' },
+  { id:'SV4a-360', name:'コライドンex', nameEn:'Koraidon ex', setCode:'SV4a', cardNo:'360/190', set:'SV4a シャイニートレジャーex', rarity:'UR', nowPrice:800, buyPrice:450, image:cdn('SV/SV4a/360'), saleUrl:'https://www.hareruya2.com/products/9017500893504', buyUrl:'https://www.hare2buy.com/product/17919' },
+  { id:'SV1S-106', name:'コライドンex', nameEn:'Koraidon ex', setCode:'SV1S', cardNo:'106/078', set:'SV1S スカーレットex', rarity:'UR', nowPrice:1500, buyPrice:850, image:cdn('SV/SV1S/106'), saleUrl:'https://www.hareruya2.com/products/9017289146688', buyUrl:'https://www.hare2buy.com/product/15501' },
+  { id:'SV7-133', name:'テラパゴスex', nameEn:'Terapagos ex', setCode:'SV7', cardNo:'133/102', set:'SV7 ステラミラクル', rarity:'UR', nowPrice:850, buyPrice:400, image:cdn('SV/SV7/133'), saleUrl:'https://www.hareruya2.com/products/9501512106304', buyUrl:'https://www.hare2buy.com/product/18822' },
+  { id:'SV7-130', name:'テラパゴスex', nameEn:'Terapagos ex', setCode:'SV7', cardNo:'130/102', set:'SV7 ステラミラクル', rarity:'SAR', nowPrice:5000, buyPrice:3000, image:cdn('SV/SV7/130'), saleUrl:'https://www.hareruya2.com/products/9501512335680', buyUrl:'https://www.hare2buy.com/product/18819' },
+  { id:'SV2a-183', name:'ミュウツー', nameEn:'Mewtwo', setCode:'SV2a', cardNo:'183/165', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:6000, buyPrice:4500, image:cdn('SV/SV2a/183'), saleUrl:'https://www.hareruya2.com/products/9017517375808', buyUrl:'https://www.hare2buy.com/product/16458' },
+  { id:'SV2a-173', name:'ピカチュウ', nameEn:'Pikachu', setCode:'SV2a', cardNo:'173/165', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:8500, buyPrice:6000, image:cdn('SV/SV2a/173'), saleUrl:'https://www.hareruya2.com/products/9017514230080', buyUrl:'https://www.hare2buy.com/product/16448' },
+  { id:'SV4a-236', name:'ピカチュウ', nameEn:'Pikachu', setCode:'SV4a', cardNo:'236/190', set:'SV4a シャイニートレジャーex', rarity:'S', nowPrice:14000, buyPrice:8000, image:cdn('SV/SV4a/236'), saleUrl:'https://www.hareruya2.com/products/9017594118464', buyUrl:'https://www.hare2buy.com/product/17795' },
+  { id:'SV4a-310', name:'カビゴン', nameEn:'Snorlax', setCode:'SV4a', cardNo:'310/190', set:'SV4a シャイニートレジャーex', rarity:'S', nowPrice:2100, buyPrice:1400, image:cdn('SV/SV4a/310'), saleUrl:'https://www.hareruya2.com/products/9017591497024', buyUrl:'https://www.hare2buy.com/product/17869' },
+  { id:'SV2a-181', name:'カビゴン', nameEn:'Snorlax', setCode:'SV2a', cardNo:'181/165', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:3500, buyPrice:2500, image:cdn('SV/SV2a/181'), saleUrl:'https://www.hareruya2.com/products/9017517048128', buyUrl:'https://www.hare2buy.com/product/16456' },
+  { id:'SV2a-149', name:'カイリュー', nameEn:'Dragonite', setCode:'SV2a', cardNo:'149/165', set:'SV2a ポケモンカード151', rarity:'R', nowPrice:100, buyPrice:null, image:cdn('SV/SV2a/149'), saleUrl:'https://www.hareruya2.com/products/9017476710720', buyUrl:'' },
+  { id:'S12a-262', name:'アルセウスVSTAR', nameEn:'Arceus VSTAR', setCode:'S12a', cardNo:'262/172', set:'S12a VSTARユニバース', rarity:'UR', nowPrice:19000, buyPrice:10000, image:cdn('S/S12a/262'), saleUrl:'https://www.hareruya2.com/products/9017284985152', buyUrl:'https://www.hare2buy.com/product/15193' },
+  { id:'S12a-221', name:'ミュウツーVSTAR', nameEn:'Mewtwo VSTAR', setCode:'S12a', cardNo:'221/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:22000, buyPrice:10000, image:cdn('S/S12a/221'), saleUrl:'https://www.hareruya2.com/products/9017186812224', buyUrl:'https://www.hare2buy.com/product/15152' },
+  { id:'S12a-212', name:'リザードンVSTAR', nameEn:'Charizard VSTAR', setCode:'S12a', cardNo:'212/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:20000, buyPrice:11000, image:cdn('S/S12a/212'), saleUrl:'https://www.hareruya2.com/products/9017183240512', buyUrl:'https://www.hare2buy.com/product/15143' },
+  { id:'S12a-211', name:'リザードンV', nameEn:'Charizard V', setCode:'S12a', cardNo:'211/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:8900, buyPrice:6000, image:cdn('S/S12a/211'), saleUrl:'https://www.hareruya2.com/products/9017182945600', buyUrl:'https://www.hare2buy.com/product/15142' },
+  { id:'S12a-216', name:'ネオラントV', nameEn:'Lumineon V', setCode:'S12a', cardNo:'216/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:1400, buyPrice:900, image:cdn('S/S12a/216'), saleUrl:'https://www.hareruya2.com/products/9017185108288', buyUrl:'https://www.hare2buy.com/product/15147' },
+  { id:'S12a-108', name:'レックウザVMAX', nameEn:'Rayquaza VMAX', setCode:'S12a', cardNo:'108/172', set:'S12a VSTARユニバース', rarity:'RRR', nowPrice:1100, buyPrice:500, image:cdn('S/S12a/108'), saleUrl:'https://www.hareruya2.com/products/9017311297856', buyUrl:'https://www.hare2buy.com/product/14950' },
+  { id:'S12a-054', name:'ミュウVMAX', nameEn:'Mew VMAX', setCode:'S12a', cardNo:'054/172', set:'S12a VSTARユニバース', rarity:'RRR', nowPrice:1400, buyPrice:1000, image:cdn('S/S12a/054'), saleUrl:'https://www.hareruya2.com/products/9017270141248', buyUrl:'https://www.hare2buy.com/product/14896' },
+  { id:'S9-125', name:'アルセウスVSTAR', nameEn:'Arceus VSTAR', setCode:'S9', cardNo:'125/100', set:'S9 スターバース', rarity:'UR', nowPrice:2600, buyPrice:1800, image:cdn('S/S9/125'), saleUrl:'https://www.hareruya2.com/products/9016929386816', buyUrl:'https://www.hare2buy.com/product/8757' },
+  { id:'SV9-114', name:'ナンジャモのハラバリーex', nameEn:'', setCode:'SV9', cardNo:'114/100', set:'SV9 バトルパートナーズ', rarity:'SR', nowPrice:800, buyPrice:400, image:cdn('SV/SV9/114'), saleUrl:'https://www.hareruya2.com/products/9708383928640', buyUrl:'https://www.hare2buy.com/product/20003' },
+  { id:'SV9-115', name:'リーリエのピッピex', nameEn:'', setCode:'SV9', cardNo:'115/100', set:'SV9 バトルパートナーズ', rarity:'SR', nowPrice:3000, buyPrice:2000, image:cdn('SV/SV9/115'), saleUrl:'https://www.hareruya2.com/products/9708384059712', buyUrl:'https://www.hare2buy.com/product/20004' },
+  { id:'SV9-125', name:'ナンジャモのハラバリーex', nameEn:'', setCode:'SV9', cardNo:'125/100', set:'SV9 バトルパートナーズ', rarity:'SAR', nowPrice:14000, buyPrice:7000, image:cdn('SV/SV9/125'), saleUrl:'https://www.hareruya2.com/products/9708382093632', buyUrl:'https://www.hare2buy.com/product/20014' },
+  { id:'SV9-126', name:'リーリエのピッピex', nameEn:'', setCode:'SV9', cardNo:'126/100', set:'SV9 バトルパートナーズ', rarity:'SAR', nowPrice:32000, buyPrice:15000, image:cdn('SV/SV9/126'), saleUrl:'https://www.hareruya2.com/products/9708382388544', buyUrl:'https://www.hare2buy.com/product/20015' },
+  { id:'SV9-130', name:'ナンジャモのハラバリーex', nameEn:'', setCode:'SV9', cardNo:'130/100', set:'SV9 バトルパートナーズ', rarity:'UR', nowPrice:4000, buyPrice:2000, image:cdn('SV/SV9/130'), saleUrl:'https://www.hareruya2.com/products/9708382683456', buyUrl:'https://www.hare2buy.com/product/20019' },
+  { id:'SV8a-200', name:'リーフィアex', nameEn:'', setCode:'SV8a', cardNo:'200/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:10000, buyPrice:6000, image:cdn('SV/SV8a/200'), saleUrl:'https://www.hareruya2.com/products/9667472359744', buyUrl:'https://www.hare2buy.com/product/19632' },
+  { id:'SV8a-201', name:'オーガポン みどりのめんex', nameEn:'', setCode:'SV8a', cardNo:'201/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:1100, buyPrice:700, image:cdn('SV/SV8a/201'), saleUrl:'https://www.hareruya2.com/products/9667471147328', buyUrl:'https://www.hare2buy.com/product/19633' },
+  { id:'SV8a-202', name:'ブースターex', nameEn:'', setCode:'SV8a', cardNo:'202/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:8800, buyPrice:5200, image:cdn('SV/SV8a/202'), saleUrl:'https://www.hareruya2.com/products/9667471212864', buyUrl:'https://www.hare2buy.com/product/19634' },
+  { id:'SV8a-204', name:'オーガポン かまどのめんex', nameEn:'', setCode:'SV8a', cardNo:'204/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:900, buyPrice:550, image:cdn('SV/SV8a/204'), saleUrl:'https://www.hareruya2.com/products/9667471278400', buyUrl:'https://www.hare2buy.com/product/19636' },
+  { id:'SV8a-205', name:'シャワーズex', nameEn:'', setCode:'SV8a', cardNo:'205/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:9000, buyPrice:7000, image:cdn('SV/SV8a/205'), saleUrl:'https://www.hareruya2.com/products/9667471343936', buyUrl:'https://www.hare2buy.com/product/19637' },
+  { id:'SV8a-206', name:'グレイシアex', nameEn:'', setCode:'SV8a', cardNo:'206/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:10000, buyPrice:8000, image:cdn('SV/SV8a/206'), saleUrl:'https://www.hareruya2.com/products/9667472490816', buyUrl:'https://www.hare2buy.com/product/19638' },
+  { id:'SV8a-208', name:'オーガポン いどのめんex', nameEn:'', setCode:'SV8a', cardNo:'208/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:1000, buyPrice:600, image:cdn('SV/SV8a/208'), saleUrl:'https://www.hareruya2.com/products/9667471475008', buyUrl:'https://www.hare2buy.com/product/19640' },
+  { id:'SV8a-209', name:'サンダースex', nameEn:'', setCode:'SV8a', cardNo:'209/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:8800, buyPrice:5000, image:cdn('SV/SV8a/209'), saleUrl:'https://www.hareruya2.com/products/9667471573312', buyUrl:'https://www.hare2buy.com/product/19641' },
+  { id:'SV8a-210', name:'テツノカイナex', nameEn:'', setCode:'SV8a', cardNo:'210/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:1200, buyPrice:400, image:cdn('SV/SV8a/210'), saleUrl:'https://www.hareruya2.com/products/9667472523584', buyUrl:'https://www.hare2buy.com/product/19642' },
+  { id:'SV8a-211', name:'エーフィex', nameEn:'', setCode:'SV8a', cardNo:'211/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:10500, buyPrice:8000, image:cdn('SV/SV8a/211'), saleUrl:'https://www.hareruya2.com/products/9667472556352', buyUrl:'https://www.hare2buy.com/product/19643' },
+  { id:'SV8a-212', name:'ニンフィアex', nameEn:'', setCode:'SV8a', cardNo:'212/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:21000, buyPrice:12000, image:cdn('SV/SV8a/212'), saleUrl:'https://www.hareruya2.com/products/9667471638848', buyUrl:'https://www.hare2buy.com/product/19644' },
+  { id:'SV8a-216', name:'オーガポン いしずえのめんex', nameEn:'', setCode:'SV8a', cardNo:'216/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:900, buyPrice:500, image:cdn('SV/SV8a/216'), saleUrl:'https://www.hareruya2.com/products/9667472654656', buyUrl:'https://www.hare2buy.com/product/19648' },
+  { id:'SV8a-217', name:'ブラッキーex', nameEn:'', setCode:'SV8a', cardNo:'217/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:72000, buyPrice:55000, image:cdn('SV/SV8a/217'), saleUrl:'https://www.hareruya2.com/products/9667471835456', buyUrl:'https://www.hare2buy.com/product/19649' },
+  { id:'SV8a-221', name:'ドラパルトex', nameEn:'', setCode:'SV8a', cardNo:'221/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:2600, buyPrice:1700, image:cdn('SV/SV8a/221'), saleUrl:'https://www.hareruya2.com/products/9667471966528', buyUrl:'https://www.hare2buy.com/product/19653' },
+  { id:'SV8a-223', name:'イーブイex', nameEn:'', setCode:'SV8a', cardNo:'223/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:6800, buyPrice:4000, image:cdn('SV/SV8a/223'), saleUrl:'https://www.hareruya2.com/products/9667472097600', buyUrl:'https://www.hare2buy.com/product/19655' },
+  { id:'SV8a-224', name:'イーブイex', nameEn:'', setCode:'SV8a', cardNo:'224/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:6400, buyPrice:3700, image:cdn('SV/SV8a/224'), saleUrl:'https://www.hareruya2.com/products/9667472163136', buyUrl:'https://www.hare2buy.com/product/19656' },
+  { id:'SV8a-226', name:'テラパゴスex', nameEn:'', setCode:'SV8a', cardNo:'226/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:1000, buyPrice:600, image:cdn('SV/SV8a/226'), saleUrl:'https://www.hareruya2.com/products/9667472818496', buyUrl:'https://www.hare2buy.com/product/19658' },
+  { id:'SV8a-234', name:'オーガポン みどりのめんex', nameEn:'', setCode:'SV8a', cardNo:'234/187', set:'SV8a テラスタルフェスex', rarity:'UR', nowPrice:700, buyPrice:300, image:cdn('SV/SV8a/234'), saleUrl:'https://www.hareruya2.com/products/9667473047872', buyUrl:'https://www.hare2buy.com/product/19666' },
+  { id:'SV8a-236', name:'ピカチュウex', nameEn:'', setCode:'SV8a', cardNo:'236/187', set:'SV8a テラスタルフェスex', rarity:'UR', nowPrice:15000, buyPrice:8000, image:cdn('SV/SV8a/236'), saleUrl:'https://www.hareruya2.com/products/9667473080640', buyUrl:'https://www.hare2buy.com/product/19668' },
+  { id:'SV8a-237', name:'テラパゴスex', nameEn:'', setCode:'SV8a', cardNo:'237/187', set:'SV8a テラスタルフェスex', rarity:'UR', nowPrice:900, buyPrice:450, image:cdn('SV/SV8a/237'), saleUrl:'https://www.hareruya2.com/products/9667473146176', buyUrl:'https://www.hare2buy.com/product/19669' },
+  { id:'SV7a-078', name:'ラティアスex', nameEn:'', setCode:'SV7a', cardNo:'078/064', set:'SV7a 楽園ドラゴーナ', rarity:'SR', nowPrice:3000, buyPrice:2100, image:cdn('SV/SV7a/078'), saleUrl:'https://www.hareruya2.com/products/9586615386432', buyUrl:'https://www.hare2buy.com/product/19020' },
+  { id:'SV7a-087', name:'ラティアスex', nameEn:'', setCode:'SV7a', cardNo:'087/064', set:'SV7a 楽園ドラゴーナ', rarity:'SAR', nowPrice:30000, buyPrice:16000, image:cdn('SV/SV7a/087'), saleUrl:'https://www.hareruya2.com/products/9586617385280', buyUrl:'https://www.hare2buy.com/product/19029' },
+  { id:'SV7-122', name:'テラパゴスex', nameEn:'', setCode:'SV7', cardNo:'122/102', set:'SV7 ステラミラクル', rarity:'SR', nowPrice:500, buyPrice:null, image:cdn('SV/SV7/122'), saleUrl:'https://www.hareruya2.com/products/9501512827200', buyUrl:'' },
+  { id:'SV5a-083', name:'ゲッコウガex', nameEn:'', setCode:'SV5a', cardNo:'083/066', set:'SV5a クリムゾンヘイズ', rarity:'SR', nowPrice:2900, buyPrice:2000, image:cdn('SV/SV5a/083'), saleUrl:'https://www.hareruya2.com/products/9123436527936', buyUrl:'https://www.hare2buy.com/product/18439' },
+  { id:'SV5a-090', name:'ゲッコウガex', nameEn:'', setCode:'SV5a', cardNo:'090/066', set:'SV5a クリムゾンヘイズ', rarity:'SAR', nowPrice:51000, buyPrice:27000, image:cdn('SV/SV5a/090'), saleUrl:'https://www.hareruya2.com/products/9123437412672', buyUrl:'https://www.hare2buy.com/product/18446' },
+  { id:'SV4a-327', name:'ミュウex', nameEn:'', setCode:'SV4a', cardNo:'327/190', set:'SV4a レイジングサーフ', rarity:'SSR', nowPrice:4800, buyPrice:3700, image:cdn('SV/SV4a/327'), saleUrl:'https://www.hareruya2.com/products/9017569149248', buyUrl:'https://www.hare2buy.com/product/17886' },
+  { id:'SV4a-328', name:'サーナイトex', nameEn:'', setCode:'SV4a', cardNo:'328/190', set:'SV4a レイジングサーフ', rarity:'SSR', nowPrice:1200, buyPrice:650, image:cdn('SV/SV4a/328'), saleUrl:'https://www.hareruya2.com/products/9017569345856', buyUrl:'https://www.hare2buy.com/product/17887' },
+  { id:'SV4a-331', name:'リザードンex', nameEn:'', setCode:'SV4a', cardNo:'331/190', set:'SV4a レイジングサーフ', rarity:'SSR', nowPrice:4300, buyPrice:2800, image:cdn('SV/SV4a/331'), saleUrl:'https://www.hareruya2.com/products/9017570328896', buyUrl:'https://www.hare2buy.com/product/17890' },
+  { id:'SV4a-348', name:'サーナイトex', nameEn:'', setCode:'SV4a', cardNo:'348/190', set:'SV4a レイジングサーフ', rarity:'SAR', nowPrice:19000, buyPrice:10000, image:cdn('SV/SV4a/348'), saleUrl:'https://www.hareruya2.com/products/9017543950656', buyUrl:'https://www.hare2buy.com/product/17907' },
+  { id:'SV3-125', name:'リザードンex', nameEn:'', setCode:'SV3', cardNo:'125/108', set:'SV3 黒炎の支配者', rarity:'SR', nowPrice:5000, buyPrice:3500, image:cdn('SV/SV3/125'), saleUrl:'https://www.hareruya2.com/products/9017488048448', buyUrl:'https://www.hare2buy.com/product/16749' },
+  { id:'SV3-134', name:'リザードンex', nameEn:'', setCode:'SV3', cardNo:'134/108', set:'SV3 黒炎の支配者', rarity:'SAR', nowPrice:57000, buyPrice:30000, image:cdn('SV/SV3/134'), saleUrl:'https://www.hareruya2.com/products/9017393807680', buyUrl:'https://www.hare2buy.com/product/16758' },
+  { id:'SV2a-195', name:'ミュウex', nameEn:'', setCode:'SV2a', cardNo:'195/165', set:'SV2a ポケモンカード151', rarity:'SR', nowPrice:4300, buyPrice:3300, image:cdn('SV/SV2a/195'), saleUrl:'https://www.hareruya2.com/products/9017519702336', buyUrl:'https://www.hare2buy.com/product/16470' },
+  { id:'SV2a-208', name:'ミュウex', nameEn:'', setCode:'SV2a', cardNo:'208/165', set:'SV2a ポケモンカード151', rarity:'UR', nowPrice:21000, buyPrice:10000, image:cdn('SV/SV2a/208'), saleUrl:'https://www.hareruya2.com/products/9017522389312', buyUrl:'https://www.hare2buy.com/product/16483' },
+  { id:'SV1S-092', name:'サーナイトex', nameEn:'', setCode:'SV1S', cardNo:'092/078', set:'SV1S スカーレットex', rarity:'SR', nowPrice:650, buyPrice:350, image:cdn('SV/SV1S/092'), saleUrl:'https://www.hareruya2.com/products/9017345245504', buyUrl:'https://www.hare2buy.com/product/15487' },
+  { id:'S12a-210', name:'リーフィアVSTAR', nameEn:'', setCode:'S12a', cardNo:'210/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:8000, buyPrice:6000, image:cdn('S/S12a/210'), saleUrl:'https://www.hareruya2.com/products/9017182519616', buyUrl:'https://www.hare2buy.com/product/15141' },
+  { id:'S12a-217', name:'グレイシアVSTAR', nameEn:'', setCode:'S12a', cardNo:'217/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:6700, buyPrice:5000, image:cdn('S/S12a/217'), saleUrl:'https://www.hareruya2.com/products/9017185239360', buyUrl:'https://www.hare2buy.com/product/15148' },
+  { id:'S12a-226', name:'ルカリオVSTAR', nameEn:'', setCode:'S12a', cardNo:'226/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:4800, buyPrice:2800, image:cdn('S/S12a/226'), saleUrl:'https://www.hareruya2.com/products/9017312969024', buyUrl:'https://www.hare2buy.com/product/15157' },
+  { id:'S12a-261', name:'ギラティナVSTAR', nameEn:'', setCode:'S12a', cardNo:'261/172', set:'S12a VSTARユニバース', rarity:'UR', nowPrice:38000, buyPrice:28000, image:cdn('S/S12a/261'), saleUrl:'https://www.hareruya2.com/products/9017284395328', buyUrl:'https://www.hare2buy.com/product/15192' },
+  { id:'S9-111', name:'アルセウスV', nameEn:'', setCode:'S9', cardNo:'111/100', set:'S9 スターバース', rarity:'SR', nowPrice:800, buyPrice:null, image:cdn('S/S9/111'), saleUrl:'https://www.hareruya2.com/products/9016906744128', buyUrl:'' },
+  { id:'S9-112', name:'アルセウスV', nameEn:'', setCode:'S9', cardNo:'112/100', set:'S9 スターバース', rarity:'SR', nowPrice:11000, buyPrice:6500, image:cdn('S/S9/112'), saleUrl:'https://www.hareruya2.com/products/9016908087616', buyUrl:'https://www.hare2buy.com/product/8744' },
+  { id:'S9-120', name:'アルセウスVSTAR', nameEn:'', setCode:'S9', cardNo:'120/100', set:'S9 スターバース', rarity:'HR', nowPrice:2500, buyPrice:1300, image:cdn('S/S9/120'), saleUrl:'https://www.hareruya2.com/products/9016923160896', buyUrl:'https://www.hare2buy.com/product/8752' },
+  { id:'SV9-104', name:'ナンジャモのタイカイデン', nameEn:'', setCode:'SV9', cardNo:'104/100', set:'SV9 バトルパートナーズ', rarity:'AR', nowPrice:650, buyPrice:200, image:cdn('SV/SV9/104'), saleUrl:'https://www.hareruya2.com/products/9708382421312', buyUrl:'https://www.hare2buy.com/product/19993' },
+  { id:'SV9-105', name:'リーリエのアブリボン', nameEn:'', setCode:'SV9', cardNo:'105/100', set:'SV9 バトルパートナーズ', rarity:'AR', nowPrice:900, buyPrice:400, image:cdn('SV/SV9/105'), saleUrl:'https://www.hareruya2.com/products/9708382585152', buyUrl:'https://www.hare2buy.com/product/19994' },
+  { id:'SV8a-230', name:'スグリ', nameEn:'', setCode:'SV8a', cardNo:'230/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:1100, buyPrice:650, image:cdn('SV/SV8a/230'), saleUrl:'https://www.hareruya2.com/products/9667472949568', buyUrl:'https://www.hare2buy.com/product/19662' },
+  { id:'SV8a-231', name:'タロ', nameEn:'', setCode:'SV8a', cardNo:'231/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:1200, buyPrice:600, image:cdn('SV/SV8a/231'), saleUrl:'https://www.hareruya2.com/products/9667472392512', buyUrl:'https://www.hare2buy.com/product/19663' },
+  { id:'SV7a-086', name:'ルチアのアピール', nameEn:'', setCode:'SV7a', cardNo:'086/064', set:'SV7a 楽園ドラゴーナ', rarity:'SR', nowPrice:4500, buyPrice:2700, image:cdn('SV/SV7a/086'), saleUrl:'https://www.hareruya2.com/products/9586617123136', buyUrl:'https://www.hare2buy.com/product/19028' },
+  { id:'SV7a-091', name:'ルチアのアピール', nameEn:'', setCode:'SV7a', cardNo:'091/064', set:'SV7a 楽園ドラゴーナ', rarity:'SAR', nowPrice:26000, buyPrice:14000, image:cdn('SV/SV7a/091'), saleUrl:'https://www.hareruya2.com/products/9586617844032', buyUrl:'https://www.hare2buy.com/product/19033' },
+  { id:'SV7-124', name:'タロ', nameEn:'', setCode:'SV7', cardNo:'124/102', set:'SV7 ステラミラクル', rarity:'SR', nowPrice:1400, buyPrice:900, image:cdn('SV/SV7/124'), saleUrl:'https://www.hareruya2.com/products/9501512696128', buyUrl:'https://www.hare2buy.com/product/18813' },
+  { id:'SV7-131', name:'タロ', nameEn:'', setCode:'SV7', cardNo:'131/102', set:'SV7 ステラミラクル', rarity:'SAR', nowPrice:6300, buyPrice:3700, image:cdn('SV/SV7/131'), saleUrl:'https://www.hareruya2.com/products/9501512073536', buyUrl:'https://www.hare2buy.com/product/18820' },
+  { id:'SV5a-067', name:'カイロス', nameEn:'', setCode:'SV5a', cardNo:'067/066', set:'SV5a クリムゾンヘイズ', rarity:'AR', nowPrice:800, buyPrice:350, image:cdn('SV/SV5a/067'), saleUrl:'https://www.hareruya2.com/products/9123434398016', buyUrl:'https://www.hare2buy.com/product/18423' },
+  { id:'SV5a-078', name:'イーブイ', nameEn:'', setCode:'SV5a', cardNo:'078/066', set:'SV5a クリムゾンヘイズ', rarity:'AR', nowPrice:6000, buyPrice:3600, image:cdn('SV/SV5a/078'), saleUrl:'https://www.hareruya2.com/products/9123435610432', buyUrl:'https://www.hare2buy.com/product/18434' },
+  { id:'SV4a-212', name:'パルデア ケンタロス', nameEn:'', setCode:'SV4a', cardNo:'212/190', set:'SV4a レイジングサーフ', rarity:'S', nowPrice:200, buyPrice:null, image:cdn('SV/SV4a/212'), saleUrl:'https://www.hareruya2.com/products/9017585598784', buyUrl:'' },
+  { id:'SV4a-223', name:'パルデア ケンタロス', nameEn:'', setCode:'SV4a', cardNo:'223/190', set:'SV4a レイジングサーフ', rarity:'S', nowPrice:150, buyPrice:null, image:cdn('SV/SV4a/223'), saleUrl:'https://www.hareruya2.com/products/9017589236032', buyUrl:'' },
+  { id:'SV4a-250', name:'カイデン', nameEn:'', setCode:'SV4a', cardNo:'250/190', set:'SV4a レイジングサーフ', rarity:'S', nowPrice:100, buyPrice:null, image:cdn('SV/SV4a/250'), saleUrl:'https://www.hareruya2.com/products/9017542050112', buyUrl:'' },
+  { id:'SV4a-251', name:'タイカイデン', nameEn:'', setCode:'SV4a', cardNo:'251/190', set:'SV4a レイジングサーフ', rarity:'S', nowPrice:100, buyPrice:null, image:cdn('SV/SV4a/251'), saleUrl:'https://www.hareruya2.com/products/9017542639936', buyUrl:'' },
+  { id:'SV4a-279', name:'パルデア ケンタロス', nameEn:'', setCode:'SV4a', cardNo:'279/190', set:'SV4a レイジングサーフ', rarity:'S', nowPrice:150, buyPrice:null, image:cdn('SV/SV4a/279'), saleUrl:'https://www.hareruya2.com/products/9017504530752', buyUrl:'' },
+  { id:'SV4a-281', name:'ルカリオ', nameEn:'', setCode:'SV4a', cardNo:'281/190', set:'SV4a レイジングサーフ', rarity:'S', nowPrice:1300, buyPrice:650, image:cdn('SV/SV4a/281'), saleUrl:'https://www.hareruya2.com/products/9017505186112', buyUrl:'https://www.hare2buy.com/product/17840' },
+  { id:'SV4a-353', name:'ペパー', nameEn:'', setCode:'SV4a', cardNo:'353/190', set:'SV4a レイジングサーフ', rarity:'SAR', nowPrice:850, buyPrice:300, image:cdn('SV/SV4a/353'), saleUrl:'https://www.hareruya2.com/products/9017498042688', buyUrl:'https://www.hare2buy.com/product/17912' },
+  { id:'SV4a-354', name:'ボタン', nameEn:'', setCode:'SV4a', cardNo:'354/190', set:'SV4a レイジングサーフ', rarity:'SAR', nowPrice:3500, buyPrice:2400, image:cdn('SV/SV4a/354'), saleUrl:'https://www.hareruya2.com/products/9017498337600', buyUrl:'https://www.hare2buy.com/product/17913' },
+  { id:'SV3a-071', name:'イベルタル', nameEn:'', setCode:'SV3a', cardNo:'071/062', set:'SV3a レイジングサーフ', rarity:'AR', nowPrice:1300, buyPrice:650, image:cdn('SV/SV3a/071'), saleUrl:'https://www.hareruya2.com/products/9017553322304', buyUrl:'https://www.hare2buy.com/product/16906' },
+  { id:'SV3-129', name:'オモダカ', nameEn:'', setCode:'SV3', cardNo:'129/108', set:'SV3 黒炎の支配者', rarity:'SR', nowPrice:600, buyPrice:null, image:cdn('SV/SV3/129'), saleUrl:'https://www.hareruya2.com/products/9017492144448', buyUrl:'' },
+  { id:'SV3-137', name:'オモダカ', nameEn:'', setCode:'SV3', cardNo:'137/108', set:'SV3 黒炎の支配者', rarity:'SAR', nowPrice:900, buyPrice:400, image:cdn('SV/SV3/137'), saleUrl:'https://www.hareruya2.com/products/9017396887872', buyUrl:'https://www.hare2buy.com/product/16761' },
+  { id:'SV2a-197', name:'サカキのカリスマ', nameEn:'', setCode:'SV2a', cardNo:'197/165', set:'SV2a ポケモンカード151', rarity:'SR', nowPrice:600, buyPrice:null, image:cdn('SV/SV2a/197'), saleUrl:'https://www.hareruya2.com/products/9017520095552', buyUrl:'' },
+  { id:'SV2a-207', name:'サカキのカリスマ', nameEn:'', setCode:'SV2a', cardNo:'207/165', set:'SV2a ポケモンカード151', rarity:'SAR', nowPrice:3200, buyPrice:2200, image:cdn('SV/SV2a/207'), saleUrl:'https://www.hareruya2.com/products/9017522192704', buyUrl:'https://www.hare2buy.com/product/16482' },
+  { id:'SV2D-091', name:'ナンジャモ', nameEn:'', setCode:'SV2D', cardNo:'091/071', set:'SV2D クレイバースト', rarity:'SR', nowPrice:6000, buyPrice:3400, image:cdn('SV/SV2D/091'), saleUrl:'https://www.hareruya2.com/products/9017411567936', buyUrl:'https://www.hare2buy.com/product/15853' },
+  { id:'S9-103', name:'リザードンV:SA', nameEn:'', setCode:'S9', cardNo:'103/100', set:'S9 スターバース', rarity:'SR', nowPrice:50000, buyPrice:28000, image:cdn('S/S9/103'), saleUrl:'https://www.hareruya2.com/products/9016985092416', buyUrl:'https://www.hare2buy.com/product/8735' },
+  { id:'SV2a-202', name:'カメックスex', nameEn:'', setCode:'SV2a', cardNo:'202/165', set:'SV2a ポケモンカード151', rarity:'SAR', nowPrice:24000, buyPrice:12000, image:cdn('SV/SV2a/202'), saleUrl:'https://www.hareruya2.com/products/9017521144128', buyUrl:'https://www.hare2buy.com/product/16477' },
+  { id:'SV2a-204', name:'サンダーex', nameEn:'', setCode:'SV2a', cardNo:'204/165', set:'SV2a ポケモンカード151', rarity:'SAR', nowPrice:24000, buyPrice:17000, image:cdn('SV/SV2a/204'), saleUrl:'https://www.hareruya2.com/products/9017521471808', buyUrl:'https://www.hare2buy.com/product/16479' },
+  { id:'SV2a-200', name:'フシギバナex', nameEn:'', setCode:'SV2a', cardNo:'200/165', set:'SV2a ポケモンカード151', rarity:'SAR', nowPrice:23000, buyPrice:14000, image:cdn('SV/SV2a/200'), saleUrl:'https://www.hareruya2.com/products/9017520783680', buyUrl:'https://www.hare2buy.com/product/16475' },
+  { id:'S9-118', name:'リザードンVSTAR', nameEn:'', setCode:'S9', cardNo:'118/100', set:'S9 スターバース', rarity:'HR', nowPrice:18000, buyPrice:10000, image:cdn('S/S9/118'), saleUrl:'https://www.hareruya2.com/products/9016917262656', buyUrl:'https://www.hare2buy.com/product/8750' },
+  { id:'S9a-083', name:'スターミーV', nameEn:'', setCode:'S9a', cardNo:'083/067', set:'S9a バトルリージョン', rarity:'CSR', nowPrice:17000, buyPrice:9000, image:cdn('S/S9a/083'), saleUrl:'https://www.hareruya2.com/products/9017116426560', buyUrl:'https://www.hare2buy.com/product/8966' },
+  { id:'SV1V-105', name:'ミモザ', nameEn:'', setCode:'SV1V', cardNo:'105/078', set:'SV1V バイオレットex', rarity:'SAR', nowPrice:15000, buyPrice:9000, image:cdn('SV/SV1V/105'), saleUrl:'https://www.hareruya2.com/products/9017238683968', buyUrl:'https://www.hare2buy.com/product/15530' },
+  { id:'SV5a-092', name:'サザレ', nameEn:'', setCode:'SV5a', cardNo:'092/066', set:'SV5a クリムゾンヘイズ', rarity:'SAR', nowPrice:12000, buyPrice:9500, image:cdn('SV/SV5a/092'), saleUrl:'https://www.hareruya2.com/products/9123437773120', buyUrl:'https://www.hare2buy.com/product/18448' },
+  { id:'SV2a-203', name:'フーディンex', nameEn:'', setCode:'SV2a', cardNo:'203/165', set:'SV2a ポケモンカード151', rarity:'SAR', nowPrice:12000, buyPrice:9500, image:cdn('SV/SV2a/203'), saleUrl:'https://www.hareruya2.com/products/9017521373504', buyUrl:'https://www.hare2buy.com/product/16478' },
+  { id:'S12a-260', name:'オリジンディアルガVSTAR', nameEn:'', setCode:'S12a', cardNo:'260/172', set:'S12a VSTARユニバース', rarity:'UR', nowPrice:12000, buyPrice:6500, image:cdn('S/S12a/260'), saleUrl:'https://www.hareruya2.com/products/9017281970496', buyUrl:'https://www.hare2buy.com/product/15191' },
+  { id:'SV2a-206', name:'エリカの招待', nameEn:'', setCode:'SV2a', cardNo:'206/165', set:'SV2a ポケモンカード151', rarity:'SAR', nowPrice:10000, buyPrice:7500, image:cdn('SV/SV2a/206'), saleUrl:'https://www.hareruya2.com/products/9017521963328', buyUrl:'https://www.hare2buy.com/product/16481' },
+  { id:'SV4M-090', name:'チルタリスex', nameEn:'', setCode:'SV4M', cardNo:'090/066', set:'SV4M 未来の一閃', rarity:'SAR', nowPrice:9500, buyPrice:5700, image:cdn('SV/SV4M/090'), saleUrl:'https://www.hareruya2.com/products/9017528058176', buyUrl:'https://www.hare2buy.com/product/17156' },
+  { id:'S12a-228', name:'ダークライVSTAR', nameEn:'', setCode:'S12a', cardNo:'228/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:9000, buyPrice:5000, image:cdn('S/S12a/228'), saleUrl:'https://www.hareruya2.com/products/9017314771264', buyUrl:'https://www.hare2buy.com/product/15159' },
+  { id:'SV3a-089', name:'パラソルおねえさん', nameEn:'', setCode:'SV3a', cardNo:'089/062', set:'SV3a レイジングサーフ', rarity:'SAR', nowPrice:8500, buyPrice:5500, image:cdn('SV/SV3a/089'), saleUrl:'https://www.hareruya2.com/products/9017560006976', buyUrl:'https://www.hare2buy.com/product/16924' },
+  { id:'SV9-127', name:'Nのゾロアークex', nameEn:'', setCode:'SV9', cardNo:'127/100', set:'SV9 バトルパートナーズ', rarity:'SAR', nowPrice:8000, buyPrice:5400, image:cdn('SV/SV9/127'), saleUrl:'https://www.hareruya2.com/products/9708382748992', buyUrl:'https://www.hare2buy.com/product/20016' },
+  { id:'SV5K-088', name:'ゲンガーex', nameEn:'', setCode:'SV5K', cardNo:'088/071', set:'SV5K ワイルドフォース', rarity:'SR', nowPrice:8000, buyPrice:5000, image:cdn('SV/SV5K/088'), saleUrl:'https://www.hareruya2.com/products/9062694945088', buyUrl:'https://www.hare2buy.com/product/18007' },
+  { id:'SV2a-185', name:'リザードンex', nameEn:'', setCode:'SV2a', cardNo:'185/165', set:'SV2a ポケモンカード151', rarity:'SR', nowPrice:8000, buyPrice:6200, image:cdn('SV/SV2a/185'), saleUrl:'https://www.hareruya2.com/products/9017517834560', buyUrl:'https://www.hare2buy.com/product/16460' },
+  { id:'SV5K-097', name:'マツバの確信', nameEn:'', setCode:'SV5K', cardNo:'097/071', set:'SV5K ワイルドフォース', rarity:'SAR', nowPrice:7500, buyPrice:4500, image:cdn('SV/SV5K/097'), saleUrl:'https://www.hareruya2.com/products/9062673645888', buyUrl:'https://www.hare2buy.com/product/18016' },
+  { id:'SV5K-095', name:'タケルライコex', nameEn:'', setCode:'SV5K', cardNo:'095/071', set:'SV5K ワイルドフォース', rarity:'SAR', nowPrice:7000, buyPrice:4400, image:cdn('SV/SV5K/095'), saleUrl:'https://www.hareruya2.com/products/9062677184832', buyUrl:'https://www.hare2buy.com/product/18014' },
+  { id:'SV4K-090', name:'トドロクツキex', nameEn:'', setCode:'SV4K', cardNo:'090/066', set:'SV4K 古代の咆哮', rarity:'SAR', nowPrice:7000, buyPrice:5000, image:cdn('SV/SV4K/090'), saleUrl:'https://www.hareruya2.com/products/9017548472640', buyUrl:'https://www.hare2buy.com/product/17061' },
+  { id:'SV4K-095', name:'基本悪エネルギー', nameEn:'', setCode:'SV4K', cardNo:'095/066', set:'SV4K 古代の咆哮', rarity:'UR', nowPrice:6500, buyPrice:5000, image:cdn('SV/SV4K/095'), saleUrl:'https://www.hareruya2.com/products/9017554665792', buyUrl:'https://www.hare2buy.com/product/17066' },
+  { id:'SV2a-168', name:'ヒトカゲ', nameEn:'', setCode:'SV2a', cardNo:'168/165', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:6500, buyPrice:4800, image:cdn('SV/SV2a/168'), saleUrl:'https://www.hareruya2.com/products/9017512788288', buyUrl:'https://www.hare2buy.com/product/16443' },
+  { id:'SV3a-085', name:'ガブリアスex', nameEn:'', setCode:'SV3a', cardNo:'085/062', set:'SV3a レイジングサーフ', rarity:'SAR', nowPrice:6000, buyPrice:4200, image:cdn('SV/SV3a/085'), saleUrl:'https://www.hareruya2.com/products/9017558335808', buyUrl:'https://www.hare2buy.com/product/16920' },
+  { id:'S12a-215', name:'スイクンV', nameEn:'', setCode:'S12a', cardNo:'215/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:6000, buyPrice:4500, image:cdn('S/S12a/215'), saleUrl:'https://www.hareruya2.com/products/9017184682304', buyUrl:'https://www.hare2buy.com/product/15146' },
+  { id:'SV9-129', name:'ボーマンダex', nameEn:'', setCode:'SV9', cardNo:'129/100', set:'SV9 バトルパートナーズ', rarity:'SAR', nowPrice:5500, buyPrice:4000, image:cdn('SV/SV9/129'), saleUrl:'https://www.hareruya2.com/products/9708382945600', buyUrl:'https://www.hare2buy.com/product/20018' },
+  { id:'SV5K-094', name:'ウネルミナモex', nameEn:'', setCode:'SV5K', cardNo:'094/071', set:'SV5K ワイルドフォース', rarity:'SAR', nowPrice:5500, buyPrice:3400, image:cdn('SV/SV5K/094'), saleUrl:'https://www.hareruya2.com/products/9062679216448', buyUrl:'https://www.hare2buy.com/product/18013' },
+  { id:'SV11W-102', name:'ミジュマル', nameEn:'', setCode:'SV11W', cardNo:'102/086', set:'SV11W ホワイトフレア', rarity:'AR', nowPrice:5300, buyPrice:3200, image:'https://www.hareruya2.com/cdn/shop/files/03ARHQKQEn1DHZQitG4t8uxTlQAFW3ZouEXT2DBE.webp?v=1749114773', saleUrl:'https://www.hareruya2.com/products/9824667697472', buyUrl:'https://www.hare2buy.com/product/20682' },
+  { id:'SV5a-093', name:'スイレンのお世話', nameEn:'', setCode:'SV5a', cardNo:'093/066', set:'SV5a クリムゾンヘイズ', rarity:'SAR', nowPrice:5300, buyPrice:3200, image:cdn('SV/SV5a/093'), saleUrl:'https://www.hareruya2.com/products/9123436134720', buyUrl:'https://www.hare2buy.com/product/18449' },
+  { id:'SV3a-087', name:'サーフゴーex', nameEn:'', setCode:'SV3a', cardNo:'087/062', set:'SV3a レイジングサーフ', rarity:'SAR', nowPrice:5000, buyPrice:3000, image:cdn('SV/SV3a/087'), saleUrl:'https://www.hareruya2.com/products/9017558827328', buyUrl:'https://www.hare2buy.com/product/16922' },
+  { id:'SV2a-170', name:'ゼニガメ', nameEn:'', setCode:'SV2a', cardNo:'170/165', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:4500, buyPrice:3600, image:cdn('SV/SV2a/170'), saleUrl:'https://www.hareruya2.com/products/9017513574720', buyUrl:'https://www.hare2buy.com/product/16445' },
+  { id:'SV2a-166', name:'フシギダネ', nameEn:'', setCode:'SV2a', cardNo:'166/165', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:4400, buyPrice:3400, image:cdn('SV/SV2a/166'), saleUrl:'https://www.hareruya2.com/products/9017511969088', buyUrl:'https://www.hare2buy.com/product/16441' },
+  { id:'SV9-128', name:'ホップのザシアンex', nameEn:'', setCode:'SV9', cardNo:'128/100', set:'SV9 バトルパートナーズ', rarity:'SAR', nowPrice:4300, buyPrice:2500, image:cdn('SV/SV9/128'), saleUrl:'https://www.hareruya2.com/products/9708382552384', buyUrl:'https://www.hare2buy.com/product/20017' },
+  { id:'SV8a-218', name:'トドロクツキex', nameEn:'', setCode:'SV8a', cardNo:'218/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:4000, buyPrice:2500, image:cdn('SV/SV8a/218'), saleUrl:'https://www.hareruya2.com/products/9667472687424', buyUrl:'https://www.hare2buy.com/product/19650' },
+  { id:'SV5a-091', name:'ガチグマアカツキex', nameEn:'', setCode:'SV5a', cardNo:'091/066', set:'SV5a クリムゾンヘイズ', rarity:'SAR', nowPrice:4000, buyPrice:2400, image:cdn('SV/SV5a/091'), saleUrl:'https://www.hareruya2.com/products/9123437609280', buyUrl:'https://www.hare2buy.com/product/18447' },
+  { id:'SV5K-080', name:'ゴース', nameEn:'', setCode:'SV5K', cardNo:'080/071', set:'SV5K ワイルドフォース', rarity:'AR', nowPrice:4000, buyPrice:3000, image:cdn('SV/SV5K/080'), saleUrl:'https://www.hareruya2.com/products/9062713917760', buyUrl:'https://www.hare2buy.com/product/17999' },
+  { id:'SV5K-093', name:'ウガツホムラex', nameEn:'', setCode:'SV5K', cardNo:'093/071', set:'SV5K ワイルドフォース', rarity:'SAR', nowPrice:4000, buyPrice:2400, image:cdn('SV/SV5K/093'), saleUrl:'https://www.hareruya2.com/products/9062680002880', buyUrl:'https://www.hare2buy.com/product/18012' },
+  { id:'SV3a-069', name:'グラードン', nameEn:'', setCode:'SV3a', cardNo:'069/062', set:'SV3a レイジングサーフ', rarity:'AR', nowPrice:4000, buyPrice:3000, image:cdn('SV/SV3a/069'), saleUrl:'https://www.hareruya2.com/products/9017551552832', buyUrl:'https://www.hare2buy.com/product/16904' },
+  { id:'SV2a-175', name:'コダック', nameEn:'', setCode:'SV2a', cardNo:'175/165', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:4000, buyPrice:3000, image:cdn('SV/SV2a/175'), saleUrl:'https://www.hareruya2.com/products/9017515180352', buyUrl:'https://www.hare2buy.com/product/16450' },
+  { id:'S12a-223', name:'デオキシスVSTAR', nameEn:'', setCode:'S12a', cardNo:'223/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:4000, buyPrice:2500, image:cdn('S/S12a/223'), saleUrl:'https://www.hareruya2.com/products/9017310150976', buyUrl:'https://www.hare2buy.com/product/15154' },
+  { id:'SV7-129', name:'バウッツェルex', nameEn:'', setCode:'SV7', cardNo:'129/102', set:'SV7 ステラミラクル', rarity:'SAR', nowPrice:3800, buyPrice:2500, image:cdn('SV/SV7/129'), saleUrl:'https://www.hareruya2.com/products/9501512139072', buyUrl:'https://www.hare2buy.com/product/18818' },
+  { id:'SV7-127', name:'カミツオロチex', nameEn:'', setCode:'SV7', cardNo:'127/102', set:'SV7 ステラミラクル', rarity:'SAR', nowPrice:3600, buyPrice:2500, image:cdn('SV/SV7/127'), saleUrl:'https://www.hareruya2.com/products/9501512237376', buyUrl:'https://www.hare2buy.com/product/18816' },
+  { id:'SV7a-089', name:'アローラナッシーex', nameEn:'', setCode:'SV7a', cardNo:'089/064', set:'SV7a 楽園ドラゴーナ', rarity:'SAR', nowPrice:3500, buyPrice:2100, image:cdn('SV/SV7a/089'), saleUrl:'https://www.hareruya2.com/products/9586617614656', buyUrl:'https://www.hare2buy.com/product/19031' },
+  { id:'SV3a-088', name:'チリ', nameEn:'', setCode:'SV3a', cardNo:'088/062', set:'SV3a レイジングサーフ', rarity:'SAR', nowPrice:3500, buyPrice:2400, image:cdn('SV/SV3a/088'), saleUrl:'https://www.hareruya2.com/products/9017559613760', buyUrl:'https://www.hare2buy.com/product/16923' },
+  { id:'SV2a-169', name:'リザード', nameEn:'', setCode:'SV2a', cardNo:'169/165', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:3500, buyPrice:2800, image:cdn('SV/SV2a/169'), saleUrl:'https://www.hareruya2.com/products/9017513181504', buyUrl:'https://www.hare2buy.com/product/16444' },
+  { id:'SV2a-196', name:'エリカの招待', nameEn:'', setCode:'SV2a', cardNo:'196/165', set:'SV2a ポケモンカード151', rarity:'SR', nowPrice:3500, buyPrice:2800, image:cdn('SV/SV2a/196'), saleUrl:'https://www.hareruya2.com/products/9017519898944', buyUrl:'https://www.hare2buy.com/product/16471' },
+  { id:'SV1S-108', name:'基本闘エネルギー', nameEn:'', setCode:'SV1S', cardNo:'108/078', set:'SV1S スカーレットex', rarity:'UR', nowPrice:3500, buyPrice:2500, image:cdn('SV/SV1S/108'), saleUrl:'https://www.hareruya2.com/products/9017290129728', buyUrl:'https://www.hare2buy.com/product/15503' },
+  { id:'S12a-220', name:'ゼラオラVSTAR', nameEn:'', setCode:'S12a', cardNo:'220/172', set:'S12a VSTARユニバース', rarity:'SAR', nowPrice:3500, buyPrice:1800, image:cdn('S/S12a/220'), saleUrl:'https://www.hareruya2.com/products/9017186419008', buyUrl:'https://www.hare2buy.com/product/15151' },
+  { id:'S12-103', name:'アンノーンV:SA', nameEn:'', setCode:'S12', cardNo:'103/098', set:'S12 パラダイムトリガー', rarity:'SR', nowPrice:3500, buyPrice:2500, image:cdn('S/S12/103'), saleUrl:'https://www.hareruya2.com/products/9017272467776', buyUrl:'https://www.hare2buy.com/product/14799' },
+  { id:'SV4M-089', name:'テツノブジンex', nameEn:'', setCode:'SV4M', cardNo:'089/066', set:'SV4M 未来の一閃', rarity:'SAR', nowPrice:3400, buyPrice:2200, image:cdn('SV/SV4M/089'), saleUrl:'https://www.hareruya2.com/products/9017527599424', buyUrl:'https://www.hare2buy.com/product/17155' },
+  { id:'SV2D-081', name:'イッカネズミ', nameEn:'', setCode:'SV2D', cardNo:'081/071', set:'SV2D クレイバースト', rarity:'AR', nowPrice:3400, buyPrice:2100, image:cdn('SV/SV2D/081'), saleUrl:'https://www.hareruya2.com/products/9017409110336', buyUrl:'https://www.hare2buy.com/product/15843' },
+  { id:'SV4a-341', name:'ミミッキュ', nameEn:'', setCode:'SV4a', cardNo:'341/190', set:'SV4a レイジングサーフ', rarity:'AR', nowPrice:3300, buyPrice:2300, image:cdn('SV/SV4a/341'), saleUrl:'https://www.hareruya2.com/products/9017572229440', buyUrl:'https://www.hare2buy.com/product/17900' },
+  { id:'SV2a-184', name:'フシギバナex', nameEn:'', setCode:'SV2a', cardNo:'184/165', set:'SV2a ポケモンカード151', rarity:'SR', nowPrice:3300, buyPrice:2500, image:cdn('SV/SV2a/184'), saleUrl:'https://www.hareruya2.com/products/9017517441344', buyUrl:'https://www.hare2buy.com/product/16459' },
+  { id:'S12-108', name:'レジドラゴV:SA', nameEn:'', setCode:'S12', cardNo:'108/098', set:'S12 パラダイムトリガー', rarity:'SR', nowPrice:3300, buyPrice:2600, image:cdn('S/S12/108'), saleUrl:'https://www.hareruya2.com/products/9017212305728', buyUrl:'https://www.hare2buy.com/product/14804' },
+  { id:'SV3-136', name:'ピジョットex', nameEn:'', setCode:'SV3', cardNo:'136/108', set:'SV3 黒炎の支配者', rarity:'SAR', nowPrice:3200, buyPrice:2300, image:cdn('SV/SV3/136'), saleUrl:'https://www.hareruya2.com/products/9017395806528', buyUrl:'https://www.hare2buy.com/product/16760' },
+  { id:'SV2a-171', name:'カメール', nameEn:'', setCode:'SV2a', cardNo:'171/165', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:3000, buyPrice:2300, image:cdn('SV/SV2a/171'), saleUrl:'https://www.hareruya2.com/products/9017514000704', buyUrl:'https://www.hare2buy.com/product/16446' },
+  { id:'SV7-123', name:'アカマツ', nameEn:'', setCode:'SV7', cardNo:'123/102', set:'SV7 ステラミラクル', rarity:'SR', nowPrice:2900, buyPrice:2000, image:cdn('SV/SV7/123'), saleUrl:'https://www.hareruya2.com/products/9501512401216', buyUrl:'https://www.hare2buy.com/product/18812' },
+  { id:'SV3a-090', name:'ガブリアスex', nameEn:'', setCode:'SV3a', cardNo:'090/062', set:'SV3a レイジングサーフ', rarity:'UR', nowPrice:2900, buyPrice:2000, image:cdn('SV/SV3a/090'), saleUrl:'https://www.hareruya2.com/products/9017560138048', buyUrl:'https://www.hare2buy.com/product/16925' },
+  { id:'SV2a-167', name:'フシギソウ', nameEn:'', setCode:'SV2a', cardNo:'167/165', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:2800, buyPrice:2100, image:cdn('SV/SV2a/167'), saleUrl:'https://www.hareruya2.com/products/9017512296768', buyUrl:'https://www.hare2buy.com/product/16442' },
+  { id:'SV2D-074', name:'ライチュウ', nameEn:'', setCode:'SV2D', cardNo:'074/071', set:'SV2D クレイバースト', rarity:'AR', nowPrice:2800, buyPrice:1800, image:cdn('SV/SV2D/074'), saleUrl:'https://www.hareruya2.com/products/9017405538624', buyUrl:'https://www.hare2buy.com/product/15836' },
+  { id:'SV11W-141', name:'ゾロアーク', nameEn:'', setCode:'SV11W', cardNo:'141/086', set:'SV11W ホワイトフレア', rarity:'AR', nowPrice:2700, buyPrice:1900, image:'https://www.hareruya2.com/cdn/shop/files/CI6YuPhbBQkyK9GPhbS0ecsQkeiBvifyboVtz91h.webp?v=1749114542', saleUrl:'https://www.hareruya2.com/products/9824662126912', buyUrl:'https://www.hare2buy.com/product/20721' },
+  { id:'SV4K-088', name:'グソクムシャex', nameEn:'', setCode:'SV4K', cardNo:'088/066', set:'SV4K 古代の咆哮', rarity:'SAR', nowPrice:2700, buyPrice:1900, image:cdn('SV/SV4K/088'), saleUrl:'https://www.hareruya2.com/products/9017547161920', buyUrl:'https://www.hare2buy.com/product/17059' },
+  { id:'SV2a-176', name:'ニョロゾ', nameEn:'', setCode:'SV2a', cardNo:'176/165', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:2700, buyPrice:1800, image:cdn('SV/SV2a/176'), saleUrl:'https://www.hareruya2.com/products/9017515475264', buyUrl:'https://www.hare2buy.com/product/16451' },
+  { id:'SV9-109', name:'Nのレシラム', nameEn:'', setCode:'SV9', cardNo:'109/100', set:'SV9 バトルパートナーズ', rarity:'AR', nowPrice:2600, buyPrice:1800, image:cdn('SV/SV9/109'), saleUrl:'https://www.hareruya2.com/products/9708382781760', buyUrl:'https://www.hare2buy.com/product/19998' },
+  { id:'SV8a-203', name:'ソウブレイズex', nameEn:'', setCode:'SV8a', cardNo:'203/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:2600, buyPrice:1800, image:cdn('SV/SV8a/203'), saleUrl:'https://www.hareruya2.com/products/9667472425280', buyUrl:'https://www.hare2buy.com/product/19635' },
+  { id:'SV11W-140', name:'ゾロア', nameEn:'', setCode:'SV11W', cardNo:'140/086', set:'SV11W ホワイトフレア', rarity:'AR', nowPrice:2500, buyPrice:1700, image:'https://www.hareruya2.com/cdn/shop/files/3eFAhz1hHZQh3yYiL5DRwlrJdiQ4iP6fNYSTueUv.webp?v=1749114537', saleUrl:'https://www.hareruya2.com/products/9824661995840', buyUrl:'https://www.hare2buy.com/product/20720' },
+  { id:'SV8a-222', name:'タケルライコex', nameEn:'', setCode:'SV8a', cardNo:'222/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:2500, buyPrice:1500, image:cdn('SV/SV8a/222'), saleUrl:'https://www.hareruya2.com/products/9667472032064', buyUrl:'https://www.hare2buy.com/product/19654' },
+  { id:'SV3a-086', name:'カプ・コケコex', nameEn:'', setCode:'SV3a', cardNo:'086/062', set:'SV3a レイジングサーフ', rarity:'SAR', nowPrice:2500, buyPrice:1600, image:cdn('SV/SV3a/086'), saleUrl:'https://www.hareruya2.com/products/9017558630720', buyUrl:'https://www.hare2buy.com/product/16921' },
+  { id:'SV3-110', name:'キュウコン', nameEn:'', setCode:'SV3', cardNo:'110/108', set:'SV3 黒炎の支配者', rarity:'AR', nowPrice:2500, buyPrice:1600, image:cdn('SV/SV3/110'), saleUrl:'https://www.hareruya2.com/products/9017479364928', buyUrl:'https://www.hare2buy.com/product/16734' },
+  { id:'SV8a-207', name:'イルカマンex', nameEn:'', setCode:'SV8a', cardNo:'207/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:2400, buyPrice:1500, image:cdn('SV/SV8a/207'), saleUrl:'https://www.hareruya2.com/products/9667471409472', buyUrl:'https://www.hare2buy.com/product/19639' },
+  { id:'SV7a-070', name:'ラティオス', nameEn:'', setCode:'SV7a', cardNo:'070/064', set:'SV7a 楽園ドラゴーナ', rarity:'AR', nowPrice:2400, buyPrice:1800, image:cdn('SV/SV7a/070'), saleUrl:'https://www.hareruya2.com/products/9586614075712', buyUrl:'https://www.hare2buy.com/product/19012' },
+  { id:'SV7-135', name:'ゼロの大空洞', nameEn:'', setCode:'SV7', cardNo:'135/102', set:'SV7 ステラミラクル', rarity:'UR', nowPrice:2400, buyPrice:1500, image:cdn('SV/SV7/135'), saleUrl:'https://www.hareruya2.com/products/9501511909696', buyUrl:'https://www.hare2buy.com/product/18824' },
+  { id:'SV5a-088', name:'スイレンのお世話', nameEn:'', setCode:'SV5a', cardNo:'088/066', set:'SV5a クリムゾンヘイズ', rarity:'SR', nowPrice:2400, buyPrice:1300, image:cdn('SV/SV5a/088'), saleUrl:'https://www.hareruya2.com/products/9123437281600', buyUrl:'https://www.hare2buy.com/product/18444' },
+  { id:'SV1V-100', name:'ミモザ', nameEn:'', setCode:'SV1V', cardNo:'100/078', set:'SV1V バイオレットex', rarity:'SR', nowPrice:2400, buyPrice:1400, image:cdn('SV/SV1V/100'), saleUrl:'https://www.hareruya2.com/products/9017236980032', buyUrl:'https://www.hare2buy.com/product/15525' },
+  { id:'SV7a-088', name:'ブリジュラスex', nameEn:'', setCode:'SV7a', cardNo:'088/064', set:'SV7a 楽園ドラゴーナ', rarity:'SAR', nowPrice:2300, buyPrice:1500, image:cdn('SV/SV7a/088'), saleUrl:'https://www.hareruya2.com/products/9586616795456', buyUrl:'https://www.hare2buy.com/product/19030' },
+  { id:'SV5K-096', name:'ビワ', nameEn:'', setCode:'SV5K', cardNo:'096/071', set:'SV5K ワイルドフォース', rarity:'SAR', nowPrice:2300, buyPrice:1500, image:cdn('SV/SV5K/096'), saleUrl:'https://www.hareruya2.com/products/9062675153216', buyUrl:'https://www.hare2buy.com/product/18015' },
+  { id:'SV5K-100', name:'タケルライコex', nameEn:'', setCode:'SV5K', cardNo:'100/071', set:'SV5K ワイルドフォース', rarity:'UR', nowPrice:2300, buyPrice:950, image:cdn('SV/SV5K/100'), saleUrl:'https://www.hareruya2.com/products/9062670008640', buyUrl:'https://www.hare2buy.com/product/18019' },
+  { id:'SV4M-095', name:'基本鋼エネルギー', nameEn:'', setCode:'SV4M', cardNo:'095/066', set:'SV4M 未来の一閃', rarity:'UR', nowPrice:2300, buyPrice:1200, image:cdn('SV/SV4M/095'), saleUrl:'https://www.hareruya2.com/products/9017531793728', buyUrl:'https://www.hare2buy.com/product/17161' },
+  { id:'SV2a-182', name:'ハクリュー', nameEn:'', setCode:'SV2a', cardNo:'182/165', set:'SV2a ポケモンカード151', rarity:'AR', nowPrice:2300, buyPrice:1500, image:cdn('SV/SV2a/182'), saleUrl:'https://www.hareruya2.com/products/9017517211968', buyUrl:'https://www.hare2buy.com/product/16457' },
+  { id:'SV2P-092', name:'チオンジェンex', nameEn:'', setCode:'SV2P', cardNo:'092/071', set:'SV2P スノーハザード', rarity:'SAR', nowPrice:2300, buyPrice:1600, image:cdn('SV/SV2P/092'), saleUrl:'https://www.hareruya2.com/products/9017458524480', buyUrl:'https://www.hare2buy.com/product/15953' },
+  { id:'SV2a-186', name:'カメックスex', nameEn:'', setCode:'SV2a', cardNo:'186/165', set:'SV2a ポケモンカード151', rarity:'SR', nowPrice:2200, buyPrice:1500, image:cdn('SV/SV2a/186'), saleUrl:'https://www.hareruya2.com/products/9017518031168', buyUrl:'https://www.hare2buy.com/product/16461' },
+  { id:'SV2a-210', name:'基本超エネルギー', nameEn:'', setCode:'SV2a', cardNo:'210/165', set:'SV2a ポケモンカード151', rarity:'UR', nowPrice:2200, buyPrice:1500, image:cdn('SV/SV2a/210'), saleUrl:'https://www.hareruya2.com/products/9062739640640', buyUrl:'https://www.hare2buy.com/product/16485' },
+  { id:'SV7-128', name:'デンチュラex', nameEn:'', setCode:'SV7', cardNo:'128/102', set:'SV7 ステラミラクル', rarity:'SAR', nowPrice:2100, buyPrice:1200, image:cdn('SV/SV7/128'), saleUrl:'https://www.hareruya2.com/products/9501512466752', buyUrl:'https://www.hare2buy.com/product/18817' },
+  { id:'SV4a-265', name:'ミミッキュ', nameEn:'', setCode:'SV4a', cardNo:'265/190', set:'SV4a レイジングサーフ', rarity:'S', nowPrice:2100, buyPrice:1300, image:cdn('SV/SV4a/265'), saleUrl:'https://www.hareruya2.com/products/9017499648320', buyUrl:'https://www.hare2buy.com/product/17824' },
+  { id:'SV3a-065', name:'プラスル', nameEn:'', setCode:'SV3a', cardNo:'065/062', set:'SV3a レイジングサーフ', rarity:'AR', nowPrice:2100, buyPrice:1300, image:cdn('SV/SV3a/065'), saleUrl:'https://www.hareruya2.com/products/9017546441024', buyUrl:'https://www.hare2buy.com/product/16900' },
+  { id:'SV3a-066', name:'マイナン', nameEn:'', setCode:'SV3a', cardNo:'066/062', set:'SV3a レイジングサーフ', rarity:'AR', nowPrice:2100, buyPrice:1300, image:cdn('SV/SV3a/066'), saleUrl:'https://www.hareruya2.com/products/9017547096384', buyUrl:'https://www.hare2buy.com/product/16901' },
+  { id:'SV11W-096', name:'ポカブ', nameEn:'', setCode:'SV11W', cardNo:'096/086', set:'SV11W ホワイトフレア', rarity:'AR', nowPrice:2000, buyPrice:1300, image:'https://www.hareruya2.com/cdn/shop/files/gZNmsZiLGpuAUbZopXDF6Xo9Q2OfCxeASLHXxPiv.webp?v=1749114688', saleUrl:'https://www.hareruya2.com/products/9824666124608', buyUrl:'https://www.hare2buy.com/product/20676' },
+  { id:'SV4K-092', name:'メロコ', nameEn:'', setCode:'SV4K', cardNo:'092/066', set:'SV4K 古代の咆哮', rarity:'SAR', nowPrice:2000, buyPrice:1100, image:cdn('SV/SV4K/092'), saleUrl:'https://www.hareruya2.com/products/9017552372032', buyUrl:'https://www.hare2buy.com/product/17063' },
+  { id:'SV7-132', name:'ブライア', nameEn:'', setCode:'SV7', cardNo:'132/102', set:'SV7 ステラミラクル', rarity:'SAR', nowPrice:1900, buyPrice:1100, image:cdn('SV/SV7/132'), saleUrl:'https://www.hareruya2.com/products/9501512171840', buyUrl:'https://www.hare2buy.com/product/18821' },
+  { id:'SV4a-210', name:'ヒトカゲ', nameEn:'', setCode:'SV4a', cardNo:'210/190', set:'SV4a レイジングサーフ', rarity:'S', nowPrice:1900, buyPrice:1100, image:cdn('SV/SV4a/210'), saleUrl:'https://www.hareruya2.com/products/9017585107264', buyUrl:'https://www.hare2buy.com/product/17769' },
+  { id:'SV4a-309', name:'メタモン', nameEn:'', setCode:'SV4a', cardNo:'309/190', set:'SV4a レイジングサーフ', rarity:'S', nowPrice:1900, buyPrice:1100, image:cdn('SV/SV4a/309'), saleUrl:'https://www.hareruya2.com/products/9017591300416', buyUrl:'https://www.hare2buy.com/product/17868' },
+  { id:'SV1V-086', name:'スリープ', nameEn:'', setCode:'SV1V', cardNo:'086/078', set:'SV1V バイオレットex', rarity:'AR', nowPrice:1900, buyPrice:1200, image:cdn('SV/SV1V/086'), saleUrl:'https://www.hareruya2.com/products/9017291538752', buyUrl:'https://www.hare2buy.com/product/15511' },
+  { id:'SV8a-227', name:'アカマツ', nameEn:'', setCode:'SV8a', cardNo:'227/187', set:'SV8a テラスタルフェスex', rarity:'SAR', nowPrice:1800, buyPrice:1200, image:cdn('SV/SV8a/227'), saleUrl:'https://www.hareruya2.com/products/9667472851264', buyUrl:'https://www.hare2buy.com/product/19659' },
+  { id:'SV4M-088', name:'テツノカイナex', nameEn:'', setCode:'SV4M', cardNo:'088/066', set:'SV4M 未来の一閃', rarity:'SAR', nowPrice:1800, buyPrice:1100, image:cdn('SV/SV4M/088'), saleUrl:'https://www.hareruya2.com/products/9017527107904', buyUrl:'https://www.hare2buy.com/product/17154' },
+  { id:'SV4M-092', name:'リップ', nameEn:'', setCode:'SV4M', cardNo:'092/066', set:'SV4M 未来の一閃', rarity:'SAR', nowPrice:1800, buyPrice:900, image:cdn('SV/SV4M/092'), saleUrl:'https://www.hareruya2.com/products/9017529729344', buyUrl:'https://www.hare2buy.com/product/17158' },
+  { id:'SV4M-094', name:'カウンターキャッチャー', nameEn:'', setCode:'SV4M', cardNo:'094/066', set:'SV4M 未来の一閃', rarity:'UR', nowPrice:1800, buyPrice:350, image:cdn('SV/SV4M/094'), saleUrl:'https://www.hareruya2.com/products/9017531302208', buyUrl:'https://www.hare2buy.com/product/17160' },
+  { id:'SV3-113', name:'ピィ', nameEn:'', setCode:'SV3', cardNo:'113/108', set:'SV3 黒炎の支配者', rarity:'AR', nowPrice:1800, buyPrice:1200, image:cdn('SV/SV3/113'), saleUrl:'https://www.hareruya2.com/products/9017479889216', buyUrl:'https://www.hare2buy.com/product/16737' },
+  { id:'SV5K-099', name:'ウネルミナモex', nameEn:'', setCode:'SV5K', cardNo:'099/071', set:'SV5K ワイルドフォース', rarity:'UR', nowPrice:1700, buyPrice:1050, image:cdn('SV/SV5K/099'), saleUrl:'https://www.hareruya2.com/products/9062671483200', buyUrl:'https://www.hare2buy.com/product/18018' },
+  { id:'SV2a-194', name:'サンダーex', nameEn:'', setCode:'SV2a', cardNo:'194/165', set:'SV2a ポケモンカード151', rarity:'SR', nowPrice:1700, buyPrice:950, image:cdn('SV/SV2a/194'), saleUrl:'https://www.hareruya2.com/products/9017519472960', buyUrl:'https://www.hare2buy.com/product/16469' },
+  { id:'S12a-202', name:'チルット', nameEn:'', setCode:'S12a', cardNo:'202/172', set:'S12a VSTARユニバース', rarity:'AR', nowPrice:1700, buyPrice:650, image:cdn('S/S12a/202'), saleUrl:'https://www.hareruya2.com/products/9017178128704', buyUrl:'https://www.hare2buy.com/product/15133' },
+  { id:'S12a-207', name:'パラス', nameEn:'', setCode:'S12a', cardNo:'207/172', set:'S12a VSTARユニバース', rarity:'AR', nowPrice:1700, buyPrice:900, image:cdn('S/S12a/207'), saleUrl:'https://www.hareruya2.com/products/9017181012288', buyUrl:'https://www.hare2buy.com/product/15138' },
 ];
 
-const legacyCardRefs = {
-  'SV4a-350':['SV4a','350/190'], 'SV2D-096':['SV2D','096/071'], 'S12a-242':['S12a','242/172'],
-  'SV1S-099':['SV1S','099/078'], 'SV1V-098':['SV1V','098/078'], 'SV4a-349':['SV4a','349/190'],
-  'SV3-139':['SV3','139/108'], 'SV2a-201':['SV2a','201/165'], 'SV4a-347':['SV4a','347/190'],
-  'SV2a-205':['SV2a','205/165'], 'SV4a-358':['SV4a','358/190'], 'SV1V-106':['SV1V','106/078'],
-  'SV4a-360':['SV4a','360/190'], 'SV1S-106':['SV1S','106/078'], 'SV7-133':['SV7','133/102'],
-  'SV7-130':['SV7','130/102'], 'SV2a-183':['SV2a','183/165'], 'SV2a-173':['SV2a','173/165'],
-  'SV4a-236':['SV4a','236/190'], 'SV4a-310':['SV4a','310/190'], 'SV2a-181':['SV2a','181/165'],
-  'SV2a-149':['SV2a','149/165'], 'S12a-262':['S12a','262/172'], 'S12a-221':['S12a','221/172'],
-  'S12a-212':['S12a','212/172'], 'S12a-211':['S12a','211/172'], 'S12a-216':['S12a','216/172'],
-  'S12a-108':['S12a','108/172'], 'S12a-054':['S12a','054/172'], 'S9-125':['S9','125/100'],
-};
+const legacyCardRefs = {};
 cardCatalog.forEach(c => {
   const ref = legacyCardRefs[c.id];
   if (ref) { c.setCode = ref[0]; c.cardNo = ref[1]; }
@@ -1178,6 +1273,106 @@ const verifiedMarketOverrides = {
   'SV2a-197':{rarity:'SR',nowPrice:600,buyPrice:null,saleUrl:'https://www.hareruya2.com/products/9017520095552',buyUrl:''},
   'SV2a-207':{rarity:'SAR',nowPrice:3200,buyPrice:2200,saleUrl:'https://www.hareruya2.com/products/9017522192704',buyUrl:'https://www.hare2buy.com/product/16482'},
   'SV2D-091':{rarity:'SR',nowPrice:6000,buyPrice:3400,saleUrl:'https://www.hareruya2.com/products/9017411567936',buyUrl:'https://www.hare2buy.com/product/15853'},
+  'S9-103':{rarity:'SR',nowPrice:50000,buyPrice:28000,saleUrl:'https://www.hareruya2.com/products/9016985092416',buyUrl:'https://www.hare2buy.com/product/8735'},
+  'SV2a-202':{rarity:'SAR',nowPrice:24000,buyPrice:12000,saleUrl:'https://www.hareruya2.com/products/9017521144128',buyUrl:'https://www.hare2buy.com/product/16477'},
+  'SV2a-204':{rarity:'SAR',nowPrice:24000,buyPrice:17000,saleUrl:'https://www.hareruya2.com/products/9017521471808',buyUrl:'https://www.hare2buy.com/product/16479'},
+  'SV2a-200':{rarity:'SAR',nowPrice:23000,buyPrice:14000,saleUrl:'https://www.hareruya2.com/products/9017520783680',buyUrl:'https://www.hare2buy.com/product/16475'},
+  'S9-118':{rarity:'HR',nowPrice:18000,buyPrice:10000,saleUrl:'https://www.hareruya2.com/products/9016917262656',buyUrl:'https://www.hare2buy.com/product/8750'},
+  'S9a-083':{rarity:'CSR',nowPrice:17000,buyPrice:9000,saleUrl:'https://www.hareruya2.com/products/9017116426560',buyUrl:'https://www.hare2buy.com/product/8966'},
+  'SV1V-105':{rarity:'SAR',nowPrice:15000,buyPrice:9000,saleUrl:'https://www.hareruya2.com/products/9017238683968',buyUrl:'https://www.hare2buy.com/product/15530'},
+  'SV5a-092':{rarity:'SAR',nowPrice:12000,buyPrice:9500,saleUrl:'https://www.hareruya2.com/products/9123437773120',buyUrl:'https://www.hare2buy.com/product/18448'},
+  'SV2a-203':{rarity:'SAR',nowPrice:12000,buyPrice:9500,saleUrl:'https://www.hareruya2.com/products/9017521373504',buyUrl:'https://www.hare2buy.com/product/16478'},
+  'S12a-260':{rarity:'UR',nowPrice:12000,buyPrice:6500,saleUrl:'https://www.hareruya2.com/products/9017281970496',buyUrl:'https://www.hare2buy.com/product/15191'},
+  'SV2a-206':{rarity:'SAR',nowPrice:10000,buyPrice:7500,saleUrl:'https://www.hareruya2.com/products/9017521963328',buyUrl:'https://www.hare2buy.com/product/16481'},
+  'SV4M-090':{rarity:'SAR',nowPrice:9500,buyPrice:5700,saleUrl:'https://www.hareruya2.com/products/9017528058176',buyUrl:'https://www.hare2buy.com/product/17156'},
+  'S12a-228':{rarity:'SAR',nowPrice:9000,buyPrice:5000,saleUrl:'https://www.hareruya2.com/products/9017314771264',buyUrl:'https://www.hare2buy.com/product/15159'},
+  'SV3a-089':{rarity:'SAR',nowPrice:8500,buyPrice:5500,saleUrl:'https://www.hareruya2.com/products/9017560006976',buyUrl:'https://www.hare2buy.com/product/16924'},
+  'SV9-127':{rarity:'SAR',nowPrice:8000,buyPrice:5400,saleUrl:'https://www.hareruya2.com/products/9708382748992',buyUrl:'https://www.hare2buy.com/product/20016'},
+  'SV5K-088':{rarity:'SR',nowPrice:8000,buyPrice:5000,saleUrl:'https://www.hareruya2.com/products/9062694945088',buyUrl:'https://www.hare2buy.com/product/18007'},
+  'SV2a-185':{rarity:'SR',nowPrice:8000,buyPrice:6200,saleUrl:'https://www.hareruya2.com/products/9017517834560',buyUrl:'https://www.hare2buy.com/product/16460'},
+  'SV5K-097':{rarity:'SAR',nowPrice:7500,buyPrice:4500,saleUrl:'https://www.hareruya2.com/products/9062673645888',buyUrl:'https://www.hare2buy.com/product/18016'},
+  'SV5K-095':{rarity:'SAR',nowPrice:7000,buyPrice:4400,saleUrl:'https://www.hareruya2.com/products/9062677184832',buyUrl:'https://www.hare2buy.com/product/18014'},
+  'SV4K-090':{rarity:'SAR',nowPrice:7000,buyPrice:5000,saleUrl:'https://www.hareruya2.com/products/9017548472640',buyUrl:'https://www.hare2buy.com/product/17061'},
+  'SV4K-095':{rarity:'UR',nowPrice:6500,buyPrice:5000,saleUrl:'https://www.hareruya2.com/products/9017554665792',buyUrl:'https://www.hare2buy.com/product/17066'},
+  'SV2a-168':{rarity:'AR',nowPrice:6500,buyPrice:4800,saleUrl:'https://www.hareruya2.com/products/9017512788288',buyUrl:'https://www.hare2buy.com/product/16443'},
+  'SV3a-085':{rarity:'SAR',nowPrice:6000,buyPrice:4200,saleUrl:'https://www.hareruya2.com/products/9017558335808',buyUrl:'https://www.hare2buy.com/product/16920'},
+  'S12a-215':{rarity:'SAR',nowPrice:6000,buyPrice:4500,saleUrl:'https://www.hareruya2.com/products/9017184682304',buyUrl:'https://www.hare2buy.com/product/15146'},
+  'SV9-129':{rarity:'SAR',nowPrice:5500,buyPrice:4000,saleUrl:'https://www.hareruya2.com/products/9708382945600',buyUrl:'https://www.hare2buy.com/product/20018'},
+  'SV5K-094':{rarity:'SAR',nowPrice:5500,buyPrice:3400,saleUrl:'https://www.hareruya2.com/products/9062679216448',buyUrl:'https://www.hare2buy.com/product/18013'},
+  'SV11W-102':{rarity:'AR',nowPrice:5300,buyPrice:3200,saleUrl:'https://www.hareruya2.com/products/9824667697472',buyUrl:'https://www.hare2buy.com/product/20682'},
+  'SV5a-093':{rarity:'SAR',nowPrice:5300,buyPrice:3200,saleUrl:'https://www.hareruya2.com/products/9123436134720',buyUrl:'https://www.hare2buy.com/product/18449'},
+  'SV3a-087':{rarity:'SAR',nowPrice:5000,buyPrice:3000,saleUrl:'https://www.hareruya2.com/products/9017558827328',buyUrl:'https://www.hare2buy.com/product/16922'},
+  'SV2a-170':{rarity:'AR',nowPrice:4500,buyPrice:3600,saleUrl:'https://www.hareruya2.com/products/9017513574720',buyUrl:'https://www.hare2buy.com/product/16445'},
+  'SV2a-166':{rarity:'AR',nowPrice:4400,buyPrice:3400,saleUrl:'https://www.hareruya2.com/products/9017511969088',buyUrl:'https://www.hare2buy.com/product/16441'},
+  'SV9-128':{rarity:'SAR',nowPrice:4300,buyPrice:2500,saleUrl:'https://www.hareruya2.com/products/9708382552384',buyUrl:'https://www.hare2buy.com/product/20017'},
+  'SV8a-218':{rarity:'SAR',nowPrice:4000,buyPrice:2500,saleUrl:'https://www.hareruya2.com/products/9667472687424',buyUrl:'https://www.hare2buy.com/product/19650'},
+  'SV5a-091':{rarity:'SAR',nowPrice:4000,buyPrice:2400,saleUrl:'https://www.hareruya2.com/products/9123437609280',buyUrl:'https://www.hare2buy.com/product/18447'},
+  'SV5K-080':{rarity:'AR',nowPrice:4000,buyPrice:3000,saleUrl:'https://www.hareruya2.com/products/9062713917760',buyUrl:'https://www.hare2buy.com/product/17999'},
+  'SV5K-093':{rarity:'SAR',nowPrice:4000,buyPrice:2400,saleUrl:'https://www.hareruya2.com/products/9062680002880',buyUrl:'https://www.hare2buy.com/product/18012'},
+  'SV3a-069':{rarity:'AR',nowPrice:4000,buyPrice:3000,saleUrl:'https://www.hareruya2.com/products/9017551552832',buyUrl:'https://www.hare2buy.com/product/16904'},
+  'SV2a-175':{rarity:'AR',nowPrice:4000,buyPrice:3000,saleUrl:'https://www.hareruya2.com/products/9017515180352',buyUrl:'https://www.hare2buy.com/product/16450'},
+  'S12a-223':{rarity:'SAR',nowPrice:4000,buyPrice:2500,saleUrl:'https://www.hareruya2.com/products/9017310150976',buyUrl:'https://www.hare2buy.com/product/15154'},
+  'SV7-129':{rarity:'SAR',nowPrice:3800,buyPrice:2500,saleUrl:'https://www.hareruya2.com/products/9501512139072',buyUrl:'https://www.hare2buy.com/product/18818'},
+  'SV7-127':{rarity:'SAR',nowPrice:3600,buyPrice:2500,saleUrl:'https://www.hareruya2.com/products/9501512237376',buyUrl:'https://www.hare2buy.com/product/18816'},
+  'SV7a-089':{rarity:'SAR',nowPrice:3500,buyPrice:2100,saleUrl:'https://www.hareruya2.com/products/9586617614656',buyUrl:'https://www.hare2buy.com/product/19031'},
+  'SV3a-088':{rarity:'SAR',nowPrice:3500,buyPrice:2400,saleUrl:'https://www.hareruya2.com/products/9017559613760',buyUrl:'https://www.hare2buy.com/product/16923'},
+  'SV2a-169':{rarity:'AR',nowPrice:3500,buyPrice:2800,saleUrl:'https://www.hareruya2.com/products/9017513181504',buyUrl:'https://www.hare2buy.com/product/16444'},
+  'SV2a-196':{rarity:'SR',nowPrice:3500,buyPrice:2800,saleUrl:'https://www.hareruya2.com/products/9017519898944',buyUrl:'https://www.hare2buy.com/product/16471'},
+  'SV1S-108':{rarity:'UR',nowPrice:3500,buyPrice:2500,saleUrl:'https://www.hareruya2.com/products/9017290129728',buyUrl:'https://www.hare2buy.com/product/15503'},
+  'S12a-220':{rarity:'SAR',nowPrice:3500,buyPrice:1800,saleUrl:'https://www.hareruya2.com/products/9017186419008',buyUrl:'https://www.hare2buy.com/product/15151'},
+  'S12-103':{rarity:'SR',nowPrice:3500,buyPrice:2500,saleUrl:'https://www.hareruya2.com/products/9017272467776',buyUrl:'https://www.hare2buy.com/product/14799'},
+  'SV4M-089':{rarity:'SAR',nowPrice:3400,buyPrice:2200,saleUrl:'https://www.hareruya2.com/products/9017527599424',buyUrl:'https://www.hare2buy.com/product/17155'},
+  'SV2D-081':{rarity:'AR',nowPrice:3400,buyPrice:2100,saleUrl:'https://www.hareruya2.com/products/9017409110336',buyUrl:'https://www.hare2buy.com/product/15843'},
+  'SV4a-341':{rarity:'AR',nowPrice:3300,buyPrice:2300,saleUrl:'https://www.hareruya2.com/products/9017572229440',buyUrl:'https://www.hare2buy.com/product/17900'},
+  'SV2a-184':{rarity:'SR',nowPrice:3300,buyPrice:2500,saleUrl:'https://www.hareruya2.com/products/9017517441344',buyUrl:'https://www.hare2buy.com/product/16459'},
+  'S12-108':{rarity:'SR',nowPrice:3300,buyPrice:2600,saleUrl:'https://www.hareruya2.com/products/9017212305728',buyUrl:'https://www.hare2buy.com/product/14804'},
+  'SV3-136':{rarity:'SAR',nowPrice:3200,buyPrice:2300,saleUrl:'https://www.hareruya2.com/products/9017395806528',buyUrl:'https://www.hare2buy.com/product/16760'},
+  'SV2a-171':{rarity:'AR',nowPrice:3000,buyPrice:2300,saleUrl:'https://www.hareruya2.com/products/9017514000704',buyUrl:'https://www.hare2buy.com/product/16446'},
+  'SV7-123':{rarity:'SR',nowPrice:2900,buyPrice:2000,saleUrl:'https://www.hareruya2.com/products/9501512401216',buyUrl:'https://www.hare2buy.com/product/18812'},
+  'SV3a-090':{rarity:'UR',nowPrice:2900,buyPrice:2000,saleUrl:'https://www.hareruya2.com/products/9017560138048',buyUrl:'https://www.hare2buy.com/product/16925'},
+  'SV2a-167':{rarity:'AR',nowPrice:2800,buyPrice:2100,saleUrl:'https://www.hareruya2.com/products/9017512296768',buyUrl:'https://www.hare2buy.com/product/16442'},
+  'SV2D-074':{rarity:'AR',nowPrice:2800,buyPrice:1800,saleUrl:'https://www.hareruya2.com/products/9017405538624',buyUrl:'https://www.hare2buy.com/product/15836'},
+  'SV11W-141':{rarity:'AR',nowPrice:2700,buyPrice:1900,saleUrl:'https://www.hareruya2.com/products/9824662126912',buyUrl:'https://www.hare2buy.com/product/20721'},
+  'SV4K-088':{rarity:'SAR',nowPrice:2700,buyPrice:1900,saleUrl:'https://www.hareruya2.com/products/9017547161920',buyUrl:'https://www.hare2buy.com/product/17059'},
+  'SV2a-176':{rarity:'AR',nowPrice:2700,buyPrice:1800,saleUrl:'https://www.hareruya2.com/products/9017515475264',buyUrl:'https://www.hare2buy.com/product/16451'},
+  'SV9-109':{rarity:'AR',nowPrice:2600,buyPrice:1800,saleUrl:'https://www.hareruya2.com/products/9708382781760',buyUrl:'https://www.hare2buy.com/product/19998'},
+  'SV8a-203':{rarity:'SAR',nowPrice:2600,buyPrice:1800,saleUrl:'https://www.hareruya2.com/products/9667472425280',buyUrl:'https://www.hare2buy.com/product/19635'},
+  'SV11W-140':{rarity:'AR',nowPrice:2500,buyPrice:1700,saleUrl:'https://www.hareruya2.com/products/9824661995840',buyUrl:'https://www.hare2buy.com/product/20720'},
+  'SV8a-222':{rarity:'SAR',nowPrice:2500,buyPrice:1500,saleUrl:'https://www.hareruya2.com/products/9667472032064',buyUrl:'https://www.hare2buy.com/product/19654'},
+  'SV3a-086':{rarity:'SAR',nowPrice:2500,buyPrice:1600,saleUrl:'https://www.hareruya2.com/products/9017558630720',buyUrl:'https://www.hare2buy.com/product/16921'},
+  'SV3-110':{rarity:'AR',nowPrice:2500,buyPrice:1600,saleUrl:'https://www.hareruya2.com/products/9017479364928',buyUrl:'https://www.hare2buy.com/product/16734'},
+  'SV8a-207':{rarity:'SAR',nowPrice:2400,buyPrice:1500,saleUrl:'https://www.hareruya2.com/products/9667471409472',buyUrl:'https://www.hare2buy.com/product/19639'},
+  'SV7a-070':{rarity:'AR',nowPrice:2400,buyPrice:1800,saleUrl:'https://www.hareruya2.com/products/9586614075712',buyUrl:'https://www.hare2buy.com/product/19012'},
+  'SV7-135':{rarity:'UR',nowPrice:2400,buyPrice:1500,saleUrl:'https://www.hareruya2.com/products/9501511909696',buyUrl:'https://www.hare2buy.com/product/18824'},
+  'SV5a-088':{rarity:'SR',nowPrice:2400,buyPrice:1300,saleUrl:'https://www.hareruya2.com/products/9123437281600',buyUrl:'https://www.hare2buy.com/product/18444'},
+  'SV1V-100':{rarity:'SR',nowPrice:2400,buyPrice:1400,saleUrl:'https://www.hareruya2.com/products/9017236980032',buyUrl:'https://www.hare2buy.com/product/15525'},
+  'SV7a-088':{rarity:'SAR',nowPrice:2300,buyPrice:1500,saleUrl:'https://www.hareruya2.com/products/9586616795456',buyUrl:'https://www.hare2buy.com/product/19030'},
+  'SV5K-096':{rarity:'SAR',nowPrice:2300,buyPrice:1500,saleUrl:'https://www.hareruya2.com/products/9062675153216',buyUrl:'https://www.hare2buy.com/product/18015'},
+  'SV5K-100':{rarity:'UR',nowPrice:2300,buyPrice:950,saleUrl:'https://www.hareruya2.com/products/9062670008640',buyUrl:'https://www.hare2buy.com/product/18019'},
+  'SV4M-095':{rarity:'UR',nowPrice:2300,buyPrice:1200,saleUrl:'https://www.hareruya2.com/products/9017531793728',buyUrl:'https://www.hare2buy.com/product/17161'},
+  'SV2a-182':{rarity:'AR',nowPrice:2300,buyPrice:1500,saleUrl:'https://www.hareruya2.com/products/9017517211968',buyUrl:'https://www.hare2buy.com/product/16457'},
+  'SV2P-092':{rarity:'SAR',nowPrice:2300,buyPrice:1600,saleUrl:'https://www.hareruya2.com/products/9017458524480',buyUrl:'https://www.hare2buy.com/product/15953'},
+  'SV2a-186':{rarity:'SR',nowPrice:2200,buyPrice:1500,saleUrl:'https://www.hareruya2.com/products/9017518031168',buyUrl:'https://www.hare2buy.com/product/16461'},
+  'SV2a-210':{rarity:'UR',nowPrice:2200,buyPrice:1500,saleUrl:'https://www.hareruya2.com/products/9062739640640',buyUrl:'https://www.hare2buy.com/product/16485'},
+  'SV7-128':{rarity:'SAR',nowPrice:2100,buyPrice:1200,saleUrl:'https://www.hareruya2.com/products/9501512466752',buyUrl:'https://www.hare2buy.com/product/18817'},
+  'SV4a-265':{rarity:'S',nowPrice:2100,buyPrice:1300,saleUrl:'https://www.hareruya2.com/products/9017499648320',buyUrl:'https://www.hare2buy.com/product/17824'},
+  'SV3a-065':{rarity:'AR',nowPrice:2100,buyPrice:1300,saleUrl:'https://www.hareruya2.com/products/9017546441024',buyUrl:'https://www.hare2buy.com/product/16900'},
+  'SV3a-066':{rarity:'AR',nowPrice:2100,buyPrice:1300,saleUrl:'https://www.hareruya2.com/products/9017547096384',buyUrl:'https://www.hare2buy.com/product/16901'},
+  'SV11W-096':{rarity:'AR',nowPrice:2000,buyPrice:1300,saleUrl:'https://www.hareruya2.com/products/9824666124608',buyUrl:'https://www.hare2buy.com/product/20676'},
+  'SV4K-092':{rarity:'SAR',nowPrice:2000,buyPrice:1100,saleUrl:'https://www.hareruya2.com/products/9017552372032',buyUrl:'https://www.hare2buy.com/product/17063'},
+  'SV7-132':{rarity:'SAR',nowPrice:1900,buyPrice:1100,saleUrl:'https://www.hareruya2.com/products/9501512171840',buyUrl:'https://www.hare2buy.com/product/18821'},
+  'SV4a-210':{rarity:'S',nowPrice:1900,buyPrice:1100,saleUrl:'https://www.hareruya2.com/products/9017585107264',buyUrl:'https://www.hare2buy.com/product/17769'},
+  'SV4a-309':{rarity:'S',nowPrice:1900,buyPrice:1100,saleUrl:'https://www.hareruya2.com/products/9017591300416',buyUrl:'https://www.hare2buy.com/product/17868'},
+  'SV1V-086':{rarity:'AR',nowPrice:1900,buyPrice:1200,saleUrl:'https://www.hareruya2.com/products/9017291538752',buyUrl:'https://www.hare2buy.com/product/15511'},
+  'SV8a-227':{rarity:'SAR',nowPrice:1800,buyPrice:1200,saleUrl:'https://www.hareruya2.com/products/9667472851264',buyUrl:'https://www.hare2buy.com/product/19659'},
+  'SV4M-088':{rarity:'SAR',nowPrice:1800,buyPrice:1100,saleUrl:'https://www.hareruya2.com/products/9017527107904',buyUrl:'https://www.hare2buy.com/product/17154'},
+  'SV4M-092':{rarity:'SAR',nowPrice:1800,buyPrice:900,saleUrl:'https://www.hareruya2.com/products/9017529729344',buyUrl:'https://www.hare2buy.com/product/17158'},
+  'SV4M-094':{rarity:'UR',nowPrice:1800,buyPrice:350,saleUrl:'https://www.hareruya2.com/products/9017531302208',buyUrl:'https://www.hare2buy.com/product/17160'},
+  'SV3-113':{rarity:'AR',nowPrice:1800,buyPrice:1200,saleUrl:'https://www.hareruya2.com/products/9017479889216',buyUrl:'https://www.hare2buy.com/product/16737'},
+  'SV5K-099':{rarity:'UR',nowPrice:1700,buyPrice:1050,saleUrl:'https://www.hareruya2.com/products/9062671483200',buyUrl:'https://www.hare2buy.com/product/18018'},
+  'SV2a-194':{rarity:'SR',nowPrice:1700,buyPrice:950,saleUrl:'https://www.hareruya2.com/products/9017519472960',buyUrl:'https://www.hare2buy.com/product/16469'},
+  'S12a-202':{rarity:'AR',nowPrice:1700,buyPrice:650,saleUrl:'https://www.hareruya2.com/products/9017178128704',buyUrl:'https://www.hare2buy.com/product/15133'},
+  'S12a-207':{rarity:'AR',nowPrice:1700,buyPrice:900,saleUrl:'https://www.hareruya2.com/products/9017181012288',buyUrl:'https://www.hare2buy.com/product/15138'},
 };
 cardCatalog.forEach(c => {
   const override = verifiedMarketOverrides[c.id];
@@ -1260,7 +1455,7 @@ const ASSET_ACHIEVEMENTS = [
   { id:'asset-5m',    threshold:5000000,  title:'500万円到達', icon:'MASTER' },
   { id:'asset-10m',   threshold:10000000, title:'1000万円到達', icon:'VAULT' },
 ];
-const defaultSharePost = url => `ポケカ投資シミュレーター「POKÉCA VAULT」を公開しました。\n\n5万円/10万円コースで人気カード100種類を売買して、所持金・評価額・含み損益・価格推移を見ながら疑似投資できます。\n\n${url}\n\n#ポケカ #ポケモンカード #ポケカ投資 @${X_ACCOUNT}`;
+const defaultSharePost = url => `ポケカ投資シミュレーター「POKÉCA VAULT」を公開しました。\n\n5万円/10万円コースで人気カード200種類を売買して、所持金・評価額・含み損益・価格推移を見ながら疑似投資できます。\n\n${url}\n\n#ポケカ #ポケモンカード #ポケカ投資 @${X_ACCOUNT}`;
 const isPublicHttpUrl = url => /^https?:\/\//i.test(url) && !/^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(?::|\/|$)/i.test(url);
 const currentShareUrl = () => publicAppUrl || (isPublicHttpUrl(location.href) ? location.href : '');
 
@@ -1437,6 +1632,17 @@ function showToast(msg, type='ok') {
   setTimeout(()=>{ el.className='toast'; }, 2600);
 }
 function toggleForm() { document.getElementById('formPanel').classList.toggle('collapsed'); }
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  playSound('click');
+}
+function updateScrollTopButton() {
+  const btn = document.getElementById('scrollTopBtn');
+  if (!btn) return;
+  btn.classList.toggle('show', window.scrollY > 420);
+}
+window.addEventListener('scroll', updateScrollTopButton, { passive: true });
 function startCourse(amount) {
   if ((holdings.length || cashBalance !== null) && !confirm(`${yen(amount)}コースで最初から始めます。保有カードと所持金をリセットしてよろしいですか？`)) return;
   holdings = [];
@@ -1758,10 +1964,22 @@ function getFilteredHoldings() {
 /* ═══════════════════════════════════════
    SUMMARY
 ═══════════════════════════════════════ */
+function showAchievementNotice(achievement) {
+  const el = document.getElementById('achievementNotice');
+  if (!el) { showToast(`達成: ${achievement.title}`); return; }
+  el.innerHTML = `
+    <div class="achievement-notice-title">ACHIEVEMENT</div>
+    <div class="achievement-notice-body">${escHtml(achievement.title)} 達成</div>`;
+  el.classList.add('show');
+  clearTimeout(showAchievementNotice.timer);
+  showAchievementNotice.timer = setTimeout(()=>el.classList.remove('show'), 3200);
+}
+
 function renderAchievements(totalAssets) {
   const panel = document.getElementById('achievementPanel');
   if (!panel) return;
   const eligible = a => !a.course || courseAmount === a.course;
+  const eligibleAchievements = ASSET_ACHIEVEMENTS.filter(eligible);
   const validUnlocked = unlockedAchievements.filter(id => {
     const achievement = ASSET_ACHIEVEMENTS.find(a=>a.id===id);
     return achievement && eligible(achievement);
@@ -1770,34 +1988,25 @@ function renderAchievements(totalAssets) {
     unlockedAchievements = validUnlocked;
     localStorage.setItem('pokecaVaultAchievements', JSON.stringify(unlockedAchievements));
   }
-  const unlocked = ASSET_ACHIEVEMENTS.filter(a=>eligible(a)&&totalAssets>=a.threshold);
+  const unlocked = eligibleAchievements.filter(a=>totalAssets>=a.threshold);
   const newlyUnlocked = unlocked.filter(a=>!unlockedAchievements.includes(a.id));
   if (newlyUnlocked.length) {
     unlockedAchievements = [...new Set([...unlockedAchievements, ...newlyUnlocked.map(a=>a.id)])];
     localStorage.setItem('pokecaVaultAchievements', JSON.stringify(unlockedAchievements));
     const latest = newlyUnlocked[newlyUnlocked.length-1];
     playSound('buy');
-    showToast(`バッジ達成: ${latest.title}`);
+    showAchievementNotice(latest);
+    showToast(`達成: ${latest.title}`);
   }
 
-  const unlockedCount = ASSET_ACHIEVEMENTS.filter(a=>unlockedAchievements.includes(a.id)).length;
-  const next = ASSET_ACHIEVEMENTS.find(a=>eligible(a)&&!unlockedAchievements.includes(a.id));
+  const unlockedCount = eligibleAchievements.filter(a=>unlockedAchievements.includes(a.id)).length;
+  const next = eligibleAchievements.find(a=>!unlockedAchievements.includes(a.id));
   panel.innerHTML = `
     <div class="achievement-head">
-      <span>達成バッジ</span>
-      <span class="achievement-count">${unlockedCount}/${ASSET_ACHIEVEMENTS.length}${next ? ` · 次 ${yen(next.threshold)}` : ' · COMPLETE'}</span>
+      <span>実績</span>
+      <span class="achievement-count">${unlockedCount}/${eligibleAchievements.length}</span>
     </div>
-    <div class="achievement-list">
-      ${ASSET_ACHIEVEMENTS.map(a=>{
-        const isUnlocked = unlockedAchievements.includes(a.id);
-        const isNext = next && next.id===a.id;
-        const isLimited = a.course && !eligible(a);
-        return `<span class="achievement-badge ${isUnlocked?'unlocked':isNext?'next':''}" title="${yen(a.threshold)}${a.course?` · ${yen(a.course)}スタート限定`:''}">
-          <span class="mark">${isUnlocked?'CLEAR':isNext?'NEXT':'LOCK'}</span>
-          <span>${escHtml(a.title)}${isLimited?' / 5万円限定':''}</span>
-        </span>`;
-      }).join('')}
-    </div>`;
+    <div class="achievement-next">${next ? `次: ${escHtml(next.title)} / ${yen(next.threshold)}` : 'COMPLETE'}</div>`;
 }
 
 function renderSummary() {
@@ -2253,6 +2462,7 @@ updateSoundButton();
 renderAll();
 searchCards();
 setTimeout(() => { refreshMarketPrices().catch(() => {}); }, 1500);
+updateScrollTopButton();
 
 setInterval(()=>{ renderAll(); }, 60*1000);
 setInterval(()=>{ refreshMarketPrices({force:true}).catch(() => {}); }, PRICE_REFRESH_MS);

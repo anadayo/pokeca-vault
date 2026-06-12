@@ -3,13 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>POKÉCA VAULT — ポケカ価格比較 & 投資シミュレーター</title>
-<meta name="description" content="ポケカ人気カード200種類を、5万円/10万円コースの疑似資金で売買できる無料シミュレーター。販売価格・買取価格・所持金・損益をスマホで確認できます。">
+<title>POKÉCA VAULT — ポケカ相場チェッカー｜メルカリ成約価格をワンタップ確認 & 投資シミュレーター</title>
+<meta name="description" content="ポケカの相場・成約価格をワンタップでチェック。人気カード200種類のメルカリ相場確認と、5万円/10万円コースの売買シミュレーション・損益管理がスマホひとつでできる無料ツールです。">
 <meta property="og:title" content="POKÉCA VAULT — ポケカ価格比較 & 投資シミュレーター">
 <meta property="og:description" content="人気カード200種類の売買シミュレーションと損益管理ができるポケカ投資ツール。">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
+<meta property="og:url" content="https://anadayo.github.io/pokeca-vault/">
+<meta property="og:image" content="https://anadayo.github.io/pokeca-vault/assets/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://anadayo.github.io/pokeca-vault/assets/ogp.png">
 <meta name="twitter:creator" content="@anaday_o">
+<link rel="canonical" href="https://anadayo.github.io/pokeca-vault/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "POKÉCA VAULT",
+  "url": "https://anadayo.github.io/pokeca-vault/",
+  "description": "ポケカの相場・メルカリ成約価格をワンタップで確認できる無料の価格チェッカー & 投資シミュレーター。人気カード200種類の売買シミュレーションと損益管理ができます。",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "ja",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+}
+</script>
+
+<!-- GA4（測定IDはオーナーがGA4プロパティ作成後に G-XXXXXXXXXX を差し替え。READMEの「GA4の設定」参照） -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-XXXXXXXXXX');
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,6 +121,22 @@ header{
 
 /* ---------- レイアウト ---------- */
 main{ max-width:760px; margin:0 auto; padding:16px 16px 32px; }
+
+/* ---------- アフィリエイト(PR)表記 ---------- */
+.pr-bar{
+  max-width:760px; margin:0 auto; padding:6px 16px 0;
+  font-size:11px; color:var(--muted); line-height:1.5;
+}
+.pr-tag{
+  display:inline-block; font-size:9px; font-weight:700; line-height:1;
+  padding:2px 4px; border-radius:4px; margin-left:4px; vertical-align:1px;
+  background:rgba(152,160,179,.18); color:var(--muted); letter-spacing:.05em;
+}
+footer{
+  max-width:760px; margin:0 auto; padding:20px 16px 28px;
+  border-top:1px solid var(--line);
+  font-size:11px; color:var(--muted); line-height:1.8;
+}
 .view{ display:none; }
 .view.active{ display:block; animation:fadeUp .25s ease; }
 @keyframes fadeUp{ from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none} }
@@ -122,6 +167,19 @@ main{ max-width:760px; margin:0 auto; padding:16px 16px 32px; }
 .btn-gold{ background:linear-gradient(135deg,#F1D27E,var(--gold) 45%,var(--gold-deep)); color:#1A1405; box-shadow:0 4px 18px rgba(232,193,90,.22); }
 .btn-ghost{ background:var(--surface); border-color:var(--line); color:var(--text); }
 .btn-blue{ background:rgba(91,200,255,.1); border-color:rgba(91,200,255,.45); color:var(--blue); }
+.btn-mercari{
+  background:linear-gradient(135deg, #5BC8FF, #2E9FE6);
+  border-color:transparent; color:#06121C; font-weight:700;
+}
+.btn-mercari .pr-tag{ background:rgba(6,18,28,.18); color:#06121C; }
+.mlink{
+  display:inline-flex; align-items:center; gap:3px; margin-left:auto;
+  font-size:11px; font-weight:700; text-decoration:none;
+  color:var(--blue); border:1px solid rgba(91,200,255,.45);
+  background:rgba(91,200,255,.08); border-radius:99px; padding:3px 9px;
+  white-space:nowrap;
+}
+.mlink:active{ transform:scale(.96); }
 .btn-red{ background:rgba(255,84,112,.1); border-color:rgba(255,84,112,.5); color:var(--red); }
 .btn-sm{ min-height:38px; padding:0 12px; font-size:13px; border-radius:10px; }
 .btn-block{ width:100%; }
@@ -262,6 +320,7 @@ main{ max-width:760px; margin:0 auto; padding:16px 16px 32px; }
 
 /* ---------- チャート ---------- */
 .chart-box{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:12px; }
+.chart-box.compact{ padding:8px 10px; }
 canvas{ width:100%; display:block; }
 
 /* ---------- プラン ---------- */
@@ -370,14 +429,16 @@ nav{
   <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
 </header>
 
+<div class="pr-bar">本サイトのメルカリへのリンクにはアフィリエイト広告（PR）を含みます</div>
+
 <main>
 
   <!-- ================= ホーム ================= -->
   <section class="view active" id="view-home">
 
     <div class="hero">
-      <h1>そのカード、<em>今買う？売る？</em><br>相場と損益がひと目で分かる。</h1>
-      <p>ポケカの価格チェック・売買シミュレーション・保有資産管理をこれ1つで。</p>
+      <h1>気になるポケカの<br><em>“実際に売れた価格”</em>を<br>ワンタップで。</h1>
+      <p>買う・売るのシミュレーションも。価格チェック・保有資産の損益管理までこれ1つで。</p>
       <div class="hero-actions">
         <button class="btn btn-gold" data-go="market">カードを探す</button>
         <button class="btn btn-ghost" id="btnGuide2">使い方を見る</button>
@@ -411,17 +472,17 @@ nav{
     </div>
 
     <div class="section">
-      <div class="section-title">本日の注目カード</div>
+      <div class="section-title">本日の注目カード<span class="right muted" id="featuredUpdated"></span></div>
       <div id="featuredBox"></div>
     </div>
 
     <div class="section">
       <div class="section-title">資産推移<span class="right muted" id="assetChartNote"></span></div>
-      <div class="chart-box"><canvas id="assetChart" height="150"></canvas></div>
+      <div class="chart-box compact"><canvas id="assetChart" height="76"></canvas></div>
     </div>
 
     <div class="section">
-      <div class="section-title">急騰ランキング<span class="right muted">直近7日の上昇率</span></div>
+      <div class="section-title">急騰ランキング<span class="right muted" id="rankUpdated">直近7日の上昇率</span></div>
       <div class="rank-list" id="rankList"></div>
     </div>
 
@@ -484,11 +545,24 @@ nav{
       </div>
       <input type="file" id="importFile" accept="application/json" hidden>
       <p class="muted" style="margin-top:8px">保有データはこの端末のブラウザ（localStorage）に保存されます。機種変更前にバックアップをおすすめします。</p>
+      <div class="guide-steps" style="margin-top:12px">
+        <div class="gstep"><div class="no">1</div><div><b>旧端末でバックアップ</b><span>上の「⬇ JSONバックアップ」を押してファイルを保存</span></div></div>
+        <div class="gstep"><div class="no">2</div><div><b>ファイルを新端末へ</b><span>AirDrop・クラウド・メールなどでJSONファイルを移動</span></div></div>
+        <div class="gstep"><div class="no">3</div><div><b>新端末でインポート</b><span>このページの「⬆ インポート」からファイルを選択して復元完了</span></div></div>
+      </div>
       <button class="btn btn-ghost btn-block" id="btnReset" style="margin-top:10px; color:var(--red)">全データをリセット</button>
     </div>
   </section>
 
 </main>
+
+<!-- ================= フッター ================= -->
+<footer>
+  <p>※ 本サービスはシミュレーターです。価格データはサンプルであり、実際の売買・投資判断はご自身の責任で行ってください。実際の相場は各カードの「メルカリの成約相場を見る」ボタンからご確認ください。</p>
+  <p>※ 本サイトのメルカリへのリンクにはアフィリエイト広告（PR）を含みます。</p>
+  <p style="margin-top:8px">姉妹サイト: <a href="tsume-pokepoke/" style="color:var(--muted)">🧩 詰めポケポケ — ポケポケのリーサルパズル</a></p>
+  <p style="margin-top:8px">運営: <a href="https://x.com/ana_wasborn" target="_blank" rel="noopener" style="color:var(--muted)">𝕏 @ana_wasborn</a></p>
+</footer>
 
 <!-- ================= ボトムナビ ================= -->
 <nav>
@@ -520,10 +594,16 @@ nav{
 <div class="sheet" id="sheetShare" role="dialog" aria-modal="true">
   <div class="sheet-grab"></div>
   <h2>Xでシェア</h2>
+  <div class="field"><label>シェア画像（保存して投稿に添付できます）</label>
+    <canvas id="shareCanvas" width="1200" height="630" style="width:100%; height:auto; border-radius:12px; border:1px solid var(--line)"></canvas>
+  </div>
   <div class="field"><label>投稿文（編集できます）</label><textarea id="shareText" rows="4"></textarea></div>
   <div class="sheet-actions">
     <button class="btn btn-gold" id="btnTweet">𝕏 で投稿する</button>
-    <button class="btn btn-ghost" id="btnCopyShare">投稿文をコピー</button>
+    <div class="split-2">
+      <button class="btn btn-ghost" id="btnSaveShareImg">🖼 画像を保存</button>
+      <button class="btn btn-ghost" id="btnCopyShare">投稿文をコピー</button>
+    </div>
   </div>
 </div>
 
@@ -538,7 +618,8 @@ nav{
     <div class="gstep"><div class="no">4</div><div><b>売って利確</b><span>「売る」で買取価格シミュレーション。実現損益は履歴に残ります。</span></div></div>
     <div class="gstep"><div class="no">5</div><div><b>相場はメルカリでも確認</b><span>カード詳細から実際の取引相場をワンタップでチェック。</span></div></div>
   </div>
-  <p class="muted" style="margin-top:12px">※ 本サービスはシミュレーターです。価格データはサンプルであり、実際の売買・投資判断はご自身の責任で行ってください。</p>
+  <p class="muted" style="margin-top:12px">※ 本サービスはシミュレーターです。価格データはサンプルであり、実際の売買・投資判断はご自身の責任で行ってください。実際の相場は各カードの「メルカリの成約相場を見る」ボタンからご確認ください。</p>
+  <p class="muted" style="margin-top:6px">※ 本サイトのメルカリへのリンクにはアフィリエイト広告（PR）を含みます。</p>
 </div>
 
 <div id="toast" role="status"></div>
@@ -570,7 +651,10 @@ const OLD_CASH_KEY = 'pokecaVaultCash';
 const OLD_COURSE_KEY = 'pokecaVaultCourse';
 const OWNER_MERCARI_AMBASSADOR_ID = '2427775577';
 const X_ACCOUNT = 'anaday_o';
-const SOURCE_DATE = '2026-06-10';
+/* 価格データのメタ情報。データ更新時に updatedAt を書き換えると
+   「最終更新」表示が自動で変わる（将来は価格JSONの updatedAt を読む） */
+const PRICE_DATA_META = { updatedAt: '2026-06-10' };
+const SOURCE_DATE = PRICE_DATA_META.updatedAt;
 const SUPPORT_LINKS = {
   note: 'https://note.com/koban240dayo',
 };
@@ -4028,7 +4112,9 @@ function sellCard(cardId, qtyToSell, sellUnitPrice, channel){
 function drawLineChart(canvas, points, color, fill){
   const dpr = window.devicePixelRatio || 1;
   const w = canvas.clientWidth || canvas.parentElement.clientWidth || 320;
-  const h = parseInt(canvas.getAttribute('height') || 150, 10);
+  const baseHeight = canvas.dataset.chartHeight || canvas.getAttribute('height') || '150';
+  canvas.dataset.chartHeight = baseHeight;
+  const h = parseInt(baseHeight, 10);
   canvas.width = w * dpr; canvas.height = h * dpr;
   canvas.style.height = h + 'px';
   const ctx = canvas.getContext('2d');
@@ -4125,12 +4211,16 @@ function renderHome(){
   // 初回ガイドは保有が増えたら隠す
   $('#guideSection').style.display = t.types > 0 ? 'none' : '';
 
+  // 鮮度表示（価格データの最終更新日）
+  $('#featuredUpdated').textContent = `最終更新: ${PRICE_DATA_META.updatedAt}`;
+  $('#rankUpdated').textContent = `直近7日の上昇率 ・ 最終更新: ${PRICE_DATA_META.updatedAt}`;
+
   // 注目カード = JSTの日付で毎日1枚ローテーション
   const featured = dailyFeaturedCard();
   const sig = getSignal(featured);
   $('#featuredBox').innerHTML = `
     <div class="featured">
-      <img class="featured-img" src="${featured.image}" alt="${escapeHtml(featured.name)}" onerror="this.style.display='none'">
+      <img class="featured-img" src="${featured.image}" alt="${escapeHtml(featured.name)}" loading="lazy" onerror="this.style.display='none'">
       <div class="featured-body">
         <span class="badge ${sig.cls}">${sig.label}</span>
         <div class="featured-name">${escapeHtml(featured.name)} <span class="muted">/ ${escapeHtml(featured.set)}</span></div>
@@ -4223,6 +4313,7 @@ function renderMarket(){
         <span class="mcard-price num">${yen(currentPrice(c))}</span><span class="muted">買取 ${buyPriceLabel(c)}</span>
         <span class="num ${ch >= 0 ? 'pos' : 'neg'}" style="font-size:13px">7日 ${pct(ch)}</span>
         ${own ? `<span class="own-tag">★ 保有中 ${own.qty}枚</span>` : ''}
+        <a class="mlink" href="${mercariUrl(c, true)}" target="_blank" rel="sponsored noopener" data-mc-name="${escapeHtml(c.name)}">メルカリ成約相場 →<span class="pr-tag">PR</span></a>
       </div>
       <div class="mcard-actions">
         <button class="btn btn-gold btn-sm" data-detail="${c.id}">買う</button>
@@ -4274,7 +4365,7 @@ function renderHoldings(){
         <div class="hcard-actions">
           <button class="btn btn-red btn-sm" data-sell="${card.id}">売る</button>
           <button class="btn btn-ghost btn-sm" data-detail="${card.id}">詳細</button>
-          <button class="btn btn-blue btn-sm" data-mercari="${card.id}">メルカリ相場</button>
+          <a class="btn btn-mercari btn-sm" href="${mercariUrl(card, true)}" target="_blank" rel="sponsored noopener" data-mc-name="${escapeHtml(card.name)}">メルカリ成約相場<span class="pr-tag">PR</span></a>
         </div>
       </article>`;
     }).join('');
@@ -4368,6 +4459,9 @@ function openSheet(id){
 }
 function closeSheet(){
   if (!openSheetId) return;
+  if (openSheetId === 'sheetDetail' && location.hash.startsWith('#card=')){
+    history.replaceState(null, '', location.pathname + location.search);
+  }
   $('#' + openSheetId).classList.remove('open');
   $('#backdrop').classList.remove('show');
   document.body.style.overflow = '';
@@ -4439,13 +4533,15 @@ function openDetail(cardId){
     <div class="sheet-actions">
       <button class="btn btn-gold btn-block" id="btnConfirmBuy">この価格で買う（記録する）</button>
       <div class="split-2">
-        <a class="btn btn-blue btn-sm" href="${mercariUrl(card, true)}" target="_blank" rel="noopener">メルカリ</a>
+        <a class="btn btn-mercari btn-sm" href="${mercariUrl(card, true)}" target="_blank" rel="sponsored noopener" data-mc-name="${escapeHtml(card.name)}">メルカリの成約相場を見る<span class="pr-tag">PR</span></a>
         <a class="btn btn-ghost btn-sm" href="${card.saleUrl}" target="_blank" rel="noopener">販売ページ</a>
       </div>
       <p class="muted" style="text-align:center">販売価格と買取価格を見ながら疑似売買できます</p>
     </div>`;
 
   openSheet('sheetDetail');
+  // カード直リンク用URL（#card=ID）を反映
+  history.replaceState(null, '', '#card=' + encodeURIComponent(card.id));
   drawDetailChart(card);
 
   // イベント
@@ -4573,15 +4669,99 @@ function openShare(){
     '#ポケカ #ポケカ投資 #POKECAVAULT',
   ].filter(l => l !== null);
   $('#shareText').value = lines.join('\n');
+  drawShareImage(t);
   openSheet('sheetShare');
 }
+
+/* 損益スクショ風のシェア画像を canvas で生成 */
+function drawShareImage(t){
+  const cv = $('#shareCanvas');
+  if (!cv) return;
+  const x = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const up = t.unrealized >= 0;
+  const plColor = up ? '#34E8A0' : '#FF5470';
+
+  x.clearRect(0, 0, W, H);
+  x.fillStyle = '#0B0C10'; x.fillRect(0, 0, W, H);
+  const g = x.createRadialGradient(W*0.8, -100, 50, W*0.8, -100, 700);
+  g.addColorStop(0, up ? 'rgba(52,232,160,.12)' : 'rgba(255,84,112,.12)');
+  g.addColorStop(1, 'rgba(0,0,0,0)');
+  x.fillStyle = g; x.fillRect(0, 0, W, H);
+  x.strokeStyle = 'rgba(255,255,255,.03)'; x.lineWidth = 1;
+  for (let i = 0; i < W; i += 60){ x.beginPath(); x.moveTo(i,0); x.lineTo(i,H); x.stroke(); }
+  for (let i = 0; i < H; i += 60){ x.beginPath(); x.moveTo(0,i); x.lineTo(W,i); x.stroke(); }
+  const gl = x.createLinearGradient(0, 0, W, 0);
+  gl.addColorStop(0,'#B98A2F'); gl.addColorStop(.5,'#E8C15A'); gl.addColorStop(1,'#B98A2F');
+  x.fillStyle = gl; x.fillRect(0, 0, W, 6);
+
+  x.fillStyle = '#E8C15A';
+  x.font = '800 56px "Shippori Mincho B1", serif';
+  x.fillText('POKÉCA VAULT', 70, 110);
+  x.fillStyle = '#98A0B3';
+  x.font = '700 22px "Zen Kaku Gothic New", sans-serif';
+  x.fillText('ポケカ資産ポートフォリオ', 74, 150);
+
+  // 総資産
+  x.fillStyle = '#98A0B3'; x.font = '700 26px "Zen Kaku Gothic New", sans-serif';
+  x.fillText('総資産（所持金 + 評価額）', 70, 240);
+  x.fillStyle = '#F2EFE6'; x.font = '600 96px "IBM Plex Mono", monospace';
+  x.fillText('¥' + Math.round(t.totalAssets).toLocaleString('ja-JP'), 70, 345);
+
+  // 含み損益・実現損益
+  x.fillStyle = plColor; x.font = '600 44px "IBM Plex Mono", monospace';
+  const ur = `${up ? '▲' : '▼'} 含み損益 ${signedYen(t.unrealized)}` + (t.rate !== null ? `（${pct(t.rate)}）` : '');
+  x.fillText(ur, 70, 430);
+  if (t.realized !== 0){
+    x.fillStyle = t.realized >= 0 ? '#34E8A0' : '#FF5470';
+    x.font = '600 32px "IBM Plex Mono", monospace';
+    x.fillText(`実現損益 ${signedYen(t.realized)}`, 70, 485);
+  }
+  x.fillStyle = '#98A0B3'; x.font = '500 26px "Zen Kaku Gothic New", sans-serif';
+  x.fillText(`保有 ${t.types}種 ・ ${t.qty}枚`, 70, t.realized !== 0 ? 540 : 500);
+
+  // ミニチャート（右下装飾）
+  const rand = mulberry32(t.types * 31 + t.qty + 7);
+  const pts = [];
+  let py = up ? 560 : 420;
+  for (let i = 0; i <= 10; i++){
+    pts.push([820 + i * 31, py]);
+    py += (up ? -1 : 1) * (8 + rand() * 22);
+  }
+  x.beginPath(); x.moveTo(pts[0][0], 590);
+  pts.forEach(p => x.lineTo(p[0], p[1]));
+  x.lineTo(pts[pts.length-1][0], 590); x.closePath();
+  const cg = x.createLinearGradient(0, 380, 0, 595);
+  cg.addColorStop(0, up ? 'rgba(52,232,160,.28)' : 'rgba(255,84,112,.28)');
+  cg.addColorStop(1, 'rgba(0,0,0,0)');
+  x.fillStyle = cg; x.fill();
+  x.beginPath(); x.moveTo(pts[0][0], pts[0][1]);
+  pts.forEach(p => x.lineTo(p[0], p[1]));
+  x.strokeStyle = plColor; x.lineWidth = 5; x.lineJoin = 'round'; x.stroke();
+
+  x.fillStyle = '#98A0B3'; x.font = '500 20px "Zen Kaku Gothic New", sans-serif';
+  x.fillText('anadayo.github.io/pokeca-vault', 70, 600);
+}
 $('#btnTweet').addEventListener('click', () => {
+  track('share', { method: 'x_post' });
   const url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent($('#shareText').value);
   window.open(url, '_blank', 'noopener');
 });
 $('#btnCopyShare').addEventListener('click', async () => {
-  try { await navigator.clipboard.writeText($('#shareText').value); toast('コピーしました'); }
+  try { await navigator.clipboard.writeText($('#shareText').value); track('share', { method: 'copy_text' }); toast('コピーしました'); }
   catch { toast('コピーに失敗しました'); }
+});
+$('#btnSaveShareImg').addEventListener('click', () => {
+  $('#shareCanvas').toBlob(blob => {
+    if (!blob){ toast('画像の生成に失敗しました'); return; }
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `pokeca-vault-${today()}.png`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+    track('share', { method: 'save_image' });
+    toast('シェア画像を保存しました');
+  }, 'image/png');
 });
 
 function exportJson(){
@@ -4613,7 +4793,16 @@ function importJson(file){
 
 /* ========== 11. 初期化・イベント委譲 ========== */
 
+/* GA4イベント送信（gtag未設定でも安全に無視） */
+function track(name, params){
+  try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch {}
+}
+
 document.addEventListener('click', (e) => {
+  // メルカリリンクのクリック計測（アンカー遷移は妨げない）
+  const mc = e.target.closest('a[data-mc-name]');
+  if (mc) track('mercari_click', { card_name: mc.dataset.mcName });
+
   const goBtn = e.target.closest('[data-go]');
   if (goBtn){ go(goBtn.dataset.go); return; }
 
@@ -4622,13 +4811,6 @@ document.addEventListener('click', (e) => {
 
   const sell = e.target.closest('[data-sell]');
   if (sell){ openSell(sell.dataset.sell); return; }
-
-  const merc = e.target.closest('[data-mercari]');
-  if (merc){
-    const card = cardById(merc.dataset.mercari);
-    if (card) window.open(mercariUrl(card, true), '_blank', 'noopener');
-    return;
-  }
 
   const rar = e.target.closest('[data-rarity]');
   if (rar){ marketFilter.rarity = rar.dataset.rarity; renderMarket(); return; }
@@ -4684,11 +4866,25 @@ window.addEventListener('resize', () => {
   renderAll();
 });
 
+/* カード直リンク（#card=ID または #card=カード名）で詳細を開く */
+function openCardFromHash(){
+  const m = location.hash.match(/^#card=(.+)$/);
+  if (!m) return;
+  let q;
+  try { q = decodeURIComponent(m[1]); } catch { return; }
+  const card = cardById(q)
+    || CARD_MASTER.find(c => c.name === q)
+    || CARD_MASTER.find(c => c.name.includes(q));
+  if (card) openDetail(card.id);
+}
+window.addEventListener('hashchange', openCardFromHash);
+
 // 起動
 snapshotAsset();
 saveState();
 renderTicker();
 renderAll();
+openCardFromHash();
 </script>
 </body>
 </html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>詰めポケポケ | このターン、勝ち切れる？</title>
+<meta name="description" content="ポケポケ(Pokémon TCG Pocket)の盤面を使った選択式リーサルパズル。詰将棋のように1手ずつ最適解を選んで、リーサル力を鍛えよう。初級から達人まで5段階。">
+<meta property="og:title" content="詰めポケポケ｜ポケポケの盤面を読み切れ。">
+<meta property="og:description" content="このターン、勝ち切れる？ ポケポケ版・詰将棋。選択式リーサルパズルで対戦力を鍛えよう。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://anadayo.github.io/pokeca-vault/tsume-pokepoke/">
+<meta property="og:image" content="https://anadayo.github.io/pokeca-vault/tsume-pokepoke/assets/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://anadayo.github.io/pokeca-vault/tsume-pokepoke/">
+<meta name="theme-color" content="#0a0e1a">
+<!-- GA4: 測定IDはオーナーがGA4プロパティ作成後に差し替え(ルートのindex.htmlと同じID) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="#/" class="logo" aria-label="詰めポケポケ トップへ">
+    <span class="logo-mark">⚡</span>
+    <span class="logo-text">詰め<span class="logo-accent">ポケポケ</span></span>
+  </a>
+  <nav class="header-nav">
+    <a href="#/rules" class="header-link">ルール</a>
+    <a href="#/levels" class="header-link">問題を解く</a>
+  </nav>
+</header>
+
+<main id="app" class="app"></main>
+
+<footer class="site-footer">
+  <p class="footer-note">「詰めポケポケ」は非公式のファンサイトです。ポケモン・Pokémon Trading Card Game Pocketは株式会社ポケモン他、各権利者の商標です。</p>
+  <p class="footer-note">ルールの確認は <a href="https://app-ptcgpt.pokemon-support.com/hc/ja/categories/51107996419609" target="_blank" rel="noopener">ポケポケ公式FAQ</a> をご参照ください。</p>
+</footer>
+
+<!-- 達人解放モーダル -->
+<div id="master-modal" class="modal-backdrop" hidden>
+  <div class="modal master-modal">
+    <div class="master-rays"></div>
+    <div class="master-modal-inner">
+      <div class="master-crown">👑</div>
+      <h2 class="master-title">達人モード 解放！</h2>
+      <p class="master-text">すべての難易度を制した者にのみ、<br>最終試練への道が開かれる。</p>
+      <button class="btn btn-gold" onclick="closeMasterModal(true)">挑戦する</button>
+      <button class="btn btn-ghost" onclick="closeMasterModal(false)">あとで</button>
+    </div>
+  </div>
+</div>
+
+<script src="data/cards.js"></script>
+<script src="data/puzzles.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- OGP画像の元デザイン。再生成方法:
+     chrome --headless --screenshot=ogp.png --window-size=1200,630 --virtual-time-budget=4000 ogp.html -->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;900&family=Noto+Sans+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden; position: relative;
+    background:
+      radial-gradient(700px 420px at 88% -8%, rgba(56,189,248,.22), transparent 60%),
+      radial-gradient(650px 420px at 2% 105%, rgba(167,139,250,.22), transparent 60%),
+      #07090f;
+    font-family: "M PLUS Rounded 1c", "Noto Sans JP", sans-serif;
+    color: #eef2ff;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(56,189,248,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56,189,248,.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .wrap { position: relative; text-align: center; }
+  .eyebrow {
+    display: inline-block; font-size: 22px; font-weight: 700; letter-spacing: .28em;
+    color: #38bdf8; border: 2px solid rgba(56,189,248,.45); border-radius: 999px;
+    padding: 8px 30px; margin-bottom: 28px; background: rgba(56,189,248,.08);
+  }
+  h1 {
+    font-size: 132px; font-weight: 900; line-height: 1.05; letter-spacing: .01em;
+    background: linear-gradient(135deg, #ffffff 25%, #93c5fd 65%, #c4b5fd);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 6px 30px rgba(56,189,248,.25));
+  }
+  .catch {
+    margin-top: 22px; font-size: 46px; font-weight: 900; color: #facc15;
+    text-shadow: 0 0 40px rgba(250,204,21,.5);
+  }
+  .diffs { margin-top: 38px; display: flex; gap: 16px; justify-content: center; }
+  .diff {
+    font-size: 24px; font-weight: 900; padding: 10px 26px; border-radius: 999px;
+    border: 2.5px solid currentColor; background: rgba(7,9,15,.6);
+  }
+  .bolt {
+    position: absolute; font-size: 200px; opacity: .12; transform: rotate(-12deg);
+  }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="bolt" style="top:-30px;left:30px">⚡</div>
+  <div class="bolt" style="bottom:-40px;right:40px;transform:rotate(14deg)">🧩</div>
+  <div class="wrap">
+    <div class="eyebrow">POKÉ-POCKET LETHAL PUZZLE</div>
+    <h1>詰めポケポケ</h1>
+    <div class="catch">このターン、勝ち切れる？</div>
+    <div class="diffs">
+      <span class="diff" style="color:#34d399">初級</span>
+      <span class="diff" style="color:#38bdf8">中級</span>
+      <span class="diff" style="color:#a78bfa">上級</span>
+      <span class="diff" style="color:#fb923c">超級</span>
+      <span class="diff" style="color:#fbbf24">達人</span>
+    </div>
+  </div>
+</body>
+</html>

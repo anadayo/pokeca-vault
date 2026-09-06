@@ -18,6 +18,19 @@ GitHub Pagesで公開できます。
 - `pokeca-vault.html`: ローカル作業用の元ファイル
 - `PUBLICATION.md`: 公開手順とX投稿文
 
+## GA4の設定
+
+アクセス解析はGoogleアナリティクス(GA4)を使います。測定IDはプレースホルダのままなので、**オーナーがGA4プロパティ作成後に差し替えてください**。
+
+1. [Googleアナリティクス](https://analytics.google.com/)でプロパティを作成し、測定ID（`G-`で始まるID）を取得
+2. `index.html` 内の `G-XXXXXXXXXX`（2箇所）を取得したIDに置き換え
+3. デプロイ後、GA4の「リアルタイム」レポートに自分のアクセスが映れば設定完了
+
+計測しているイベント:
+
+- `mercari_click` … メルカリ成約相場リンクのクリック（`card_name` 付き）
+- `share` … シェア操作（`method`: `x_post` / `copy_text` / `save_image`）
+
 ## X
 
 投稿・告知用アカウント: `@anaday_o`

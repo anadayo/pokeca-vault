@@ -20,11 +20,11 @@ GitHub Pagesで公開できます。
 
 ## GA4の設定
 
-アクセス解析はGoogleアナリティクス(GA4)を使います。測定IDはプレースホルダのままなので、**オーナーがGA4プロパティ作成後に差し替えてください**。
+アクセス解析はGoogleアナリティクス(GA4)を使います。
 
-1. [Googleアナリティクス](https://analytics.google.com/)でプロパティを作成し、測定ID（`G-`で始まるID）を取得
-2. `index.html` 内の `G-XXXXXXXXXX`（2箇所）を取得したIDに置き換え
-3. デプロイ後、GA4の「リアルタイム」レポートに自分のアクセスが映れば設定完了
+- 測定ID: `G-1RKFX1HCCV`
+- 対象URL: `https://anadayo.github.io/pokeca-vault/`
+- デプロイ後、GA4の「リアルタイム」レポートに自分のアクセスが映れば設定完了
 
 計測しているイベント:
 

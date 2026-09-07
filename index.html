@@ -198,6 +198,16 @@ footer{
 .dash-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:14px; }
 .dash-cell{ background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:10px; padding:10px 12px; }
 .dash-cell .v{ font-size:17px; font-weight:600; }
+.ops-panel{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:14px; }
+.ops-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:10px; }
+.ops-title{ font-weight:800; font-size:15px; }
+.ops-status{ font-size:11px; color:var(--gold); border:1px solid var(--gold-deep); border-radius:99px; padding:3px 9px; white-space:nowrap; }
+.ops-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px; }
+.ops-metric{ background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:10px; padding:10px 11px; min-width:0; }
+.ops-metric .k{ color:var(--muted); font-size:10.5px; }
+.ops-metric .v{ font-size:18px; font-weight:700; margin-top:2px; }
+.ops-actions{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px; }
+.ops-note{ color:var(--muted); font-size:12px; margin-top:9px; }
 
 .market-pulse{
   display:grid; gap:10px;
@@ -641,6 +651,11 @@ nav{
       </div>
       <button class="btn btn-ghost btn-block" id="btnReset" style="margin-top:10px; color:var(--red)">全データをリセット</button>
     </div>
+
+    <div class="section">
+      <div class="section-title">アクセス確認<span class="right muted">GA4</span></div>
+      <div id="opsAnalytics"></div>
+    </div>
   </section>
 
 </main>
@@ -744,6 +759,11 @@ const OLD_CASH_KEY = 'pokecaVaultCash';
 const OLD_COURSE_KEY = 'pokecaVaultCourse';
 const OWNER_MERCARI_AMBASSADOR_ID = '2427775577';
 const X_ACCOUNT = 'ana_wasborn';
+const GA_MEASUREMENT_ID = 'G-1RKFX1HCCV';
+const GA_LINKS = {
+  realtime: 'https://analytics.google.com/analytics/web/#/realtime',
+  reports: 'https://analytics.google.com/analytics/web/#/reports/reportinghub',
+};
 /* 価格データのメタ情報。データ更新時に updatedAt を書き換えると
    「最終更新」表示が自動で変わる（将来は価格JSONの updatedAt を読む） */
 const PRICE_DATA_META = { updatedAt: '2026-09-07' };
@@ -4150,7 +4170,7 @@ const DEFAULT_STATE = {
   assetHistory: [],
   watchlist: {},
   alerts: [],
-  analytics: { views: {}, searches: 0, details: {}, rankings: {}, mercariClicks: 0, watches: 0, holdingsAdded: 0 },
+  analytics: { views: {}, searches: 0, details: {}, rankings: {}, mercariClicks: 0, watches: 0, holdingsAdded: 0, analyticsTests: 0, lastTestAt: '' },
 };
 let state = loadState();
 function normalizeState(parsed){
@@ -4706,6 +4726,62 @@ function renderPlan(){
       <div class="plan-price num">${state.courseAmount ? yen(state.courseAmount) : '未開始'}</div>
       <ul class="plan-feats"><li>所持金 ${state.cashBalance === null ? '—' : yen(t.cash)}</li><li>カード評価額 ${yen(t.marketValue)}</li><li>総資産 ${yen(t.totalAssets)}</li></ul>
     </div>`;
+  renderOpsAnalytics();
+}
+
+function sumObjectValues(obj){
+  return Object.values(obj || {}).reduce((sum, val) => sum + (Number(val) || 0), 0);
+}
+
+function renderOpsAnalytics(){
+  const a = state.analytics || DEFAULT_STATE.analytics;
+  const viewTotal = sumObjectValues(a.views);
+  const detailTotal = sumObjectValues(a.details);
+  const rankingTotal = sumObjectValues(a.rankings);
+  const gaReady = typeof gtag === 'function';
+  const lastTest = a.lastTestAt ? new Date(a.lastTestAt).toLocaleString('ja-JP') : '未送信';
+  $('#opsAnalytics').innerHTML = `
+    <div class="ops-panel">
+      <div class="ops-head">
+        <div>
+          <div class="ops-title">アクセス解析チェック</div>
+          <div class="muted">全体PV・ユーザー数はGoogle Analyticsで確認</div>
+        </div>
+        <span class="ops-status">${gaReady ? 'GA4計測中' : 'GA4確認中'}</span>
+      </div>
+      <div class="ops-grid">
+        <div class="ops-metric"><div class="k">この端末のページ移動</div><div class="v num">${viewTotal}</div></div>
+        <div class="ops-metric"><div class="k">検索</div><div class="v num">${a.searches || 0}</div></div>
+        <div class="ops-metric"><div class="k">カード詳細</div><div class="v num">${detailTotal}</div></div>
+        <div class="ops-metric"><div class="k">メルカリ遷移</div><div class="v num">${a.mercariClicks || 0}</div></div>
+        <div class="ops-metric"><div class="k">ランキング操作</div><div class="v num">${rankingTotal}</div></div>
+        <div class="ops-metric"><div class="k">テスト送信</div><div class="v num">${a.analyticsTests || 0}</div></div>
+      </div>
+      <div class="ops-actions">
+        <button class="btn btn-gold btn-sm" data-analytics-link="realtime">リアルタイムを見る</button>
+        <button class="btn btn-ghost btn-sm" data-analytics-link="reports">レポートを見る</button>
+        <button class="btn btn-ghost btn-sm" data-analytics-test>計測テスト送信</button>
+        <button class="btn btn-ghost btn-sm" data-copy-ga-id>測定IDコピー</button>
+      </div>
+      <div class="ops-note">測定ID ${GA_MEASUREMENT_ID} ・ 最終テスト ${escapeHtml(lastTest)}</div>
+    </div>`;
+}
+
+function openAnalyticsLink(type){
+  const url = GA_LINKS[type];
+  if (!url) return;
+  track('analytics_open', { target: type });
+  window.open(url, '_blank', 'noopener');
+}
+
+function sendAnalyticsTest(){
+  state.analytics ||= structuredClone(DEFAULT_STATE.analytics);
+  state.analytics.analyticsTests = (state.analytics.analyticsTests || 0) + 1;
+  state.analytics.lastTestAt = new Date().toISOString();
+  saveState();
+  track('codex_measurement_test', { measurement_id: GA_MEASUREMENT_ID, source: 'ops_panel' });
+  renderOpsAnalytics();
+  toast('GA4へテストイベントを送信しました');
 }
 
 function openSupport(type){
@@ -5241,6 +5317,25 @@ document.addEventListener('click', (e) => {
   const support = e.target.closest('[data-support]');
   if (support){
     openSupport(support.dataset.support);
+    return;
+  }
+
+  const analyticsLink = e.target.closest('[data-analytics-link]');
+  if (analyticsLink){
+    openAnalyticsLink(analyticsLink.dataset.analyticsLink);
+    return;
+  }
+
+  if (e.target.closest('[data-analytics-test]')){
+    sendAnalyticsTest();
+    return;
+  }
+
+  if (e.target.closest('[data-copy-ga-id]')){
+    navigator.clipboard?.writeText(GA_MEASUREMENT_ID).then(
+      () => toast('GA4測定IDをコピーしました'),
+      () => toast(`測定ID: ${GA_MEASUREMENT_ID}`)
+    );
     return;
   }
 });

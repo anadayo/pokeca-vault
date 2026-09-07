@@ -208,6 +208,7 @@ footer{
 .ops-metric .v{ font-size:18px; font-weight:700; margin-top:2px; }
 .ops-actions{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px; }
 .ops-note{ color:var(--muted); font-size:12px; margin-top:9px; }
+.ops-dev-only[hidden]{ display:none !important; }
 
 .market-pulse{
   display:grid; gap:10px;
@@ -652,7 +653,7 @@ nav{
       <button class="btn btn-ghost btn-block" id="btnReset" style="margin-top:10px; color:var(--red)">全データをリセット</button>
     </div>
 
-    <div class="section">
+    <div class="section ops-dev-only" id="opsAnalyticsSection" hidden>
       <div class="section-title">アクセス確認<span class="right muted">GA4</span></div>
       <div id="opsAnalytics"></div>
     </div>
@@ -764,6 +765,7 @@ const GA_LINKS = {
   realtime: 'https://analytics.google.com/analytics/web/#/realtime',
   reports: 'https://analytics.google.com/analytics/web/#/reports/reportinghub',
 };
+const OPS_MODE_KEY = 'pokecaVault.opsMode';
 /* 価格データのメタ情報。データ更新時に updatedAt を書き換えると
    「最終更新」表示が自動で変わる（将来は価格JSONの updatedAt を読む） */
 const PRICE_DATA_META = { updatedAt: '2026-09-07' };
@@ -4733,7 +4735,34 @@ function sumObjectValues(obj){
   return Object.values(obj || {}).reduce((sum, val) => sum + (Number(val) || 0), 0);
 }
 
+function isOpsMode(){
+  try {
+    const url = new URL(location.href);
+    const dev = url.searchParams.get('dev');
+    if (dev === 'ana') {
+      localStorage.setItem(OPS_MODE_KEY, '1');
+      url.searchParams.delete('dev');
+      history.replaceState(null, '', url.pathname + (url.search ? '?' + url.searchParams.toString() : '') + url.hash);
+    } else if (dev === 'off') {
+      localStorage.removeItem(OPS_MODE_KEY);
+      url.searchParams.delete('dev');
+      history.replaceState(null, '', url.pathname + (url.search ? '?' + url.searchParams.toString() : '') + url.hash);
+    }
+    return localStorage.getItem(OPS_MODE_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+
 function renderOpsAnalytics(){
+  const section = $('#opsAnalyticsSection');
+  if (!section) return;
+  if (!isOpsMode()){
+    section.hidden = true;
+    $('#opsAnalytics').innerHTML = '';
+    return;
+  }
+  section.hidden = false;
   const a = state.analytics || DEFAULT_STATE.analytics;
   const viewTotal = sumObjectValues(a.views);
   const detailTotal = sumObjectValues(a.details);

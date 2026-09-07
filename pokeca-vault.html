@@ -68,7 +68,7 @@ gtag('config', 'G-1RKFX1HCCV');
   --font-num:  'IBM Plex Mono', monospace;
 }
 *{ box-sizing:border-box; margin:0; padding:0; }
-html{ -webkit-text-size-adjust:100%; }
+html{ -webkit-text-size-adjust:100%; overflow-x:hidden; }
 body{
   background:var(--bg); color:var(--text);
   font-family:var(--font-body); font-size:15px; line-height:1.6;
@@ -109,8 +109,8 @@ header{
 }
 
 /* ---------- ティッカー（シグネチャー演出） ---------- */
-.ticker{ border-bottom:1px solid var(--line); background:#0E1016; overflow:hidden; }
-.ticker-track{ display:flex; gap:28px; width:max-content; padding:6px 0; animation:tick 300s linear infinite; }
+.ticker{ height:32px; position:relative; border-bottom:1px solid var(--line); background:#0E1016; overflow:hidden; contain:layout paint; }
+.ticker-track{ position:absolute; left:0; top:0; display:flex; gap:28px; width:max-content; padding:6px 0; animation:tick 300s linear infinite; }
 @keyframes tick{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
 .ticker-item{ font-size:12px; color:var(--muted); white-space:nowrap; display:flex; gap:6px; align-items:baseline; }
 .ticker-item b{ color:var(--text); font-weight:500; }
@@ -199,6 +199,32 @@ footer{
 .dash-cell{ background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:10px; padding:10px 12px; }
 .dash-cell .v{ font-size:17px; font-weight:600; }
 
+.market-pulse{
+  display:grid; gap:10px;
+  background:linear-gradient(160deg,#181B26,#10131D 72%);
+  border:1px solid var(--line); border-radius:var(--radius); padding:14px;
+}
+.pulse-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+.pulse-kicker{ color:var(--muted); font-size:11px; letter-spacing:.08em; }
+.pulse-title{ font-family:var(--font-disp); font-size:18px; font-weight:800; margin-top:2px; }
+.freshness{ display:flex; flex-direction:column; align-items:flex-end; gap:2px; font-size:11px; color:var(--muted); text-align:right; }
+.freshness b{ color:var(--gold); font-size:12px; }
+.pulse-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.pulse-card{
+  min-width:0; background:rgba(255,255,255,.035); border:1px solid var(--line);
+  border-radius:10px; padding:10px 11px;
+}
+.pulse-card.wide{ grid-column:1/-1; }
+.pulse-label{ font-size:10.5px; color:var(--muted); }
+.pulse-value{ font-size:16px; font-weight:700; line-height:1.35; margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.pulse-sub{ font-size:12px; color:var(--muted); margin-top:2px; }
+.insight-row{ display:flex; align-items:center; gap:10px; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:10px 12px; }
+.insight-main{ flex:1; min-width:0; }
+.insight-main b{ display:block; font-size:13.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.insight-main span{ color:var(--muted); font-size:11.5px; }
+.insight-num{ font-size:16px; font-weight:700; text-align:right; }
+.daily-delta{ display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:700; }
+
 /* バッジ */
 .badge{ display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:700;
   padding:2px 9px; border-radius:99px; border:1px solid; white-space:nowrap; }
@@ -239,6 +265,14 @@ footer{
 .search-row select{
   background:var(--surface); border:1px solid var(--line); border-radius:12px; color:var(--text); padding:0 8px;
 }
+.search-suggest{ display:flex; gap:7px; overflow-x:auto; padding-top:8px; scrollbar-width:none; }
+.search-suggest::-webkit-scrollbar{ display:none; }
+.suggest-chip{
+  flex:0 0 auto; max-width:220px; border:1px solid var(--line); background:rgba(255,255,255,.03);
+  color:var(--text); border-radius:99px; padding:7px 11px; font-size:12px; font-weight:700;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.suggest-chip small{ color:var(--muted); font-weight:500; margin-left:4px; }
 .chips{ display:flex; gap:8px; overflow-x:auto; padding:10px 0 2px; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
 .chips::-webkit-scrollbar{ display:none; }
 .chip{
@@ -291,9 +325,16 @@ footer{
   display:flex; align-items:center; gap:12px; background:var(--surface);
   border:1px solid var(--line); border-radius:12px; padding:10px 14px;
 }
+.rank-row.has-img{ padding:9px 11px; }
+.rank-img{ width:36px; height:50px; object-fit:contain; flex:0 0 auto; border-radius:6px; background:#080A0F; border:1px solid var(--line); }
 .rank-no{ font-family:var(--font-disp); font-size:18px; color:var(--gold); width:24px; text-align:center; }
 .rank-name{ flex:1; min-width:0; font-weight:700; font-size:13.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.rank-name small{ display:block; color:var(--muted); font-size:10.5px; font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .rank-chg{ font-weight:600; font-size:14px; }
+.rank-tabs{ display:flex; gap:7px; overflow-x:auto; padding-bottom:2px; margin-bottom:9px; scrollbar-width:none; }
+.rank-tabs::-webkit-scrollbar{ display:none; }
+.rank-tab{ flex:0 0 auto; background:var(--surface); border:1px solid var(--line); color:var(--muted); border-radius:99px; padding:7px 11px; font-size:12px; font-weight:700; }
+.rank-tab.on{ color:#1A1405; background:var(--gold); border-color:var(--gold); }
 .rank-locked{ filter:blur(6px); pointer-events:none; user-select:none; }
 .rank-overlay{
   position:absolute; inset:auto 0 0 0; padding:26px 16px 10px; text-align:center;
@@ -360,12 +401,22 @@ canvas{ width:100%; display:block; }
 }
 .sheet.open{ transform:translateY(0); }
 .sheet-grab{ width:42px; height:4px; border-radius:99px; background:var(--line); margin:4px auto 12px; }
+.sheet-close{ position:absolute; top:10px; right:12px; width:34px; height:34px; border-radius:10px; border:1px solid var(--line); background:var(--surface); color:var(--text); font-size:18px; }
 .sheet h2{ font-family:var(--font-disp); font-size:17px; margin-bottom:2px; }
 .price-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:12px 0; }
 .price-cell{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:9px 12px; }
 .price-cell .k{ font-size:10.5px; color:var(--muted); }
 .price-cell .v{ font-size:16px; font-weight:600; }
 .price-cell.best{ border-color:var(--gold-deep); }
+.signal-panel{ background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:12px; display:grid; gap:8px; }
+.signal-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.signal-cell{ background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:10px; padding:9px 10px; }
+.signal-cell .k{ font-size:10.5px; color:var(--muted); }
+.signal-cell .v{ font-size:15px; font-weight:700; margin-top:2px; }
+.mini-note{ font-size:10.5px; color:var(--muted); line-height:1.55; }
+.watch-actions{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px; }
+.watch-on{ border-color:var(--gold-deep); color:var(--gold); background:rgba(232,193,90,.1); }
+.alert-box{ background:rgba(91,200,255,.06); border:1px solid rgba(91,200,255,.24); border-radius:12px; padding:12px; margin-top:12px; }
 .store-row{ display:flex; align-items:center; gap:10px; padding:9px 2px; border-bottom:1px solid var(--line); font-size:13.5px; }
 .store-row:last-child{ border-bottom:none; }
 .store-row .nm{ flex:1; }
@@ -437,11 +488,42 @@ nav{
   <section class="view active" id="view-home">
 
     <div class="hero">
-      <h1>気になるポケカの<br><em>“実際に売れた価格”</em>を<br>ワンタップで。</h1>
-      <p>買う・売るのシミュレーションも。価格チェック・保有資産の損益管理までこれ1つで。</p>
+      <h1>今日のポケカ相場を<br><em>価格・買取・資産</em>で<br>すぐ確認。</h1>
+      <p>高騰・下落ランキング、最高買取、保有カードの損益までスマホで一気に見られます。</p>
       <div class="hero-actions">
         <button class="btn btn-gold" data-go="market">カードを探す</button>
-        <button class="btn btn-ghost" id="btnGuide2">使い方を見る</button>
+        <button class="btn btn-ghost" data-rank-mode="today-up">高騰を見る</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">今日のポケカ相場<span class="right muted" id="marketFreshness"></span></div>
+      <div class="market-pulse">
+        <div class="pulse-head">
+          <div>
+            <div class="pulse-kicker">MARKET DASHBOARD</div>
+            <div class="pulse-title" id="marketMood">集計中</div>
+          </div>
+          <div class="freshness">
+            <b id="priceFreshLabel">更新確認中</b>
+            <span id="priceFreshSub">価格データを確認しています</span>
+          </div>
+        </div>
+        <div class="pulse-grid">
+          <button class="pulse-card" id="pulseTopUp" type="button"></button>
+          <button class="pulse-card" id="pulseTopDown" type="button"></button>
+          <button class="pulse-card" id="pulseBestBuy" type="button"></button>
+          <div class="pulse-card">
+            <div class="pulse-label">市場全体</div>
+            <div class="pulse-value num" id="pulseAverageMove">—</div>
+            <div class="pulse-sub" id="pulseBreadth">—</div>
+          </div>
+          <div class="pulse-card wide">
+            <div class="pulse-label">今日見る理由</div>
+            <div class="pulse-value" id="pulseReason">ウォッチとランキングを準備中</div>
+            <div class="pulse-sub">毎日、価格差・高騰・下落をまとめて確認できます</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -460,6 +542,11 @@ nav{
           <div class="dash-cell"><div class="dash-label">所持金</div><div class="v num" id="dashLimit">0/2種</div></div>
         </div>
       </div>
+    </div>
+
+    <div class="section" id="portfolioInsightSection">
+      <div class="section-title">資産ダッシュボード<span class="right muted">ポートフォリオ</span></div>
+      <div class="guide-steps" id="portfolioInsights"></div>
     </div>
 
     <div class="section" id="guideSection">
@@ -482,7 +569,8 @@ nav{
     </div>
 
     <div class="section">
-      <div class="section-title">急騰ランキング<span class="right muted" id="rankUpdated">直近7日の上昇率</span></div>
+      <div class="section-title">ランキング<span class="right muted" id="rankUpdated">直近7日の上昇率</span></div>
+      <div class="rank-tabs" id="rankTabs"></div>
       <div class="rank-list" id="rankList"></div>
     </div>
 
@@ -502,6 +590,7 @@ nav{
           <option value="name">名前順</option>
         </select>
       </div>
+      <div class="search-suggest" id="searchSuggest"></div>
       <div class="chips" id="rarityChips"></div>
       <div class="card-list" id="cardList"></div>
     </div>
@@ -581,18 +670,21 @@ nav{
 <!-- カード詳細・購入シート -->
 <div class="sheet" id="sheetDetail" role="dialog" aria-modal="true">
   <div class="sheet-grab"></div>
+  <button class="sheet-close" type="button" data-close-sheet aria-label="閉じる">×</button>
   <div id="detailBody"></div>
 </div>
 
 <!-- 売却シート -->
 <div class="sheet" id="sheetSell" role="dialog" aria-modal="true">
   <div class="sheet-grab"></div>
+  <button class="sheet-close" type="button" data-close-sheet aria-label="閉じる">×</button>
   <div id="sellBody"></div>
 </div>
 
 <!-- 共有シート -->
 <div class="sheet" id="sheetShare" role="dialog" aria-modal="true">
   <div class="sheet-grab"></div>
+  <button class="sheet-close" type="button" data-close-sheet aria-label="閉じる">×</button>
   <h2>Xでシェア</h2>
   <div class="field"><label>シェア画像（保存して投稿に添付できます）</label>
     <canvas id="shareCanvas" width="1200" height="630" style="width:100%; height:auto; border-radius:12px; border:1px solid var(--line)"></canvas>
@@ -610,6 +702,7 @@ nav{
 <!-- ガイドシート -->
 <div class="sheet" id="sheetGuide" role="dialog" aria-modal="true">
   <div class="sheet-grab"></div>
+  <button class="sheet-close" type="button" data-close-sheet aria-label="閉じる">×</button>
   <h2>POKÉCA VAULT の使い方</h2>
   <div class="guide-steps" style="margin-top:12px">
     <div class="gstep"><div class="no">1</div><div><b>カードを探す</b><span>「さがす」タブで検索・絞り込み。価格と急騰バッジをチェック。</span></div></div>
@@ -3970,6 +4063,80 @@ function mercariUrl(card, soldOnly){
   const status = soldOnly ? '&status=sold_out' : '&status=on_sale';
   return addMercariAfid('https://jp.mercari.com/search?keyword=' + kw + status);
 }
+function previousPrice(card, days=1){
+  const s = getPriceSeries(card);
+  return s[Math.max(0, s.length - 1 - days)] || currentPrice(card);
+}
+function changeAmount(card, days=1){ return currentPrice(card) - previousPrice(card, days); }
+function freshnessInfo(){
+  const updated = new Date(PRICE_DATA_META.updatedAt + 'T21:00:00+09:00');
+  const now = new Date();
+  const diffMin = Math.max(0, Math.floor((now - updated) / 60000));
+  if (!Number.isFinite(diffMin)) return { label:'更新確認中', sub:'価格データの日時を確認中', stale:true, minutes:null };
+  if (diffMin < 60) return { label:`${diffMin}分前`, sub:'朝・昼・夕方・夜の更新枠に対応', stale:false, minutes:diffMin };
+  const hours = Math.floor(diffMin / 60);
+  if (hours < 24) return { label:`${hours}時間前`, sub:'次回更新までこの価格を表示', stale:false, minutes:diffMin };
+  return { label:`${Math.floor(hours / 24)}日前`, sub:'更新確認中の価格があります', stale:true, minutes:diffMin };
+}
+function priceStatusLabel(card){
+  if (Number(card?.buyPrice) > 0) return freshnessInfo().label;
+  return '買取掲載なし';
+}
+function topMovers(days=1, direction='up', limit=5){
+  return [...CARD_MASTER]
+    .map(card => ({ card, pct: changePct(card, days), amount: changeAmount(card, days), best: bestBuyback(card).price }))
+    .sort((a, b) => direction === 'down' ? a.pct - b.pct : b.pct - a.pct)
+    .slice(0, limit);
+}
+function buybackRanking(limit=5){
+  return [...CARD_MASTER]
+    .map(card => ({ card, pct: changePct(card, 7), amount: changeAmount(card, 1), best: bestBuyback(card).price }))
+    .sort((a, b) => b.best - a.best)
+    .slice(0, limit);
+}
+function marketSummary(){
+  const movers = CARD_MASTER.map(card => ({ card, pct1: changePct(card, 1), pct7: changePct(card, 7), amount: changeAmount(card, 1) }));
+  const avg = movers.reduce((s, x) => s + x.pct1, 0) / movers.length;
+  const upCount = movers.filter(x => x.pct1 > 0.4).length;
+  const downCount = movers.filter(x => x.pct1 < -0.4).length;
+  const mood = avg > 1.2 ? '本日の相場：上昇' : avg < -1.2 ? '本日の相場：下落' : '本日の相場：横ばい';
+  const topUp = [...movers].sort((a,b) => b.pct1 - a.pct1)[0];
+  const topDown = [...movers].sort((a,b) => a.pct1 - b.pct1)[0];
+  const bestBuy = buybackRanking(1)[0];
+  return { avg, upCount, downCount, mood, topUp, topDown, bestBuy };
+}
+function holdingPerformance(){
+  return Object.entries(state.holdings)
+    .map(([id, h]) => {
+      const card = cardById(id);
+      if (!card || h.qty <= 0) return null;
+      const profit = (currentPrice(card) - h.avgCost) * h.qty;
+      const todayMove = changeAmount(card, 1) * h.qty;
+      return { card, h, profit, todayMove, rate: h.avgCost > 0 ? (currentPrice(card) - h.avgCost) / h.avgCost * 100 : 0 };
+    })
+    .filter(Boolean);
+}
+function isWatched(cardId, type='watch'){ return Boolean(state.watchlist?.[cardId]?.[type]); }
+function toggleWatch(cardId, type='watch'){
+  state.watchlist ||= {};
+  state.watchlist[cardId] ||= { watch:false, buy:false, sell:false, createdAt:today() };
+  state.watchlist[cardId][type] = !state.watchlist[cardId][type];
+  state.watchlist[cardId].updatedAt = today();
+  saveState();
+  recordMetric('watch', { card_id: cardId, type });
+  track('watch_toggle', { card_id: cardId, type, enabled: state.watchlist[cardId][type] });
+  return state.watchlist[cardId][type];
+}
+function upsertAlert(cardId, kind, threshold){
+  state.alerts ||= [];
+  const existing = state.alerts.find(a => a.cardId === cardId && a.kind === kind);
+  const alert = { cardId, kind, threshold:Number(threshold) || 0, channel:'in_app_future', enabled:true, updatedAt:today() };
+  if (existing) Object.assign(existing, alert);
+  else state.alerts.push({ id:'a' + Date.now(), createdAt:today(), ...alert });
+  saveState();
+  track('price_alert_save', { card_id: cardId, kind, threshold: alert.threshold });
+  return alert;
+}
 
 /* ========== 4. 状態管理（localStorage） ========== */
 
@@ -3981,6 +4148,9 @@ const DEFAULT_STATE = {
   holdings: {},
   soldHistory: [],
   assetHistory: [],
+  watchlist: {},
+  alerts: [],
+  analytics: { views: {}, searches: 0, details: {}, rankings: {}, mercariClicks: 0, watches: 0, holdingsAdded: 0 },
 };
 let state = loadState();
 function normalizeState(parsed){
@@ -3989,6 +4159,9 @@ function normalizeState(parsed){
   next.holdings = (parsed && typeof parsed.holdings === 'object' && !Array.isArray(parsed.holdings)) ? parsed.holdings : {};
   next.soldHistory = Array.isArray(parsed?.soldHistory) ? parsed.soldHistory : [];
   next.assetHistory = Array.isArray(parsed?.assetHistory) ? parsed.assetHistory : [];
+  next.watchlist = (parsed && typeof parsed.watchlist === 'object' && !Array.isArray(parsed.watchlist)) ? parsed.watchlist : {};
+  next.alerts = Array.isArray(parsed?.alerts) ? parsed.alerts : [];
+  next.analytics = (parsed && typeof parsed.analytics === 'object' && !Array.isArray(parsed.analytics)) ? { ...DEFAULT_STATE.analytics, ...parsed.analytics } : structuredClone(DEFAULT_STATE.analytics);
   next.plan = 'lite';
   next.cashBalance = parsed?.cashBalance === null || parsed?.cashBalance === undefined ? null : Number(parsed.cashBalance) || 0;
   next.courseAmount = parsed?.courseAmount === null || parsed?.courseAmount === undefined ? null : Number(parsed.courseAmount) || null;
@@ -4086,7 +4259,10 @@ function buyCard(cardId, qtyToBuy, unitPrice, memo){
   h.purchases.push({ qty: qtyToBuy, unitPrice, date: today(), memo: memo || '' });
   state.holdings[cardId] = h;
   state.cashBalance -= total;
+  state.analytics ||= structuredClone(DEFAULT_STATE.analytics);
+  state.analytics.holdingsAdded = (state.analytics.holdingsAdded || 0) + 1;
   snapshotAsset(); saveState();
+  track('holding_add', { card_id: cardId, qty: qtyToBuy, unit_price: unitPrice });
   return { ok:true };
 }
 function sellCard(cardId, qtyToSell, sellUnitPrice, channel){
@@ -4157,13 +4333,16 @@ function drawLineChart(canvas, points, color, fill){
 let activeView = 'home';
 let marketFilter = { q:'', rarity:'すべて', sort:'hot' };
 let holdFilter = 'all';
+let rankMode = 'today-up';
 
 function go(view){
+  if (openSheetId) closeSheet();
   activeView = view;
   $$('.view').forEach(v => v.classList.toggle('active', v.id === 'view-' + view));
   $$('.nav-btn').forEach(b => b.classList.toggle('on', b.dataset.go === view));
   window.scrollTo({ top: 0 });
   renderAll();
+  recordMetric('view', { view });
 }
 
 function renderAll(){
@@ -4194,11 +4373,103 @@ function dailyFeaturedCard(){
   return ordered[idx];
 }
 
+function pulseCardHtml(item, label, valueClass){
+  if (!item) return '';
+  const card = item.card;
+  const move = Number.isFinite(item.pct) ? item.pct : item.pct1;
+  return `
+    <div class="pulse-label">${label}</div>
+    <div class="pulse-value">${escapeHtml(card.name)}</div>
+    <div class="pulse-sub"><span class="num ${valueClass || (move >= 0 ? 'pos' : 'neg')}">${pct(move)}</span> ・ ${yen(currentPrice(card))} ・ 買取 ${yen(bestBuyback(card).price)}</div>`;
+}
+
+function renderMarketPulse(){
+  const summary = marketSummary();
+  const fresh = freshnessInfo();
+  $('#marketFreshness').textContent = `最終更新: ${PRICE_DATA_META.updatedAt}`;
+  $('#priceFreshLabel').textContent = fresh.label;
+  $('#priceFreshSub').textContent = fresh.sub;
+  $('#marketMood').textContent = summary.mood;
+  $('#pulseTopUp').innerHTML = pulseCardHtml(summary.topUp, '今日一番上がったカード', 'pos');
+  $('#pulseTopUp').dataset.detail = summary.topUp.card.id;
+  $('#pulseTopDown').innerHTML = pulseCardHtml(summary.topDown, '今日一番下がったカード', 'neg');
+  $('#pulseTopDown').dataset.detail = summary.topDown.card.id;
+  $('#pulseBestBuy').innerHTML = `
+    <div class="pulse-label">最高買取</div>
+    <div class="pulse-value">${escapeHtml(summary.bestBuy.card.name)}</div>
+    <div class="pulse-sub"><span class="num pos">${yen(summary.bestBuy.best)}</span> ・ ${escapeHtml(summary.bestBuy.card.rarity)}</div>`;
+  $('#pulseBestBuy').dataset.detail = summary.bestBuy.card.id;
+  $('#pulseAverageMove').textContent = pct(summary.avg);
+  $('#pulseAverageMove').className = 'pulse-value num ' + (summary.avg >= 0 ? 'pos' : 'neg');
+  $('#pulseBreadth').textContent = `上昇 ${summary.upCount}件 / 下落 ${summary.downCount}件`;
+  $('#pulseReason').textContent = `${summary.topUp.card.name} が本日 ${pct(summary.topUp.pct1)}。詳細で利益計算できます`;
+}
+
+function renderPortfolioInsights(){
+  const perf = holdingPerformance();
+  const t = portfolioTotals();
+  if (!perf.length){
+    $('#portfolioInsights').innerHTML = `
+      <div class="insight-row"><div class="insight-main"><b>保有カードを登録すると資産前日比を表示</b><span>買った価格を入れるだけで、含み損益と売却目安を追えます</span></div><button class="btn btn-gold btn-sm" data-go="market">探す</button></div>`;
+    return;
+  }
+  const todayMove = perf.reduce((s, x) => s + x.todayMove, 0);
+  const best = [...perf].sort((a,b) => b.profit - a.profit)[0];
+  const worst = [...perf].sort((a,b) => a.profit - b.profit)[0];
+  const base = Math.max(1, t.marketValue - todayMove);
+  $('#portfolioInsights').innerHTML = `
+    <div class="insight-row">
+      <div class="insight-main"><b>今日の保有資産変動</b><span>保有中カードの1日変動を集計</span></div>
+      <div class="insight-num num ${todayMove >= 0 ? 'pos' : 'neg'}">${signedYen(todayMove)}<br><span class="daily-delta">${pct(todayMove / base * 100)}</span></div>
+    </div>
+    <div class="insight-row" data-detail="${best.card.id}" role="button" tabindex="0">
+      <div class="insight-main"><b>一番利益が出ているカード</b><span>${escapeHtml(best.card.name)} ・ ${best.h.qty}枚</span></div>
+      <div class="insight-num num ${best.profit >= 0 ? 'pos' : 'neg'}">${signedYen(best.profit)}</div>
+    </div>
+    <div class="insight-row" data-detail="${worst.card.id}" role="button" tabindex="0">
+      <div class="insight-main"><b>一番損益が弱いカード</b><span>${escapeHtml(worst.card.name)} ・ ${worst.h.qty}枚</span></div>
+      <div class="insight-num num ${worst.profit >= 0 ? 'pos' : 'neg'}">${signedYen(worst.profit)}</div>
+    </div>`;
+}
+
+function rankingItems(){
+  const modes = {
+    'today-up':  { label:'今日高騰', note:'前日比', items:topMovers(1, 'up', 5), value:x => pct(x.pct), cls:x => x.pct >= 0 ? 'pos' : 'neg' },
+    'today-down':{ label:'今日下落', note:'前日比', items:topMovers(1, 'down', 5), value:x => pct(x.pct), cls:x => x.pct >= 0 ? 'pos' : 'neg' },
+    'buyback':   { label:'買取価格', note:'最高買取', items:buybackRanking(5), value:x => yen(x.best), cls:() => 'pos' },
+    '7d-up':     { label:'7日高騰', note:'7日変動', items:topMovers(7, 'up', 5), value:x => pct(x.pct), cls:x => x.pct >= 0 ? 'pos' : 'neg' },
+    '30d-up':    { label:'30日高騰', note:'30日変動', items:topMovers(30, 'up', 5), value:x => pct(x.pct), cls:x => x.pct >= 0 ? 'pos' : 'neg' },
+  };
+  return modes[rankMode] || modes['today-up'];
+}
+
+function renderRankings(){
+  const modes = [
+    ['today-up','今日高騰'],
+    ['today-down','今日下落'],
+    ['buyback','買取価格'],
+    ['7d-up','7日高騰'],
+    ['30d-up','30日高騰'],
+  ];
+  $('#rankTabs').innerHTML = modes.map(([key, label]) => `<button class="rank-tab ${rankMode === key ? 'on' : ''}" data-rank-mode="${key}">${label}</button>`).join('');
+  const rank = rankingItems();
+  $('#rankUpdated').textContent = `${rank.note} ・ ${freshnessInfo().label}`;
+  $('#rankList').innerHTML = rank.items.map((item, i) => {
+    const c = item.card;
+    return `<div class="rank-row has-img" data-detail="${c.id}" role="button" tabindex="0">
+      <div class="rank-no">${i+1}</div>
+      <img class="rank-img" src="${c.image}" alt="" loading="lazy" onerror="this.style.opacity=.25">
+      <div class="rank-name">${escapeHtml(c.name)}<small>${escapeHtml(c.set)} ・ ${escapeHtml(c.rarity)} ・ 買取 ${yen(bestBuyback(c).price)}</small></div>
+      <div class="rank-chg num ${rank.cls(item)}">${rank.value(item)}</div>
+    </div>`;
+  }).join('');
+}
+
 /* ---- ホーム ---- */
 function renderHome(){
   const t = portfolioTotals();
-  const plan = PLANS[state.plan];
 
+  renderMarketPulse();
   $('#dashTotal').innerHTML = `<span class="yen">¥</span>${Math.round(t.totalAssets).toLocaleString('ja-JP')}`;
   const ur = $('#dashUnreal'); ur.textContent = signedYen(t.unrealized); ur.className = 'num ' + (t.unrealized >= 0 ? 'pos' : 'neg');
   const re = $('#dashReal');   re.textContent = signedYen(t.realized);   re.className = 'num ' + (t.realized >= 0 ? 'pos' : 'neg');
@@ -4210,6 +4481,7 @@ function renderHome(){
 
   // 初回ガイドは保有が増えたら隠す
   $('#guideSection').style.display = t.types > 0 ? 'none' : '';
+  renderPortfolioInsights();
 
   // 鮮度表示（価格データの最終更新日）
   $('#featuredUpdated').textContent = `最終更新: ${PRICE_DATA_META.updatedAt}`;
@@ -4249,22 +4521,7 @@ function renderHome(){
   $('#assetChartNote').textContent = note;
   drawLineChart($('#assetChart'), series, '#E8C15A', true);
 
-  // 急騰ランキング（無料プランは一部ぼかし）
-  const ranked = [...CARD_MASTER].sort((a,b) => changePct(b,7) - changePct(a,7)).slice(0, 5);
-  const visible = plan.rankVisible;
-  $('#rankList').innerHTML = ranked.map((c, i) => {
-    const ch = changePct(c, 7);
-    const locked = i >= visible;
-    return `<div class="rank-row ${locked ? 'rank-locked' : ''}" ${locked ? '' : `data-detail="${c.id}"`} role="button" tabindex="0">
-      <div class="rank-no">${i+1}</div>
-      <div class="rank-name">${escapeHtml(c.name)}</div>
-      <div class="rank-chg num ${ch >= 0 ? 'pos' : 'neg'}">${pct(ch)}</div>
-    </div>`;
-  }).join('') + (visible < 5 ? `
-    <div class="rank-overlay">
-      <p>ランキングは人気カード200種類から自動で並び替えています</p>
-      <button class="btn btn-gold btn-sm" data-go="market">カードを見る</button>
-    </div>` : '');
+  renderRankings();
 
   // ホームのさりげないアップセル
   $('#homeUpsell').innerHTML = `
@@ -4284,9 +4541,23 @@ function renderMarket(){
   $('#rarityChips').innerHTML = RARITIES.map(r =>
     `<button class="chip ${marketFilter.rarity === r ? 'on' : ''}" data-rarity="${r}">${r}</button>`).join('');
 
+  const q = marketFilter.q;
+  const matchesQuery = (c) => {
+    if (!q) return true;
+    return [c.name, c.nameEn, c.set, c.setCode, c.cardNo, c.rarity, c.id]
+      .filter(Boolean)
+      .some(v => String(v).toLowerCase().includes(q));
+  };
+  const suggestions = q
+    ? CARD_MASTER.filter(matchesQuery).sort((a,b) => currentPrice(b) - currentPrice(a)).slice(0, 8)
+    : [...CARD_MASTER].sort((a,b) => Math.abs(changePct(b,1)) - Math.abs(changePct(a,1))).slice(0, 6);
+  $('#searchSuggest').innerHTML = suggestions.map(c =>
+    `<button class="suggest-chip" data-detail="${c.id}">${escapeHtml(c.name)}<small>${escapeHtml(c.rarity)} ${escapeHtml(c.cardNo)}</small></button>`
+  ).join('');
+
   let list = CARD_MASTER.filter(c =>
     (marketFilter.rarity === 'すべて' || c.rarity === marketFilter.rarity) &&
-    (marketFilter.q === '' || c.name.toLowerCase().includes(marketFilter.q) || c.set.toLowerCase().includes(marketFilter.q))
+    matchesQuery(c)
   );
   const sorters = {
     hot:       (a,b) => changePct(b,7) - changePct(a,7),
@@ -4476,11 +4747,23 @@ let detailRange = 30;
 function openDetail(cardId){
   const card = cardById(cardId);
   if (!card) return;
+  recordMetric('detail', { card_id: cardId, card_name: card.name });
   const plan = PLANS[state.plan];
   const sig = getSignal(card);
   const buybacks = storeBuybacks(card);
   const best = bestBuyback(card);
   const own = state.holdings[cardId];
+  const series = getPriceSeries(card);
+  const last30 = series.slice(-30);
+  const hi30 = Math.max(...last30);
+  const lo30 = Math.min(...last30);
+  const c1 = changePct(card, 1);
+  const c7 = changePct(card, 7);
+  const c30 = changePct(card, 30);
+  const spread = currentPrice(card) > 0 ? (currentPrice(card) - best.price) / currentPrice(card) * 100 : 0;
+  const watched = isWatched(cardId, 'watch');
+  const buyCandidate = isWatched(cardId, 'buy');
+  const sellCandidate = isWatched(cardId, 'sell');
   if (!plan.chartDays.includes(detailRange)) detailRange = plan.chartDays[plan.chartDays.length - 1];
 
   const allRanges = [[7,'7日'],[30,'30日'],[90,'90日'],[365,'1年']];
@@ -4504,9 +4787,22 @@ function openDetail(cardId){
 
     <div class="price-grid">
       <div class="price-cell"><div class="k">販売価格（相場）</div><div class="v num">${yen(currentPrice(card))}</div></div>
-      <div class="price-cell best"><div class="k">買取価格</div><div class="v num" style="color:var(--gold)">${buyPriceLabel(card)}</div></div>
-      <div class="price-cell"><div class="k">平均買取</div><div class="v num">${yen(avgBuyback(card))}</div></div>
-      <div class="price-cell"><div class="k">メルカリ想定相場</div><div class="v num" style="color:var(--blue)">${yen(mercariEstimate(card))}</div></div>
+      <div class="price-cell best"><div class="k">最高買取価格</div><div class="v num" style="color:var(--gold)">${buyPriceLabel(card)}</div></div>
+      <div class="price-cell"><div class="k">前日比</div><div class="v num ${c1 >= 0 ? 'pos' : 'neg'}">${pct(c1)}</div></div>
+      <div class="price-cell"><div class="k">最終更新</div><div class="v num">${priceStatusLabel(card)}</div></div>
+    </div>
+
+    <div class="signal-panel">
+      <div class="section-title" style="margin:0">売り時・買い時の参考指標</div>
+      <div class="signal-grid">
+        <div class="signal-cell"><div class="k">7日変動</div><div class="v num ${c7 >= 0 ? 'pos' : 'neg'}">${pct(c7)}</div></div>
+        <div class="signal-cell"><div class="k">30日変動</div><div class="v num ${c30 >= 0 ? 'pos' : 'neg'}">${pct(c30)}</div></div>
+        <div class="signal-cell"><div class="k">30日高値との差</div><div class="v num ${currentPrice(card) >= hi30 ? 'pos' : 'neg'}">${pct((currentPrice(card) - hi30) / hi30 * 100)}</div></div>
+        <div class="signal-cell"><div class="k">店舗価格差</div><div class="v num">${pct(spread)}</div></div>
+        <div class="signal-cell"><div class="k">30日最高値</div><div class="v num">${yen(hi30)}</div></div>
+        <div class="signal-cell"><div class="k">30日最安値</div><div class="v num">${yen(lo30)}</div></div>
+      </div>
+      <div class="mini-note">※ 売買判断を保証するものではありません。価格差・変動率・買取比率から見た参考表示です。</div>
     </div>
 
     <div class="section-title" style="margin-top:14px">買取価格 <span class="right muted">掲載なしは最低保証</span></div>
@@ -4516,6 +4812,40 @@ function openDetail(cardId){
           ${b.id === best.id ? '<span class="badge badge-sell">今売るならここ</span>' : ''}
           <span class="num" style="font-weight:600">${yen(b.price)}</span>
         </div>`).join('')}
+    </div>
+
+    <div class="section-title" style="margin-top:14px">販売価格比較 <span class="right muted">購入導線</span></div>
+    <div style="background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:4px 12px">
+      <div class="store-row">
+        <span class="nm">晴れる屋2販売</span>
+        <span class="num" style="font-weight:600">${yen(currentPrice(card))}</span>
+      </div>
+      <div class="store-row">
+        <span class="nm">メルカリ想定相場</span>
+        <span class="num" style="font-weight:600">${yen(mercariEstimate(card))}</span>
+      </div>
+    </div>
+
+    <div class="watch-actions">
+      <button class="btn btn-ghost btn-sm ${watched ? 'watch-on' : ''}" data-watch="${card.id}" data-watch-type="watch">${watched ? 'ウォッチ中' : 'ウォッチ'}</button>
+      <button class="btn btn-ghost btn-sm ${buyCandidate ? 'watch-on' : ''}" data-watch="${card.id}" data-watch-type="buy">${buyCandidate ? '購入候補' : '購入候補に追加'}</button>
+      <button class="btn btn-ghost btn-sm ${sellCandidate ? 'watch-on' : ''}" data-watch="${card.id}" data-watch-type="sell">${sellCandidate ? '売却候補' : '売却候補に追加'}</button>
+      <button class="btn btn-blue btn-sm" data-card-share="${card.id}">Xでシェア</button>
+    </div>
+
+    <div class="alert-box">
+      <div class="section-title" style="margin:0 0 8px">価格アラート基盤</div>
+      <div class="field"><label>買取価格がこの金額以上になったら通知予定</label><input type="number" id="alertBuyPrice" inputmode="numeric" value="${Math.max(best.price, currentPrice(card))}"></div>
+      <button class="btn btn-ghost btn-block" id="btnSaveAlert">アラート条件を保存</button>
+      <p class="mini-note" style="margin-top:8px">今はこの端末に条件を保存します。将来、Web通知・LINE・Discord・メールへ拡張できる形式です。</p>
+    </div>
+
+    <div class="section-title" style="margin-top:16px">今売った場合の利益</div>
+    <div class="field"><label>購入価格（円 / 1枚）</label><input type="number" id="profitBuyPrice" inputmode="numeric" value="${own ? own.avgCost : currentPrice(card)}"></div>
+    <div class="calc-rows" style="background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:12px">
+      <div><span class="muted">現在最高買取</span><b class="num">${yen(best.price)}</b></div>
+      <div><span class="muted">利益</span><b class="num" id="profitNow">—</b></div>
+      <div><span class="muted">利益率</span><b class="num" id="profitRate">—</b></div>
     </div>
 
     <div class="section-title" style="margin-top:16px">購入をシミュレーション</div>
@@ -4554,6 +4884,22 @@ function openDetail(cardId){
   $('#qtyMinus').onclick = () => { qtyEl.value = Math.max(1, (parseInt(qtyEl.value,10)||1) - 1); updateTotal(); };
   $('#qtyPlus').onclick  = () => { qtyEl.value = (parseInt(qtyEl.value,10)||1) + 1; updateTotal(); };
   qtyEl.oninput = priceEl.oninput = updateTotal;
+  const profitInput = $('#profitBuyPrice');
+  const updateProfit = () => {
+    const cost = Math.max(0, parseInt(profitInput.value, 10) || 0);
+    const profit = best.price - cost;
+    const pf = $('#profitNow'); pf.textContent = signedYen(profit); pf.className = 'num ' + (profit >= 0 ? 'pos' : 'neg');
+    const rt = $('#profitRate'); rt.textContent = cost > 0 ? pct(profit / cost * 100) : '—'; rt.className = 'num ' + (profit >= 0 ? 'pos' : 'neg');
+  };
+  profitInput.oninput = updateProfit;
+  updateProfit();
+
+  $('#btnSaveAlert').onclick = () => {
+    const threshold = Math.max(0, parseInt($('#alertBuyPrice').value, 10) || 0);
+    if (!threshold){ toast('アラート金額を入力してください'); return; }
+    upsertAlert(cardId, 'buyPriceAtLeast', threshold);
+    toast('アラート条件を保存しました');
+  };
 
   $$('#detailBody [data-range]').forEach(ch => ch.onclick = () => {
     if (ch.dataset.locked){
@@ -4671,6 +5017,23 @@ function openShare(){
   $('#shareText').value = lines.join('\n');
   drawShareImage(t);
   openSheet('sheetShare');
+}
+function shareCard(cardId){
+  const card = cardById(cardId);
+  if (!card) return;
+  const best = bestBuyback(card);
+  const ch = changePct(card, 1);
+  const baseUrl = location.protocol === 'file:' ? 'https://anadayo.github.io/pokeca-vault/' : location.href.split('#')[0];
+  const url = baseUrl + '#card=' + encodeURIComponent(card.id);
+  const text = [
+    `${card.name}${card.rarity ? card.rarity : ''}が本日${pct(ch)}${ch >= 0 ? '上昇' : '変動'}`,
+    `現在販売価格：${yen(currentPrice(card))}`,
+    `最高買取：${buyPriceLabel(card)}`,
+    url,
+    '#ポケカ #ポケカ相場 #POKECAVAULT',
+  ].join('\n');
+  track('share', { method:'x_card', card_id:card.id, card_name:card.name });
+  window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text), '_blank', 'noopener');
 }
 
 /* 損益スクショ風のシェア画像を canvas で生成 */
@@ -4793,6 +5156,28 @@ function importJson(file){
 
 /* ========== 11. 初期化・イベント委譲 ========== */
 
+function recordMetric(type, params){
+  try {
+    state.analytics ||= structuredClone(DEFAULT_STATE.analytics);
+    if (type === 'view'){
+      state.analytics.views ||= {};
+      state.analytics.views[params.view] = (state.analytics.views[params.view] || 0) + 1;
+    }
+    if (type === 'search') state.analytics.searches = (state.analytics.searches || 0) + 1;
+    if (type === 'detail'){
+      state.analytics.details ||= {};
+      state.analytics.details[params.card_id] = (state.analytics.details[params.card_id] || 0) + 1;
+    }
+    if (type === 'ranking'){
+      state.analytics.rankings ||= {};
+      state.analytics.rankings[params.mode] = (state.analytics.rankings[params.mode] || 0) + 1;
+    }
+    if (type === 'mercari') state.analytics.mercariClicks = (state.analytics.mercariClicks || 0) + 1;
+    if (type === 'watch') state.analytics.watches = (state.analytics.watches || 0) + 1;
+    saveState();
+  } catch {}
+}
+
 /* GA4イベント送信（gtag未設定でも安全に無視） */
 function track(name, params){
   try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch {}
@@ -4801,13 +5186,29 @@ function track(name, params){
 document.addEventListener('click', (e) => {
   // メルカリリンクのクリック計測（アンカー遷移は妨げない）
   const mc = e.target.closest('a[data-mc-name]');
-  if (mc) track('mercari_click', { card_name: mc.dataset.mcName });
+  if (mc) { recordMetric('mercari', { card_name: mc.dataset.mcName }); track('mercari_click', { card_name: mc.dataset.mcName }); }
+
+  if (e.target.closest('[data-close-sheet]')){ closeSheet(); return; }
 
   const goBtn = e.target.closest('[data-go]');
   if (goBtn){ go(goBtn.dataset.go); return; }
 
   const det = e.target.closest('[data-detail]');
   if (det){ openDetail(det.dataset.detail); return; }
+
+  const rank = e.target.closest('[data-rank-mode]');
+  if (rank){ rankMode = rank.dataset.rankMode; renderRankings(); recordMetric('ranking', { mode: rankMode }); track('ranking_view', { mode: rankMode }); return; }
+
+  const watch = e.target.closest('[data-watch]');
+  if (watch){
+    const enabled = toggleWatch(watch.dataset.watch, watch.dataset.watchType || 'watch');
+    toast(enabled ? 'ウォッチに追加しました' : 'ウォッチを解除しました');
+    openDetail(watch.dataset.watch);
+    return;
+  }
+
+  const cardShare = e.target.closest('[data-card-share]');
+  if (cardShare){ shareCard(cardShare.dataset.cardShare); return; }
 
   const sell = e.target.closest('[data-sell]');
   if (sell){ openSell(sell.dataset.sell); return; }
@@ -4844,10 +5245,21 @@ document.addEventListener('click', (e) => {
   }
 });
 
-$('#searchInput').addEventListener('input', e => { marketFilter.q = e.target.value.trim().toLowerCase(); renderMarket(); });
+let searchTrackTimer = null;
+$('#searchInput').addEventListener('input', e => {
+  marketFilter.q = e.target.value.trim().toLowerCase();
+  renderMarket();
+  clearTimeout(searchTrackTimer);
+  if (marketFilter.q.length >= 2){
+    searchTrackTimer = setTimeout(() => {
+      recordMetric('search', { query: marketFilter.q });
+      track('search', { search_term: marketFilter.q });
+    }, 700);
+  }
+});
 $('#sortSelect').addEventListener('change', e => { marketFilter.sort = e.target.value; renderMarket(); });
 $('#btnGuide').addEventListener('click', () => openSheet('sheetGuide'));
-$('#btnGuide2').addEventListener('click', () => openSheet('sheetGuide'));
+$('#btnGuide2')?.addEventListener('click', () => openSheet('sheetGuide'));
 $('#btnShare').addEventListener('click', openShare);
 $('#btnExport').addEventListener('click', exportJson);
 $('#btnImport').addEventListener('click', () => $('#importFile').click());

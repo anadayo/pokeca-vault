@@ -1,10 +1,9 @@
 const fs = require('fs');
-const vm = require('vm');
 
-const INDEX_PATH = 'index.html';
-const USER_AGENT = 'Mozilla/5.0 (compatible; PokecaVaultPriceUpdater/1.0; +https://github.com/anadayo/pokeca-vault)';
-const REQUEST_DELAY_MS = 900;
-const RETRY_DELAY_MS = 5000;
+const TARGET_FILES = ['index.html', 'pokeca-vault.html'];
+const USER_AGENT = 'Mozilla/5.0 (compatible; PokecaVaultPriceUpdater/2.0; +https://github.com/anadayo/pokeca-vault)';
+const REQUEST_DELAY_MS = Number(process.env.REQUEST_DELAY_MS || 700);
+const RETRY_DELAY_MS = Number(process.env.RETRY_DELAY_MS || 4000);
 const TODAY_JST = new Intl.DateTimeFormat('sv-SE', {
   timeZone: 'Asia/Tokyo',
   year: 'numeric',
@@ -13,43 +12,45 @@ const TODAY_JST = new Intl.DateTimeFormat('sv-SE', {
 }).format(new Date());
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-const q = s => String(s || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-const jsValue = value => value === null || value === undefined ? 'null' : String(value);
 
 function extractCards(html) {
-  const scriptMatch = html.match(/<script>([\s\S]*?)<\/script>/);
-  if (!scriptMatch) throw new Error('script block not found');
-
-  const script = scriptMatch[1];
-  const marker = '/* ═══════════════════════════════════════\n   RARITY CONFIG';
-  const markerIndex = script.indexOf(marker);
-  if (markerIndex < 0) throw new Error('catalog marker not found');
-
-  const setup = script.slice(0, markerIndex) + '\nglobalThis.__cards = cardCatalog;';
-  const ctx = { console, globalThis: {} };
-  ctx.globalThis = ctx;
-  vm.createContext(ctx);
-  vm.runInContext(setup, ctx);
-  if (!Array.isArray(ctx.__cards)) throw new Error('cardCatalog not found');
-  return ctx.__cards;
+  const match = html.match(/const CARD_MASTER = (\[[\s\S]*?\n\]);/);
+  if (!match) throw new Error('CARD_MASTER block not found');
+  return Function('return ' + match[1])();
 }
 
-function parseSalePrice(html) {
-  const meta = html.match(/<meta\s+property=["']og:price:amount["']\s+content=["']([^"']+)["']/i)
-    || html.match(/<meta\s+content=["']([^"']+)["']\s+property=["']og:price:amount["']/i);
-  if (meta) return Number(meta[1].replace(/[^0-9]/g, '')) || null;
-
-  const visible = html.match(/販売価格:\s*<\/span>\s*<span[^>]*class=["']figure["'][^>]*>\s*[¥￥]?\s*([0-9,]+)/i);
-  return visible ? Number(visible[1].replace(/,/g, '')) : null;
+function replaceCards(html, cards) {
+  return html
+    .replace(/const PRICE_DATA_META = \{ updatedAt: '[^']+' \};/, `const PRICE_DATA_META = { updatedAt: '${TODAY_JST}' };`)
+    .replace(/const CARD_MASTER = \[[\s\S]*?\n\];/, `const CARD_MASTER = ${JSON.stringify(cards, null, 2)};`);
 }
 
 function parseBuyPrice(html) {
-  const meta = html.match(/<meta\s+property=["']product:price:amount["']\s+content=["']([^"']+)["']/i)
-    || html.match(/<meta\s+content=["']([^"']+)["']\s+property=["']product:price:amount["']/i);
-  if (meta) return Number(meta[1].replace(/[^0-9]/g, '')) || null;
+  const meta = html.match(/property=["']product:price:amount["'][^>]*content=["']([0-9,]+)["']/i)
+    || html.match(/content=["']([0-9,]+)["'][^>]*property=["']product:price:amount["']/i);
+  if (meta) return Number(meta[1].replace(/,/g, '')) || null;
 
   const visible = html.match(/id=["']pricech["'][^>]*>\s*(?:<span[^>]*>\s*[¥￥]?\s*<\/span>)?\s*([0-9,]+)/i);
   return visible ? Number(visible[1].replace(/,/g, '')) : null;
+}
+
+function parseSalePrice(html) {
+  const min = html.match(/"price_min":(\d{3,})/);
+  if (min) return Math.round(Number(min[1]) / 100);
+
+  const price = html.match(/"price":(\d{3,})/);
+  if (price) return Math.round(Number(price[1]) / 100);
+
+  const meta = html.match(/property=["']og:price:amount["'][^>]*content=["']([0-9,]+)["']/i)
+    || html.match(/content=["']([0-9,]+)["'][^>]*property=["']og:price:amount["']/i);
+  return meta ? Number(meta[1].replace(/,/g, '')) || null : null;
+}
+
+function parseOgImage(html) {
+  const og = html.match(/property=["']og:image["']\s+content=["']([^"']+)["']/i)
+    || html.match(/content=["']([^"']+)["']\s+property=["']og:image["']/i);
+  if (!og) return null;
+  return og[1].replace(/^http:\/\//, 'https://');
 }
 
 async function fetchHtml(url, label) {
@@ -71,35 +72,47 @@ async function fetchHtml(url, label) {
   throw lastError;
 }
 
+async function imageWorks(url) {
+  if (!url || !/^https?:\/\//.test(url)) return false;
+  try {
+    const res = await fetch(url, {
+      method: 'HEAD',
+      headers: { 'user-agent': USER_AGENT },
+      signal: AbortSignal.timeout(8000),
+    });
+    return res.ok && String(res.headers.get('content-type') || '').startsWith('image/');
+  } catch {
+    return false;
+  }
+}
+
 async function updateCard(card) {
-  const next = {
-    rarity: card.rarity,
-    nowPrice: card.nowPrice,
-    buyPrice: Number(card.buyPrice) > 0 ? Number(card.buyPrice) : null,
-    saleUrl: card.saleUrl || '',
-    buyUrl: card.buyUrl || '',
-  };
+  const next = { ...card };
+  const notes = [];
+  let saleHtml = null;
 
   if (card.saleUrl) {
     try {
-      const html = await fetchHtml(card.saleUrl, `${card.id} sale`);
-      const price = parseSalePrice(html);
-      if (price) next.nowPrice = price;
-      else console.warn(`[sale] price not found: ${card.id} ${card.name}`);
+      saleHtml = await fetchHtml(card.saleUrl, `${card.id} sale`);
+      const salePrice = parseSalePrice(saleHtml);
+      if (salePrice) next.nowPrice = salePrice;
+      else notes.push('sale price not found');
     } catch (error) {
-      console.warn(`[sale] ${card.id} ${card.name}: ${error.message}`);
+      notes.push(`sale failed: ${error.message}`);
     }
     await sleep(REQUEST_DELAY_MS);
   }
 
   if (card.buyUrl) {
     try {
-      const html = await fetchHtml(card.buyUrl, `${card.id} buy`);
-      const price = parseBuyPrice(html);
-      if (price) next.buyPrice = price;
-      else console.warn(`[buy] price not found: ${card.id} ${card.name}`);
+      const buyHtml = await fetchHtml(card.buyUrl, `${card.id} buy`);
+      const buyPrice = parseBuyPrice(buyHtml);
+      if (buyPrice) next.buyPrice = buyPrice;
+      else notes.push('buy price not found');
     } catch (error) {
-      console.warn(`[buy] ${card.id} ${card.name}: ${error.message}`);
+      notes.push(`buy failed: ${error.message}`);
+      next.buyPrice = null;
+      next.buyUrl = '';
     }
     await sleep(REQUEST_DELAY_MS);
   } else {
@@ -107,41 +120,39 @@ async function updateCard(card) {
     next.buyUrl = '';
   }
 
-  return next;
-}
-
-function buildOverrideBlock(cards, updates) {
-  const lines = [`const VERIFIED_PRICE_DATE = '${TODAY_JST}';`, 'const verifiedMarketOverrides = {'];
-  for (const card of cards) {
-    const u = updates[card.id];
-    lines.push(`  '${q(card.id)}':{rarity:'${q(u.rarity)}',nowPrice:${jsValue(u.nowPrice)},buyPrice:${jsValue(u.buyPrice)},saleUrl:'${q(u.saleUrl)}',buyUrl:'${q(u.buyUrl)}'},`);
+  if (!(await imageWorks(next.image)) && saleHtml) {
+    const ogImage = parseOgImage(saleHtml);
+    if (ogImage && await imageWorks(ogImage)) next.image = ogImage;
+    else notes.push('image replacement not found');
   }
-  lines.push('};');
-  return lines.join('\n');
+
+  return { next, notes };
 }
 
 async function main() {
-  let html = fs.readFileSync(INDEX_PATH, 'utf8');
+  const html = fs.readFileSync(TARGET_FILES[0], 'utf8');
   const cards = extractCards(html);
-  const updates = {};
-  let changed = 0;
+  const updated = [];
+  const report = [];
 
   for (let i = 0; i < cards.length; i++) {
     const card = cards[i];
-    updates[card.id] = await updateCard(card);
-    if (updates[card.id].nowPrice !== card.nowPrice || updates[card.id].buyPrice !== card.buyPrice) changed++;
-    console.log(`${i + 1}/${cards.length} ${card.id} ${card.name} sale:${card.nowPrice}->${updates[card.id].nowPrice} buy:${card.buyPrice}->${updates[card.id].buyPrice}`);
+    const { next, notes } = await updateCard(card);
+    updated.push(next);
+    const changed = next.nowPrice !== card.nowPrice || next.buyPrice !== card.buyPrice || next.image !== card.image || next.buyUrl !== card.buyUrl;
+    if (changed || notes.length) {
+      report.push({ id: card.id, name: card.name, changed, notes, before: { nowPrice: card.nowPrice, buyPrice: card.buyPrice, image: card.image }, after: { nowPrice: next.nowPrice, buyPrice: next.buyPrice, image: next.image } });
+    }
+    console.log(`${i + 1}/${cards.length} ${card.id} ${card.name}`);
   }
 
-  const overrideBlock = buildOverrideBlock(cards, updates);
-  html = html.replace(/const SOURCE_DATE = '[^']+';/, `const SOURCE_DATE = '${TODAY_JST}';`);
-  const replaced = html.replace(
-    /const VERIFIED_PRICE_DATE = '[^']+';\nconst verifiedMarketOverrides = \{[\s\S]*?\n\};(?=\ncardCatalog\.forEach\(c => \{\n  const override = verifiedMarketOverrides\[c\.id\];)/,
-    overrideBlock,
-  );
-  if (replaced === html) throw new Error('verifiedMarketOverrides block not replaced');
-  fs.writeFileSync(INDEX_PATH, replaced);
-  console.log(`Updated ${cards.length} cards. Changed candidates: ${changed}. Date: ${TODAY_JST}`);
+  for (const file of TARGET_FILES) {
+    const content = fs.readFileSync(file, 'utf8');
+    fs.writeFileSync(file, replaceCards(content, updated));
+  }
+
+  fs.writeFileSync('price-update-report.json', JSON.stringify({ date: TODAY_JST, total: cards.length, report }, null, 2));
+  console.log(`Updated ${cards.length} cards for ${TODAY_JST}. Report items: ${report.length}`);
 }
 
 main().catch(error => {

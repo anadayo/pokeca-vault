@@ -37,7 +37,8 @@
 window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('js', new Date());
-gtag('config', 'G-1RKFX1HCCV');
+window.POKECA_ANALYTICS_ENABLED = location.hostname === 'anadayo.github.io';
+gtag('config', 'G-1RKFX1HCCV', { send_page_view: window.POKECA_ANALYTICS_ENABLED });
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -156,6 +157,23 @@ footer{
 .hero h1 em{ font-style:normal; color:var(--gold); }
 .hero p{ color:var(--muted); font-size:13px; margin-top:6px; }
 .hero-actions{ display:flex; gap:10px; margin-top:14px; }
+.data-trust{
+  display:flex; align-items:flex-start; gap:8px; margin-top:10px; padding:9px 11px;
+  color:var(--muted); background:rgba(91,200,255,.055); border:1px solid rgba(91,200,255,.2);
+  border-radius:8px; font-size:11px; line-height:1.55;
+}
+.data-trust b{ color:var(--blue); white-space:nowrap; }
+.quick-start{
+  background:var(--surface); border:1px solid var(--gold-deep); border-radius:var(--radius); padding:14px;
+}
+.quick-start-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:10px; }
+.quick-start-head b{ display:block; font-size:15px; }
+.quick-start-head span{ display:block; color:var(--muted); font-size:11.5px; margin-top:2px; }
+.quick-start-badge{ flex:0 0 auto; color:#1A1405; background:var(--gold); border-radius:99px; padding:3px 9px; font-size:10px; font-weight:800; }
+.quick-start-flow{ display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-bottom:10px; }
+.quick-start-flow div{ min-width:0; background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:8px; padding:8px; }
+.quick-start-flow b{ display:block; color:var(--gold); font-family:var(--font-num); font-size:11px; }
+.quick-start-flow span{ display:block; font-size:10.5px; margin-top:2px; }
 
 /* ---------- ボタン ---------- */
 .btn{
@@ -208,7 +226,20 @@ footer{
 .ops-metric .v{ font-size:18px; font-weight:700; margin-top:2px; }
 .ops-actions{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px; }
 .ops-note{ color:var(--muted); font-size:12px; margin-top:9px; }
+.ops-range{ display:flex; gap:6px; margin-top:10px; }
+.ops-range button{ min-height:32px; padding:0 10px; border-radius:7px; }
+.ops-breakdown{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px; }
+.ops-list{ min-width:0; background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:8px; padding:9px 10px; }
+.ops-list h4{ font-size:11px; color:var(--muted); margin-bottom:5px; }
+.ops-list-row{ display:flex; justify-content:space-between; gap:8px; font-size:11px; padding:3px 0; }
+.ops-list-row span:first-child{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.ops-log{ margin-top:10px; overflow-x:auto; border:1px solid var(--line); border-radius:8px; }
+.ops-log table{ width:100%; border-collapse:collapse; min-width:560px; font-size:10.5px; }
+.ops-log th,.ops-log td{ padding:6px 8px; text-align:left; border-bottom:1px solid var(--line); white-space:nowrap; }
+.ops-log th{ color:var(--muted); font-weight:500; }
+.ops-log tr:last-child td{ border-bottom:0; }
 .ops-dev-only[hidden]{ display:none !important; }
+@media (max-width:520px){ .ops-breakdown{ grid-template-columns:1fr; } }
 
 .market-pulse{
   display:grid; gap:10px;
@@ -331,17 +362,19 @@ footer{
 .hcard-actions{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
 
 /* ---------- ランキング ---------- */
-.rank-list{ display:grid; gap:8px; position:relative; }
+.rank-list{ display:grid; grid-template-columns:minmax(0,1fr); gap:8px; position:relative; min-width:0; }
 .rank-row{
   display:flex; align-items:center; gap:12px; background:var(--surface);
-  border:1px solid var(--line); border-radius:12px; padding:10px 14px;
+  width:100%; min-width:0; max-width:100%; border:1px solid var(--line); border-radius:12px; padding:10px 14px;
 }
 .rank-row.has-img{ padding:9px 11px; }
+.rank-main{ display:flex; align-items:center; gap:12px; flex:1; min-width:0; padding:0; border:0; background:none; color:inherit; text-align:left; }
+.rank-mercari{ flex:0 0 auto; min-height:36px; padding:0 9px; border-radius:8px; text-decoration:none; font-size:11px; }
 .rank-img{ width:36px; height:50px; object-fit:contain; flex:0 0 auto; border-radius:6px; background:#080A0F; border:1px solid var(--line); }
 .rank-no{ font-family:var(--font-disp); font-size:18px; color:var(--gold); width:24px; text-align:center; }
 .rank-name{ flex:1; min-width:0; font-weight:700; font-size:13.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .rank-name small{ display:block; color:var(--muted); font-size:10.5px; font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.rank-chg{ font-weight:600; font-size:14px; }
+.rank-chg{ flex:0 0 auto; font-weight:600; font-size:14px; }
 .rank-tabs{ display:flex; gap:7px; overflow-x:auto; padding-bottom:2px; margin-bottom:9px; scrollbar-width:none; }
 .rank-tabs::-webkit-scrollbar{ display:none; }
 .rank-tab{ flex:0 0 auto; background:var(--surface); border:1px solid var(--line); color:var(--muted); border-radius:99px; padding:7px 11px; font-size:12px; font-weight:700; }
@@ -353,6 +386,12 @@ footer{
   display:flex; flex-direction:column; gap:8px; align-items:center;
 }
 .rank-overlay p{ font-size:12.5px; color:var(--muted); }
+@media (max-width:420px){
+  .rank-row{ gap:7px; }
+  .rank-main{ gap:8px; }
+  .rank-mercari{ padding:0 7px; }
+  .quick-start-flow{ grid-template-columns:1fr; }
+}
 
 /* ---------- 空状態 ---------- */
 .empty{
@@ -536,6 +575,7 @@ nav{
           </div>
         </div>
       </div>
+      <div class="data-trust"><b>価格について</b><span>販売・買取の公開ページから定期取得した参考値です。変動率と価格推移は参考シミュレーションのため、売買前に実際の成約相場をご確認ください。</span></div>
     </div>
 
     <div class="section">
@@ -561,11 +601,11 @@ nav{
     </div>
 
     <div class="section" id="guideSection">
-      <div class="section-title">はじめての方へ — 3ステップ</div>
-      <div class="guide-steps">
-        <div class="gstep"><div class="no">1</div><div><b>カードを探す</b><span>「さがす」タブで気になるカードを検索</span></div></div>
-        <div class="gstep"><div class="no">2</div><div><b>この価格で買う</b><span>購入を記録すると保有カードに追加されます</span></div></div>
-        <div class="gstep"><div class="no">3</div><div><b>損益をチェック</b><span>価格変動で含み益・含み損が自動で見えます</span></div></div>
+      <div class="section-title">30秒で投資シミュレーション</div>
+      <div class="quick-start">
+        <div class="quick-start-head"><div><b>今日の注目カードで試す</b><span>無料・登録不要。データはこの端末だけに保存されます。</span></div><div class="quick-start-badge">30 SEC</div></div>
+        <div class="quick-start-flow"><div><b>01</b><span>5万円の疑似資金を用意</span></div><div><b>02</b><span>カードを1枚記録</span></div><div><b>03</b><span>含み損益を確認</span></div></div>
+        <button class="btn btn-gold btn-block" data-quick-start="50000">5万円コースで体験する</button>
       </div>
     </div>
 
@@ -663,7 +703,7 @@ nav{
 
 <!-- ================= フッター ================= -->
 <footer>
-  <p>※ 本サービスはシミュレーターです。価格データはサンプルであり、実際の売買・投資判断はご自身の責任で行ってください。実際の相場は各カードの「メルカリの成約相場を見る」ボタンからご確認ください。</p>
+  <p>※ 掲載する販売・買取価格は公開ページから定期取得した参考値です。変動率・価格推移・損益表示はシミュレーションを含み、利益を保証するものではありません。売買前に各カードの「メルカリの成約相場を見る」および各店舗で最新価格をご確認ください。</p>
   <p>※ 本サイトのメルカリへのリンクにはアフィリエイト広告（PR）を含みます。</p>
   <p style="margin-top:8px">姉妹サイト: <a href="tsume-pokepoke/" style="color:var(--muted)">🧩 詰めポケポケ — ポケポケのリーサルパズル</a></p>
   <p style="margin-top:8px">運営: <a href="https://x.com/ana_wasborn" target="_blank" rel="noopener" style="color:var(--muted)">𝕏 @ana_wasborn</a></p>
@@ -727,7 +767,7 @@ nav{
     <div class="gstep"><div class="no">4</div><div><b>売って利確</b><span>「売る」で買取価格シミュレーション。実現損益は履歴に残ります。</span></div></div>
     <div class="gstep"><div class="no">5</div><div><b>相場はメルカリでも確認</b><span>カード詳細から実際の取引相場をワンタップでチェック。</span></div></div>
   </div>
-  <p class="muted" style="margin-top:12px">※ 本サービスはシミュレーターです。価格データはサンプルであり、実際の売買・投資判断はご自身の責任で行ってください。実際の相場は各カードの「メルカリの成約相場を見る」ボタンからご確認ください。</p>
+  <p class="muted" style="margin-top:12px">※ 掲載価格は公開ページから定期取得した参考値です。変動率・価格推移は参考シミュレーションを含みます。売買前に実際の成約相場をご確認ください。</p>
   <p class="muted" style="margin-top:6px">※ 本サイトのメルカリへのリンクにはアフィリエイト広告（PR）を含みます。</p>
 </div>
 
@@ -758,7 +798,11 @@ const LEGACY_KEYS = ['pokecaVault.v2', 'pokecaVault.v1'];
 const OLD_HOLDINGS_KEY = 'pokecaVault';
 const OLD_CASH_KEY = 'pokecaVaultCash';
 const OLD_COURSE_KEY = 'pokecaVaultCourse';
-const OWNER_MERCARI_AMBASSADOR_ID = '2427775577';
+const MERCARI_AFFILIATE = Object.freeze({
+  searchUrl: 'https://jp.mercari.com/search',
+  ambassadorId: '2427775577',
+});
+const ANALYTICS_SESSION_KEY = 'pokecaVault.analyticsSessionId';
 const X_ACCOUNT = 'ana_wasborn';
 const GA_MEASUREMENT_ID = 'G-1RKFX1HCCV';
 const GA_LINKS = {
@@ -1142,7 +1186,7 @@ const CARD_MASTER = [
     "cardNo": "262/172",
     "rarity": "UR",
     "nowPrice": 18000,
-    "buyPrice": 11000,
+    "buyPrice": 12000,
     "image": "https://www.hareruya2.com/cdn/shop/products/vstarur262172s12a-2-5950338.jpg?v=1784193611",
     "saleUrl": "https://www.hareruya2.com/products/9017284985152",
     "buyUrl": "https://www.hare2buy.com/product/15193",
@@ -1190,7 +1234,7 @@ const CARD_MASTER = [
     "cardNo": "211/172",
     "rarity": "SAR",
     "nowPrice": 7000,
-    "buyPrice": 4400,
+    "buyPrice": 4300,
     "image": "https://www.hareruya2.com/cdn/shop/products/vsar211172s12a-2-9209973.jpg?v=1784197388",
     "saleUrl": "https://www.hareruya2.com/products/9017182945600",
     "buyUrl": "https://www.hare2buy.com/product/15142",
@@ -1893,8 +1937,8 @@ const CARD_MASTER = [
     "setCode": "S12a",
     "cardNo": "210/172",
     "rarity": "SAR",
-    "nowPrice": 6300,
-    "buyPrice": 3300,
+    "nowPrice": 6500,
+    "buyPrice": 3400,
     "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar210172s12a-2-4905367.jpg?v=1784197389",
     "saleUrl": "https://www.hareruya2.com/products/9017182519616",
     "buyUrl": "https://www.hare2buy.com/product/15141",
@@ -1941,8 +1985,8 @@ const CARD_MASTER = [
     "setCode": "S12a",
     "cardNo": "261/172",
     "rarity": "UR",
-    "nowPrice": 32000,
-    "buyPrice": 23000,
+    "nowPrice": 33000,
+    "buyPrice": 24000,
     "image": "https://www.hareruya2.com/cdn/shop/products/vstarur261172s12a-2-5074937.jpg?v=1784193849",
     "saleUrl": "https://www.hareruya2.com/products/9017284395328",
     "buyUrl": "https://www.hare2buy.com/product/15192",
@@ -2758,7 +2802,7 @@ const CARD_MASTER = [
     "cardNo": "215/172",
     "rarity": "SAR",
     "nowPrice": 5000,
-    "buyPrice": 3400,
+    "buyPrice": 3000,
     "image": "https://www.hareruya2.com/cdn/shop/products/vsar215172s12a-2-2478827.jpg?v=1784197387",
     "saleUrl": "https://www.hareruya2.com/products/9017184682304",
     "buyUrl": "https://www.hare2buy.com/product/15146",
@@ -2997,8 +3041,8 @@ const CARD_MASTER = [
     "setCode": "S12a",
     "cardNo": "223/172",
     "rarity": "SAR",
-    "nowPrice": 3500,
-    "buyPrice": 2300,
+    "nowPrice": 3600,
+    "buyPrice": 2400,
     "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar223172s12a-2-8226470.jpg?v=1784193190",
     "saleUrl": "https://www.hareruya2.com/products/9017310150976",
     "buyUrl": "https://www.hare2buy.com/product/15154",
@@ -4073,17 +4117,18 @@ function getSignal(card){
   if (c7 <= -6) return { key:'down', label:'下落注意', cls:'badge-down' };
   return { key:'hold', label:'様子見', cls:'badge-hold' };
 }
-function addMercariAfid(url, id=OWNER_MERCARI_AMBASSADOR_ID){
-  const cleanId = String(id || '').replace(/\D/g, '');
-  if (!cleanId) return url;
-  const u = new URL(url);
-  u.searchParams.set('afid', cleanId);
-  return u.toString();
+function createMercariAffiliateUrl(card, { soldOnly=true }={}){
+  const affiliateId = String(MERCARI_AFFILIATE.ambassadorId || '').trim();
+  if (!/^\d+$/.test(affiliateId)) throw new Error('Mercari affiliate ID is invalid');
+  const url = new URL(MERCARI_AFFILIATE.searchUrl);
+  url.searchParams.set('keyword', [card.name, card.cardNo, card.rarity].filter(Boolean).join(' '));
+  url.searchParams.set('status', soldOnly ? 'sold_out' : 'on_sale');
+  url.searchParams.set('afid', affiliateId);
+  return url.toString();
 }
-function mercariUrl(card, soldOnly){
-  const kw = encodeURIComponent([card.name, card.cardNo, card.rarity].filter(Boolean).join(' '));
-  const status = soldOnly ? '&status=sold_out' : '&status=on_sale';
-  return addMercariAfid('https://jp.mercari.com/search?keyword=' + kw + status);
+function mercariAffiliateAttributes(card, placement, options){
+  const href = createMercariAffiliateUrl(card, options);
+  return `href="${escapeHtml(href)}" target="_blank" rel="sponsored noopener" data-mercari-affiliate="1" data-mc-id="${escapeHtml(card.id)}" data-mc-name="${escapeHtml(card.name)}" data-mc-placement="${escapeHtml(placement)}"`;
 }
 function previousPrice(card, days=1){
   const s = getPriceSeries(card);
@@ -4172,7 +4217,11 @@ const DEFAULT_STATE = {
   assetHistory: [],
   watchlist: {},
   alerts: [],
-  analytics: { views: {}, searches: 0, details: {}, rankings: {}, mercariClicks: 0, watches: 0, holdingsAdded: 0, analyticsTests: 0, lastTestAt: '' },
+  analytics: {
+    views: {}, searches: 0, details: {}, rankings: {}, mercariClicks: 0,
+    watches: 0, holdingsAdded: 0, analyticsTests: 0, lastTestAt: '',
+    affiliateClickLog: [], pageViewLog: [],
+  },
 };
 let state = loadState();
 function normalizeState(parsed){
@@ -4184,6 +4233,8 @@ function normalizeState(parsed){
   next.watchlist = (parsed && typeof parsed.watchlist === 'object' && !Array.isArray(parsed.watchlist)) ? parsed.watchlist : {};
   next.alerts = Array.isArray(parsed?.alerts) ? parsed.alerts : [];
   next.analytics = (parsed && typeof parsed.analytics === 'object' && !Array.isArray(parsed.analytics)) ? { ...DEFAULT_STATE.analytics, ...parsed.analytics } : structuredClone(DEFAULT_STATE.analytics);
+  next.analytics.affiliateClickLog = Array.isArray(parsed?.analytics?.affiliateClickLog) ? parsed.analytics.affiliateClickLog.slice(0, 500) : [];
+  next.analytics.pageViewLog = Array.isArray(parsed?.analytics?.pageViewLog) ? parsed.analytics.pageViewLog.slice(0, 1000) : [];
   next.plan = 'lite';
   next.cashBalance = parsed?.cashBalance === null || parsed?.cashBalance === undefined ? null : Number(parsed.cashBalance) || 0;
   next.courseAmount = parsed?.courseAmount === null || parsed?.courseAmount === undefined ? null : Number(parsed.courseAmount) || null;
@@ -4232,6 +4283,18 @@ function startCourse(amount){
   state.courseAmount = amount;
   snapshotAsset(); saveState(); renderAll(); renderTicker();
   toast(yen(amount) + 'コースで開始しました');
+}
+function startQuickExperience(amount){
+  if (state.cashBalance === null){
+    state.cashBalance = amount;
+    state.courseAmount = amount;
+    state.assetHistory = [];
+    snapshotAsset(); saveState(); renderAll();
+  }
+  const card = dailyFeaturedCard();
+  track('onboarding_start', { course_amount: amount, card_id: card.id });
+  openDetail(card.id, 'quick_start');
+  toast('注目カードを1枚記録して損益を見てみましょう');
 }
 function snapshotAsset(){
   const t = today();
@@ -4414,13 +4477,16 @@ function renderMarketPulse(){
   $('#marketMood').textContent = summary.mood;
   $('#pulseTopUp').innerHTML = pulseCardHtml(summary.topUp, '今日一番上がったカード', 'pos');
   $('#pulseTopUp').dataset.detail = summary.topUp.card.id;
+  $('#pulseTopUp').dataset.detailPlacement = 'market_pulse_up';
   $('#pulseTopDown').innerHTML = pulseCardHtml(summary.topDown, '今日一番下がったカード', 'neg');
   $('#pulseTopDown').dataset.detail = summary.topDown.card.id;
+  $('#pulseTopDown').dataset.detailPlacement = 'market_pulse_down';
   $('#pulseBestBuy').innerHTML = `
     <div class="pulse-label">最高買取</div>
     <div class="pulse-value">${escapeHtml(summary.bestBuy.card.name)}</div>
     <div class="pulse-sub"><span class="num pos">${yen(summary.bestBuy.best)}</span> ・ ${escapeHtml(summary.bestBuy.card.rarity)}</div>`;
   $('#pulseBestBuy').dataset.detail = summary.bestBuy.card.id;
+  $('#pulseBestBuy').dataset.detailPlacement = 'market_pulse_buyback';
   $('#pulseAverageMove').textContent = pct(summary.avg);
   $('#pulseAverageMove').className = 'pulse-value num ' + (summary.avg >= 0 ? 'pos' : 'neg');
   $('#pulseBreadth').textContent = `上昇 ${summary.upCount}件 / 下落 ${summary.downCount}件`;
@@ -4444,11 +4510,11 @@ function renderPortfolioInsights(){
       <div class="insight-main"><b>今日の保有資産変動</b><span>保有中カードの1日変動を集計</span></div>
       <div class="insight-num num ${todayMove >= 0 ? 'pos' : 'neg'}">${signedYen(todayMove)}<br><span class="daily-delta">${pct(todayMove / base * 100)}</span></div>
     </div>
-    <div class="insight-row" data-detail="${best.card.id}" role="button" tabindex="0">
+    <div class="insight-row" data-detail="${best.card.id}" data-detail-placement="portfolio_best" role="button" tabindex="0">
       <div class="insight-main"><b>一番利益が出ているカード</b><span>${escapeHtml(best.card.name)} ・ ${best.h.qty}枚</span></div>
       <div class="insight-num num ${best.profit >= 0 ? 'pos' : 'neg'}">${signedYen(best.profit)}</div>
     </div>
-    <div class="insight-row" data-detail="${worst.card.id}" role="button" tabindex="0">
+    <div class="insight-row" data-detail="${worst.card.id}" data-detail-placement="portfolio_worst" role="button" tabindex="0">
       <div class="insight-main"><b>一番損益が弱いカード</b><span>${escapeHtml(worst.card.name)} ・ ${worst.h.qty}枚</span></div>
       <div class="insight-num num ${worst.profit >= 0 ? 'pos' : 'neg'}">${signedYen(worst.profit)}</div>
     </div>`;
@@ -4478,11 +4544,14 @@ function renderRankings(){
   $('#rankUpdated').textContent = `${rank.note} ・ ${freshnessInfo().label}`;
   $('#rankList').innerHTML = rank.items.map((item, i) => {
     const c = item.card;
-    return `<div class="rank-row has-img" data-detail="${c.id}" role="button" tabindex="0">
-      <div class="rank-no">${i+1}</div>
-      <img class="rank-img" src="${c.image}" alt="" loading="lazy" onerror="this.style.opacity=.25">
-      <div class="rank-name">${escapeHtml(c.name)}<small>${escapeHtml(c.set)} ・ ${escapeHtml(c.rarity)} ・ 買取 ${yen(bestBuyback(c).price)}</small></div>
-      <div class="rank-chg num ${rank.cls(item)}">${rank.value(item)}</div>
+    return `<div class="rank-row has-img">
+      <button class="rank-main" data-detail="${c.id}" data-detail-placement="ranking_${rankMode}" type="button" aria-label="${escapeHtml(c.name)}の詳細を見る">
+        <div class="rank-no">${i+1}</div>
+        <img class="rank-img" src="${c.image}" alt="" loading="lazy" onerror="this.style.opacity=.25">
+        <div class="rank-name">${escapeHtml(c.name)}<small>${escapeHtml(c.set)} ・ ${escapeHtml(c.rarity)} ・ 買取 ${yen(bestBuyback(c).price)}</small></div>
+        <div class="rank-chg num ${rank.cls(item)}">${rank.value(item)}</div>
+      </button>
+      <a class="btn btn-mercari rank-mercari" ${mercariAffiliateAttributes(c, `ranking_${rankMode}`)} aria-label="${escapeHtml(c.name)}のメルカリ成約相場を見る">相場<span class="pr-tag">PR</span></a>
     </div>`;
   }).join('');
 }
@@ -4522,9 +4591,10 @@ function renderHome(){
           <span class="num pos" style="font-size:13px"> 週間 ${pct(changePct(featured,7))}</span></div>
         <div class="muted">毎日0時に更新 ・ ${todayJstKey()}</div>
         <div class="split-2" style="margin-top:10px">
-          <button class="btn btn-gold btn-sm" data-detail="${featured.id}">買う・詳細</button>
-          <button class="btn btn-ghost btn-sm" data-detail="${featured.id}">📈 推移を見る</button>
+          <button class="btn btn-gold btn-sm" data-detail="${featured.id}" data-detail-placement="featured_buy">買う・詳細</button>
+          <button class="btn btn-ghost btn-sm" data-detail="${featured.id}" data-detail-placement="featured_chart">📈 推移を見る</button>
         </div>
+        <a class="btn btn-mercari btn-sm btn-block" style="margin-top:8px" ${mercariAffiliateAttributes(featured, 'featured_recommendation')}>メルカリ成約相場<span class="pr-tag">PR</span></a>
       </div>
     </div>`;
 
@@ -4574,7 +4644,7 @@ function renderMarket(){
     ? CARD_MASTER.filter(matchesQuery).sort((a,b) => currentPrice(b) - currentPrice(a)).slice(0, 8)
     : [...CARD_MASTER].sort((a,b) => Math.abs(changePct(b,1)) - Math.abs(changePct(a,1))).slice(0, 6);
   $('#searchSuggest').innerHTML = suggestions.map(c =>
-    `<button class="suggest-chip" data-detail="${c.id}">${escapeHtml(c.name)}<small>${escapeHtml(c.rarity)} ${escapeHtml(c.cardNo)}</small></button>`
+    `<button class="suggest-chip" data-detail="${c.id}" data-detail-placement="search_suggestion">${escapeHtml(c.name)}<small>${escapeHtml(c.rarity)} ${escapeHtml(c.cardNo)}</small></button>`
   ).join('');
 
   let list = CARD_MASTER.filter(c =>
@@ -4606,11 +4676,11 @@ function renderMarket(){
         <span class="mcard-price num">${yen(currentPrice(c))}</span><span class="muted">買取 ${buyPriceLabel(c)}</span>
         <span class="num ${ch >= 0 ? 'pos' : 'neg'}" style="font-size:13px">7日 ${pct(ch)}</span>
         ${own ? `<span class="own-tag">★ 保有中 ${own.qty}枚</span>` : ''}
-        <a class="mlink" href="${mercariUrl(c, true)}" target="_blank" rel="sponsored noopener" data-mc-name="${escapeHtml(c.name)}">メルカリ成約相場 →<span class="pr-tag">PR</span></a>
+        <a class="mlink" ${mercariAffiliateAttributes(c, 'search_results')}>メルカリ成約相場 →<span class="pr-tag">PR</span></a>
       </div>
       <div class="mcard-actions">
-        <button class="btn btn-gold btn-sm" data-detail="${c.id}">買う</button>
-        <button class="btn btn-ghost btn-sm" data-detail="${c.id}">📈 詳細・推移</button>
+        <button class="btn btn-gold btn-sm" data-detail="${c.id}" data-detail-placement="search_buy">買う</button>
+        <button class="btn btn-ghost btn-sm" data-detail="${c.id}" data-detail-placement="search_chart">📈 詳細・推移</button>
       </div>
     </article>`;
   }).join('');
@@ -4657,8 +4727,8 @@ function renderHoldings(){
         </div>
         <div class="hcard-actions">
           <button class="btn btn-red btn-sm" data-sell="${card.id}">売る</button>
-          <button class="btn btn-ghost btn-sm" data-detail="${card.id}">詳細</button>
-          <a class="btn btn-mercari btn-sm" href="${mercariUrl(card, true)}" target="_blank" rel="sponsored noopener" data-mc-name="${escapeHtml(card.name)}">メルカリ成約相場<span class="pr-tag">PR</span></a>
+          <button class="btn btn-ghost btn-sm" data-detail="${card.id}" data-detail-placement="holdings">詳細</button>
+          <a class="btn btn-mercari btn-sm" ${mercariAffiliateAttributes(card, 'holdings')}>メルカリ成約相場<span class="pr-tag">PR</span></a>
         </div>
       </article>`;
     }).join('');
@@ -4735,6 +4805,64 @@ function sumObjectValues(obj){
   return Object.values(obj || {}).reduce((sum, val) => sum + (Number(val) || 0), 0);
 }
 
+let opsRangeDays = 7;
+function analyticsSessionId(){
+  try {
+    let id = sessionStorage.getItem(ANALYTICS_SESSION_KEY);
+    if (!id){
+      id = 'session_' + (globalThis.crypto?.randomUUID?.() || Date.now().toString(36) + Math.random().toString(36).slice(2));
+      sessionStorage.setItem(ANALYTICS_SESSION_KEY, id);
+    }
+    return id;
+  } catch {
+    return 'session_unavailable';
+  }
+}
+function analyticsEventId(prefix='event'){
+  return prefix + '_' + (globalThis.crypto?.randomUUID?.() || Date.now().toString(36) + Math.random().toString(36).slice(2));
+}
+function filteredAnalyticsLog(log, days){
+  const cutoff = Date.now() - days * 86400000;
+  return (Array.isArray(log) ? log : []).filter(item => Date.parse(item.timestamp || '') >= cutoff);
+}
+function analyticsJstDate(item){
+  if (item?.jstDate) return item.jstDate;
+  const time = Date.parse(item?.timestamp || '');
+  return Number.isFinite(time) ? new Date(time + 9 * 60 * 60 * 1000).toISOString().slice(0,10) : '';
+}
+function shiftJstDate(days){
+  const now = Date.now() + 9 * 60 * 60 * 1000;
+  return new Date(now + days * 86400000).toISOString().slice(0,10);
+}
+function groupedAnalyticsRows(log, key, fallback='不明'){
+  const counts = new Map();
+  log.forEach(item => {
+    const label = String(item[key] || fallback);
+    counts.set(label, (counts.get(label) || 0) + 1);
+  });
+  return [...counts.entries()].sort((a,b) => b[1] - a[1]);
+}
+function localAffiliateReport(days){
+  const analytics = state.analytics || DEFAULT_STATE.analytics;
+  const clicks = filteredAnalyticsLog(analytics.affiliateClickLog, days);
+  const views = filteredAnalyticsLog(analytics.pageViewLog, days);
+  const sessions = new Set(clicks.map(item => item.sessionId).filter(Boolean));
+  return {
+    clicks,
+    views,
+    uniqueSessions: sessions.size,
+    ctr: views.length ? clicks.length / views.length * 100 : null,
+    placements: groupedAnalyticsRows(clicks, 'placement'),
+    cards: groupedAnalyticsRows(clicks, 'cardName'),
+  };
+}
+function renderOpsList(title, rows){
+  const body = rows.length
+    ? rows.slice(0, 6).map(([label,count]) => `<div class="ops-list-row"><span>${escapeHtml(label)}</span><b class="num">${count}</b></div>`).join('')
+    : '<div class="muted">期間内の記録なし</div>';
+  return `<div class="ops-list"><h4>${escapeHtml(title)}</h4>${body}</div>`;
+}
+
 function isOpsMode(){
   try {
     const url = new URL(location.href);
@@ -4767,32 +4895,54 @@ function renderOpsAnalytics(){
   const viewTotal = sumObjectValues(a.views);
   const detailTotal = sumObjectValues(a.details);
   const rankingTotal = sumObjectValues(a.rankings);
-  const gaReady = typeof gtag === 'function';
+  const gaReady = window.POKECA_ANALYTICS_ENABLED && typeof gtag === 'function';
   const lastTest = a.lastTestAt ? new Date(a.lastTestAt).toLocaleString('ja-JP') : '未送信';
+  const report = localAffiliateReport(opsRangeDays);
+  const todayClicks = (a.affiliateClickLog || []).filter(item => analyticsJstDate(item) === shiftJstDate(0)).length;
+  const yesterdayClicks = (a.affiliateClickLog || []).filter(item => analyticsJstDate(item) === shiftJstDate(-1)).length;
+  const sevenDayClicks = filteredAnalyticsLog(a.affiliateClickLog, 7).length;
+  const thirtyDayClicks = filteredAnalyticsLog(a.affiliateClickLog, 30).length;
+  const rangeLabel = opsRangeDays === 1 ? '24時間' : `${opsRangeDays}日`;
+  const recentRows = report.clicks.slice(0, 12).map(item => `<tr><td>${escapeHtml(new Date(item.timestamp).toLocaleString('ja-JP'))}</td><td>${escapeHtml(item.cardName)}</td><td>${escapeHtml(item.cardId)}</td><td>${escapeHtml(item.placement)}</td><td>${escapeHtml((item.sessionId || '').slice(-8))}</td></tr>`).join('');
   $('#opsAnalytics').innerHTML = `
     <div class="ops-panel">
       <div class="ops-head">
         <div>
           <div class="ops-title">アクセス解析チェック</div>
-          <div class="muted">全体PV・ユーザー数はGoogle Analyticsで確認</div>
+          <div class="muted">全体集計はGA4、下記の詳細はこの端末の記録</div>
         </div>
         <span class="ops-status">${gaReady ? 'GA4計測中' : 'GA4確認中'}</span>
       </div>
-      <div class="ops-grid">
-        <div class="ops-metric"><div class="k">この端末のページ移動</div><div class="v num">${viewTotal}</div></div>
-        <div class="ops-metric"><div class="k">検索</div><div class="v num">${a.searches || 0}</div></div>
-        <div class="ops-metric"><div class="k">カード詳細</div><div class="v num">${detailTotal}</div></div>
-        <div class="ops-metric"><div class="k">メルカリ遷移</div><div class="v num">${a.mercariClicks || 0}</div></div>
-        <div class="ops-metric"><div class="k">ランキング操作</div><div class="v num">${rankingTotal}</div></div>
-        <div class="ops-metric"><div class="k">テスト送信</div><div class="v num">${a.analyticsTests || 0}</div></div>
+      <div class="ops-range">
+        ${[[1,'24時間'],[7,'7日'],[30,'30日']].map(([days,label]) => `<button class="btn btn-sm ${opsRangeDays === days ? 'btn-gold' : 'btn-ghost'}" data-ops-range="${days}">${label}</button>`).join('')}
       </div>
+      <div class="ops-grid">
+        <div class="ops-metric"><div class="k">今日のクリック</div><div class="v num">${todayClicks}</div></div>
+        <div class="ops-metric"><div class="k">昨日のクリック</div><div class="v num">${yesterdayClicks}</div></div>
+        <div class="ops-metric"><div class="k">過去7日</div><div class="v num">${sevenDayClicks}</div></div>
+        <div class="ops-metric"><div class="k">過去30日</div><div class="v num">${thirtyDayClicks}</div></div>
+      </div>
+      <div class="ops-grid">
+        <div class="ops-metric"><div class="k">${rangeLabel}のクリック</div><div class="v num">${report.clicks.length}</div></div>
+        <div class="ops-metric"><div class="k">クリックしたセッション</div><div class="v num">${report.uniqueSessions}</div></div>
+        <div class="ops-metric"><div class="k">${rangeLabel}の画面表示</div><div class="v num">${report.views.length}</div></div>
+        <div class="ops-metric"><div class="k">ローカルCTR</div><div class="v num">${report.ctr === null ? '—' : report.ctr.toFixed(1) + '%'}</div></div>
+        <div class="ops-metric"><div class="k">累計メルカリ遷移</div><div class="v num">${a.mercariClicks || 0}</div></div>
+        <div class="ops-metric"><div class="k">累計カード詳細</div><div class="v num">${detailTotal}</div></div>
+      </div>
+      <div class="ops-breakdown">
+        ${renderOpsList('導線別クリック', report.placements)}
+        ${renderOpsList('ページ別クリック', groupedAnalyticsRows(report.clicks, 'sourceView'))}
+        ${renderOpsList('カード別クリック', report.cards)}
+      </div>
+      <div class="ops-log"><table><thead><tr><th>日時</th><th>カード</th><th>カードID</th><th>導線</th><th>セッション</th></tr></thead><tbody>${recentRows || '<tr><td colspan="5">期間内の記録なし</td></tr>'}</tbody></table></div>
       <div class="ops-actions">
         <button class="btn btn-gold btn-sm" data-analytics-link="realtime">リアルタイムを見る</button>
         <button class="btn btn-ghost btn-sm" data-analytics-link="reports">レポートを見る</button>
         <button class="btn btn-ghost btn-sm" data-analytics-test>計測テスト送信</button>
         <button class="btn btn-ghost btn-sm" data-copy-ga-id>測定IDコピー</button>
       </div>
-      <div class="ops-note">測定ID ${GA_MEASUREMENT_ID} ・ 最終テスト ${escapeHtml(lastTest)}</div>
+      <div class="ops-note">測定ID ${GA_MEASUREMENT_ID} ・ GA4はユーザーとセッションを自動集計 ・ この端末の累計画面移動 ${viewTotal} ・ ランキング操作 ${rankingTotal} ・ 最終テスト ${escapeHtml(lastTest)}</div>
     </div>`;
 }
 
@@ -4849,10 +4999,11 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet()
 /* ---- カード詳細・購入シート ---- */
 let detailRange = 30;
 
-function openDetail(cardId){
+function openDetail(cardId, detailPlacement='direct'){
   const card = cardById(cardId);
   if (!card) return;
   recordMetric('detail', { card_id: cardId, card_name: card.name });
+  track('card_detail_view', { card_id: cardId, card_name: card.name, placement: detailPlacement });
   const plan = PLANS[state.plan];
   const sig = getSignal(card);
   const buybacks = storeBuybacks(card);
@@ -4889,9 +5040,10 @@ function openDetail(cardId){
 
     <div class="chips" style="margin-top:8px">${rangeChips}</div>
     <div class="chart-box"><canvas id="detailChart" height="160"></canvas></div>
+    <div class="mini-note" style="margin-top:7px">価格推移と変動率は参考シミュレーションです。現在の販売・買取参考価格は定期更新しています。</div>
 
     <div class="price-grid">
-      <div class="price-cell"><div class="k">販売価格（相場）</div><div class="v num">${yen(currentPrice(card))}</div></div>
+      <div class="price-cell"><div class="k">販売参考価格</div><div class="v num">${yen(currentPrice(card))}</div></div>
       <div class="price-cell best"><div class="k">最高買取価格</div><div class="v num" style="color:var(--gold)">${buyPriceLabel(card)}</div></div>
       <div class="price-cell"><div class="k">前日比</div><div class="v num ${c1 >= 0 ? 'pos' : 'neg'}">${pct(c1)}</div></div>
       <div class="price-cell"><div class="k">最終更新</div><div class="v num">${priceStatusLabel(card)}</div></div>
@@ -4908,6 +5060,7 @@ function openDetail(cardId){
         <div class="signal-cell"><div class="k">30日最安値</div><div class="v num">${yen(lo30)}</div></div>
       </div>
       <div class="mini-note">※ 売買判断を保証するものではありません。価格差・変動率・買取比率から見た参考表示です。</div>
+      <a class="btn btn-mercari btn-sm btn-block" style="margin-top:10px" ${mercariAffiliateAttributes(card, 'detail_signal')}>売買前に成約相場を確認<span class="pr-tag">PR</span></a>
     </div>
 
     <div class="section-title" style="margin-top:14px">買取価格 <span class="right muted">掲載なしは最低保証</span></div>
@@ -4930,6 +5083,7 @@ function openDetail(cardId){
         <span class="num" style="font-weight:600">${yen(mercariEstimate(card))}</span>
       </div>
     </div>
+    <a class="btn btn-mercari btn-sm btn-block" style="margin-top:8px" ${mercariAffiliateAttributes(card, 'detail_price_compare')}>実際のメルカリ成約相場を見る<span class="pr-tag">PR</span></a>
 
     <div class="watch-actions">
       <button class="btn btn-ghost btn-sm ${watched ? 'watch-on' : ''}" data-watch="${card.id}" data-watch-type="watch">${watched ? 'ウォッチ中' : 'ウォッチ'}</button>
@@ -4968,7 +5122,7 @@ function openDetail(cardId){
     <div class="sheet-actions">
       <button class="btn btn-gold btn-block" id="btnConfirmBuy">この価格で買う（記録する）</button>
       <div class="split-2">
-        <a class="btn btn-mercari btn-sm" href="${mercariUrl(card, true)}" target="_blank" rel="sponsored noopener" data-mc-name="${escapeHtml(card.name)}">メルカリの成約相場を見る<span class="pr-tag">PR</span></a>
+        <a class="btn btn-mercari btn-sm" ${mercariAffiliateAttributes(card, 'detail_purchase')}>メルカリの成約相場を見る<span class="pr-tag">PR</span></a>
         <a class="btn btn-ghost btn-sm" href="${card.saleUrl}" target="_blank" rel="noopener">販売ページ</a>
       </div>
       <p class="muted" style="text-align:center">販売価格と買取価格を見ながら疑似売買できます</p>
@@ -5109,16 +5263,31 @@ function openSell(cardId){
 
 /* ========== 10. 共有・バックアップ ========== */
 
+function campaignCardUrl(card, campaign){
+  const isLocal = location.protocol === 'file:' || ['localhost','127.0.0.1'].includes(location.hostname);
+  const base = isLocal ? 'https://anadayo.github.io/pokeca-vault/' : location.origin + location.pathname;
+  const url = new URL(base);
+  url.searchParams.set('utm_source', 'x');
+  url.searchParams.set('utm_medium', 'social');
+  url.searchParams.set('utm_campaign', campaign);
+  url.hash = 'card=' + encodeURIComponent(card.id);
+  return url.toString();
+}
 function openShare(){
   const t = portfolioTotals();
+  const pick = marketSummary().topUp;
+  const card = pick.card;
   const lines = [
-    '📊 POKÉCA VAULT でポケカ資産を管理中',
-    `💰 総資産 ${yen(t.totalAssets)} / 所持金 ${yen(t.cash)} / 含み損益 ${signedYen(t.unrealized)}`,
-    t.realized !== 0 ? `✅ 実現損益 ${signedYen(t.realized)}` : null,
+    '今日のポケカ相場📈',
     '',
-    location.protocol === 'file:' ? 'https://anadayo.github.io/pokeca-vault/' : location.href.split('#')[0],
-    '#ポケカ #ポケカ投資 #POKECAVAULT',
-  ].filter(l => l !== null);
+    `${card.name}が前日比 ${pct(pick.pct1)}`,
+    `販売参考 ${yen(currentPrice(card))} / 最高買取 ${yen(bestBuyback(card).price)}`,
+    '',
+    '持っているカードの相場・買取・含み損益をまとめて確認できます。',
+    campaignCardUrl(card, 'daily_market'),
+    '',
+    '#ポケカ #ポケモンカード #POKECAVAULT',
+  ];
   $('#shareText').value = lines.join('\n');
   drawShareImage(t);
   openSheet('sheetShare');
@@ -5128,8 +5297,7 @@ function shareCard(cardId){
   if (!card) return;
   const best = bestBuyback(card);
   const ch = changePct(card, 1);
-  const baseUrl = location.protocol === 'file:' ? 'https://anadayo.github.io/pokeca-vault/' : location.href.split('#')[0];
-  const url = baseUrl + '#card=' + encodeURIComponent(card.id);
+  const url = campaignCardUrl(card, 'card_share');
   const text = [
     `${card.name}${card.rarity ? card.rarity : ''}が本日${pct(ch)}${ch >= 0 ? '上昇' : '変動'}`,
     `現在販売価格：${yen(currentPrice(card))}`,
@@ -5267,6 +5435,15 @@ function recordMetric(type, params){
     if (type === 'view'){
       state.analytics.views ||= {};
       state.analytics.views[params.view] = (state.analytics.views[params.view] || 0) + 1;
+      state.analytics.pageViewLog ||= [];
+      state.analytics.pageViewLog.unshift({
+        timestamp: new Date().toISOString(),
+        jstDate: todayJstKey(),
+        view: params.view,
+        initial: Boolean(params.initial),
+        sessionId: analyticsSessionId(),
+      });
+      state.analytics.pageViewLog = state.analytics.pageViewLog.slice(0, 1000);
     }
     if (type === 'search') state.analytics.searches = (state.analytics.searches || 0) + 1;
     if (type === 'detail'){
@@ -5277,7 +5454,6 @@ function recordMetric(type, params){
       state.analytics.rankings ||= {};
       state.analytics.rankings[params.mode] = (state.analytics.rankings[params.mode] || 0) + 1;
     }
-    if (type === 'mercari') state.analytics.mercariClicks = (state.analytics.mercariClicks || 0) + 1;
     if (type === 'watch') state.analytics.watches = (state.analytics.watches || 0) + 1;
     saveState();
   } catch {}
@@ -5285,21 +5461,94 @@ function recordMetric(type, params){
 
 /* GA4イベント送信（gtag未設定でも安全に無視） */
 function track(name, params){
-  try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch {}
+  const context = { source_view: activeView || 'unknown', ...(params || {}) };
+  try {
+    if (window.POKECA_ANALYTICS_ENABLED && typeof gtag === 'function') gtag('event', name, context);
+  } catch {}
+}
+
+let lastMercariClick = { key:'', at:0 };
+function isMercariAffiliateUrl(url){
+  try {
+    const parsed = new URL(url, location.href);
+    return parsed.hostname === 'jp.mercari.com'
+      && parsed.searchParams.get('afid') === MERCARI_AFFILIATE.ambassadorId;
+  } catch {
+    return false;
+  }
+}
+function recordMercariAffiliateClick(anchor){
+  const cardId = anchor.dataset.mcId || '';
+  const card = cardById(cardId);
+  if (!isMercariAffiliateUrl(anchor.href) && card){
+    anchor.href = createMercariAffiliateUrl(card, { soldOnly:true });
+  }
+  if (!isMercariAffiliateUrl(anchor.href)){
+    console.error('Mercari affiliate URL validation failed', { cardId, placement:anchor.dataset.mcPlacement || 'unknown' });
+    return;
+  }
+
+  const placement = anchor.dataset.mcPlacement || activeView || 'unknown';
+  const dedupeKey = `${cardId}|${placement}|${anchor.href}`;
+  const now = Date.now();
+  if (lastMercariClick.key === dedupeKey && now - lastMercariClick.at < 1500) return;
+  lastMercariClick = { key:dedupeKey, at:now };
+
+  const item = {
+    eventId: analyticsEventId('mercari'),
+    timestamp: new Date(now).toISOString(),
+    jstDate: todayJstKey(),
+    cardId,
+    cardName: anchor.dataset.mcName || card?.name || '',
+    placement,
+    sourceView: activeView || 'unknown',
+    sessionId: analyticsSessionId(),
+    userId: null,
+    deviceType: innerWidth <= 600 ? 'mobile' : 'desktop',
+    destinationUrl: anchor.href,
+  };
+
+  state.analytics ||= structuredClone(DEFAULT_STATE.analytics);
+  state.analytics.mercariClicks = (state.analytics.mercariClicks || 0) + 1;
+  state.analytics.affiliateClickLog ||= [];
+  state.analytics.affiliateClickLog.unshift(item);
+  state.analytics.affiliateClickLog = state.analytics.affiliateClickLog.slice(0, 500);
+  saveState();
+
+  track('mercari_affiliate_click', {
+    event_id: item.eventId,
+    event_timestamp: item.timestamp,
+    card_id: item.cardId,
+    card_name: item.cardName,
+    placement: item.placement,
+    destination: 'mercari',
+    link_url: item.destinationUrl,
+    anonymous_session_id: item.sessionId,
+    device_type: item.deviceType,
+    affiliate_program: 'mercari_ambassador',
+    transport_type: 'beacon',
+  });
 }
 
 document.addEventListener('click', (e) => {
-  // メルカリリンクのクリック計測（アンカー遷移は妨げない）
-  const mc = e.target.closest('a[data-mc-name]');
-  if (mc) { recordMetric('mercari', { card_name: mc.dataset.mcName }); track('mercari_click', { card_name: mc.dataset.mcName }); }
+  const anchor = e.target.closest('a[data-mercari-affiliate], a[href*="mercari.com"]');
+  if (anchor) recordMercariAffiliateClick(anchor);
+}, true);
 
+document.addEventListener('click', (e) => {
   if (e.target.closest('[data-close-sheet]')){ closeSheet(); return; }
 
   const goBtn = e.target.closest('[data-go]');
   if (goBtn){ go(goBtn.dataset.go); return; }
 
   const det = e.target.closest('[data-detail]');
-  if (det){ openDetail(det.dataset.detail); return; }
+  if (det){ openDetail(det.dataset.detail, det.dataset.detailPlacement || activeView || 'unknown'); return; }
+
+  const quickStart = e.target.closest('[data-quick-start]');
+  if (quickStart){ startQuickExperience(Number(quickStart.dataset.quickStart) || 50000); return; }
+
+  const opsRange = e.target.closest('[data-ops-range]');
+  if (opsRange){ opsRangeDays = Number(opsRange.dataset.opsRange) || 7; renderOpsAnalytics(); return; }
 
   const rank = e.target.closest('[data-rank-mode]');
   if (rank){ rankMode = rank.dataset.rankMode; renderRankings(); recordMetric('ranking', { mode: rankMode }); track('ranking_view', { mode: rankMode }); return; }
@@ -5420,6 +5669,7 @@ snapshotAsset();
 saveState();
 renderTicker();
 renderAll();
+recordMetric('view', { view:'home', initial:true });
 openCardFromHash();
 </script>
 </body>

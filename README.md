@@ -28,9 +28,12 @@ GitHub Pagesで公開できます。
 
 計測しているイベント:
 
-- `mercari_click` … メルカリ成約相場リンクのクリック（`card_name` 付き）
+- `mercari_affiliate_click` … メルカリアフィリエイトリンクのクリック。`card_id`、`card_name`、`placement`、`device_type`、`event_timestamp`、`event_id`を送信
+- `card_detail_view` … カード詳細の表示（`placement`付き）
 - `share` … シェア操作（`method`: `x_post` / `copy_text` / `save_image`）
+
+メルカリURLは `createMercariAffiliateUrl()` だけで生成し、すべてのリンクにアンバサダーIDを付与します。開発者画面では、この端末について今日・昨日・7日・30日のクリック数、CTR、カード別・ページ別・導線別・直近ログを確認できます。GA4送信は公開ドメインだけで有効になり、localhostでのテストは本番集計に入りません。
 
 ## X
 
-投稿・告知用アカウント: `@anaday_o`
+投稿・告知用アカウント: `@ana_wasborn`

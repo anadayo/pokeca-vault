@@ -34,6 +34,10 @@ GitHub Pagesで公開できます。
 
 メルカリURLは `createMercariAffiliateUrl()` だけで生成し、すべてのリンクにアンバサダーIDを付与します。開発者画面では、この端末について今日・昨日・7日・30日のクリック数、CTR、カード別・ページ別・導線別・直近ログを確認できます。GA4送信は公開ドメインだけで有効になり、localhostでのテストは本番集計に入りません。
 
+## Notion日次レポート
+
+`.github/workflows/daily-analytics-to-notion.yml` は毎朝9:15（JST）に前日のGA4指標、メルカリアフィリエイトクリック、価格データ更新日をNotionへ保存します。設定方法は `NOTION_ANALYTICS_SETUP.md` を参照してください。
+
 ## X
 
 投稿・告知用アカウント: `@ana_wasborn`

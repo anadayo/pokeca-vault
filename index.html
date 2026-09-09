@@ -156,6 +156,23 @@ footer{
 .hero h1 em{ font-style:normal; color:var(--gold); }
 .hero p{ color:var(--muted); font-size:13px; margin-top:6px; }
 .hero-actions{ display:flex; gap:10px; margin-top:14px; }
+.data-trust{
+  display:flex; align-items:flex-start; gap:8px; margin-top:10px; padding:9px 11px;
+  color:var(--muted); background:rgba(91,200,255,.055); border:1px solid rgba(91,200,255,.2);
+  border-radius:8px; font-size:11px; line-height:1.55;
+}
+.data-trust b{ color:var(--blue); white-space:nowrap; }
+.quick-start{
+  background:var(--surface); border:1px solid var(--gold-deep); border-radius:var(--radius); padding:14px;
+}
+.quick-start-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:10px; }
+.quick-start-head b{ display:block; font-size:15px; }
+.quick-start-head span{ display:block; color:var(--muted); font-size:11.5px; margin-top:2px; }
+.quick-start-badge{ flex:0 0 auto; color:#1A1405; background:var(--gold); border-radius:99px; padding:3px 9px; font-size:10px; font-weight:800; }
+.quick-start-flow{ display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-bottom:10px; }
+.quick-start-flow div{ min-width:0; background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:8px; padding:8px; }
+.quick-start-flow b{ display:block; color:var(--gold); font-family:var(--font-num); font-size:11px; }
+.quick-start-flow span{ display:block; font-size:10.5px; margin-top:2px; }
 
 /* ---------- ボタン ---------- */
 .btn{
@@ -331,17 +348,19 @@ footer{
 .hcard-actions{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
 
 /* ---------- ランキング ---------- */
-.rank-list{ display:grid; gap:8px; position:relative; }
+.rank-list{ display:grid; grid-template-columns:minmax(0,1fr); gap:8px; position:relative; min-width:0; }
 .rank-row{
   display:flex; align-items:center; gap:12px; background:var(--surface);
-  border:1px solid var(--line); border-radius:12px; padding:10px 14px;
+  width:100%; min-width:0; max-width:100%; border:1px solid var(--line); border-radius:12px; padding:10px 14px;
 }
 .rank-row.has-img{ padding:9px 11px; }
+.rank-main{ display:flex; align-items:center; gap:12px; flex:1; min-width:0; padding:0; border:0; background:none; color:inherit; text-align:left; }
+.rank-mercari{ flex:0 0 auto; min-height:36px; padding:0 9px; border-radius:8px; text-decoration:none; font-size:11px; }
 .rank-img{ width:36px; height:50px; object-fit:contain; flex:0 0 auto; border-radius:6px; background:#080A0F; border:1px solid var(--line); }
 .rank-no{ font-family:var(--font-disp); font-size:18px; color:var(--gold); width:24px; text-align:center; }
 .rank-name{ flex:1; min-width:0; font-weight:700; font-size:13.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .rank-name small{ display:block; color:var(--muted); font-size:10.5px; font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.rank-chg{ font-weight:600; font-size:14px; }
+.rank-chg{ flex:0 0 auto; font-weight:600; font-size:14px; }
 .rank-tabs{ display:flex; gap:7px; overflow-x:auto; padding-bottom:2px; margin-bottom:9px; scrollbar-width:none; }
 .rank-tabs::-webkit-scrollbar{ display:none; }
 .rank-tab{ flex:0 0 auto; background:var(--surface); border:1px solid var(--line); color:var(--muted); border-radius:99px; padding:7px 11px; font-size:12px; font-weight:700; }
@@ -353,6 +372,12 @@ footer{
   display:flex; flex-direction:column; gap:8px; align-items:center;
 }
 .rank-overlay p{ font-size:12.5px; color:var(--muted); }
+@media (max-width:420px){
+  .rank-row{ gap:7px; }
+  .rank-main{ gap:8px; }
+  .rank-mercari{ padding:0 7px; }
+  .quick-start-flow{ grid-template-columns:1fr; }
+}
 
 /* ---------- 空状態 ---------- */
 .empty{
@@ -536,6 +561,7 @@ nav{
           </div>
         </div>
       </div>
+      <div class="data-trust"><b>価格について</b><span>販売・買取の公開ページから定期取得した参考値です。変動率と価格推移は参考シミュレーションのため、売買前に実際の成約相場をご確認ください。</span></div>
     </div>
 
     <div class="section">
@@ -561,11 +587,11 @@ nav{
     </div>
 
     <div class="section" id="guideSection">
-      <div class="section-title">はじめての方へ — 3ステップ</div>
-      <div class="guide-steps">
-        <div class="gstep"><div class="no">1</div><div><b>カードを探す</b><span>「さがす」タブで気になるカードを検索</span></div></div>
-        <div class="gstep"><div class="no">2</div><div><b>この価格で買う</b><span>購入を記録すると保有カードに追加されます</span></div></div>
-        <div class="gstep"><div class="no">3</div><div><b>損益をチェック</b><span>価格変動で含み益・含み損が自動で見えます</span></div></div>
+      <div class="section-title">30秒で投資シミュレーション</div>
+      <div class="quick-start">
+        <div class="quick-start-head"><div><b>今日の注目カードで試す</b><span>無料・登録不要。データはこの端末だけに保存されます。</span></div><div class="quick-start-badge">30 SEC</div></div>
+        <div class="quick-start-flow"><div><b>01</b><span>5万円の疑似資金を用意</span></div><div><b>02</b><span>カードを1枚記録</span></div><div><b>03</b><span>含み損益を確認</span></div></div>
+        <button class="btn btn-gold btn-block" data-quick-start="50000">5万円コースで体験する</button>
       </div>
     </div>
 
@@ -663,7 +689,7 @@ nav{
 
 <!-- ================= フッター ================= -->
 <footer>
-  <p>※ 本サービスはシミュレーターです。価格データはサンプルであり、実際の売買・投資判断はご自身の責任で行ってください。実際の相場は各カードの「メルカリの成約相場を見る」ボタンからご確認ください。</p>
+  <p>※ 掲載する販売・買取価格は公開ページから定期取得した参考値です。変動率・価格推移・損益表示はシミュレーションを含み、利益を保証するものではありません。売買前に各カードの「メルカリの成約相場を見る」および各店舗で最新価格をご確認ください。</p>
   <p>※ 本サイトのメルカリへのリンクにはアフィリエイト広告（PR）を含みます。</p>
   <p style="margin-top:8px">姉妹サイト: <a href="tsume-pokepoke/" style="color:var(--muted)">🧩 詰めポケポケ — ポケポケのリーサルパズル</a></p>
   <p style="margin-top:8px">運営: <a href="https://x.com/ana_wasborn" target="_blank" rel="noopener" style="color:var(--muted)">𝕏 @ana_wasborn</a></p>
@@ -727,7 +753,7 @@ nav{
     <div class="gstep"><div class="no">4</div><div><b>売って利確</b><span>「売る」で買取価格シミュレーション。実現損益は履歴に残ります。</span></div></div>
     <div class="gstep"><div class="no">5</div><div><b>相場はメルカリでも確認</b><span>カード詳細から実際の取引相場をワンタップでチェック。</span></div></div>
   </div>
-  <p class="muted" style="margin-top:12px">※ 本サービスはシミュレーターです。価格データはサンプルであり、実際の売買・投資判断はご自身の責任で行ってください。実際の相場は各カードの「メルカリの成約相場を見る」ボタンからご確認ください。</p>
+  <p class="muted" style="margin-top:12px">※ 掲載価格は公開ページから定期取得した参考値です。変動率・価格推移は参考シミュレーションを含みます。売買前に実際の成約相場をご確認ください。</p>
   <p class="muted" style="margin-top:6px">※ 本サイトのメルカリへのリンクにはアフィリエイト広告（PR）を含みます。</p>
 </div>
 
@@ -4233,6 +4259,18 @@ function startCourse(amount){
   snapshotAsset(); saveState(); renderAll(); renderTicker();
   toast(yen(amount) + 'コースで開始しました');
 }
+function startQuickExperience(amount){
+  if (state.cashBalance === null){
+    state.cashBalance = amount;
+    state.courseAmount = amount;
+    state.assetHistory = [];
+    snapshotAsset(); saveState(); renderAll();
+  }
+  const card = dailyFeaturedCard();
+  track('onboarding_start', { course_amount: amount, card_id: card.id });
+  openDetail(card.id, 'quick_start');
+  toast('注目カードを1枚記録して損益を見てみましょう');
+}
 function snapshotAsset(){
   const t = today();
   const total = portfolioTotals().totalAssets;
@@ -4414,13 +4452,16 @@ function renderMarketPulse(){
   $('#marketMood').textContent = summary.mood;
   $('#pulseTopUp').innerHTML = pulseCardHtml(summary.topUp, '今日一番上がったカード', 'pos');
   $('#pulseTopUp').dataset.detail = summary.topUp.card.id;
+  $('#pulseTopUp').dataset.detailPlacement = 'market_pulse_up';
   $('#pulseTopDown').innerHTML = pulseCardHtml(summary.topDown, '今日一番下がったカード', 'neg');
   $('#pulseTopDown').dataset.detail = summary.topDown.card.id;
+  $('#pulseTopDown').dataset.detailPlacement = 'market_pulse_down';
   $('#pulseBestBuy').innerHTML = `
     <div class="pulse-label">最高買取</div>
     <div class="pulse-value">${escapeHtml(summary.bestBuy.card.name)}</div>
     <div class="pulse-sub"><span class="num pos">${yen(summary.bestBuy.best)}</span> ・ ${escapeHtml(summary.bestBuy.card.rarity)}</div>`;
   $('#pulseBestBuy').dataset.detail = summary.bestBuy.card.id;
+  $('#pulseBestBuy').dataset.detailPlacement = 'market_pulse_buyback';
   $('#pulseAverageMove').textContent = pct(summary.avg);
   $('#pulseAverageMove').className = 'pulse-value num ' + (summary.avg >= 0 ? 'pos' : 'neg');
   $('#pulseBreadth').textContent = `上昇 ${summary.upCount}件 / 下落 ${summary.downCount}件`;
@@ -4444,11 +4485,11 @@ function renderPortfolioInsights(){
       <div class="insight-main"><b>今日の保有資産変動</b><span>保有中カードの1日変動を集計</span></div>
       <div class="insight-num num ${todayMove >= 0 ? 'pos' : 'neg'}">${signedYen(todayMove)}<br><span class="daily-delta">${pct(todayMove / base * 100)}</span></div>
     </div>
-    <div class="insight-row" data-detail="${best.card.id}" role="button" tabindex="0">
+    <div class="insight-row" data-detail="${best.card.id}" data-detail-placement="portfolio_best" role="button" tabindex="0">
       <div class="insight-main"><b>一番利益が出ているカード</b><span>${escapeHtml(best.card.name)} ・ ${best.h.qty}枚</span></div>
       <div class="insight-num num ${best.profit >= 0 ? 'pos' : 'neg'}">${signedYen(best.profit)}</div>
     </div>
-    <div class="insight-row" data-detail="${worst.card.id}" role="button" tabindex="0">
+    <div class="insight-row" data-detail="${worst.card.id}" data-detail-placement="portfolio_worst" role="button" tabindex="0">
       <div class="insight-main"><b>一番損益が弱いカード</b><span>${escapeHtml(worst.card.name)} ・ ${worst.h.qty}枚</span></div>
       <div class="insight-num num ${worst.profit >= 0 ? 'pos' : 'neg'}">${signedYen(worst.profit)}</div>
     </div>`;
@@ -4478,11 +4519,14 @@ function renderRankings(){
   $('#rankUpdated').textContent = `${rank.note} ・ ${freshnessInfo().label}`;
   $('#rankList').innerHTML = rank.items.map((item, i) => {
     const c = item.card;
-    return `<div class="rank-row has-img" data-detail="${c.id}" role="button" tabindex="0">
-      <div class="rank-no">${i+1}</div>
-      <img class="rank-img" src="${c.image}" alt="" loading="lazy" onerror="this.style.opacity=.25">
-      <div class="rank-name">${escapeHtml(c.name)}<small>${escapeHtml(c.set)} ・ ${escapeHtml(c.rarity)} ・ 買取 ${yen(bestBuyback(c).price)}</small></div>
-      <div class="rank-chg num ${rank.cls(item)}">${rank.value(item)}</div>
+    return `<div class="rank-row has-img">
+      <button class="rank-main" data-detail="${c.id}" data-detail-placement="ranking_${rankMode}" type="button" aria-label="${escapeHtml(c.name)}の詳細を見る">
+        <div class="rank-no">${i+1}</div>
+        <img class="rank-img" src="${c.image}" alt="" loading="lazy" onerror="this.style.opacity=.25">
+        <div class="rank-name">${escapeHtml(c.name)}<small>${escapeHtml(c.set)} ・ ${escapeHtml(c.rarity)} ・ 買取 ${yen(bestBuyback(c).price)}</small></div>
+        <div class="rank-chg num ${rank.cls(item)}">${rank.value(item)}</div>
+      </button>
+      <a class="btn btn-mercari rank-mercari" href="${mercariUrl(c, true)}" target="_blank" rel="sponsored noopener" data-mc-id="${c.id}" data-mc-name="${escapeHtml(c.name)}" data-mc-placement="ranking_${rankMode}" aria-label="${escapeHtml(c.name)}のメルカリ成約相場を見る">相場<span class="pr-tag">PR</span></a>
     </div>`;
   }).join('');
 }
@@ -4522,8 +4566,8 @@ function renderHome(){
           <span class="num pos" style="font-size:13px"> 週間 ${pct(changePct(featured,7))}</span></div>
         <div class="muted">毎日0時に更新 ・ ${todayJstKey()}</div>
         <div class="split-2" style="margin-top:10px">
-          <button class="btn btn-gold btn-sm" data-detail="${featured.id}">買う・詳細</button>
-          <button class="btn btn-ghost btn-sm" data-detail="${featured.id}">📈 推移を見る</button>
+          <button class="btn btn-gold btn-sm" data-detail="${featured.id}" data-detail-placement="featured_buy">買う・詳細</button>
+          <button class="btn btn-ghost btn-sm" data-detail="${featured.id}" data-detail-placement="featured_chart">📈 推移を見る</button>
         </div>
       </div>
     </div>`;
@@ -4574,7 +4618,7 @@ function renderMarket(){
     ? CARD_MASTER.filter(matchesQuery).sort((a,b) => currentPrice(b) - currentPrice(a)).slice(0, 8)
     : [...CARD_MASTER].sort((a,b) => Math.abs(changePct(b,1)) - Math.abs(changePct(a,1))).slice(0, 6);
   $('#searchSuggest').innerHTML = suggestions.map(c =>
-    `<button class="suggest-chip" data-detail="${c.id}">${escapeHtml(c.name)}<small>${escapeHtml(c.rarity)} ${escapeHtml(c.cardNo)}</small></button>`
+    `<button class="suggest-chip" data-detail="${c.id}" data-detail-placement="search_suggestion">${escapeHtml(c.name)}<small>${escapeHtml(c.rarity)} ${escapeHtml(c.cardNo)}</small></button>`
   ).join('');
 
   let list = CARD_MASTER.filter(c =>
@@ -4606,11 +4650,11 @@ function renderMarket(){
         <span class="mcard-price num">${yen(currentPrice(c))}</span><span class="muted">買取 ${buyPriceLabel(c)}</span>
         <span class="num ${ch >= 0 ? 'pos' : 'neg'}" style="font-size:13px">7日 ${pct(ch)}</span>
         ${own ? `<span class="own-tag">★ 保有中 ${own.qty}枚</span>` : ''}
-        <a class="mlink" href="${mercariUrl(c, true)}" target="_blank" rel="sponsored noopener" data-mc-name="${escapeHtml(c.name)}">メルカリ成約相場 →<span class="pr-tag">PR</span></a>
+        <a class="mlink" href="${mercariUrl(c, true)}" target="_blank" rel="sponsored noopener" data-mc-id="${c.id}" data-mc-name="${escapeHtml(c.name)}" data-mc-placement="search_list">メルカリ成約相場 →<span class="pr-tag">PR</span></a>
       </div>
       <div class="mcard-actions">
-        <button class="btn btn-gold btn-sm" data-detail="${c.id}">買う</button>
-        <button class="btn btn-ghost btn-sm" data-detail="${c.id}">📈 詳細・推移</button>
+        <button class="btn btn-gold btn-sm" data-detail="${c.id}" data-detail-placement="search_buy">買う</button>
+        <button class="btn btn-ghost btn-sm" data-detail="${c.id}" data-detail-placement="search_chart">📈 詳細・推移</button>
       </div>
     </article>`;
   }).join('');
@@ -4657,8 +4701,8 @@ function renderHoldings(){
         </div>
         <div class="hcard-actions">
           <button class="btn btn-red btn-sm" data-sell="${card.id}">売る</button>
-          <button class="btn btn-ghost btn-sm" data-detail="${card.id}">詳細</button>
-          <a class="btn btn-mercari btn-sm" href="${mercariUrl(card, true)}" target="_blank" rel="sponsored noopener" data-mc-name="${escapeHtml(card.name)}">メルカリ成約相場<span class="pr-tag">PR</span></a>
+          <button class="btn btn-ghost btn-sm" data-detail="${card.id}" data-detail-placement="holdings">詳細</button>
+          <a class="btn btn-mercari btn-sm" href="${mercariUrl(card, true)}" target="_blank" rel="sponsored noopener" data-mc-id="${card.id}" data-mc-name="${escapeHtml(card.name)}" data-mc-placement="holdings">メルカリ成約相場<span class="pr-tag">PR</span></a>
         </div>
       </article>`;
     }).join('');
@@ -4849,10 +4893,11 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet()
 /* ---- カード詳細・購入シート ---- */
 let detailRange = 30;
 
-function openDetail(cardId){
+function openDetail(cardId, detailPlacement='direct'){
   const card = cardById(cardId);
   if (!card) return;
   recordMetric('detail', { card_id: cardId, card_name: card.name });
+  track('card_detail_view', { card_id: cardId, card_name: card.name, placement: detailPlacement });
   const plan = PLANS[state.plan];
   const sig = getSignal(card);
   const buybacks = storeBuybacks(card);
@@ -4889,9 +4934,10 @@ function openDetail(cardId){
 
     <div class="chips" style="margin-top:8px">${rangeChips}</div>
     <div class="chart-box"><canvas id="detailChart" height="160"></canvas></div>
+    <div class="mini-note" style="margin-top:7px">価格推移と変動率は参考シミュレーションです。現在の販売・買取参考価格は定期更新しています。</div>
 
     <div class="price-grid">
-      <div class="price-cell"><div class="k">販売価格（相場）</div><div class="v num">${yen(currentPrice(card))}</div></div>
+      <div class="price-cell"><div class="k">販売参考価格</div><div class="v num">${yen(currentPrice(card))}</div></div>
       <div class="price-cell best"><div class="k">最高買取価格</div><div class="v num" style="color:var(--gold)">${buyPriceLabel(card)}</div></div>
       <div class="price-cell"><div class="k">前日比</div><div class="v num ${c1 >= 0 ? 'pos' : 'neg'}">${pct(c1)}</div></div>
       <div class="price-cell"><div class="k">最終更新</div><div class="v num">${priceStatusLabel(card)}</div></div>
@@ -4968,7 +5014,7 @@ function openDetail(cardId){
     <div class="sheet-actions">
       <button class="btn btn-gold btn-block" id="btnConfirmBuy">この価格で買う（記録する）</button>
       <div class="split-2">
-        <a class="btn btn-mercari btn-sm" href="${mercariUrl(card, true)}" target="_blank" rel="sponsored noopener" data-mc-name="${escapeHtml(card.name)}">メルカリの成約相場を見る<span class="pr-tag">PR</span></a>
+        <a class="btn btn-mercari btn-sm" href="${mercariUrl(card, true)}" target="_blank" rel="sponsored noopener" data-mc-id="${card.id}" data-mc-name="${escapeHtml(card.name)}" data-mc-placement="detail">メルカリの成約相場を見る<span class="pr-tag">PR</span></a>
         <a class="btn btn-ghost btn-sm" href="${card.saleUrl}" target="_blank" rel="noopener">販売ページ</a>
       </div>
       <p class="muted" style="text-align:center">販売価格と買取価格を見ながら疑似売買できます</p>
@@ -5109,16 +5155,31 @@ function openSell(cardId){
 
 /* ========== 10. 共有・バックアップ ========== */
 
+function campaignCardUrl(card, campaign){
+  const isLocal = location.protocol === 'file:' || ['localhost','127.0.0.1'].includes(location.hostname);
+  const base = isLocal ? 'https://anadayo.github.io/pokeca-vault/' : location.origin + location.pathname;
+  const url = new URL(base);
+  url.searchParams.set('utm_source', 'x');
+  url.searchParams.set('utm_medium', 'social');
+  url.searchParams.set('utm_campaign', campaign);
+  url.hash = 'card=' + encodeURIComponent(card.id);
+  return url.toString();
+}
 function openShare(){
   const t = portfolioTotals();
+  const pick = marketSummary().topUp;
+  const card = pick.card;
   const lines = [
-    '📊 POKÉCA VAULT でポケカ資産を管理中',
-    `💰 総資産 ${yen(t.totalAssets)} / 所持金 ${yen(t.cash)} / 含み損益 ${signedYen(t.unrealized)}`,
-    t.realized !== 0 ? `✅ 実現損益 ${signedYen(t.realized)}` : null,
+    '今日のポケカ相場📈',
     '',
-    location.protocol === 'file:' ? 'https://anadayo.github.io/pokeca-vault/' : location.href.split('#')[0],
-    '#ポケカ #ポケカ投資 #POKECAVAULT',
-  ].filter(l => l !== null);
+    `${card.name}が前日比 ${pct(pick.pct1)}`,
+    `販売参考 ${yen(currentPrice(card))} / 最高買取 ${yen(bestBuyback(card).price)}`,
+    '',
+    '持っているカードの相場・買取・含み損益をまとめて確認できます。',
+    campaignCardUrl(card, 'daily_market'),
+    '',
+    '#ポケカ #ポケモンカード #POKECAVAULT',
+  ];
   $('#shareText').value = lines.join('\n');
   drawShareImage(t);
   openSheet('sheetShare');
@@ -5128,8 +5189,7 @@ function shareCard(cardId){
   if (!card) return;
   const best = bestBuyback(card);
   const ch = changePct(card, 1);
-  const baseUrl = location.protocol === 'file:' ? 'https://anadayo.github.io/pokeca-vault/' : location.href.split('#')[0];
-  const url = baseUrl + '#card=' + encodeURIComponent(card.id);
+  const url = campaignCardUrl(card, 'card_share');
   const text = [
     `${card.name}${card.rarity ? card.rarity : ''}が本日${pct(ch)}${ch >= 0 ? '上昇' : '変動'}`,
     `現在販売価格：${yen(currentPrice(card))}`,
@@ -5285,13 +5345,23 @@ function recordMetric(type, params){
 
 /* GA4イベント送信（gtag未設定でも安全に無視） */
 function track(name, params){
-  try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch {}
+  const context = { source_view: activeView || 'unknown', ...(params || {}) };
+  try { if (typeof gtag === 'function') gtag('event', name, context); } catch {}
 }
 
 document.addEventListener('click', (e) => {
   // メルカリリンクのクリック計測（アンカー遷移は妨げない）
   const mc = e.target.closest('a[data-mc-name]');
-  if (mc) { recordMetric('mercari', { card_name: mc.dataset.mcName }); track('mercari_click', { card_name: mc.dataset.mcName }); }
+  if (mc) {
+    const metrics = {
+      card_id: mc.dataset.mcId || '',
+      card_name: mc.dataset.mcName,
+      placement: mc.dataset.mcPlacement || activeView || 'unknown',
+      destination: 'mercari',
+    };
+    recordMetric('mercari', metrics);
+    track('mercari_click', metrics);
+  }
 
   if (e.target.closest('[data-close-sheet]')){ closeSheet(); return; }
 
@@ -5299,7 +5369,10 @@ document.addEventListener('click', (e) => {
   if (goBtn){ go(goBtn.dataset.go); return; }
 
   const det = e.target.closest('[data-detail]');
-  if (det){ openDetail(det.dataset.detail); return; }
+  if (det){ openDetail(det.dataset.detail, det.dataset.detailPlacement || activeView || 'unknown'); return; }
+
+  const quickStart = e.target.closest('[data-quick-start]');
+  if (quickStart){ startQuickExperience(Number(quickStart.dataset.quickStart) || 50000); return; }
 
   const rank = e.target.closest('[data-rank-mode]');
   if (rank){ rankMode = rank.dataset.rankMode; renderRankings(); recordMetric('ranking', { mode: rankMode }); track('ranking_view', { mode: rankMode }); return; }

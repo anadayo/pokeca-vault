@@ -1,0 +1,37 @@
+name: Save daily analytics to Notion
+
+on:
+  schedule:
+    # 09:15 JST: GA4の前日分と価格更新結果を保存
+    - cron: '15 0 * * *'
+  workflow_dispatch:
+    inputs:
+      report_date:
+        description: '保存する日付（YYYY-MM-DD、空欄は前日）'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  save-daily-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Save GA4 and price history to Notion
+        env:
+          GA_PROPERTY_ID: '552987217'
+          GA_SERVICE_ACCOUNT_JSON: ${{ secrets.GA_SERVICE_ACCOUNT_JSON }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATA_SOURCE_ID: '3d7c9239-b3c9-802c-8506-000b712815e5'
+          REPORT_DATE: ${{ inputs.report_date }}
+        run: node scripts/sync-daily-analytics-to-notion.js

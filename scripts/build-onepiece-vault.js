@@ -5,8 +5,12 @@ const ROOT = path.resolve(__dirname, '..');
 const SOURCE = path.join(ROOT, 'index.html');
 const OUTPUT_DIR = path.join(ROOT, 'onepiece-card-vault');
 const OUTPUT = path.join(OUTPUT_DIR, 'index.html');
+const CATALOG_FILE = path.join(OUTPUT_DIR, 'cards.json');
+const TODAY_JST = new Intl.DateTimeFormat('sv-SE', {
+  timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit',
+}).format(new Date());
 
-const cards = [
+const seedCards = [
   card('OP13-118-RSP', 'モンキー・D・ルフィ', 'Monkey D. Luffy', 'OP-13 受け継がれる意志', 'OP13-118', 'レッドスーパーパラレル', 398000, 300000, 3, 'up', null),
   card('OP09-004-SP', 'シャンクス', 'Shanks', 'OP-09 新たなる皇帝', 'OP09-004', 'スペシャル（銀）', 95800, 70000, 3, 'hot', null),
   card('OP13-119-RP', 'ポートガス・D・エース', 'Portgas D. Ace', 'OP-13 受け継がれる意志', 'OP13-119', 'レッドパラレル', 15800, 10000, 2, 'up', null),
@@ -28,6 +32,10 @@ const cards = [
   card('OP13-082-P', '五老星', 'The Five Elders', 'OP-13 受け継がれる意志', 'OP13-082', 'パラレル', 1480, 800, 1, 'up'),
   card('OP13-028-P', 'シャンクス', 'Shanks', 'OP-13 受け継がれる意志', 'OP13-028', 'パラレル', 1280, 700, 1, 'flat'),
 ];
+
+const cards = fs.existsSync(CATALOG_FILE)
+  ? JSON.parse(fs.readFileSync(CATALOG_FILE, 'utf8'))
+  : seedCards;
 
 function hash(text) {
   let value = 2166136261;
@@ -81,10 +89,13 @@ function build() {
     .replaceAll("track('search'", "track('onepiece_search'")
     .replaceAll("track('share'", "track('onepiece_share'")
     .replace("const context = { source_view: activeView || 'unknown', ...(params || {}) };", "const context = { service: 'onepiece_card_vault', source_view: activeView || 'unknown', ...(params || {}) };")
-    .replace(/const PRICE_DATA_META = \{ updatedAt: '[^']+' \};/, "const PRICE_DATA_META = { updatedAt: '2026-09-12' };")
+    .replace(/const PRICE_DATA_META = \{ updatedAt: '[^']+' \};/, `const PRICE_DATA_META = { updatedAt: '${TODAY_JST}' };`)
     .replace('<div class="brand">ONE PIECE CARD VAULT<small>CARD MARKET SIMULATOR</small></div>', '<div class="brand">OP CARD VAULT<small>ONE PIECE CARD MARKET</small></div>')
-    .replaceAll('人気カード200種類', '注目カード20種類')
-    .replaceAll('人気カード100種類', '注目カード20種類')
+    .replaceAll('人気カード200種類', `買取注目カード${cards.length}種類`)
+    .replaceAll('人気カード100種類', `買取注目カード${cards.length}種類`)
+    .replace('<option value="hot">急騰順</option>', '<option value="buyDesc">買取価格が高い順</option>\n          <option value="hot">急騰順</option>')
+    .replace("let marketFilter = { q:'', rarity:'すべて', sort:'hot' };", "let marketFilter = { q:'', rarity:'すべて', sort:'buyDesc' };")
+    .replace("const sorters = {\n    hot:", "const sorters = {\n    buyDesc:   (a,b) => effectiveBuyPrice(b) - effectiveBuyPrice(a),\n    hot:")
     .replace('placeholder="カード名で検索（例：リザードン）"', 'placeholder="カード名で検索（例：ルフィ）"')
     .replace('<p style="margin-top:8px">姉妹サイト:', '<p style="margin-top:8px">姉妹サイト: <a href="../" style="color:var(--muted)">POKÉCA VAULT</a> ・ ')
     .replace(/ ・\s+<a href="onepiece-card-vault\/" style="color:var\(--muted\)">OP CARD VAULT<\/a>/, '')

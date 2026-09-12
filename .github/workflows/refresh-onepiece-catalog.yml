@@ -1,0 +1,38 @@
+name: Refresh One Piece catalog
+
+on:
+  schedule:
+    # Sunday 04:30 JST
+    - cron: '30 19 * * 6'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-catalog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Select 200 cards with buy prices
+        run: node scripts/refresh-onepiece-catalog.js
+
+      - name: Build One Piece card vault
+        run: node scripts/build-onepiece-vault.js
+
+      - name: Verify catalog and images
+        run: node scripts/verify-onepiece-catalog.js
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: refresh One Piece card catalog'
+          file_pattern: onepiece-card-vault/index.html onepiece-card-vault/cards.json onepiece-catalog-report.json

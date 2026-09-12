@@ -25,6 +25,9 @@ jobs:
       - name: Update prices from Hareruya2
         run: node scripts/update-prices.js
 
+      - name: Build One Piece card vault
+        run: node scripts/build-onepiece-vault.js
+
       - name: Update One Piece card prices
         run: node scripts/update-onepiece-prices.js
 

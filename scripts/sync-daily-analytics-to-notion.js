@@ -3,7 +3,24 @@ const crypto = require('crypto');
 
 const GA_PROPERTY_ID = process.env.GA_PROPERTY_ID || '552987217';
 const NOTION_VERSION = '2026-03-11';
-const SITE_URL = 'https://anadayo.github.io/pokeca-vault/';
+const SERVICES = [
+  {
+    name: 'POKECA VAULT',
+    siteUrl: 'https://anadayo.github.io/pokeca-vault/',
+    pagePath: '/pokeca-vault/',
+    priceFile: 'index.html',
+    events: ['mercari_affiliate_click', 'mercari_click', 'card_detail_view', 'search', 'share'],
+    eventNames: { mercari: ['mercari_affiliate_click', 'mercari_click'], detail: 'card_detail_view', search: 'search', share: 'share' },
+  },
+  {
+    name: 'OP CARD VAULT',
+    siteUrl: 'https://anadayo.github.io/pokeca-vault/onepiece-card-vault/',
+    pagePath: '/pokeca-vault/onepiece-card-vault/',
+    priceFile: 'onepiece-card-vault/index.html',
+    events: ['onepiece_mercari_affiliate_click', 'onepiece_card_detail_view', 'onepiece_search', 'onepiece_share'],
+    eventNames: { mercari: ['onepiece_mercari_affiliate_click'], detail: 'onepiece_card_detail_view', search: 'onepiece_search', share: 'onepiece_share' },
+  },
+];
 
 function required(name) {
   const value = process.env[name];
@@ -72,8 +89,8 @@ function eventCounts(report) {
   return result;
 }
 
-function priceDataDate() {
-  const html = fs.readFileSync('index.html', 'utf8');
+function priceDataDate(file) {
+  const html = fs.readFileSync(file, 'utf8');
   return html.match(/const PRICE_DATA_META = \{ updatedAt: '([^']+)' \};/)?.[1] || '';
 }
 
@@ -95,11 +112,11 @@ function number(value) {
   return { number: Number.isFinite(value) ? value : 0 };
 }
 
-function reportProperties(date, metrics, events, priceDate) {
-  const mercariClicks = (events.mercari_affiliate_click || 0) + (events.mercari_click || 0);
+function reportProperties(service, date, metrics, events, priceDate) {
+  const mercariClicks = service.eventNames.mercari.reduce((total, name) => total + (events[name] || 0), 0);
   const pageViews = metrics.screenPageViews || 0;
   return {
-    '日次レポート': { title: [{ text: { content: `POKECA VAULT ${date}` } }] },
+    '日次レポート': { title: [{ text: { content: `${service.name} ${date}` } }] },
     '日付': { date: { start: date } },
     '月': { select: { name: date.slice(0, 7) } },
     'アクティブユーザー': number(metrics.activeUsers),
@@ -108,23 +125,28 @@ function reportProperties(date, metrics, events, priceDate) {
     'PV': number(pageViews),
     'サイト計測クリック': number(mercariClicks),
     'CTR': number(pageViews ? mercariClicks / pageViews : 0),
-    'カード詳細表示': number(events.card_detail_view || 0),
-    '検索回数': number(events.search || 0),
-    'Xシェア': number(events.share || 0),
+    'カード詳細表示': number(events[service.eventNames.detail] || 0),
+    '検索回数': number(events[service.eventNames.search] || 0),
+    'Xシェア': number(events[service.eventNames.share] || 0),
     '価格データ日': priceDate ? { date: { start: priceDate } } : { date: null },
     '価格更新': { select: { name: priceDate >= date ? '最新' : '要確認' } },
-    'サイト': { url: SITE_URL },
+    'サイト': { url: service.siteUrl },
     '同期日時': { date: { start: new Date().toISOString() } },
   };
 }
 
-async function upsertNotion(date, properties) {
+async function upsertNotion(date, reportTitle, properties) {
   const token = required('NOTION_TOKEN');
   const dataSourceId = required('NOTION_DATA_SOURCE_ID').replace(/-/g, '');
   const query = await notionRequest(`/data_sources/${dataSourceId}/query`, token, {
     method: 'POST',
     body: JSON.stringify({
-      filter: { property: '日付', date: { equals: date } },
+      filter: {
+        and: [
+          { property: '日付', date: { equals: date } },
+          { property: '日次レポート', title: { equals: reportTitle } },
+        ],
+      },
       page_size: 1,
     }),
   });
@@ -147,28 +169,39 @@ async function main() {
   const date = process.env.REPORT_DATE || jstDate(-1);
   const serviceAccount = JSON.parse(required('GA_SERVICE_ACCOUNT_JSON'));
   const accessToken = await googleAccessToken(serviceAccount);
-  const [summaryReport, eventReport] = await Promise.all([
-    runGaReport(accessToken, date, {
-      metrics: ['activeUsers', 'newUsers', 'sessions', 'screenPageViews'].map(name => ({ name })),
-    }),
-    runGaReport(accessToken, date, {
-      dimensions: [{ name: 'eventName' }],
-      metrics: [{ name: 'eventCount' }],
-      dimensionFilter: {
-        filter: {
-          fieldName: 'eventName',
-          inListFilter: {
-            values: ['mercari_affiliate_click', 'mercari_click', 'card_detail_view', 'search', 'share'],
+  const results = [];
+
+  for (const service of SERVICES) {
+    const [summaryReport, eventReport] = await Promise.all([
+      runGaReport(accessToken, date, {
+        metrics: ['activeUsers', 'newUsers', 'sessions', 'screenPageViews'].map(name => ({ name })),
+        dimensionFilter: {
+          filter: {
+            fieldName: 'pagePath',
+            stringFilter: { matchType: 'EXACT', value: service.pagePath },
           },
         },
-      },
-    }),
-  ]);
-  const metrics = metricObject(summaryReport);
-  const events = eventCounts(eventReport);
-  const priceDate = priceDataDate();
-  const result = await upsertNotion(date, reportProperties(date, metrics, events, priceDate));
-  console.log(JSON.stringify({ date, metrics, events, priceDate, ...result }, null, 2));
+      }),
+      runGaReport(accessToken, date, {
+        dimensions: [{ name: 'eventName' }],
+        metrics: [{ name: 'eventCount' }],
+        dimensionFilter: {
+          filter: {
+            fieldName: 'eventName',
+            inListFilter: { values: service.events },
+          },
+        },
+      }),
+    ]);
+    const metrics = metricObject(summaryReport);
+    const events = eventCounts(eventReport);
+    const priceDate = priceDataDate(service.priceFile);
+    const reportTitle = `${service.name} ${date}`;
+    const result = await upsertNotion(date, reportTitle, reportProperties(service, date, metrics, events, priceDate));
+    results.push({ service: service.name, date, metrics, events, priceDate, ...result });
+  }
+
+  console.log(JSON.stringify(results, null, 2));
 }
 
 main().catch(error => {

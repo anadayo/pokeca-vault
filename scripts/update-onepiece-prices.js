@@ -1,8 +1,10 @@
 const fs = require('fs');
 
 const TARGET_FILE = 'onepiece-card-vault/index.html';
+const CATALOG_FILE = 'onepiece-card-vault/cards.json';
 const USER_AGENT = 'Mozilla/5.0 (compatible; OPCardVaultPriceUpdater/1.0; +https://github.com/anadayo/pokeca-vault)';
-const REQUEST_DELAY_MS = Number(process.env.ONEPIECE_REQUEST_DELAY_MS || 1200);
+const REQUEST_DELAY_MS = Number(process.env.ONEPIECE_REQUEST_DELAY_MS || 250);
+const CONCURRENCY = Number(process.env.ONEPIECE_PRICE_CONCURRENCY || 6);
 const TODAY_JST = new Intl.DateTimeFormat('sv-SE', {
   timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit',
 }).format(new Date());
@@ -37,8 +39,7 @@ function pricePairs(html) {
   return html
     .split(/<section class="variant-panel[^>]*>/i)
     .slice(1)
-    .map(panel => pricePair(panel.split('</section>')[0]))
-    .filter(Boolean);
+    .map(panel => pricePair(panel.split('</section>')[0]));
 }
 
 async function fetchCard(card) {
@@ -61,22 +62,29 @@ async function main() {
   const updated = [];
   const report = [];
 
-  for (const card of cards) {
-    try {
-      const next = await fetchCard(card);
-      updated.push(next);
-      report.push({ id: card.id, ok: true, before: [card.nowPrice, card.buyPrice], after: [next.nowPrice, next.buyPrice] });
-    } catch (error) {
-      updated.push(card);
-      report.push({ id: card.id, ok: false, error: error.message });
+  let cursor = 0;
+  async function worker() {
+    while (cursor < cards.length) {
+      const index = cursor++;
+      const card = cards[index];
+      try {
+        const next = await fetchCard(card);
+        updated[index] = next;
+        report[index] = { id: card.id, ok: true, before: [card.nowPrice, card.buyPrice], after: [next.nowPrice, next.buyPrice] };
+      } catch (error) {
+        updated[index] = card;
+        report[index] = { id: card.id, ok: false, error: error.message };
+      }
+      await sleep(REQUEST_DELAY_MS);
     }
-    await sleep(REQUEST_DELAY_MS);
   }
+  await Promise.all(Array.from({ length: Math.max(1, CONCURRENCY) }, worker));
 
   const output = html
     .replace(/const PRICE_DATA_META = \{ updatedAt: '[^']+' \};/, `const PRICE_DATA_META = { updatedAt: '${TODAY_JST}' };`)
     .replace(/const CARD_MASTER = \[[\s\S]*?\n\];/, `const CARD_MASTER = ${JSON.stringify(updated, null, 2)};`);
   fs.writeFileSync(TARGET_FILE, output);
+  fs.writeFileSync(CATALOG_FILE, `${JSON.stringify(updated, null, 2)}\n`);
   fs.writeFileSync('onepiece-price-update-report.json', JSON.stringify({ date: TODAY_JST, report }, null, 2));
   console.log(`Updated ${report.filter(item => item.ok).length}/${cards.length} ONE PIECE cards`);
 }

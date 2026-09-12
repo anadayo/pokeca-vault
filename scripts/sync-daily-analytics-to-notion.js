@@ -6,6 +6,7 @@ const NOTION_VERSION = '2026-03-11';
 const SERVICES = [
   {
     name: 'POKECA VAULT',
+    notionDataSourceEnv: 'NOTION_POKECA_DATA_SOURCE_ID',
     siteUrl: 'https://anadayo.github.io/pokeca-vault/',
     pagePath: '/pokeca-vault/',
     priceFile: 'index.html',
@@ -14,6 +15,7 @@ const SERVICES = [
   },
   {
     name: 'OP CARD VAULT',
+    notionDataSourceEnv: 'NOTION_ONEPIECE_DATA_SOURCE_ID',
     siteUrl: 'https://anadayo.github.io/pokeca-vault/onepiece-card-vault/',
     pagePath: '/pokeca-vault/onepiece-card-vault/',
     priceFile: 'onepiece-card-vault/index.html',
@@ -135,10 +137,10 @@ function reportProperties(service, date, metrics, events, priceDate) {
   };
 }
 
-async function upsertNotion(date, reportTitle, properties) {
+async function upsertNotion(dataSourceId, date, reportTitle, properties) {
   const token = required('NOTION_TOKEN');
-  const dataSourceId = required('NOTION_DATA_SOURCE_ID').replace(/-/g, '');
-  const query = await notionRequest(`/data_sources/${dataSourceId}/query`, token, {
+  const normalizedDataSourceId = dataSourceId.replace(/-/g, '');
+  const query = await notionRequest(`/data_sources/${normalizedDataSourceId}/query`, token, {
     method: 'POST',
     body: JSON.stringify({
       filter: {
@@ -160,7 +162,7 @@ async function upsertNotion(date, reportTitle, properties) {
   }
   const created = await notionRequest('/pages', token, {
     method: 'POST',
-    body: JSON.stringify({ parent: { data_source_id: dataSourceId }, properties }),
+    body: JSON.stringify({ parent: { data_source_id: normalizedDataSourceId }, properties }),
   });
   return { action: 'created', pageId: created.id };
 }
@@ -172,6 +174,7 @@ async function main() {
   const results = [];
 
   for (const service of SERVICES) {
+    const dataSourceId = required(service.notionDataSourceEnv);
     const [summaryReport, eventReport] = await Promise.all([
       runGaReport(accessToken, date, {
         metrics: ['activeUsers', 'newUsers', 'sessions', 'screenPageViews'].map(name => ({ name })),
@@ -197,7 +200,7 @@ async function main() {
     const events = eventCounts(eventReport);
     const priceDate = priceDataDate(service.priceFile);
     const reportTitle = `${service.name} ${date}`;
-    const result = await upsertNotion(date, reportTitle, reportProperties(service, date, metrics, events, priceDate));
+    const result = await upsertNotion(dataSourceId, date, reportTitle, reportProperties(service, date, metrics, events, priceDate));
     results.push({ service: service.name, date, metrics, events, priceDate, ...result });
   }
 

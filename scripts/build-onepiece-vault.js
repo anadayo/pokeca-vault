@@ -76,7 +76,7 @@ function replaceCardMaster(html) {
 function build() {
   let html = fs.readFileSync(SOURCE, 'utf8');
   html = replaceCardMaster(html)
-    .replaceAll('https://anadayo.github.io/pokeca-vault/', 'https://anadayo.github.io/pokeca-vault/onepiece-card-vault/')
+    .replaceAll('https://anadayo.github.io/pokeca-vault/', 'https://anadayo.github.io/onepiece-card-vault/')
     .replaceAll('POKÉCA VAULT', 'ONE PIECE CARD VAULT')
     .replaceAll('POKECA VAULT', 'ONE PIECE CARD VAULT')
     .replaceAll('POKECAVAULT', 'OPCARDVAULT')

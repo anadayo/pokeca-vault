@@ -16,8 +16,8 @@ const SERVICES = [
   {
     name: 'OP CARD VAULT',
     notionDataSourceEnv: 'NOTION_ONEPIECE_DATA_SOURCE_ID',
-    siteUrl: 'https://anadayo.github.io/pokeca-vault/onepiece-card-vault/',
-    pagePath: '/pokeca-vault/onepiece-card-vault/',
+    siteUrl: 'https://anadayo.github.io/onepiece-card-vault/',
+    pagePath: '/onepiece-card-vault/',
     priceFile: 'onepiece-card-vault/index.html',
     events: ['onepiece_mercari_affiliate_click', 'onepiece_card_detail_view', 'onepiece_search', 'onepiece_share'],
     eventNames: { mercari: ['onepiece_mercari_affiliate_click'], detail: 'onepiece_card_detail_view', search: 'onepiece_search', share: 'onepiece_share' },

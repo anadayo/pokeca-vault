@@ -3,7 +3,7 @@
 ポケカの人気カードを検索して、5万円/10万円コースで売買シミュレーションできる静的Webアプリです。姉妹サービスとして、同じ仕組みを使ったワンピースカードゲーム版も運用します。
 
 - POKÉCA VAULT: `https://anadayo.github.io/pokeca-vault/`
-- OP CARD VAULT: `https://anadayo.github.io/pokeca-vault/onepiece-card-vault/`
+- OP CARD VAULT: `https://anadayo.github.io/onepiece-card-vault/`
 
 ## 公開方法
 

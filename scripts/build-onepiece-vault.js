@@ -77,6 +77,7 @@ function build() {
   let html = fs.readFileSync(SOURCE, 'utf8');
   html = replaceCardMaster(html)
     .replaceAll('https://anadayo.github.io/pokeca-vault/', 'https://anadayo.github.io/onepiece-card-vault/')
+    .replaceAll('https://anadayo.github.io/onepiece-card-vault/assets/ogp.png', 'https://anadayo.github.io/onepiece-card-vault/ogp.png')
     .replace('<body>', `<body>\n<script>\nif (location.hostname === 'anadayo.github.io' && location.pathname.startsWith('/pokeca-vault/onepiece-card-vault')) {\n  location.replace('https://anadayo.github.io/onepiece-card-vault/' + location.search + location.hash);\n}\n</script>`)
     .replaceAll('POKÉCA VAULT', 'ONE PIECE CARD VAULT')
     .replaceAll('POKECA VAULT', 'ONE PIECE CARD VAULT')
@@ -113,6 +114,18 @@ function build() {
     .replace('background:rgba(11,12,16,.88)', 'background:rgba(13,17,23,.92)')
     .replace("x.fillText('ONE PIECE CARD VAULT', 70, 110);", "x.font = '800 48px \\\"Shippori Mincho B1\\\", serif';\n  x.fillText('OP CARD VAULT', 70, 110);")
     .replace("x.fillText('ワンピカード資産ポートフォリオ', 74, 150);", "x.fillText('ONE PIECEカード資産ポートフォリオ', 74, 150);");
+
+  html = html
+    .replaceAll('5万円/10万円', '5万円/10万円/30万円/50万円')
+    .replaceAll('5万円 / 10万円', '5万円 / 10万円 / 30万円 / 50万円')
+    .replace(
+      '<button class="btn btn-ghost" onclick="startCourse(100000)">10万円コース</button>',
+      '<button class="btn btn-ghost" onclick="startCourse(100000)">10万円コース</button>\n        <button class="btn btn-ghost" onclick="startCourse(300000)">30万円コース</button>\n        <button class="btn btn-ghost" onclick="startCourse(500000)">50万円コース</button>',
+    )
+    .replace(
+      '    <div class="plan-card">\n      <div class="plan-name">現在の状態</div>',
+      '    <div class="plan-card">\n      <div class="plan-name">30万円コース</div>\n      <div class="plan-price num">¥300,000</div>\n      <ul class="plan-feats"><li>高額パラレルまで選択肢を拡大</li><li>複数カードの組み合わせを比較</li><li>所持金・評価額・損益を管理</li></ul>\n      <button class="btn btn-ghost btn-block" onclick="startCourse(300000)">30万円で始める</button>\n    </div>\n    <div class="plan-card reco">\n      <span class="reco-tag">HIGH VALUE</span>\n      <div class="plan-name">50万円コース</div>\n      <div class="plan-price num">¥500,000</div>\n      <ul class="plan-feats"><li>コミパラなど高額帯を検討</li><li>分散保有と一点集中を比較</li><li>売却益は所持金に反映</li></ul>\n      <button class="btn btn-gold btn-block" onclick="startCourse(500000)">50万円で始める</button>\n    </div>\n    <div class="plan-card">\n      <div class="plan-name">現在の状態</div>',
+    );
 
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
   fs.writeFileSync(OUTPUT, html);

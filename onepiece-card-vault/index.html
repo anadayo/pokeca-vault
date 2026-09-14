@@ -9,11 +9,11 @@
 <meta property="og:description" content="買取注目カード200種類の売買シミュレーションと損益管理ができるワンピカード投資ツール。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://anadayo.github.io/onepiece-card-vault/">
-<meta property="og:image" content="https://anadayo.github.io/onepiece-card-vault/assets/ogp.png">
+<meta property="og:image" content="https://anadayo.github.io/onepiece-card-vault/ogp.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://anadayo.github.io/onepiece-card-vault/assets/ogp.png">
+<meta name="twitter:image" content="https://anadayo.github.io/onepiece-card-vault/ogp.png">
 <meta name="twitter:creator" content="@ana_wasborn">
 <link rel="canonical" href="https://anadayo.github.io/onepiece-card-vault/">
 
@@ -518,6 +518,11 @@ nav{
 </style>
 </head>
 <body>
+<script>
+if (location.hostname === 'anadayo.github.io' && location.pathname.startsWith('/pokeca-vault/onepiece-card-vault')) {
+  location.replace('https://anadayo.github.io/onepiece-card-vault/' + location.search + location.hash);
+}
+</script>
 
 <!-- ================= ヘッダー ================= -->
 <header>
@@ -706,7 +711,7 @@ nav{
 <footer>
   <p>※ 掲載する販売・買取価格は公開ページから定期取得した参考値です。変動率・価格推移・損益表示はシミュレーションを含み、利益を保証するものではありません。売買前に各カードの「メルカリの成約相場を見る」および各店舗で最新価格をご確認ください。</p>
   <p>※ 本サイトのメルカリへのリンクにはアフィリエイト広告（PR）を含みます。</p>
-  <p style="margin-top:8px">姉妹サイト: <a href="../" style="color:var(--muted)">POKÉCA VAULT</a> ・ <a href="../tsume-pokepoke/" style="color:var(--muted)">🧩 詰めポケポケ — ポケポケのリーサルパズル</a></p>
+  <p style="margin-top:8px">姉妹サイト: <a href="https://anadayo.github.io/pokeca-vault/" style="color:var(--muted)">POKÉCA VAULT</a> ・ <a href="https://anadayo.github.io/pokeca-vault/tsume-pokepoke/" style="color:var(--muted)">🧩 詰めポケポケ — ポケポケのリーサルパズル</a></p>
   <p style="margin-top:8px">運営: <a href="https://x.com/ana_wasborn" target="_blank" rel="noopener" style="color:var(--muted)">𝕏 @ana_wasborn</a></p>
 </footer>
 
@@ -813,7 +818,7 @@ const GA_LINKS = {
 const OPS_MODE_KEY = 'onePieceCardVault.opsMode';
 /* 価格データのメタ情報。データ更新時に updatedAt を書き換えると
    「最終更新」表示が自動で変わる（将来は価格JSONの updatedAt を読む） */
-const PRICE_DATA_META = { updatedAt: '2026-09-14' };
+const PRICE_DATA_META = { updatedAt: '2026-09-13' };
 const SOURCE_DATE = PRICE_DATA_META.updatedAt;
 const SUPPORT_LINKS = {
   note: 'https://note.com/koban240dayo',
@@ -834,8 +839,8 @@ const CARD_MASTER = [
     "setCode": "OP05",
     "cardNo": "OP05-119",
     "rarity": "SPカード SP（OP11・金）",
-    "buyPrice": 1000000,
-    "nowPrice": 1280000,
+    "buyPrice": 1100000,
+    "nowPrice": 1399980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP05-119_p5",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP05-119/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP05-119/",
@@ -852,7 +857,7 @@ const CARD_MASTER = [
     "setCode": "OP05",
     "cardNo": "OP05-119",
     "rarity": "SEC パラレル2",
-    "buyPrice": 560000,
+    "buyPrice": 600000,
     "nowPrice": 699980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP05-119_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP05-119/",
@@ -870,8 +875,8 @@ const CARD_MASTER = [
     "setCode": "OP05",
     "cardNo": "OP05-119",
     "rarity": "SPカード SP（OP11・銀）",
-    "buyPrice": 500000,
-    "nowPrice": 498000,
+    "buyPrice": 560000,
+    "nowPrice": 599980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP05-119_p4",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP05-119/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP05-119/",
@@ -888,8 +893,8 @@ const CARD_MASTER = [
     "setCode": "OP17",
     "cardNo": "OP17-118",
     "rarity": "SEC パラレル2",
-    "buyPrice": 380000,
-    "nowPrice": 498000,
+    "buyPrice": 450000,
+    "nowPrice": 598000,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP17-118_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP17-118/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP17-118/",
@@ -907,7 +912,7 @@ const CARD_MASTER = [
     "cardNo": "EB02-061",
     "rarity": "SEC パラレル2",
     "buyPrice": 350000,
-    "nowPrice": 348000,
+    "nowPrice": 398000,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB02-061_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB02-061/",
     "buyUrl": "https://wanpicagraph.com/op/cards/EB02-061/",
@@ -925,7 +930,7 @@ const CARD_MASTER = [
     "cardNo": "OP06-118",
     "rarity": "SEC パラレル2",
     "buyPrice": 180000,
-    "nowPrice": 198000,
+    "nowPrice": 248000,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP06-118_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP06-118/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP06-118/",
@@ -1033,7 +1038,7 @@ const CARD_MASTER = [
     "cardNo": "OP09-093",
     "rarity": "SR パラレル2",
     "buyPrice": 120000,
-    "nowPrice": 148000,
+    "nowPrice": 178000,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP09-093_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP09-093/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP09-093/",
@@ -1104,7 +1109,7 @@ const CARD_MASTER = [
     "setCode": "EB03",
     "cardNo": "EB03-026",
     "rarity": "SPカード SP（EB03）",
-    "buyPrice": 100000,
+    "buyPrice": 110000,
     "nowPrice": 128000,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB03-026_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB03-026/",
@@ -1122,8 +1127,8 @@ const CARD_MASTER = [
     "setCode": "OP17",
     "cardNo": "OP17-079",
     "rarity": "L パラレル2",
-    "buyPrice": 70000,
-    "nowPrice": 148000,
+    "buyPrice": 100000,
+    "nowPrice": 178000,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP17-079_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP17-079/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP17-079/",
@@ -1302,8 +1307,8 @@ const CARD_MASTER = [
     "setCode": "OP12",
     "cardNo": "OP12-118",
     "rarity": "SEC パラレル2",
-    "buyPrice": 65000,
-    "nowPrice": 79800,
+    "buyPrice": 70000,
+    "nowPrice": 99800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP12-118_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP12-118/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP12-118/",
@@ -1338,7 +1343,7 @@ const CARD_MASTER = [
     "setCode": "PRB02",
     "cardNo": "PRB02-006",
     "rarity": "SPカード SP（EB04）",
-    "buyPrice": 65000,
+    "buyPrice": 70000,
     "nowPrice": 99800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/PRB02-006_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/PRB02-006/",
@@ -1374,7 +1379,7 @@ const CARD_MASTER = [
     "setCode": "EB03",
     "cardNo": "EB03-053",
     "rarity": "SPカード SP（EB03）",
-    "buyPrice": 55000,
+    "buyPrice": 65000,
     "nowPrice": 79800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB03-053_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB03-053/",
@@ -1482,7 +1487,7 @@ const CARD_MASTER = [
     "setCode": "OP05",
     "cardNo": "OP05-119",
     "rarity": "SPカード SP（OP09）",
-    "buyPrice": 35000,
+    "buyPrice": 42000,
     "nowPrice": 59800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP05-119_p3",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP05-119/",
@@ -1501,7 +1506,7 @@ const CARD_MASTER = [
     "cardNo": "OP14-112",
     "rarity": "SPカード SP（OP14）",
     "buyPrice": 40000,
-    "nowPrice": 39800,
+    "nowPrice": 49800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP14-112_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP14-112/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP14-112/",
@@ -1555,7 +1560,7 @@ const CARD_MASTER = [
     "cardNo": "OP12-014",
     "rarity": "SPカード SP（OP15）",
     "buyPrice": 30000,
-    "nowPrice": 34800,
+    "nowPrice": 39800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP12-014_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP12-014/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP12-014/",
@@ -1609,7 +1614,7 @@ const CARD_MASTER = [
     "cardNo": "OP14-084",
     "rarity": "SPカード SP（OP16）",
     "buyPrice": 25000,
-    "nowPrice": 34800,
+    "nowPrice": 39800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP14-084_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP14-084/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP14-084/",
@@ -1680,8 +1685,8 @@ const CARD_MASTER = [
     "setCode": "OP13",
     "cardNo": "OP13-028",
     "rarity": "SPカード SP（OP17）",
-    "buyPrice": 20000,
-    "nowPrice": 34800,
+    "buyPrice": 22000,
+    "nowPrice": 39800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP13-028_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP13-028/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP13-028/",
@@ -1699,7 +1704,7 @@ const CARD_MASTER = [
     "cardNo": "EB02-061",
     "rarity": "SPカード SP（PRB02）",
     "buyPrice": 20000,
-    "nowPrice": 29800,
+    "nowPrice": 39800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB02-061_p3",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB02-061/",
     "buyUrl": "https://wanpicagraph.com/op/cards/EB02-061/",
@@ -1806,8 +1811,8 @@ const CARD_MASTER = [
     "setCode": "OP09",
     "cardNo": "OP09-119",
     "rarity": "SPカード SP（OP13）",
-    "buyPrice": 13000,
-    "nowPrice": 24800,
+    "buyPrice": 18000,
+    "nowPrice": 34800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP09-119_p3",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP09-119/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP09-119/",
@@ -1860,8 +1865,8 @@ const CARD_MASTER = [
     "setCode": "OP17",
     "cardNo": "P-084",
     "rarity": "SPカード",
-    "buyPrice": 15000,
-    "nowPrice": 19800,
+    "buyPrice": 16000,
+    "nowPrice": 24800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/P-084",
     "saleUrl": "https://wanpicagraph.com/op/cards/P-084/",
     "buyUrl": "https://wanpicagraph.com/op/cards/P-084/",
@@ -2005,7 +2010,7 @@ const CARD_MASTER = [
     "cardNo": "OP06-007",
     "rarity": "SPカード SP（PRB02）",
     "buyPrice": 10000,
-    "nowPrice": 12800,
+    "nowPrice": 17800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP06-007_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP06-007/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP06-007/",
@@ -2148,7 +2153,7 @@ const CARD_MASTER = [
     "setCode": "EB03",
     "cardNo": "EB03-018",
     "rarity": "SPカード SP（EB03）",
-    "buyPrice": 8000,
+    "buyPrice": 9000,
     "nowPrice": 7980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB03-018_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB03-018/",
@@ -2202,7 +2207,7 @@ const CARD_MASTER = [
     "setCode": "OP01",
     "cardNo": "OP01-047",
     "rarity": "SPカード SP（OP04）",
-    "buyPrice": 9000,
+    "buyPrice": 8000,
     "nowPrice": 12800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP01-047_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP01-047/",
@@ -2616,7 +2621,7 @@ const CARD_MASTER = [
     "setCode": "OP10",
     "cardNo": "OP10-082",
     "rarity": "SPカード SP（OP12）",
-    "buyPrice": 5000,
+    "buyPrice": 6000,
     "nowPrice": 5980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP10-082_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP10-082/",
@@ -2797,7 +2802,7 @@ const CARD_MASTER = [
     "cardNo": "OP07-015",
     "rarity": "SPカード SP（OP09）",
     "buyPrice": 4500,
-    "nowPrice": 7280,
+    "nowPrice": 5980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP07-015_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP07-015/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP07-015/",
@@ -2868,7 +2873,7 @@ const CARD_MASTER = [
     "setCode": "OP16",
     "cardNo": "OP16-119",
     "rarity": "SEC パラレル",
-    "buyPrice": 4800,
+    "buyPrice": 4500,
     "nowPrice": 4980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP16-119_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP16-119/",
@@ -3121,7 +3126,7 @@ const CARD_MASTER = [
     "cardNo": "OP07-046",
     "rarity": "SPカード SP（OP14）",
     "buyPrice": 4000,
-    "nowPrice": 5980,
+    "nowPrice": 4980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP07-046_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP07-046/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP07-046/",
@@ -3139,7 +3144,7 @@ const CARD_MASTER = [
     "cardNo": "OP11-067",
     "rarity": "SPカード SP（OP16）",
     "buyPrice": 4000,
-    "nowPrice": 5980,
+    "nowPrice": 4980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP11-067_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP11-067/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP11-067/",
@@ -3193,7 +3198,7 @@ const CARD_MASTER = [
     "cardNo": "OP16-118",
     "rarity": "SEC パラレル",
     "buyPrice": 4000,
-    "nowPrice": 5980,
+    "nowPrice": 4280,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP16-118_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP16-118/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP16-118/",
@@ -3750,7 +3755,7 @@ const CARD_MASTER = [
     "setCode": "OP15",
     "cardNo": "OP15-058",
     "rarity": "L パラレル",
-    "buyPrice": 2800,
+    "buyPrice": 2500,
     "nowPrice": 2980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP15-058_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP15-058/",
@@ -3822,7 +3827,7 @@ const CARD_MASTER = [
     "setCode": "EB03",
     "cardNo": "EB03-053",
     "rarity": "SR パラレル",
-    "buyPrice": 2200,
+    "buyPrice": 2300,
     "nowPrice": 2980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB03-053_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB03-053/",
@@ -3930,7 +3935,7 @@ const CARD_MASTER = [
     "setCode": "OP17",
     "cardNo": "OP17-119",
     "rarity": "SEC",
-    "buyPrice": 2200,
+    "buyPrice": 2000,
     "nowPrice": 2480,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP17-119",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP17-119/",
@@ -4128,7 +4133,7 @@ const CARD_MASTER = [
     "setCode": "OP17",
     "cardNo": "OP17-020",
     "rarity": "L パラレル",
-    "buyPrice": 1700,
+    "buyPrice": 1800,
     "nowPrice": 2180,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP17-020_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP17-020/",
@@ -4182,7 +4187,7 @@ const CARD_MASTER = [
     "setCode": "EB03",
     "cardNo": "EB03-055",
     "rarity": "SR パラレル",
-    "buyPrice": 1500,
+    "buyPrice": 1700,
     "nowPrice": 1980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB03-055_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB03-055/",
@@ -4200,7 +4205,7 @@ const CARD_MASTER = [
     "setCode": "OP02",
     "cardNo": "OP02-120",
     "rarity": "SEC パラレル",
-    "buyPrice": 1500,
+    "buyPrice": 1700,
     "nowPrice": 1980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP02-120_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP02-120/",
@@ -4344,7 +4349,7 @@ const CARD_MASTER = [
     "setCode": "OP17",
     "cardNo": "OP17-058",
     "rarity": "L パラレル",
-    "buyPrice": 1500,
+    "buyPrice": 1600,
     "nowPrice": 1980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP17-058_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP17-058/",
@@ -4416,7 +4421,7 @@ const CARD_MASTER = [
     "setCode": "OP15",
     "cardNo": "OP15-002",
     "rarity": "L パラレル",
-    "buyPrice": 1600,
+    "buyPrice": 1500,
     "nowPrice": 2280,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP15-002_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP15-002/",

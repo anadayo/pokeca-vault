@@ -55,7 +55,6 @@ TAG TOKYO用データベースはカード系と分け、以下のプロパテ�
 
 - `NOTION_TOKEN`: Notionインテグレーションのトークン
 - `GA_SERVICE_ACCOUNT_JSON`: Google Cloudサービスアカウント鍵のJSON全文
-- `NOTION_TAG_TOKYO_DATA_SOURCE_ID`: TAG TOKYO日次レポートのデータソースID
 
 日次レポートのデータソースIDはワークフローへ設定済みです。
 
@@ -63,6 +62,8 @@ TAG TOKYO用データベースはカード系と分け、以下のプロパテ�
 - OP CARD VAULT: `077c9239-b3c9-82fb-b8bf-87cf83077643`
 
 Notionでは3つの対象データベースの「接続」からインテグレーションを追加します。Google CloudではAnalytics Data APIを有効にし、サービスアカウントのメールアドレスをGA4プロパティ `552987217` の閲覧者として追加します。
+
+TAG TOKYOは `TAG TOKYO｜運用・アクセス日次レポート` という表名からデータソースを自動検出します。ID用Secretは不要ですが、表名を変更する場合は同期スクリプトの `notionDataSourceTitle` も更新します。
 
 ## 手動実行
 

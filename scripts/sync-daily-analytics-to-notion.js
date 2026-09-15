@@ -29,6 +29,7 @@ const SERVICES = [
     kind: 'dating',
     optional: true,
     notionDataSourceEnv: 'NOTION_TAG_TOKYO_DATA_SOURCE_ID',
+    notionDataSourceTitle: 'TAG TOKYO｜運用・アクセス日次レポート',
     siteUrl: 'https://anadayo.github.io/tag-tokyo/',
     pagePath: '/tag-tokyo/',
     pageMatchType: 'BEGINS_WITH',
@@ -137,6 +138,23 @@ async function notionRequest(path, token, options = {}) {
   return response.json();
 }
 
+async function findNotionDataSource(title) {
+  const token = required('NOTION_TOKEN');
+  const result = await notionRequest('/search', token, {
+    method: 'POST',
+    body: JSON.stringify({
+      query: title,
+      filter: { property: 'object', value: 'data_source' },
+      page_size: 20,
+    }),
+  });
+  const exact = result.results?.find(item => {
+    const itemTitle = (item.title || []).map(part => part.plain_text || part.text?.content || '').join('');
+    return itemTitle === title;
+  });
+  return exact?.id || '';
+}
+
 function number(value) {
   return { number: Number.isFinite(value) ? value : 0 };
 }
@@ -220,7 +238,10 @@ async function main() {
   const results = [];
 
   for (const service of SERVICES) {
-    const dataSourceId = process.env[service.notionDataSourceEnv];
+    let dataSourceId = process.env[service.notionDataSourceEnv];
+    if (!dataSourceId && service.notionDataSourceTitle) {
+      dataSourceId = await findNotionDataSource(service.notionDataSourceTitle);
+    }
     if (!dataSourceId && service.optional) {
       results.push({ service: service.name, date, action: 'skipped', reason: `${service.notionDataSourceEnv} is not configured` });
       continue;

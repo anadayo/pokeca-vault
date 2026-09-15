@@ -51,6 +51,9 @@ const SERVICES = [
       match: 'tagtokyo_match',
       talk: 'tagtokyo_talk_sent',
       report: 'tagtokyo_report_submitted',
+      areaExp: 'tagtokyo_area_exp_contributed',
+      spotDraw: 'tagtokyo_spot_draw_preview',
+      cosmetic: 'tagtokyo_cosmetic_exchanged',
     },
   },
 ];
@@ -178,6 +181,9 @@ function reportProperties(service, date, metrics, events, priceDate) {
       'MATCH成立': number(events[service.eventNames.match] || 0),
       'トーク送信': number(events[service.eventNames.talk] || 0),
       '通報': number(events[service.eventNames.report] || 0),
+      'エリアEXP投下': number(events[service.eventNames.areaExp] || 0),
+      'TAG SPOT抽選': number(events[service.eventNames.spotDraw] || 0),
+      '装飾交換': number(events[service.eventNames.cosmetic] || 0),
       'サイト': { url: service.siteUrl },
       '同期日時': { date: { start: new Date().toISOString() } },
     };

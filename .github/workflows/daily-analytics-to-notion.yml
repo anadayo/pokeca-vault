@@ -34,5 +34,6 @@ jobs:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_POKECA_DATA_SOURCE_ID: '3d7c9239-b3c9-802c-8506-000b712815e5'
           NOTION_ONEPIECE_DATA_SOURCE_ID: '077c9239-b3c9-82fb-b8bf-87cf83077643'
+          NOTION_TAG_TOKYO_DATA_SOURCE_ID: ${{ secrets.NOTION_TAG_TOKYO_DATA_SOURCE_ID }}
           REPORT_DATE: ${{ inputs.report_date }}
         run: node scripts/sync-daily-analytics-to-notion.js

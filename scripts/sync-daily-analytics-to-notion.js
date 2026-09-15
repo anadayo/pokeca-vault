@@ -6,6 +6,7 @@ const NOTION_VERSION = '2026-03-11';
 const SERVICES = [
   {
     name: 'POKECA VAULT',
+    kind: 'card',
     notionDataSourceEnv: 'NOTION_POKECA_DATA_SOURCE_ID',
     siteUrl: 'https://anadayo.github.io/pokeca-vault/',
     pagePath: '/pokeca-vault/',
@@ -15,12 +16,38 @@ const SERVICES = [
   },
   {
     name: 'OP CARD VAULT',
+    kind: 'card',
     notionDataSourceEnv: 'NOTION_ONEPIECE_DATA_SOURCE_ID',
     siteUrl: 'https://anadayo.github.io/onepiece-card-vault/',
     pagePath: '/onepiece-card-vault/',
     priceFile: 'onepiece-card-vault/index.html',
     events: ['onepiece_mercari_affiliate_click', 'onepiece_card_detail_view', 'onepiece_search', 'onepiece_share'],
     eventNames: { mercari: ['onepiece_mercari_affiliate_click'], detail: 'onepiece_card_detail_view', search: 'onepiece_search', share: 'onepiece_share' },
+  },
+  {
+    name: 'TAG TOKYO',
+    kind: 'dating',
+    optional: true,
+    notionDataSourceEnv: 'NOTION_TAG_TOKYO_DATA_SOURCE_ID',
+    siteUrl: 'https://anadayo.github.io/tag-tokyo/',
+    pagePath: '/tag-tokyo/',
+    pageMatchType: 'BEGINS_WITH',
+    events: [
+      'tagtokyo_tag_session_started',
+      'tagtokyo_cross_view',
+      'tagtokyo_tag_sent',
+      'tagtokyo_match',
+      'tagtokyo_talk_sent',
+      'tagtokyo_report_submitted',
+    ],
+    eventNames: {
+      tagOn: 'tagtokyo_tag_session_started',
+      cross: 'tagtokyo_cross_view',
+      tagSent: 'tagtokyo_tag_sent',
+      match: 'tagtokyo_match',
+      talk: 'tagtokyo_talk_sent',
+      report: 'tagtokyo_report_submitted',
+    },
   },
 ];
 
@@ -115,6 +142,25 @@ function number(value) {
 }
 
 function reportProperties(service, date, metrics, events, priceDate) {
+  if (service.kind === 'dating') {
+    return {
+      '日次レポート': { title: [{ text: { content: `${service.name} ${date}` } }] },
+      '日付': { date: { start: date } },
+      '月': { select: { name: date.slice(0, 7) } },
+      'アクティブユーザー': number(metrics.activeUsers),
+      '新規ユーザー': number(metrics.newUsers),
+      'セッション': number(metrics.sessions),
+      'PV': number(metrics.screenPageViews || 0),
+      'TAG ON開始': number(events[service.eventNames.tagOn] || 0),
+      'CROSS表示': number(events[service.eventNames.cross] || 0),
+      'TAG送信': number(events[service.eventNames.tagSent] || 0),
+      'MATCH成立': number(events[service.eventNames.match] || 0),
+      'トーク送信': number(events[service.eventNames.talk] || 0),
+      '通報': number(events[service.eventNames.report] || 0),
+      'サイト': { url: service.siteUrl },
+      '同期日時': { date: { start: new Date().toISOString() } },
+    };
+  }
   const mercariClicks = service.eventNames.mercari.reduce((total, name) => total + (events[name] || 0), 0);
   const pageViews = metrics.screenPageViews || 0;
   return {
@@ -174,14 +220,19 @@ async function main() {
   const results = [];
 
   for (const service of SERVICES) {
-    const dataSourceId = required(service.notionDataSourceEnv);
+    const dataSourceId = process.env[service.notionDataSourceEnv];
+    if (!dataSourceId && service.optional) {
+      results.push({ service: service.name, date, action: 'skipped', reason: `${service.notionDataSourceEnv} is not configured` });
+      continue;
+    }
+    if (!dataSourceId) throw new Error(`${service.notionDataSourceEnv} is required`);
     const [summaryReport, eventReport] = await Promise.all([
       runGaReport(accessToken, date, {
         metrics: ['activeUsers', 'newUsers', 'sessions', 'screenPageViews'].map(name => ({ name })),
         dimensionFilter: {
           filter: {
             fieldName: 'pagePath',
-            stringFilter: { matchType: 'EXACT', value: service.pagePath },
+            stringFilter: { matchType: service.pageMatchType || 'EXACT', value: service.pagePath },
           },
         },
       }),
@@ -189,16 +240,28 @@ async function main() {
         dimensions: [{ name: 'eventName' }],
         metrics: [{ name: 'eventCount' }],
         dimensionFilter: {
-          filter: {
-            fieldName: 'eventName',
-            inListFilter: { values: service.events },
+          andGroup: {
+            expressions: [
+              {
+                filter: {
+                  fieldName: 'eventName',
+                  inListFilter: { values: service.events },
+                },
+              },
+              {
+                filter: {
+                  fieldName: 'pagePath',
+                  stringFilter: { matchType: service.pageMatchType || 'EXACT', value: service.pagePath },
+                },
+              },
+            ],
           },
         },
       }),
     ]);
     const metrics = metricObject(summaryReport);
     const events = eventCounts(eventReport);
-    const priceDate = priceDataDate(service.priceFile);
+    const priceDate = service.priceFile ? priceDataDate(service.priceFile) : '';
     const reportTitle = `${service.name} ${date}`;
     const result = await upsertNotion(dataSourceId, date, reportTitle, reportProperties(service, date, metrics, events, priceDate));
     results.push({ service: service.name, date, metrics, events, priceDate, ...result });

@@ -1,6 +1,6 @@
 # POKÉCA VAULT 日次レポート
 
-毎朝9:15（JST）に前日のGA4と価格更新状況をNotionへ保存します。POKECA VAULTとOP CARD VAULTは別々のNotionデータベースへ保存し、同じサービス・日付を再実行した場合はその行を更新します。
+毎朝9:15（JST）に前日のGA4と価格更新状況をNotionへ保存します。POKECA VAULT、OP CARD VAULT、TAG TOKYOは別々のNotionデータベースへ保存し、同じサービス・日付を再実行した場合はその行を更新します。
 
 ## Notionデータベース
 
@@ -29,19 +29,40 @@
 
 両データベースに「月次確認」ビューを用意し、`月`でグループ化します。PV・ユーザー・クリックは合計、CTRは平均を表示すると月ごとの比較ができます。
 
+TAG TOKYO用データベースはカード系と分け、以下のプロパティを作成します。
+
+| プロパティ | 種類 |
+| --- | --- |
+| 日次レポート | タイトル |
+| 日付 | 日付 |
+| 月 | セレクト |
+| アクティブユーザー | 数値 |
+| 新規ユーザー | 数値 |
+| セッション | 数値 |
+| PV | 数値 |
+| TAG ON開始 | 数値 |
+| CROSS表示 | 数値 |
+| TAG送信 | 数値 |
+| MATCH成立 | 数値 |
+| トーク送信 | 数値 |
+| 通報 | 数値 |
+| サイト | URL |
+| 同期日時 | 日付 |
+
 ## GitHub Secrets
 
 リポジトリの Settings > Secrets and variables > Actions に以下を登録します。
 
 - `NOTION_TOKEN`: Notionインテグレーションのトークン
 - `GA_SERVICE_ACCOUNT_JSON`: Google Cloudサービスアカウント鍵のJSON全文
+- `NOTION_TAG_TOKYO_DATA_SOURCE_ID`: TAG TOKYO日次レポートのデータソースID
 
 日次レポートのデータソースIDはワークフローへ設定済みです。
 
 - POKECA VAULT: `3d7c9239-b3c9-802c-8506-000b712815e5`
 - OP CARD VAULT: `077c9239-b3c9-82fb-b8bf-87cf83077643`
 
-Notionでは両方の対象データベースの「接続」からインテグレーションを追加します。Google CloudではAnalytics Data APIを有効にし、サービスアカウントのメールアドレスをGA4プロパティ `552987217` の閲覧者として追加します。
+Notionでは3つの対象データベースの「接続」からインテグレーションを追加します。Google CloudではAnalytics Data APIを有効にし、サービスアカウントのメールアドレスをGA4プロパティ `552987217` の閲覧者として追加します。
 
 ## 手動実行
 

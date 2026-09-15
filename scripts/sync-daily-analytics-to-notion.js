@@ -40,6 +40,9 @@ const SERVICES = [
       'tagtokyo_match',
       'tagtokyo_talk_sent',
       'tagtokyo_report_submitted',
+      'tagtokyo_area_exp_contributed',
+      'tagtokyo_spot_draw_preview',
+      'tagtokyo_cosmetic_exchanged',
     ],
     eventNames: {
       tagOn: 'tagtokyo_tag_session_started',

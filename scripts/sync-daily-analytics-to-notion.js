@@ -5,7 +5,7 @@ const GA_PROPERTY_ID = process.env.GA_PROPERTY_ID || '552987217';
 const NOTION_VERSION = '2026-03-11';
 const SERVICES = [
   {
-    name: 'POKECA VAULT',
+    name: 'POKÉCA VAULT',
     kind: 'card',
     notionDataSourceEnv: 'NOTION_POKECA_DATA_SOURCE_ID',
     siteUrl: 'https://anadayo.github.io/pokeca-vault/',
@@ -67,6 +67,18 @@ function required(name) {
 function jstDate(offsetDays = -1) {
   const now = Date.now() + 9 * 60 * 60 * 1000 + offsetDays * 86400000;
   return new Date(now).toISOString().slice(0, 10);
+}
+
+function jstNowIso() {
+  return new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().replace('Z', '+09:00');
+}
+
+function reportTitle(service, date) {
+  const weekday = new Intl.DateTimeFormat('ja-JP', {
+    timeZone: 'Asia/Tokyo',
+    weekday: 'short',
+  }).format(new Date(`${date}T00:00:00+09:00`));
+  return `${date}（${weekday}）｜${service.name}`;
 }
 
 function base64url(value) {
@@ -168,7 +180,7 @@ function number(value) {
 function reportProperties(service, date, metrics, events, priceDate) {
   if (service.kind === 'dating') {
     return {
-      '日次レポート': { title: [{ text: { content: `${service.name} ${date}` } }] },
+      '日次レポート': { title: [{ text: { content: reportTitle(service, date) } }] },
       '日付': { date: { start: date } },
       '月': { select: { name: date.slice(0, 7) } },
       'アクティブユーザー': number(metrics.activeUsers),
@@ -185,13 +197,13 @@ function reportProperties(service, date, metrics, events, priceDate) {
       'TAG SPOT抽選': number(events[service.eventNames.spotDraw] || 0),
       '装飾交換': number(events[service.eventNames.cosmetic] || 0),
       'サイト': { url: service.siteUrl },
-      '同期日時': { date: { start: new Date().toISOString() } },
+      '同期日時': { date: { start: jstNowIso() } },
     };
   }
   const mercariClicks = service.eventNames.mercari.reduce((total, name) => total + (events[name] || 0), 0);
   const pageViews = metrics.screenPageViews || 0;
   return {
-    '日次レポート': { title: [{ text: { content: `${service.name} ${date}` } }] },
+    '日次レポート': { title: [{ text: { content: reportTitle(service, date) } }] },
     '日付': { date: { start: date } },
     '月': { select: { name: date.slice(0, 7) } },
     'アクティブユーザー': number(metrics.activeUsers),
@@ -206,32 +218,93 @@ function reportProperties(service, date, metrics, events, priceDate) {
     '価格データ日': priceDate ? { date: { start: priceDate } } : { date: null },
     '価格更新': { select: { name: priceDate >= date ? '最新' : '要確認' } },
     'サイト': { url: service.siteUrl },
-    '同期日時': { date: { start: new Date().toISOString() } },
+    '同期日時': { date: { start: jstNowIso() } },
   };
 }
 
-async function upsertNotion(dataSourceId, date, reportTitle, properties) {
+async function queryAllPages(dataSourceId, body = {}) {
   const token = required('NOTION_TOKEN');
   const normalizedDataSourceId = dataSourceId.replace(/-/g, '');
-  const query = await notionRequest(`/data_sources/${normalizedDataSourceId}/query`, token, {
-    method: 'POST',
-    body: JSON.stringify({
-      filter: {
-        and: [
-          { property: '日付', date: { equals: date } },
-          { property: '日次レポート', title: { equals: reportTitle } },
-        ],
-      },
-      page_size: 1,
-    }),
+  const pages = [];
+  let cursor;
+  do {
+    const query = await notionRequest(`/data_sources/${normalizedDataSourceId}/query`, token, {
+      method: 'POST',
+      body: JSON.stringify({ ...body, page_size: 100, ...(cursor ? { start_cursor: cursor } : {}) }),
+    });
+    pages.push(...(query.results || []));
+    cursor = query.has_more ? query.next_cursor : undefined;
+  } while (cursor);
+  return pages;
+}
+
+async function archivePages(pages) {
+  const token = required('NOTION_TOKEN');
+  for (const page of pages) {
+    await notionRequest(`/pages/${page.id}`, token, {
+      method: 'PATCH',
+      body: JSON.stringify({ archived: true }),
+    });
+  }
+}
+
+async function normalizeNotionHistory(service, dataSourceId) {
+  const token = required('NOTION_TOKEN');
+  const pages = await queryAllPages(dataSourceId, {
+    sorts: [{ property: '日付', direction: 'descending' }],
   });
-  const existing = query.results?.[0];
+  const byDate = new Map();
+  for (const page of pages) {
+    const date = page.properties?.['日付']?.date?.start?.slice(0, 10);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date || '')) continue;
+    if (!byDate.has(date)) byDate.set(date, []);
+    byDate.get(date).push(page);
+  }
+
+  let updated = 0;
+  let archived = 0;
+  for (const [date, entries] of byDate) {
+    entries.sort((a, b) => {
+      const aHasManualClicks = a.properties?.['メルカリ公式クリック']?.number != null;
+      const bHasManualClicks = b.properties?.['メルカリ公式クリック']?.number != null;
+      return Number(bHasManualClicks) - Number(aHasManualClicks)
+        || String(b.last_edited_time).localeCompare(String(a.last_edited_time));
+    });
+    const [canonical, ...duplicates] = entries;
+    await notionRequest(`/pages/${canonical.id}`, token, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        properties: {
+          '日次レポート': { title: [{ text: { content: reportTitle(service, date) } }] },
+          '日付': { date: { start: date } },
+          '月': { select: { name: date.slice(0, 7) } },
+        },
+      }),
+    });
+    updated += 1;
+    if (duplicates.length) {
+      await archivePages(duplicates);
+      archived += duplicates.length;
+    }
+  }
+  return { scanned: pages.length, updated, archived };
+}
+
+async function upsertNotion(service, dataSourceId, date, properties) {
+  const token = required('NOTION_TOKEN');
+  const normalizedDataSourceId = dataSourceId.replace(/-/g, '');
+  const matches = await queryAllPages(dataSourceId, {
+    filter: { property: '日付', date: { equals: date } },
+    sorts: [{ timestamp: 'last_edited_time', direction: 'descending' }],
+  });
+  const [existing, ...duplicates] = matches;
   if (existing) {
     await notionRequest(`/pages/${existing.id}`, token, {
       method: 'PATCH',
       body: JSON.stringify({ properties }),
     });
-    return { action: 'updated', pageId: existing.id };
+    if (duplicates.length) await archivePages(duplicates);
+    return { action: 'updated', pageId: existing.id, duplicatesArchived: duplicates.length };
   }
   const created = await notionRequest('/pages', token, {
     method: 'POST',
@@ -256,6 +329,9 @@ async function main() {
       continue;
     }
     if (!dataSourceId) throw new Error(`${service.notionDataSourceEnv} is required`);
+    const cleanup = process.env.NORMALIZE_HISTORY === 'true'
+      ? await normalizeNotionHistory(service, dataSourceId)
+      : undefined;
     const [summaryReport, eventReport] = await Promise.all([
       runGaReport(accessToken, date, {
         metrics: ['activeUsers', 'newUsers', 'sessions', 'screenPageViews'].map(name => ({ name })),
@@ -292,9 +368,8 @@ async function main() {
     const metrics = metricObject(summaryReport);
     const events = eventCounts(eventReport);
     const priceDate = service.priceFile ? priceDataDate(service.priceFile) : '';
-    const reportTitle = `${service.name} ${date}`;
-    const result = await upsertNotion(dataSourceId, date, reportTitle, reportProperties(service, date, metrics, events, priceDate));
-    results.push({ service: service.name, date, metrics, events, priceDate, ...result });
+    const result = await upsertNotion(service, dataSourceId, date, reportProperties(service, date, metrics, events, priceDate));
+    results.push({ service: service.name, date, metrics, events, priceDate, cleanup, ...result });
   }
 
   console.log(JSON.stringify(results, null, 2));

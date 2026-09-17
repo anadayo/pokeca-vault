@@ -10,6 +10,11 @@ on:
         description: '保存する日付（YYYY-MM-DD、空欄は前日）'
         required: false
         type: string
+      normalize_history:
+        description: '既存ログの日付名統一と重複整理を実行する'
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -35,4 +40,5 @@ jobs:
           NOTION_POKECA_DATA_SOURCE_ID: '3d7c9239-b3c9-802c-8506-000b712815e5'
           NOTION_ONEPIECE_DATA_SOURCE_ID: '077c9239-b3c9-82fb-b8bf-87cf83077643'
           REPORT_DATE: ${{ inputs.report_date }}
+          NORMALIZE_HISTORY: ${{ inputs.normalize_history }}
         run: node scripts/sync-daily-analytics-to-notion.js

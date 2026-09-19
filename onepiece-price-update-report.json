@@ -1719,15 +1719,8 @@
     },
     {
       "id": "OP04-019-V1",
-      "ok": true,
-      "before": [
-        3380,
-        3500
-      ],
-      "after": [
-        3380,
-        3500
-      ]
+      "ok": false,
+      "error": "rejected suspicious prices sale=2980 buy=3500"
     },
     {
       "id": "OP16-119-V0",

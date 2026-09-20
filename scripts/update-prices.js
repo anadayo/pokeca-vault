@@ -111,8 +111,6 @@ async function updateCard(card) {
       else notes.push('buy price not found');
     } catch (error) {
       notes.push(`buy failed: ${error.message}`);
-      next.buyPrice = null;
-      next.buyUrl = '';
     }
     await sleep(REQUEST_DELAY_MS);
   } else {

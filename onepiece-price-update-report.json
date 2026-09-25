@@ -478,7 +478,7 @@
       ],
       "after": [
         39800,
-        30000
+        26000
       ]
     },
     {
@@ -929,7 +929,7 @@
       "id": "OP09-118-V3",
       "ok": true,
       "before": [
-        9280,
+        12800,
         8000
       ],
       "after": [
@@ -987,15 +987,8 @@
     },
     {
       "id": "OP14-020-V1",
-      "ok": true,
-      "before": [
-        7980,
-        5000
-      ],
-      "after": [
-        7980,
-        5000
-      ]
+      "ok": false,
+      "error": "rejected suspicious prices sale=2980 buy=5000"
     },
     {
       "id": "OP01-002-V1",
@@ -1042,7 +1035,7 @@
       ],
       "after": [
         9980,
-        6000
+        5500
       ]
     },
     {
@@ -1086,7 +1079,7 @@
       "ok": true,
       "before": [
         9980,
-        6500
+        7500
       ],
       "after": [
         9980,
@@ -1378,7 +1371,7 @@
       ],
       "after": [
         6580,
-        4000
+        3500
       ]
     },
     {
@@ -1390,7 +1383,7 @@
       ],
       "after": [
         5980,
-        3500
+        3200
       ]
     },
     {
@@ -1554,7 +1547,7 @@
       "ok": true,
       "before": [
         3980,
-        3500
+        4000
       ],
       "after": [
         3980,
@@ -1786,7 +1779,7 @@
       ],
       "after": [
         3980,
-        3000
+        2500
       ]
     },
     {
@@ -1828,7 +1821,7 @@
     {
       "id": "OP17-039-V1",
       "ok": false,
-      "error": "rejected suspicious prices sale=2880 buy=3500"
+      "error": "rejected suspicious prices sale=2880 buy=4000"
     },
     {
       "id": "OP09-009-V2",
@@ -1883,7 +1876,7 @@
       "ok": true,
       "before": [
         3980,
-        2700
+        3500
       ],
       "after": [
         3980,
@@ -1923,7 +1916,7 @@
       ],
       "after": [
         3980,
-        2200
+        2000
       ]
     },
     {
@@ -2063,10 +2056,10 @@
       "ok": true,
       "before": [
         2180,
-        2000
+        2300
       ],
       "after": [
-        2180,
+        2480,
         2300
       ]
     },
@@ -2157,7 +2150,7 @@
     {
       "id": "OP17-118-V0",
       "ok": false,
-      "error": "rejected suspicious prices sale=1380 buy=2000"
+      "error": "rejected suspicious prices sale=1380 buy=2800"
     },
     {
       "id": "OP01-031-V1",
@@ -2222,7 +2215,7 @@
     {
       "id": "OP17-020-V1",
       "ok": false,
-      "error": "rejected suspicious prices sale=1880 buy=2800"
+      "error": "rejected suspicious prices sale=1880 buy=3000"
     },
     {
       "id": "OP16-042-V1",

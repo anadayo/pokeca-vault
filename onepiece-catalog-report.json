@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-09-26T22:02:27.675Z",
+  "generatedAt": "2026-10-03T22:16:11.913Z",
   "candidates": 244,
-  "validVariants": 550,
+  "validVariants": 554,
   "selected": 200,
-  "minimumSelectedBuyPrice": 1500,
+  "minimumSelectedBuyPrice": 1400,
   "failures": []
 }

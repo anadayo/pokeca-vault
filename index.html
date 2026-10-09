@@ -309,6 +309,7 @@ footer{
 }
 .search-suggest{ display:flex; gap:7px; overflow-x:auto; padding-top:8px; scrollbar-width:none; }
 .search-suggest::-webkit-scrollbar{ display:none; }
+.search-seo-link{ display:inline-flex; align-items:center; min-height:34px; margin-top:9px; color:var(--gold); font-size:12px; font-weight:700; text-decoration:none; }
 .suggest-chip{
   flex:0 0 auto; max-width:220px; border:1px solid var(--line); background:rgba(255,255,255,.03);
   color:var(--text); border-radius:99px; padding:7px 11px; font-size:12px; font-weight:700;
@@ -642,6 +643,7 @@ nav{
         </select>
       </div>
       <div class="search-suggest" id="searchSuggest"></div>
+      <a class="search-seo-link" href="cards/" data-track-seo-list>検索できるカード100種類の相場一覧を見る →</a>
       <div class="chips" id="rarityChips"></div>
       <div class="card-list" id="cardList"></div>
     </div>
@@ -4192,6 +4194,7 @@ function toggleWatch(cardId, type='watch'){
   saveState();
   recordMetric('watch', { card_id: cardId, type });
   track('watch_toggle', { card_id: cardId, type, enabled: state.watchlist[cardId][type] });
+  if (state.watchlist[cardId][type]) track('watchlist_add', { card_id:cardId, watch_type:type });
   return state.watchlist[cardId][type];
 }
 function upsertAlert(cardId, kind, threshold){
@@ -4348,6 +4351,7 @@ function buyCard(cardId, qtyToBuy, unitPrice, memo){
   state.analytics.holdingsAdded = (state.analytics.holdingsAdded || 0) + 1;
   snapshotAsset(); saveState();
   track('holding_add', { card_id: cardId, qty: qtyToBuy, unit_price: unitPrice });
+  track('portfolio_add', { card_id:cardId, quantity:qtyToBuy });
   return { ok:true };
 }
 function sellCard(cardId, qtyToSell, sellUnitPrice, channel){
@@ -4634,11 +4638,13 @@ function renderMarket(){
     `<button class="chip ${marketFilter.rarity === r ? 'on' : ''}" data-rarity="${r}">${r}</button>`).join('');
 
   const q = marketFilter.q;
+  const normalizeSearchText = (value) => String(value || '').normalize('NFKC').toLocaleLowerCase('ja').replace(/\s+/g, ' ').trim();
   const matchesQuery = (c) => {
     if (!q) return true;
-    return [c.name, c.nameEn, c.set, c.setCode, c.cardNo, c.rarity, c.id]
+    const values = [c.name, c.nameEn, c.set, c.setCode, c.cardNo, c.rarity, c.id]
       .filter(Boolean)
-      .some(v => String(v).toLowerCase().includes(q));
+      .map(normalizeSearchText);
+    return q.split(' ').filter(Boolean).every(token => values.some(value => value.includes(token)));
   };
   const suggestions = q
     ? CARD_MASTER.filter(matchesQuery).sort((a,b) => currentPrice(b) - currentPrice(a)).slice(0, 8)
@@ -4660,7 +4666,9 @@ function renderMarket(){
   list.sort(sorters[marketFilter.sort] || sorters.hot);
 
   if (!list.length){
-    $('#cardList').innerHTML = `<div class="empty"><div class="em">🔍</div><h3>見つかりませんでした</h3><p>キーワードやレアリティを変えてみてください</p></div>`;
+    const popular = [...CARD_MASTER].sort((a,b) => currentPrice(b) - currentPrice(a)).slice(0, 4);
+    $('#cardList').innerHTML = `<div class="empty"><div class="em">🔍</div><h3>見つかりませんでした</h3><p>カード番号・収録弾・レアリティでも検索できます</p><div class="search-suggest" style="justify-content:center">${popular.map(c => `<button class="suggest-chip" data-detail="${c.id}" data-detail-placement="search_no_result">${escapeHtml(c.name)}<small>${escapeHtml(c.rarity)} ${escapeHtml(c.cardNo)}</small></button>`).join('')}</div></div>`;
+    if (q) track('search_no_result', { search_term:q });
     return;
   }
   $('#cardList').innerHTML = list.map(c => {
@@ -4681,6 +4689,7 @@ function renderMarket(){
       <div class="mcard-actions">
         <button class="btn btn-gold btn-sm" data-detail="${c.id}" data-detail-placement="search_buy">買う</button>
         <button class="btn btn-ghost btn-sm" data-detail="${c.id}" data-detail-placement="search_chart">📈 詳細・推移</button>
+        <a class="btn btn-ghost btn-sm" href="cards/${String(c.id).normalize('NFKC').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}/" data-card-seo="${c.id}">相場ページ</a>
       </div>
     </article>`;
   }).join('');
@@ -5090,6 +5099,7 @@ function openDetail(cardId, detailPlacement='direct'){
       <button class="btn btn-ghost btn-sm ${buyCandidate ? 'watch-on' : ''}" data-watch="${card.id}" data-watch-type="buy">${buyCandidate ? '購入候補' : '購入候補に追加'}</button>
       <button class="btn btn-ghost btn-sm ${sellCandidate ? 'watch-on' : ''}" data-watch="${card.id}" data-watch-type="sell">${sellCandidate ? '売却候補' : '売却候補に追加'}</button>
       <button class="btn btn-blue btn-sm" data-card-share="${card.id}">Xでシェア</button>
+      <a class="btn btn-ghost btn-sm" href="cards/${String(card.id).normalize('NFKC').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}/" data-card-seo="${card.id}">検索用相場ページ</a>
     </div>
 
     <div class="alert-box">
@@ -5166,6 +5176,7 @@ function openDetail(cardId, detailPlacement='direct'){
       return;
     }
     detailRange = parseInt(ch.dataset.range, 10);
+    track('chart_period_change', { card_id:cardId, period_days:detailRange });
     openDetail(cardId); // 再描画
   });
 
@@ -5538,6 +5549,11 @@ document.addEventListener('click', (e) => {
 document.addEventListener('click', (e) => {
   if (e.target.closest('[data-close-sheet]')){ closeSheet(); return; }
 
+  const seoCard = e.target.closest('[data-card-seo]');
+  if (seoCard){ track('seo_card_page_click', { card_id:seoCard.dataset.cardSeo, source_view:activeView || 'unknown' }); return; }
+
+  if (e.target.closest('[data-track-seo-list]')){ track('seo_card_list_click', { source_view:activeView || 'unknown' }); return; }
+
   const goBtn = e.target.closest('[data-go]');
   if (goBtn){ go(goBtn.dataset.go); return; }
 
@@ -5620,13 +5636,14 @@ document.addEventListener('click', (e) => {
 
 let searchTrackTimer = null;
 $('#searchInput').addEventListener('input', e => {
-  marketFilter.q = e.target.value.trim().toLowerCase();
+  marketFilter.q = e.target.value.normalize('NFKC').toLocaleLowerCase('ja').replace(/\s+/g, ' ').trim();
   renderMarket();
   clearTimeout(searchTrackTimer);
   if (marketFilter.q.length >= 2){
     searchTrackTimer = setTimeout(() => {
       recordMetric('search', { query: marketFilter.q });
       track('search', { search_term: marketFilter.q });
+      track('search_submit', { search_term:marketFilter.q });
     }, 700);
   }
 });

@@ -31,8 +31,14 @@ jobs:
       - name: Update One Piece card prices
         run: node scripts/update-onepiece-prices.js
 
+      - name: Build SEO card pages
+        run: node scripts/build-seo-pages.js
+
+      - name: Test SEO pages and app scripts
+        run: node scripts/test-seo-pages.js
+
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'chore: update card prices'
-          file_pattern: index.html pokeca-vault.html onepiece-card-vault/index.html onepiece-card-vault/cards.json onepiece-price-update-report.json onepiece-catalog-report.json
+          file_pattern: index.html pokeca-vault.html cards/** sitemap.xml robots.txt onepiece-card-vault/index.html onepiece-card-vault/cards.json onepiece-card-vault/cards/** onepiece-card-vault/sitemap.xml onepiece-card-vault/robots.txt onepiece-price-update-report.json onepiece-catalog-report.json

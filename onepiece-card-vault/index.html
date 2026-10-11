@@ -5004,7 +5004,7 @@ function renderHome(){
           <button class="btn btn-gold btn-sm" data-detail="${featured.id}" data-detail-placement="featured_buy">買う・詳細</button>
           <button class="btn btn-ghost btn-sm" data-detail="${featured.id}" data-detail-placement="featured_chart">📈 推移を見る</button>
         </div>
-        <a class="btn btn-mercari btn-sm btn-block" style="margin-top:8px" ${mercariAffiliateAttributes(featured, 'featured_recommendation')}>メルカリ成約相場<span class="pr-tag">PR</span></a>
+        <a class="btn btn-mercari btn-sm btn-block" style="margin-top:8px" ${mercariAffiliateAttributes(featured, 'featured_recommendation', { soldOnly:false })}>メルカリで販売中を探す<span class="pr-tag">PR</span></a>
       </div>
     </div>`;
 
@@ -5554,7 +5554,7 @@ function openDetail(cardId, detailPlacement='direct'){
     <div class="sheet-actions">
       <button class="btn btn-gold btn-block" id="btnConfirmBuy">この価格で買う（記録する）</button>
       <div class="split-2">
-        <a class="btn btn-mercari btn-sm" ${mercariAffiliateAttributes(card, 'detail_purchase')}>メルカリの成約相場を見る<span class="pr-tag">PR</span></a>
+        <a class="btn btn-mercari btn-sm" ${mercariAffiliateAttributes(card, 'detail_purchase', { soldOnly:false })}>メルカリで販売中を探す<span class="pr-tag">PR</span></a>
         <a class="btn btn-ghost btn-sm" href="${card.saleUrl}" target="_blank" rel="noopener">販売ページ</a>
       </div>
       <p class="muted" style="text-align:center">販売価格と買取価格を見ながら疑似売買できます</p>

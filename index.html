@@ -40,6 +40,7 @@ gtag('js', new Date());
 window.POKECA_ANALYTICS_ENABLED = location.hostname === 'anadayo.github.io';
 gtag('config', 'G-1RKFX1HCCV', { send_page_view: window.POKECA_ANALYTICS_ENABLED });
 </script>
+<script src="assets/adsense.js" defer></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -133,6 +134,9 @@ main{ max-width:760px; margin:0 auto; padding:16px 16px 32px; }
   padding:2px 4px; border-radius:4px; margin-left:4px; vertical-align:1px;
   background:rgba(152,160,179,.18); color:var(--muted); letter-spacing:.05em;
 }
+.ad-slot{ display:none; margin:20px 0; min-height:100px; overflow:hidden; }
+.ad-slot.is-ready{ display:block; }
+.ad-slot-label{ display:block; margin-bottom:5px; color:var(--muted); font-size:9px; text-align:center; }
 footer{
   max-width:760px; margin:0 auto; padding:20px 16px 28px;
   border-top:1px solid var(--line);
@@ -626,6 +630,8 @@ nav{
       <div class="rank-list" id="rankList"></div>
     </div>
 
+    <aside class="ad-slot" data-ad-slot="home" aria-label="広告"></aside>
+
     <div class="section" id="homeUpsell"></div>
   </section>
 
@@ -707,6 +713,7 @@ nav{
 <footer>
   <p>※ 掲載する販売・買取価格は公開ページから定期取得した参考値です。変動率・価格推移・損益表示はシミュレーションを含み、利益を保証するものではありません。売買前に各カードの「メルカリの成約相場を見る」および各店舗で最新価格をご確認ください。</p>
   <p>※ 本サイトのメルカリへのリンクにはアフィリエイト広告（PR）を含みます。</p>
+  <p style="margin-top:8px"><a href="privacy.html" style="color:var(--muted)">プライバシーポリシー・広告について</a></p>
   <p style="margin-top:8px">姉妹サイト: <a href="onepiece-card-vault/" style="color:var(--muted)">OP CARD VAULT</a> ・ <a href="tsume-pokepoke/" style="color:var(--muted)">🧩 詰めポケポケ — ポケポケのリーサルパズル</a></p>
   <p style="margin-top:8px">運営: <a href="https://x.com/ana_wasborn" target="_blank" rel="noopener" style="color:var(--muted)">𝕏 @ana_wasborn</a></p>
 </footer>

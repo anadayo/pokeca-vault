@@ -78,6 +78,7 @@ function build() {
   html = replaceCardMaster(html)
     .replaceAll('https://anadayo.github.io/pokeca-vault/', 'https://anadayo.github.io/onepiece-card-vault/')
     .replaceAll('https://anadayo.github.io/onepiece-card-vault/assets/ogp.png', 'https://anadayo.github.io/onepiece-card-vault/ogp.png')
+    .replace('src="assets/adsense.js"', 'src="adsense.js"')
     .replace('<body>', `<body>\n<script>\nif (location.hostname === 'anadayo.github.io' && location.pathname.startsWith('/pokeca-vault/onepiece-card-vault')) {\n  location.replace('https://anadayo.github.io/onepiece-card-vault/' + location.search + location.hash);\n}\n</script>`)
     .replaceAll('POKÉCA VAULT', 'ONE PIECE CARD VAULT')
     .replaceAll('POKECA VAULT', 'ONE PIECE CARD VAULT')

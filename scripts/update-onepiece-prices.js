@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { appendPriceSnapshot } = require('./lib/catalog-schema');
 
 const TARGET_FILE = 'onepiece-card-vault/index.html';
 const CATALOG_FILE = 'onepiece-card-vault/cards.json';
@@ -53,7 +54,11 @@ async function fetchCard(card) {
   if (selected.nowPrice <= 0 || selected.buyPrice <= 0 || selected.buyPrice > selected.nowPrice * 1.15) {
     throw new Error(`rejected suspicious prices sale=${selected.nowPrice} buy=${selected.buyPrice}`);
   }
-  return { ...card, ...selected };
+  return appendPriceSnapshot({ ...card, ...selected }, TODAY_JST, {
+    salePrice: selected.nowPrice,
+    buyPrice: selected.buyPrice,
+    sourceCount: 1,
+  });
 }
 
 async function main() {

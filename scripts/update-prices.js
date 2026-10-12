@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { appendPriceSnapshot } = require('./lib/catalog-schema');
 
 const TARGET_FILES = ['index.html', 'pokeca-vault.html'];
 const USER_AGENT = 'Mozilla/5.0 (compatible; PokecaVaultPriceUpdater/2.0; +https://github.com/anadayo/pokeca-vault)';
@@ -90,11 +91,13 @@ async function updateCard(card) {
   const next = { ...card };
   const notes = [];
   let saleHtml = null;
+  let salePrice = null;
+  let buyPrice = null;
 
   if (card.saleUrl) {
     try {
       saleHtml = await fetchHtml(card.saleUrl, `${card.id} sale`);
-      const salePrice = parseSalePrice(saleHtml);
+      salePrice = parseSalePrice(saleHtml);
       if (salePrice) next.nowPrice = salePrice;
       else notes.push('sale price not found');
     } catch (error) {
@@ -106,7 +109,7 @@ async function updateCard(card) {
   if (card.buyUrl) {
     try {
       const buyHtml = await fetchHtml(card.buyUrl, `${card.id} buy`);
-      const buyPrice = parseBuyPrice(buyHtml);
+      buyPrice = parseBuyPrice(buyHtml);
       if (buyPrice) next.buyPrice = buyPrice;
       else notes.push('buy price not found');
     } catch (error) {
@@ -124,7 +127,8 @@ async function updateCard(card) {
     else notes.push('image replacement not found');
   }
 
-  return { next, notes };
+  const withHistory = appendPriceSnapshot(next, TODAY_JST, { salePrice, buyPrice, sourceCount: 1 });
+  return { next: withHistory, notes };
 }
 
 async function main() {

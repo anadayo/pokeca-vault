@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { isIndexableCard } = require('./lib/catalog-schema');
 
 const ROOT = path.resolve(__dirname, '..');
 const PAGE_LIMIT = 100;
@@ -38,7 +39,7 @@ function extractUpdatedAt(file) {
 
 function qualityCards(cards) {
   return cards
-    .filter((card) => card.id && card.name && card.cardNo && card.rarity && card.set && Number(card.nowPrice) > 0 && /^https:\/\//.test(card.image || '') && /^https:\/\//.test(card.saleUrl || ''))
+    .filter(isIndexableCard)
     .sort((a, b) => Number(b.nowPrice) - Number(a.nowPrice))
     .slice(0, PAGE_LIMIT);
 }

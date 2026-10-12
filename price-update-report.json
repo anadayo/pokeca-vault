@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-12",
+  "total": 200,
+  "report": [
+    {
+      "id": "SV8a-208",
+      "name": "オーガポン いどのめんex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 850,
+        "buyPrice": 300,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar208187sv8a-6877375.webp?v=1781516469"
+      },
+      "after": {
+        "nowPrice": 850,
+        "buyPrice": 350,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar208187sv8a-6877375.webp?v=1781516469"
+      }
+    },
+    {
+      "id": "S12a-261",
+      "name": "ギラティナVSTAR",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 28000,
+        "buyPrice": 18000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarur261172s12a-2-5074937.jpg?v=1784193849"
+      },
+      "after": {
+        "nowPrice": 28000,
+        "buyPrice": 19000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarur261172s12a-2-5074937.jpg?v=1784193849"
+      }
+    },
+    {
+      "id": "SV4a-353",
+      "name": "ペパー",
+      "changed": false,
+      "notes": [
+        "buy failed: SV4a-353 buy HTTP 404"
+      ],
+      "before": {
+        "nowPrice": 950,
+        "buyPrice": 300,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar353190sv4a-2-3666117.jpg?v=1784190368"
+      },
+      "after": {
+        "nowPrice": 950,
+        "buyPrice": 300,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar353190sv4a-2-3666117.jpg?v=1784190368"
+      }
+    }
+  ]
+}

@@ -15,7 +15,15 @@
     "variantIndex": 5,
     "priceVariantIndex": 5,
     "trend": "hot",
-    "seed": 104967665
+    "seed": 104967665,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 1199980,
+        "buy_price": 900000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP05-119-V2",
@@ -33,7 +41,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 121745284
+    "seed": 121745284,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 498000,
+        "buy_price": 500000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP05-119-V4",
@@ -51,7 +67,15 @@
     "variantIndex": 4,
     "priceVariantIndex": 4,
     "trend": "flat",
-    "seed": 88190046
+    "seed": 88190046,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 498000,
+        "buy_price": 450000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP17-118-V2",
@@ -69,7 +93,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 716079800
+    "seed": 716079800,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 498000,
+        "buy_price": 380000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB02-061-V2",
@@ -87,7 +119,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 3254581995
+    "seed": 3254581995,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 319980,
+        "buy_price": 350000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-119-V2",
@@ -105,7 +145,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 3297373576
+    "seed": 3297373576,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 228000,
+        "buy_price": 150000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP06-118-V2",
@@ -123,7 +171,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 1053773450
+    "seed": 1053773450,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 198000,
+        "buy_price": 200000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-093-V4",
@@ -141,7 +197,15 @@
     "variantIndex": 4,
     "priceVariantIndex": 4,
     "trend": "up",
-    "seed": 4188987733
+    "seed": 4188987733,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 148000,
+        "buy_price": 140000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP07-051-V2",
@@ -177,7 +241,15 @@
     "variantIndex": 4,
     "priceVariantIndex": 4,
     "trend": "hot",
-    "seed": 3726230591
+    "seed": 3726230591,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 198000,
+        "buy_price": 120000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-004-V2",
@@ -195,7 +267,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 1918437791
+    "seed": 1918437791,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 108000,
+        "buy_price": 100000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-093-V2",
@@ -213,7 +293,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 4088322019
+    "seed": 4088322019,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 108000,
+        "buy_price": 100000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP02-013-V2",
@@ -231,7 +319,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 692921044
+    "seed": 692921044,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 138000,
+        "buy_price": 90000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP11-118-V2",
@@ -249,7 +345,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 3971409362
+    "seed": 3971409362,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 148000,
+        "buy_price": 90000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-120-V2",
@@ -267,7 +371,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 3112162708
+    "seed": 3112162708,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 118000,
+        "buy_price": 100000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB03-026-V2",
@@ -285,7 +397,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 2128322357
+    "seed": 2128322357,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 118000,
+        "buy_price": 110000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB03-061-V2",
@@ -303,7 +423,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 1923329322
+    "seed": 1923329322,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 94800,
+        "buy_price": 90000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-004-V4",
@@ -321,7 +449,15 @@
     "variantIndex": 4,
     "priceVariantIndex": 4,
     "trend": "up",
-    "seed": 1884882553
+    "seed": 1884882553,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 128000,
+        "buy_price": 70000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-093-V5",
@@ -357,7 +493,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 1609548158
+    "seed": 1609548158,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 84800,
+        "buy_price": 65000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-051-V2",
@@ -375,7 +519,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 3692675353
+    "seed": 3692675353,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 78000,
+        "buy_price": 65000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-016-V1",
@@ -393,7 +545,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 2880881763
+    "seed": 2880881763,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 99800,
+        "buy_price": 65000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP05-074-V2",
@@ -411,7 +571,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 1613269078
+    "seed": 1613269078,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 74800,
+        "buy_price": 65000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-078-V2",
@@ -429,7 +597,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 3255726494
+    "seed": 3255726494,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 98000,
+        "buy_price": 60000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP14-119-V2",
@@ -447,7 +623,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 1798776582
+    "seed": 1798776582,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 69800,
+        "buy_price": 55000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "PRB02-006-V2",
@@ -457,7 +641,7 @@
     "setCode": "PRB02",
     "cardNo": "PRB02-006",
     "rarity": "SPカード SP（EB04）",
-    "buyPrice": 55000,
+    "buyPrice": 60000,
     "nowPrice": 79800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/PRB02-006_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/PRB02-006/",
@@ -465,7 +649,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 929047145
+    "seed": 929047145,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 79800,
+        "buy_price": 60000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP17-079-V2",
@@ -483,7 +675,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 719660010
+    "seed": 719660010,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 128000,
+        "buy_price": 70000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB02-010-V1",
@@ -501,7 +701,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 397768562
+    "seed": 397768562,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 79800,
+        "buy_price": 55000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-051-V5",
@@ -519,7 +727,15 @@
     "variantIndex": 5,
     "priceVariantIndex": 5,
     "trend": "flat",
-    "seed": 3709452972
+    "seed": 3709452972,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 79800,
+        "buy_price": 50000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP10-119-V2",
@@ -537,7 +753,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 41731578
+    "seed": 41731578,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 79800,
+        "buy_price": 50000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP12-118-V2",
@@ -555,7 +779,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 734010269
+    "seed": 734010269,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 74800,
+        "buy_price": 55000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB03-053-V2",
@@ -573,7 +805,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 350437061
+    "seed": 350437061,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 65800,
+        "buy_price": 50000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB03-055-V2",
@@ -591,7 +831,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 53897447
+    "seed": 53897447,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 65800,
+        "buy_price": 50000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP03-122-V2",
@@ -609,7 +857,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 2528966656
+    "seed": 2528966656,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 79800,
+        "buy_price": 50000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP08-118-V2",
@@ -627,7 +883,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 2555894104
+    "seed": 2555894104,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 62800,
+        "buy_price": 45000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-004-V5",
@@ -645,7 +909,15 @@
     "variantIndex": 5,
     "priceVariantIndex": 5,
     "trend": "hot",
-    "seed": 1868104934
+    "seed": 1868104934,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 59800,
+        "buy_price": 35000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-003-V1",
@@ -663,7 +935,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 3288285613
+    "seed": 3288285613,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 39800,
+        "buy_price": 35000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP05-119-V3",
@@ -681,7 +961,15 @@
     "variantIndex": 3,
     "priceVariantIndex": 3,
     "trend": "flat",
-    "seed": 138522903
+    "seed": 138522903,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 59800,
+        "buy_price": 45000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP14-112-V2",
@@ -691,7 +979,7 @@
     "setCode": "OP14",
     "cardNo": "OP14-112",
     "rarity": "SPカード SP（OP14）",
-    "buyPrice": 33000,
+    "buyPrice": 30000,
     "nowPrice": 39800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP14-112_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP14-112/",
@@ -699,7 +987,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 74227345
+    "seed": 74227345,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 39800,
+        "buy_price": 30000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB03-003-V2",
@@ -717,7 +1013,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 2303702970
+    "seed": 2303702970,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 29800,
+        "buy_price": 25000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP12-014-V2",
@@ -735,7 +1039,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 372676828
+    "seed": 372676828,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 34800,
+        "buy_price": 30000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB03-024-V2",
@@ -753,7 +1065,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 804123411
+    "seed": 804123411,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 34800,
+        "buy_price": 28000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP11-106-V2",
@@ -771,7 +1091,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 2028439667
+    "seed": 2028439667,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 34800,
+        "buy_price": 22000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP14-084-V2",
@@ -781,7 +1109,7 @@
     "setCode": "OP14",
     "cardNo": "OP14-084",
     "rarity": "SPカード SP（OP16）",
-    "buyPrice": 23000,
+    "buyPrice": 28000,
     "nowPrice": 34800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP14-084_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP14-084/",
@@ -789,7 +1117,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 3938195421
+    "seed": 3938195421,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 34800,
+        "buy_price": 28000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP06-101-V2",
@@ -807,7 +1143,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 3555493296
+    "seed": 3555493296,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 34800,
+        "buy_price": 22000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP08-106-V2",
@@ -825,7 +1169,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 3847327789
+    "seed": 3847327789,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 34800,
+        "buy_price": 20000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP13-031-V1",
@@ -843,7 +1195,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 3253697807
+    "seed": 3253697807,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 24800,
+        "buy_price": 16000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP07-051-V3",
@@ -861,7 +1221,15 @@
     "variantIndex": 3,
     "priceVariantIndex": 3,
     "trend": "hot",
-    "seed": 2804358680
+    "seed": 2804358680,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 25800,
+        "buy_price": 20000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-016-V2",
@@ -879,7 +1247,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 2897659382
+    "seed": 2897659382,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 31800,
+        "buy_price": 20000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB02-061-V3",
@@ -897,7 +1273,15 @@
     "variantIndex": 3,
     "priceVariantIndex": 3,
     "trend": "up",
-    "seed": 3237804376
+    "seed": 3237804376,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 25800,
+        "buy_price": 17000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB03-045-V2",
@@ -915,7 +1299,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 3246180396
+    "seed": 3246180396,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 24800,
+        "buy_price": 15000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP05-067-V2",
@@ -933,7 +1325,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 3125583770
+    "seed": 3125583770,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 29800,
+        "buy_price": 16000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-001-V1",
@@ -951,7 +1351,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 3476138047
+    "seed": 3476138047,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 24800,
+        "buy_price": 16000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP05-119-V1",
@@ -969,7 +1377,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 172078141
+    "seed": 172078141,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 19800,
+        "buy_price": 12000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP13-028-V2",
@@ -979,7 +1395,7 @@
     "setCode": "OP13",
     "cardNo": "OP13-028",
     "rarity": "SPカード SP（OP17）",
-    "buyPrice": 17000,
+    "buyPrice": 16000,
     "nowPrice": 24800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP13-028_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP13-028/",
@@ -987,7 +1403,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 2495564236
+    "seed": 2495564236,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 24800,
+        "buy_price": 16000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP02-013-V3",
@@ -1005,7 +1429,15 @@
     "variantIndex": 3,
     "priceVariantIndex": 3,
     "trend": "flat",
-    "seed": 709698663
+    "seed": 709698663,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 19480,
+        "buy_price": 11000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB03-031-V2",
@@ -1023,7 +1455,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 1033661081
+    "seed": 1033661081,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 19800,
+        "buy_price": 12000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "PRB02-014-V2",
@@ -1041,7 +1481,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 3045773528
+    "seed": 3045773528,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 17800,
+        "buy_price": 12000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "P-084-V0",
@@ -1059,7 +1507,15 @@
     "variantIndex": 0,
     "priceVariantIndex": 0,
     "trend": "hot",
-    "seed": 3317246615
+    "seed": 3317246615,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 14800,
+        "buy_price": 13000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB04-007-V2",
@@ -1077,7 +1533,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 459974373
+    "seed": 459974373,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 24800,
+        "buy_price": 15000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-119-V3",
@@ -1095,7 +1559,15 @@
     "variantIndex": 3,
     "priceVariantIndex": 3,
     "trend": "flat",
-    "seed": 3314151195
+    "seed": 3314151195,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 19800,
+        "buy_price": 17000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-004-V3",
@@ -1131,7 +1603,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 926735788
+    "seed": 926735788,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 19800,
+        "buy_price": 12000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP03-040-V1",
@@ -1149,7 +1629,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 108206708
+    "seed": 108206708,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 12800,
+        "buy_price": 11000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP05-091-V2",
@@ -1167,7 +1655,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 884751073
+    "seed": 884751073,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 9780,
+        "buy_price": 9000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP06-119-V2",
@@ -1185,7 +1681,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 3624789627
+    "seed": 3624789627,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 12800,
+        "buy_price": 9000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB03-042-V2",
@@ -1203,7 +1707,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 1857960831
+    "seed": 1857960831,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 12800,
+        "buy_price": 8000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB01-057-V2",
@@ -1221,7 +1733,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 2772567383
+    "seed": 2772567383,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 9980,
+        "buy_price": 9000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-047-V2",
@@ -1239,7 +1759,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 1873357452
+    "seed": 1873357452,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 12800,
+        "buy_price": 9000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP06-007-V2",
@@ -1257,7 +1785,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 795911123
+    "seed": 795911123,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 11480,
+        "buy_price": 8000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-093-V3",
@@ -1275,7 +1811,15 @@
     "variantIndex": 3,
     "priceVariantIndex": 3,
     "trend": "hot",
-    "seed": 4071544400
+    "seed": 4071544400,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 11480,
+        "buy_price": 9000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP04-064-V2",
@@ -1293,7 +1837,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 3807490068
+    "seed": 3807490068,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 10480,
+        "buy_price": 9000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP07-085-V2",
@@ -1311,7 +1863,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 1571005936
+    "seed": 1571005936,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 9980,
+        "buy_price": 9000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP06-093-V2",
@@ -1329,7 +1889,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 262874448
+    "seed": 262874448,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 12800,
+        "buy_price": 7000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-121-V2",
@@ -1347,7 +1915,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 3960960549
+    "seed": 3960960549,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 12800,
+        "buy_price": 8000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP02-120-V2",
@@ -1365,7 +1941,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 2883093575
+    "seed": 2883093575,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 12800,
+        "buy_price": 8000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP12-030-V2",
@@ -1383,7 +1967,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 3516874470
+    "seed": 3516874470,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 12800,
+        "buy_price": 8000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-118-V3",
@@ -1401,7 +1993,15 @@
     "variantIndex": 3,
     "priceVariantIndex": 3,
     "trend": "hot",
-    "seed": 70055030
+    "seed": 70055030,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 9280,
+        "buy_price": 9000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB03-018-V2",
@@ -1419,7 +2019,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 1771844294
+    "seed": 1771844294,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 7480,
+        "buy_price": 6000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB04-039-V1",
@@ -1437,7 +2045,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 2460633427
+    "seed": 2460633427,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 9980,
+        "buy_price": 7500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB04-001-V1",
@@ -1455,7 +2071,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 2560713114
+    "seed": 2560713114,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 8280,
+        "buy_price": 7000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB04-003-V1",
@@ -1473,7 +2097,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 2789295520
+    "seed": 2789295520,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 7980,
+        "buy_price": 7000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP14-020-V1",
@@ -1483,7 +2115,7 @@
     "setCode": "OP14",
     "cardNo": "OP14-020",
     "rarity": "L パラレル",
-    "buyPrice": 800,
+    "buyPrice": 700,
     "nowPrice": 2980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP14-020_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP14-020/",
@@ -1491,7 +2123,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 2026495430
+    "seed": 2026495430,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2980,
+        "buy_price": 700,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-002-V1",
@@ -1509,7 +2149,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 4227806540
+    "seed": 4227806540,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 11480,
+        "buy_price": 6500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "P-107-V0",
@@ -1527,7 +2175,15 @@
     "variantIndex": 0,
     "priceVariantIndex": 0,
     "trend": "up",
-    "seed": 1694046673
+    "seed": 1694046673,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 12800,
+        "buy_price": 7000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB02-052-V2",
@@ -1545,7 +2201,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 4153204101
+    "seed": 4153204101,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 9980,
+        "buy_price": 8000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP13-042-V2",
@@ -1563,7 +2227,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 2638596232
+    "seed": 2638596232,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 9980,
+        "buy_price": 5500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-051-V3",
@@ -1599,7 +2271,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 35185650
+    "seed": 35185650,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 9980,
+        "buy_price": 5500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP06-050-V2",
@@ -1617,7 +2297,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 2166378987
+    "seed": 2166378987,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 6780,
+        "buy_price": 7000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB04-007-V1",
@@ -1635,7 +2323,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 409641516
+    "seed": 409641516,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 9980,
+        "buy_price": 7000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-061-V1",
@@ -1653,7 +2349,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 410075605
+    "seed": 410075605,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 7480,
+        "buy_price": 6000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP04-001-V1",
@@ -1671,7 +2375,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 538152118
+    "seed": 538152118,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 8480,
+        "buy_price": 6500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP13-118-V1",
@@ -1689,7 +2401,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 2366545045
+    "seed": 2366545045,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 12800,
+        "buy_price": 6000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP03-112-V2",
@@ -1707,7 +2427,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 159120185
+    "seed": 159120185,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 9280,
+        "buy_price": 6000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP05-100-V2",
@@ -1725,7 +2453,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 2895044830
+    "seed": 2895044830,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 9980,
+        "buy_price": 5000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP02-099-V2",
@@ -1743,7 +2479,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 3138892386
+    "seed": 3138892386,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 6000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB02-028-V1",
@@ -1761,7 +2505,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 3114013579
+    "seed": 3114013579,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 7980,
+        "buy_price": 5500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP05-091-V3",
@@ -1779,7 +2531,15 @@
     "variantIndex": 3,
     "priceVariantIndex": 3,
     "trend": "hot",
-    "seed": 867973454
+    "seed": 867973454,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 7980,
+        "buy_price": 4500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP02-004-V2",
@@ -1797,7 +2557,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 3699175240
+    "seed": 3699175240,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 7980,
+        "buy_price": 5000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP04-044-V2",
@@ -1815,7 +2583,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 907866538
+    "seed": 907866538,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 7980,
+        "buy_price": 4000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP06-118-V1",
@@ -1833,7 +2609,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 1036995831
+    "seed": 1036995831,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 6280,
+        "buy_price": 4000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP10-082-V2",
@@ -1851,7 +2635,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 1358613219
+    "seed": 1358613219,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 4500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP03-001-V1",
@@ -1869,7 +2661,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 3423568297
+    "seed": 3423568297,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 5000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-078-V1",
@@ -1887,7 +2687,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 3238948875
+    "seed": 3238948875,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 4780,
+        "buy_price": 3500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP16-119-V1",
@@ -1905,7 +2713,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 996674593
+    "seed": 996674593,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5780,
+        "buy_price": 4400,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP14-108-V1",
@@ -1923,7 +2739,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 1902387937
+    "seed": 1902387937,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 9980,
+        "buy_price": 6000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP07-015-V2",
@@ -1941,7 +2765,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 3797149987
+    "seed": 3797149987,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 6480,
+        "buy_price": 4000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP03-008-V1",
@@ -1959,7 +2791,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 66832384
+    "seed": 66832384,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 6280,
+        "buy_price": 4500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP04-024-V2",
@@ -1977,7 +2817,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 3889007072
+    "seed": 3889007072,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5280,
+        "buy_price": 4500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP10-065-V1",
@@ -1987,7 +2835,7 @@
     "setCode": "OP10",
     "cardNo": "OP10-065",
     "rarity": "SPカード SP（OP14）",
-    "buyPrice": 4000,
+    "buyPrice": 3500,
     "nowPrice": 5980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP10-065_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP10-065/",
@@ -1995,7 +2843,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 3094322283
+    "seed": 3094322283,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 3500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP11-041-V1",
@@ -2013,7 +2869,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 1343052956
+    "seed": 1343052956,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 4480,
+        "buy_price": 4000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-073-V2",
@@ -2031,7 +2895,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 1596093049
+    "seed": 1596093049,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 4480,
+        "buy_price": 4000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-060-V1",
@@ -2049,7 +2921,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 2460748124
+    "seed": 2460748124,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 7980,
+        "buy_price": 4000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP10-119-V3",
@@ -2067,7 +2947,15 @@
     "variantIndex": 3,
     "priceVariantIndex": 3,
     "trend": "hot",
-    "seed": 58509197
+    "seed": 58509197,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 6480,
+        "buy_price": 3500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB04-054-V1",
@@ -2085,7 +2973,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 2040118668
+    "seed": 2040118668,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 3200,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-051-V2",
@@ -2103,7 +2999,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 1659749953
+    "seed": 1659749953,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 4000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP05-093-V2",
@@ -2121,7 +3025,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 1710647215
+    "seed": 1710647215,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 6280,
+        "buy_price": 4000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP07-046-V2",
@@ -2139,7 +3051,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 740706179
+    "seed": 740706179,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 3500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP07-118-V2",
@@ -2157,7 +3077,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 3650571587
+    "seed": 3650571587,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 4000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP10-030-V2",
@@ -2167,7 +3095,7 @@
     "setCode": "OP10",
     "cardNo": "OP10-030",
     "rarity": "SPカード SP（OP13）",
-    "buyPrice": 3500,
+    "buyPrice": 4500,
     "nowPrice": 5980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP10-030_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP10-030/",
@@ -2175,7 +3103,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 318818552
+    "seed": 318818552,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 4500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP11-067-V2",
@@ -2193,7 +3129,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 608007617
+    "seed": 608007617,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 5000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP14-029-V1",
@@ -2211,7 +3155,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 914770791
+    "seed": 914770791,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 3500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP04-119-V2",
@@ -2229,7 +3181,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 2015795653
+    "seed": 2015795653,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5480,
+        "buy_price": 4000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP16-001-V1",
@@ -2247,7 +3207,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 1631088503
+    "seed": 1631088503,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 3200,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP03-092-V2",
@@ -2265,7 +3233,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 3224735500
+    "seed": 3224735500,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 4000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB01-023-V1",
@@ -2283,7 +3259,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 1583416015
+    "seed": 1583416015,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 3500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-120-V1",
@@ -2301,7 +3285,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 3162495565
+    "seed": 3162495565,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3980,
+        "buy_price": 2500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP16-079-V1",
@@ -2319,7 +3311,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 1472153626
+    "seed": 1472153626,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 4480,
+        "buy_price": 4500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP17-119-V1",
@@ -2329,7 +3329,7 @@
     "setCode": "OP17",
     "cardNo": "OP17-119",
     "rarity": "SEC パラレル",
-    "buyPrice": 3800,
+    "buyPrice": 3500,
     "nowPrice": 4580,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP17-119_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP17-119/",
@@ -2337,7 +3337,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 518294656
+    "seed": 518294656,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 4580,
+        "buy_price": 3500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP12-056-V2",
@@ -2355,7 +3363,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 586669334
+    "seed": 586669334,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 6980,
+        "buy_price": 4000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB01-003-V2",
@@ -2373,7 +3389,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 3630605872
+    "seed": 3630605872,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 3000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB04-061-V1",
@@ -2391,7 +3415,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 2995836572
+    "seed": 2995836572,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 2800,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-005-V1",
@@ -2409,7 +3441,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 290540299
+    "seed": 290540299,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 3500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP15-098-V1",
@@ -2427,7 +3467,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 3168794814
+    "seed": 3168794814,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 4680,
+        "buy_price": 3500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-013-V1",
@@ -2445,7 +3493,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 1569075230
+    "seed": 1569075230,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 4980,
+        "buy_price": 3500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP06-047-V1",
@@ -2463,7 +3519,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 3604532850
+    "seed": 3604532850,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 4780,
+        "buy_price": 3000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP07-111-V2",
@@ -2481,7 +3545,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 233478154
+    "seed": 233478154,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 4280,
+        "buy_price": 3500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB01-056-V2",
@@ -2499,7 +3571,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 1783631542
+    "seed": 1783631542,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3280,
+        "buy_price": 2700,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP03-099-V1",
@@ -2517,7 +3597,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 1321189814
+    "seed": 1321189814,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3980,
+        "buy_price": 3500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP05-074-V3",
@@ -2535,7 +3623,15 @@
     "variantIndex": 3,
     "priceVariantIndex": 3,
     "trend": "flat",
-    "seed": 1630046697
+    "seed": 1630046697,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3280,
+        "buy_price": 3500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-037-V2",
@@ -2553,7 +3649,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 3008604601
+    "seed": 3008604601,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3980,
+        "buy_price": 3500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP11-040-V1",
@@ -2571,7 +3675,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 3710031933
+    "seed": 3710031933,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 4480,
+        "buy_price": 3200,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP08-023-V2",
@@ -2589,7 +3701,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 3148561007
+    "seed": 3148561007,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 3000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP12-020-V1",
@@ -2607,7 +3727,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 562500092
+    "seed": 562500092,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5780,
+        "buy_price": 3000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP05-051-V2",
@@ -2625,7 +3753,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 3095378365
+    "seed": 3095378365,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3980,
+        "buy_price": 3000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-062-V1",
@@ -2643,7 +3779,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 3138914566
+    "seed": 3138914566,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3580,
+        "buy_price": 2500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP02-026-V1",
@@ -2661,7 +3805,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 2396961881
+    "seed": 2396961881,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3980,
+        "buy_price": 2500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP02-085-V2",
@@ -2679,7 +3831,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 212230545
+    "seed": 212230545,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3780,
+        "buy_price": 2500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP04-039-V1",
@@ -2697,7 +3857,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 1148219711
+    "seed": 1148219711,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3980,
+        "buy_price": 2000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP02-093-V1",
@@ -2715,7 +3883,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 2210964117
+    "seed": 2210964117,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2980,
+        "buy_price": 2500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-062-V1",
@@ -2733,7 +3909,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 2086030142
+    "seed": 2086030142,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2980,
+        "buy_price": 2000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP17-039-V1",
@@ -2751,7 +3935,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 443867827
+    "seed": 443867827,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 4980,
+        "buy_price": 3500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-009-V2",
@@ -2769,7 +3961,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "flat",
-    "seed": 2116698066
+    "seed": 2116698066,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3980,
+        "buy_price": 2800,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP15-058-V1",
@@ -2787,7 +3987,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 1594931746
+    "seed": 1594931746,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3180,
+        "buy_price": 2800,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "P-105-V0",
@@ -2805,7 +4013,15 @@
     "variantIndex": 0,
     "priceVariantIndex": 0,
     "trend": "hot",
-    "seed": 1015880231
+    "seed": 1015880231,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 5980,
+        "buy_price": 2700,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP16-118-V1",
@@ -2823,7 +4039,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 1747366576
+    "seed": 1747366576,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3280,
+        "buy_price": 2200,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB04-007-V0",
@@ -2841,7 +4065,15 @@
     "variantIndex": 0,
     "priceVariantIndex": 0,
     "trend": "hot",
-    "seed": 426419135
+    "seed": 426419135,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3980,
+        "buy_price": 3300,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-121-V1",
@@ -2859,7 +4091,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 3910627692
+    "seed": 3910627692,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 4280,
+        "buy_price": 2400,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP02-001-V1",
@@ -2877,7 +4117,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 1354804764
+    "seed": 1354804764,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3980,
+        "buy_price": 2500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP10-045-V2",
@@ -2895,7 +4143,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "up",
-    "seed": 490207372
+    "seed": 490207372,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3980,
+        "buy_price": 2200,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP02-013-V1",
@@ -2913,7 +4169,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 743253901
+    "seed": 743253901,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3580,
+        "buy_price": 2200,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP02-002-V1",
@@ -2931,7 +4195,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 1549923791
+    "seed": 1549923791,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2980,
+        "buy_price": 2000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP15-118-V1",
@@ -2949,7 +4221,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 1592770539
+    "seed": 1592770539,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2680,
+        "buy_price": 2500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP11-022-V1",
@@ -2985,7 +4265,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 3271359614
+    "seed": 3271359614,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2980,
+        "buy_price": 1800,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP15-022-V1",
@@ -3003,7 +4291,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 1910200173
+    "seed": 1910200173,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2380,
+        "buy_price": 1800,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB03-053-V1",
@@ -3021,7 +4317,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 300104204
+    "seed": 300104204,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2980,
+        "buy_price": 1700,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP14-084-V1",
@@ -3057,7 +4361,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 532759805
+    "seed": 532759805,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3980,
+        "buy_price": 2000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP13-001-V1",
@@ -3075,7 +4387,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 2556655758
+    "seed": 2556655758,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2680,
+        "buy_price": 1800,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP15-119-V1",
@@ -3093,7 +4413,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 3025268498
+    "seed": 3025268498,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2780,
+        "buy_price": 2000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP17-119-V0",
@@ -3103,15 +4431,23 @@
     "setCode": "OP17",
     "cardNo": "OP17-119",
     "rarity": "SEC",
-    "buyPrice": 2000,
-    "nowPrice": 2380,
+    "buyPrice": 1800,
+    "nowPrice": 2480,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP17-119",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP17-119/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP17-119/",
     "variantIndex": 0,
     "priceVariantIndex": 0,
     "trend": "flat",
-    "seed": 535072275
+    "seed": 535072275,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2480,
+        "buy_price": 1800,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP07-021-V1",
@@ -3129,7 +4465,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 2614615051
+    "seed": 2614615051,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2080,
+        "buy_price": 2200,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP12-001-V1",
@@ -3147,7 +4491,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 3221718379
+    "seed": 3221718379,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 1980,
+        "buy_price": 2000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP10-118-V1",
@@ -3158,14 +4510,22 @@
     "cardNo": "OP10-118",
     "rarity": "SEC パラレル",
     "buyPrice": 1800,
-    "nowPrice": 2980,
+    "nowPrice": 3480,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP10-118_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP10-118/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP10-118/",
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 1460011774
+    "seed": 1460011774,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3480,
+        "buy_price": 1800,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP11-106-V1",
@@ -3183,7 +4543,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 2045217286
+    "seed": 2045217286,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2980,
+        "buy_price": 1600,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-035-V1",
@@ -3201,7 +4569,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 3636299586
+    "seed": 3636299586,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2980,
+        "buy_price": 1800,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP03-078-V2",
@@ -3219,7 +4595,15 @@
     "variantIndex": 2,
     "priceVariantIndex": 2,
     "trend": "hot",
-    "seed": 3439188272
+    "seed": 3439188272,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2780,
+        "buy_price": 1800,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB03-026-V1",
@@ -3237,7 +4621,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 2077989500
+    "seed": 2077989500,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2280,
+        "buy_price": 2000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP17-118-V0",
@@ -3255,7 +4647,15 @@
     "variantIndex": 0,
     "priceVariantIndex": 0,
     "trend": "flat",
-    "seed": 749635038
+    "seed": 749635038,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2680,
+        "buy_price": 2000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-031-V1",
@@ -3273,7 +4673,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 3396294910
+    "seed": 3396294910,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2480,
+        "buy_price": 1800,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP14-079-V1",
@@ -3291,7 +4699,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 1898002496
+    "seed": 1898002496,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2180,
+        "buy_price": 2000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP01-091-V1",
@@ -3309,7 +4725,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 3469667428
+    "seed": 3469667428,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2280,
+        "buy_price": 2000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP06-101-V1",
@@ -3327,7 +4751,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 3605826153
+    "seed": 3605826153,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2980,
+        "buy_price": 1300,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB03-024-V1",
@@ -3337,7 +4769,7 @@
     "setCode": "EB03",
     "cardNo": "EB03-024",
     "rarity": "SR パラレル",
-    "buyPrice": 1800,
+    "buyPrice": 2000,
     "nowPrice": 1880,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB03-024_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB03-024/",
@@ -3345,7 +4777,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 820901030
+    "seed": 820901030,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 1880,
+        "buy_price": 2000,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP17-020-V1",
@@ -3363,7 +4803,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 2493018521
+    "seed": 2493018521,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2980,
+        "buy_price": 2700,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP16-042-V1",
@@ -3381,7 +4829,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 1056726608
+    "seed": 1056726608,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 3480,
+        "buy_price": 1600,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-001-V1",
@@ -3399,7 +4855,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 270598679
+    "seed": 270598679,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2480,
+        "buy_price": 1600,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP09-118-V1",
@@ -3417,7 +4881,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 36499792
+    "seed": 36499792,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2980,
+        "buy_price": 1700,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP12-118-V1",
@@ -3435,7 +4907,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 683677412
+    "seed": 683677412,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 1780,
+        "buy_price": 1500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP13-119-V1",
@@ -3453,7 +4933,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 3405909844
+    "seed": 3405909844,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2980,
+        "buy_price": 1500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP12-014-V1",
@@ -3471,7 +4959,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 423009685
+    "seed": 423009685,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 1980,
+        "buy_price": 1600,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP06-007-V1",
@@ -3489,7 +4985,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 812688742
+    "seed": 812688742,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 2480,
+        "buy_price": 1200,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP04-118-V1",
@@ -3507,7 +5011,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 984365165
+    "seed": 984365165,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 1980,
+        "buy_price": 1500,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP15-002-V1",
@@ -3525,7 +5037,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "hot",
-    "seed": 2001451655
+    "seed": 2001451655,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 1980,
+        "buy_price": 1300,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "EB03-055-V1",
@@ -3543,7 +5063,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 70675066
+    "seed": 70675066,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 1980,
+        "buy_price": 1400,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP02-120-V1",
@@ -3561,7 +5089,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 2899871194
+    "seed": 2899871194,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 1780,
+        "buy_price": 1300,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP16-118-V0",
@@ -3579,7 +5115,15 @@
     "variantIndex": 0,
     "priceVariantIndex": 0,
     "trend": "flat",
-    "seed": 1764144195
+    "seed": 1764144195,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 1480,
+        "buy_price": 1100,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP03-022-V1",
@@ -3597,6 +5141,14 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "up",
-    "seed": 526078180
+    "seed": 526078180,
+    "priceHistory": [
+      {
+        "date": "2026-10-12",
+        "sale_price": 1780,
+        "buy_price": 1200,
+        "source_count": 1
+      }
+    ]
   }
 ]

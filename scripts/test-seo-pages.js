@@ -44,8 +44,8 @@ function checkSite({ directory, baseUrl, appFile }) {
   const dataDirectory = path.join(ROOT, directory, 'data');
   const productData = JSON.parse(fs.readFileSync(path.join(dataDirectory, 'products.json'), 'utf8'));
   const priceData = JSON.parse(fs.readFileSync(path.join(dataDirectory, 'prices.json'), 'utf8'));
-  assert.strictEqual(productData.products.length, 200, `${directory || 'pokemon'} should expose 200 products`);
-  assert.strictEqual(priceData.prices.length, 400, `${directory || 'pokemon'} should expose sale and buyback records`);
+  assert.strictEqual(productData.products.length, 500, `${directory || 'pokemon'} should expose 500 products`);
+  assert.strictEqual(priceData.prices.length, 1000, `${directory || 'pokemon'} should expose sale and buyback records`);
   assert(priceData.prices.every((record) => record.buy_price !== 0 && record.sale_price !== 0), `${directory || 'pokemon'} unknown prices must be null`);
   for (const script of appHtml.matchAll(/<script(?![^>]*application\/ld\+json)[^>]*>([\s\S]*?)<\/script>/g)) {
     if (script[1].trim()) new Function(script[1]);
@@ -54,4 +54,4 @@ function checkSite({ directory, baseUrl, appFile }) {
 
 checkSite({ directory: '.', baseUrl: 'https://anadayo.github.io/pokeca-vault/', appFile: 'index.html' });
 checkSite({ directory: 'onepiece-card-vault', baseUrl: 'https://anadayo.github.io/onepiece-card-vault/', appFile: 'onepiece-card-vault/index.html' });
-console.log('SEO page checks passed: 200 card pages and 2 app shells');
+console.log('SEO page checks passed: 200 SEO pages and 2 app shells with 500 products each');

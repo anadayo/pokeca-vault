@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const CATALOG_FILE = 'onepiece-card-vault/cards.json';
-const EXPECTED_COUNT = Number(process.env.ONEPIECE_CARD_COUNT || 200);
+const EXPECTED_COUNT = Number(process.env.ONEPIECE_CARD_COUNT || 500);
 const CONCURRENCY = Number(process.env.ONEPIECE_VERIFY_CONCURRENCY || 12);
 
 async function main() {

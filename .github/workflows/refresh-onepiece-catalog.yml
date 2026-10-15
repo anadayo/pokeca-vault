@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Select 200 cards with buy prices
+      - name: Select 500 cards with buy prices
         run: node scripts/refresh-onepiece-catalog.js
 
       - name: Build One Piece card vault

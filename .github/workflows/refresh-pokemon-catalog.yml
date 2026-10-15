@@ -1,0 +1,43 @@
+name: Refresh Pokemon catalog
+
+on:
+  schedule:
+    # Saturday 04:30 JST
+    - cron: '30 19 * * 5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-catalog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Select 500 Pokemon cards
+        run: node scripts/refresh-pokemon-catalog.js
+
+      - name: Build shared product and price data
+        run: node scripts/build-data-foundation.js
+
+      - name: Build SEO card pages
+        run: node scripts/build-seo-pages.js
+
+      - name: Test app and data
+        run: |
+          node scripts/test-v4-foundation.js
+          node scripts/test-seo-pages.js
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: refresh Pokemon card catalog'
+          file_pattern: index.html pokeca-vault.html cards/** data/** data-foundation-report.json sitemap.xml robots.txt pokemon-catalog-report.json

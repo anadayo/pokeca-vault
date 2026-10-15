@@ -7,7 +7,7 @@ const CATALOG_FILE = path.join(OUTPUT_DIR, 'cards.json');
 const REPORT_FILE = path.join(ROOT, 'onepiece-catalog-report.json');
 const SEARCH_URL = 'https://wanpicagraph.com/op/cards/search.json';
 const USER_AGENT = 'Mozilla/5.0 (compatible; OPCardVaultCatalog/1.0; +https://github.com/anadayo/pokeca-vault)';
-const TARGET_COUNT = Number(process.env.ONEPIECE_CARD_COUNT || 200);
+const TARGET_COUNT = Number(process.env.ONEPIECE_CARD_COUNT || 500);
 const CONCURRENCY = Number(process.env.ONEPIECE_CATALOG_CONCURRENCY || 8);
 const REQUEST_DELAY_MS = Number(process.env.ONEPIECE_CATALOG_DELAY_MS || 200);
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -112,7 +112,7 @@ async function main() {
   const search = await fetchJson(SEARCH_URL);
   const setNames = new Map(search.sets.map(set => [set.code, set.name]));
   const setOrder = new Map(search.sets.map((set, index) => [set.code, index]));
-  const priorityRarities = new Set(['SPカード', 'SP P', 'TR', 'SEC', 'L']);
+  const priorityRarities = new Set(['SPカード', 'SP P', 'TR', 'SEC', 'L', 'SR', 'R']);
   const candidates = search.cards
     .filter(card => /^(OP|EB|PRB)/.test(card.set) && card.rarities.some(rarity => priorityRarities.has(rarity)))
     .sort((a, b) => candidateScore(b, setOrder) - candidateScore(a, setOrder));

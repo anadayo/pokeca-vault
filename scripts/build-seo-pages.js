@@ -133,6 +133,14 @@ function buildSite(config, allCards, updatedAt) {
   const cards = qualityCards(allCards);
   const cardsDir = path.join(ROOT, config.outputDir, 'cards');
   fs.mkdirSync(cardsDir, { recursive: true });
+  const activeSlugs = new Set(cards.map((card) => slugify(card.id)));
+  for (const entry of fs.readdirSync(cardsDir, { withFileTypes: true })) {
+    if (!entry.isDirectory() || activeSlugs.has(entry.name)) continue;
+    const generatedPage = path.join(cardsDir, entry.name, 'index.html');
+    if (fs.existsSync(generatedPage)) {
+      fs.rmSync(path.join(cardsDir, entry.name), { recursive: true, force: true });
+    }
+  }
   fs.writeFileSync(path.join(cardsDir, 'index.html'), listPage(config, cards, updatedAt));
   for (const card of cards) {
     const output = path.join(cardsDir, slugify(card.id));

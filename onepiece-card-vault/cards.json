@@ -3205,7 +3205,7 @@
     "setCode": "OP04",
     "cardNo": "OP04-024",
     "rarity": "SPカード SP（OP06）",
-    "buyPrice": 4500,
+    "buyPrice": 4000,
     "nowPrice": 7980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP04-024_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP04-024/",
@@ -3218,7 +3218,7 @@
       {
         "date": "2026-10-15",
         "sale_price": 7980,
-        "buy_price": 4500,
+        "buy_price": 4000,
         "source_count": 1
       }
     ]
@@ -4201,7 +4201,15 @@
     "variantIndex": 1,
     "priceVariantIndex": 1,
     "trend": "flat",
-    "seed": 3710031933
+    "seed": 3710031933,
+    "priceHistory": [
+      {
+        "date": "2026-10-15",
+        "sale_price": 5980,
+        "buy_price": 3200,
+        "source_count": 1
+      }
+    ]
   },
   {
     "id": "OP16-001-V1",
@@ -8683,7 +8691,7 @@
     "setCode": "OP04",
     "cardNo": "OP04-024",
     "rarity": "SR パラレル",
-    "buyPrice": 350,
+    "buyPrice": 250,
     "nowPrice": 780,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP04-024_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP04-024/",
@@ -8696,7 +8704,7 @@
       {
         "date": "2026-10-15",
         "sale_price": 780,
-        "buy_price": 350,
+        "buy_price": 250,
         "source_count": 1
       }
     ]

@@ -1,7 +1,23 @@
 {
-  "date": "2026-10-16",
+  "date": "2026-10-17",
   "total": 500,
   "report": [
+    {
+      "id": "PKM-10218576085312",
+      "name": "ライコウex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 4500,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar108076m6-2-4697357.webp?v=1786944608"
+      },
+      "after": {
+        "nowPrice": 4800,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar108076m6-2-4697357.webp?v=1786944608"
+      }
+    },
     {
       "id": "SV8a-222",
       "name": "タケルライコex",

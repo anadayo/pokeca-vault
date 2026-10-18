@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-18",
+  "date": "2026-10-19",
   "total": 500,
   "report": [
     {
@@ -90,6 +90,42 @@
         "nowPrice": 600,
         "buyPrice": 400,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar216187sv8a-6467871.webp?v=1781516289"
+      }
+    },
+    {
+      "id": "PKM-9015856103744",
+      "name": "エーテルパラダイス保護区",
+      "changed": false,
+      "notes": [
+        "sale failed: PKM-9015856103744 sale HTTP 503"
+      ],
+      "before": {
+        "nowPrice": 900,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur070055sm9a-2-9080932.jpg?v=1784217672"
+      },
+      "after": {
+        "nowPrice": 900,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur070055sm9a-2-9080932.jpg?v=1784217672"
+      }
+    },
+    {
+      "id": "PKM-9015785423168",
+      "name": "アローラキュウコンGX",
+      "changed": false,
+      "notes": [
+        "sale failed: PKM-9015785423168 sale HTTP 503"
+      ],
+      "before": {
+        "nowPrice": 2500,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr053050sm7b-2-7224405.jpg?v=1784221993"
+      },
+      "after": {
+        "nowPrice": 2500,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr053050sm7b-2-7224405.jpg?v=1784221993"
       }
     }
   ]

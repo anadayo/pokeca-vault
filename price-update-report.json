@@ -3,6 +3,70 @@
   "total": 500,
   "report": [
     {
+      "id": "PKM-10265831342400",
+      "name": "ゲンガーex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 7000,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/Yo1vIPy63XdgOkDOPPdJy6ZKFRXpWOQg1E8IEH54.webp?v=1790245563"
+      },
+      "after": {
+        "nowPrice": 6500,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/Yo1vIPy63XdgOkDOPPdJy6ZKFRXpWOQg1E8IEH54.webp?v=1790245563"
+      }
+    },
+    {
+      "id": "PKM-10265831768384",
+      "name": "ニンフィアex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 4000,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/5WhFNlg1GxSEWwxXWQITQamXrBTX41Hzn1f8RzGz.webp?v=1790245554"
+      },
+      "after": {
+        "nowPrice": 3800,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/5WhFNlg1GxSEWwxXWQITQamXrBTX41Hzn1f8RzGz.webp?v=1790245554"
+      }
+    },
+    {
+      "id": "PKM-10265831407936",
+      "name": "ボーマンダex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 2500,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/VHh7R26qkQBlpO0Gvwm5AI2i2pNm6fM6SV3GzGv7.webp?v=1790245554"
+      },
+      "after": {
+        "nowPrice": 2400,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/VHh7R26qkQBlpO0Gvwm5AI2i2pNm6fM6SV3GzGv7.webp?v=1790245554"
+      }
+    },
+    {
+      "id": "PKM-10265831309632",
+      "name": "ホゲータex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 2200,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/8Cu7QeFMwUpQNQ7VYpt3LuDC9hKVrj9HbRmLl3X3.webp?v=1790245542"
+      },
+      "after": {
+        "nowPrice": 2100,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/8Cu7QeFMwUpQNQ7VYpt3LuDC9hKVrj9HbRmLl3X3.webp?v=1790245542"
+      }
+    },
+    {
       "id": "SV4a-353",
       "name": "ペパー",
       "changed": false,
@@ -93,39 +157,19 @@
       }
     },
     {
-      "id": "PKM-9015856103744",
-      "name": "エーテルパラダイス保護区",
-      "changed": false,
-      "notes": [
-        "sale failed: PKM-9015856103744 sale HTTP 503"
-      ],
+      "id": "PKM-10265831375168",
+      "name": "ミュウツーex",
+      "changed": true,
+      "notes": [],
       "before": {
-        "nowPrice": 900,
+        "nowPrice": 6000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur070055sm9a-2-9080932.jpg?v=1784217672"
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/RyzzeQgOXJjsS4G4cbEn9x0zJgek8TDUKDI995fS.webp?v=1790245581"
       },
       "after": {
-        "nowPrice": 900,
+        "nowPrice": 5500,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur070055sm9a-2-9080932.jpg?v=1784217672"
-      }
-    },
-    {
-      "id": "PKM-9015785423168",
-      "name": "アローラキュウコンGX",
-      "changed": false,
-      "notes": [
-        "sale failed: PKM-9015785423168 sale HTTP 503"
-      ],
-      "before": {
-        "nowPrice": 2500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr053050sm7b-2-7224405.jpg?v=1784221993"
-      },
-      "after": {
-        "nowPrice": 2500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr053050sm7b-2-7224405.jpg?v=1784221993"
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/RyzzeQgOXJjsS4G4cbEn9x0zJgek8TDUKDI995fS.webp?v=1790245581"
       }
     }
   ]

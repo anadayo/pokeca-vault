@@ -1511,7 +1511,7 @@
     "setCode": "OP14",
     "cardNo": "OP14-112",
     "rarity": "SPカード SP（OP14）",
-    "buyPrice": 30000,
+    "buyPrice": 35000,
     "nowPrice": 39800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP14-112_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP14-112/",
@@ -1530,7 +1530,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 39800,
-        "buy_price": 30000,
+        "buy_price": 35000,
         "source_count": 1
       }
     ]
@@ -2055,7 +2055,7 @@
     "setCode": "OP13",
     "cardNo": "OP13-031",
     "rarity": "SPカード SP（OP15）",
-    "buyPrice": 16000,
+    "buyPrice": 15000,
     "nowPrice": 24800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP13-031_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP13-031/",
@@ -2074,7 +2074,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 24800,
-        "buy_price": 16000,
+        "buy_price": 15000,
         "source_count": 1
       }
     ]
@@ -2375,7 +2375,7 @@
     "setCode": "OP16",
     "cardNo": "OP16-116",
     "rarity": "R パラレル",
-    "buyPrice": 12000,
+    "buyPrice": 11000,
     "nowPrice": 14800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP16-116_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP16-116/",
@@ -2394,7 +2394,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 14800,
-        "buy_price": 12000,
+        "buy_price": 11000,
         "source_count": 1
       }
     ]
@@ -2503,7 +2503,7 @@
     "setCode": "OP14",
     "cardNo": "OP14-041",
     "rarity": "L パラレル",
-    "buyPrice": 10000,
+    "buyPrice": 9000,
     "nowPrice": 12800,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP14-041_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP14-041/",
@@ -2522,7 +2522,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 12800,
-        "buy_price": 10000,
+        "buy_price": 9000,
         "source_count": 1
       }
     ]
@@ -3047,7 +3047,7 @@
     "setCode": "EB02",
     "cardNo": "EB02-052",
     "rarity": "SPカード SP（OP15）",
-    "buyPrice": 8000,
+    "buyPrice": 9000,
     "nowPrice": 9980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB02-052_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB02-052/",
@@ -3066,7 +3066,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 9980,
-        "buy_price": 8000,
+        "buy_price": 9000,
         "source_count": 1
       }
     ]
@@ -3207,7 +3207,7 @@
     "setCode": "EB04",
     "cardNo": "EB04-007",
     "rarity": "SR パラレル",
-    "buyPrice": 7000,
+    "buyPrice": 6500,
     "nowPrice": 9980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB04-007_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB04-007/",
@@ -3226,7 +3226,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 9980,
-        "buy_price": 7000,
+        "buy_price": 6500,
         "source_count": 1
       }
     ]
@@ -3239,7 +3239,7 @@
     "setCode": "EB04",
     "cardNo": "EB04-058",
     "rarity": "SR パラレル",
-    "buyPrice": 7000,
+    "buyPrice": 6500,
     "nowPrice": 8780,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB04-058_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB04-058/",
@@ -3258,7 +3258,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 8780,
-        "buy_price": 7000,
+        "buy_price": 6500,
         "source_count": 1
       }
     ]
@@ -3655,7 +3655,7 @@
     "setCode": "OP14",
     "cardNo": "OP14-112",
     "rarity": "SR パラレル",
-    "buyPrice": 6000,
+    "buyPrice": 5500,
     "nowPrice": 5980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP14-112_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP14-112/",
@@ -3674,7 +3674,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 5980,
-        "buy_price": 6000,
+        "buy_price": 5500,
         "source_count": 1
       }
     ]
@@ -3719,7 +3719,7 @@
     "setCode": "OP15",
     "cardNo": "OP15-116",
     "rarity": "R パラレル",
-    "buyPrice": 5500,
+    "buyPrice": 6000,
     "nowPrice": 9980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP15-116_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP15-116/",
@@ -3738,7 +3738,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 9980,
-        "buy_price": 5500,
+        "buy_price": 6000,
         "source_count": 1
       }
     ]
@@ -3783,7 +3783,7 @@
     "setCode": "OP16",
     "cardNo": "OP16-022",
     "rarity": "L パラレル",
-    "buyPrice": 5500,
+    "buyPrice": 5000,
     "nowPrice": 5280,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP16-022_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP16-022/",
@@ -3802,7 +3802,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 5280,
-        "buy_price": 5500,
+        "buy_price": 5000,
         "source_count": 1
       }
     ]
@@ -4711,7 +4711,7 @@
     "setCode": "OP15",
     "cardNo": "OP15-078",
     "rarity": "SR パラレル",
-    "buyPrice": 3800,
+    "buyPrice": 3500,
     "nowPrice": 4580,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP15-078_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP15-078/",
@@ -4730,7 +4730,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 4580,
-        "buy_price": 3800,
+        "buy_price": 3500,
         "source_count": 1
       }
     ]
@@ -5607,7 +5607,7 @@
     "setCode": "EB04",
     "cardNo": "EB04-007",
     "rarity": "SR",
-    "buyPrice": 3000,
+    "buyPrice": 2800,
     "nowPrice": 3980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB04-007",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB04-007/",
@@ -5626,7 +5626,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 3980,
-        "buy_price": 3000,
+        "buy_price": 2800,
         "source_count": 1
       }
     ]
@@ -5671,7 +5671,7 @@
     "setCode": "OP16",
     "cardNo": "OP16-032",
     "rarity": "SR パラレル",
-    "buyPrice": 3000,
+    "buyPrice": 2800,
     "nowPrice": 3480,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP16-032_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP16-032/",
@@ -5690,7 +5690,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 3480,
-        "buy_price": 3000,
+        "buy_price": 2800,
         "source_count": 1
       }
     ]
@@ -5735,7 +5735,7 @@
     "setCode": "OP14",
     "cardNo": "OP14-104",
     "rarity": "SR パラレル",
-    "buyPrice": 3000,
+    "buyPrice": 2800,
     "nowPrice": 2980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP14-104_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP14-104/",
@@ -5754,7 +5754,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 2980,
-        "buy_price": 3000,
+        "buy_price": 2800,
         "source_count": 1
       }
     ]
@@ -5767,7 +5767,7 @@
     "setCode": "EB04",
     "cardNo": "EB04-061",
     "rarity": "SEC パラレル",
-    "buyPrice": 2800,
+    "buyPrice": 2700,
     "nowPrice": 5980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB04-061_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB04-061/",
@@ -5786,7 +5786,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 5980,
-        "buy_price": 2800,
+        "buy_price": 2700,
         "source_count": 1
       }
     ]
@@ -6151,7 +6151,7 @@
     "setCode": "OP15",
     "cardNo": "OP15-058",
     "rarity": "L パラレル",
-    "buyPrice": 2500,
+    "buyPrice": 2300,
     "nowPrice": 3180,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP15-058_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP15-058/",
@@ -6170,7 +6170,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 3180,
-        "buy_price": 2500,
+        "buy_price": 2300,
         "source_count": 1
       }
     ]
@@ -6215,7 +6215,7 @@
     "setCode": "OP17",
     "cardNo": "OP17-020",
     "rarity": "L パラレル",
-    "buyPrice": 2500,
+    "buyPrice": 2400,
     "nowPrice": 2980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP17-020_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP17-020/",
@@ -6234,7 +6234,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 2980,
-        "buy_price": 2500,
+        "buy_price": 2400,
         "source_count": 1
       }
     ]
@@ -6663,7 +6663,7 @@
     "setCode": "OP03",
     "cardNo": "OP03-078",
     "rarity": "SPカード SP（OP07）",
-    "buyPrice": 2000,
+    "buyPrice": 2500,
     "nowPrice": 2780,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP03-078_p2",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP03-078/",
@@ -6682,7 +6682,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 2780,
-        "buy_price": 2000,
+        "buy_price": 2500,
         "source_count": 1
       }
     ]
@@ -6727,7 +6727,7 @@
     "setCode": "OP15",
     "cardNo": "OP15-119",
     "rarity": "SEC パラレル",
-    "buyPrice": 2000,
+    "buyPrice": 2200,
     "nowPrice": 2780,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP15-119_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP15-119/",
@@ -6746,7 +6746,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 2780,
-        "buy_price": 2000,
+        "buy_price": 2200,
         "source_count": 1
       }
     ]
@@ -7367,7 +7367,7 @@
     "setCode": "OP15",
     "cardNo": "OP15-022",
     "rarity": "L パラレル",
-    "buyPrice": 1800,
+    "buyPrice": 1700,
     "nowPrice": 2380,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP15-022_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP15-022/",
@@ -7386,7 +7386,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 2380,
-        "buy_price": 1800,
+        "buy_price": 1700,
         "source_count": 1
       }
     ]
@@ -7431,7 +7431,7 @@
     "setCode": "EB04",
     "cardNo": "EB04-002",
     "rarity": "R パラレル",
-    "buyPrice": 1800,
+    "buyPrice": 1700,
     "nowPrice": 1980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB04-002_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB04-002/",
@@ -7450,7 +7450,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 1980,
-        "buy_price": 1800,
+        "buy_price": 1700,
         "source_count": 1
       }
     ]
@@ -7463,7 +7463,7 @@
     "setCode": "EB04",
     "cardNo": "EB04-038",
     "rarity": "SR パラレル",
-    "buyPrice": 1700,
+    "buyPrice": 1800,
     "nowPrice": 3480,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB04-038_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB04-038/",
@@ -7482,7 +7482,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 3480,
-        "buy_price": 1700,
+        "buy_price": 1800,
         "source_count": 1
       }
     ]
@@ -8039,7 +8039,7 @@
     "setCode": "OP17",
     "cardNo": "OP17-058",
     "rarity": "L パラレル",
-    "buyPrice": 1500,
+    "buyPrice": 1400,
     "nowPrice": 1880,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP17-058_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP17-058/",
@@ -8058,7 +8058,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 1880,
-        "buy_price": 1500,
+        "buy_price": 1400,
         "source_count": 1
       }
     ]
@@ -8103,7 +8103,7 @@
     "setCode": "OP14",
     "cardNo": "OP14-120",
     "rarity": "SEC",
-    "buyPrice": 1500,
+    "buyPrice": 1400,
     "nowPrice": 1780,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP14-120",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP14-120/",
@@ -8122,7 +8122,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 1780,
-        "buy_price": 1500,
+        "buy_price": 1400,
         "source_count": 1
       }
     ]
@@ -8295,7 +8295,7 @@
     "setCode": "PRB02",
     "cardNo": "PRB02-012",
     "rarity": "R パラレル",
-    "buyPrice": 1400,
+    "buyPrice": 1500,
     "nowPrice": 2180,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/PRB02-012_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/PRB02-012/",
@@ -8314,7 +8314,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 2180,
-        "buy_price": 1400,
+        "buy_price": 1500,
         "source_count": 1
       }
     ]
@@ -8679,7 +8679,7 @@
     "setCode": "OP15",
     "cardNo": "OP15-078",
     "rarity": "SR",
-    "buyPrice": 1300,
+    "buyPrice": 1200,
     "nowPrice": 1680,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP15-078",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP15-078/",
@@ -8698,7 +8698,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 1680,
-        "buy_price": 1300,
+        "buy_price": 1200,
         "source_count": 1
       }
     ]
@@ -8711,7 +8711,7 @@
     "setCode": "OP12",
     "cardNo": "OP12-040",
     "rarity": "L パラレル",
-    "buyPrice": 1300,
+    "buyPrice": 1500,
     "nowPrice": 1380,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP12-040_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP12-040/",
@@ -8730,7 +8730,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 1380,
-        "buy_price": 1300,
+        "buy_price": 1500,
         "source_count": 1
       }
     ]
@@ -8967,7 +8967,7 @@
     "setCode": "EB04",
     "cardNo": "EB04-061",
     "rarity": "SEC",
-    "buyPrice": 1200,
+    "buyPrice": 1100,
     "nowPrice": 1480,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB04-061",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB04-061/",
@@ -8986,7 +8986,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 1480,
-        "buy_price": 1200,
+        "buy_price": 1100,
         "source_count": 1
       }
     ]
@@ -9063,7 +9063,7 @@
     "setCode": "OP12",
     "cardNo": "OP12-041",
     "rarity": "L パラレル",
-    "buyPrice": 1200,
+    "buyPrice": 1400,
     "nowPrice": 1480,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP12-041_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP12-041/",
@@ -9082,7 +9082,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 1480,
-        "buy_price": 1200,
+        "buy_price": 1400,
         "source_count": 1
       }
     ]
@@ -9127,7 +9127,7 @@
     "setCode": "OP14",
     "cardNo": "OP14-060",
     "rarity": "L パラレル",
-    "buyPrice": 1100,
+    "buyPrice": 1300,
     "nowPrice": 1980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP14-060_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP14-060/",
@@ -9146,7 +9146,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 1980,
-        "buy_price": 1100,
+        "buy_price": 1300,
         "source_count": 1
       }
     ]
@@ -9479,7 +9479,7 @@
     "setCode": "OP11",
     "cardNo": "OP11-070",
     "rarity": "SR パラレル",
-    "buyPrice": 1000,
+    "buyPrice": 1100,
     "nowPrice": 1780,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP11-070_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP11-070/",
@@ -9498,7 +9498,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 1780,
-        "buy_price": 1000,
+        "buy_price": 1100,
         "source_count": 1
       }
     ]
@@ -9639,7 +9639,7 @@
     "setCode": "OP11",
     "cardNo": "OP11-062",
     "rarity": "L パラレル",
-    "buyPrice": 1000,
+    "buyPrice": 1200,
     "nowPrice": 1480,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP11-062_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP11-062/",
@@ -9658,7 +9658,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 1480,
-        "buy_price": 1000,
+        "buy_price": 1200,
         "source_count": 1
       }
     ]
@@ -9703,7 +9703,7 @@
     "setCode": "OP16",
     "cardNo": "OP16-014",
     "rarity": "R パラレル",
-    "buyPrice": 1000,
+    "buyPrice": 900,
     "nowPrice": 1480,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP16-014_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP16-014/",
@@ -9722,7 +9722,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 1480,
-        "buy_price": 1000,
+        "buy_price": 900,
         "source_count": 1
       }
     ]
@@ -9831,7 +9831,7 @@
     "setCode": "OP16",
     "cardNo": "OP16-021",
     "rarity": "R パラレル",
-    "buyPrice": 1000,
+    "buyPrice": 900,
     "nowPrice": 1380,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP16-021_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP16-021/",
@@ -9850,7 +9850,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 1380,
-        "buy_price": 1000,
+        "buy_price": 900,
         "source_count": 1
       }
     ]
@@ -9991,7 +9991,7 @@
     "setCode": "OP17",
     "cardNo": "OP17-061",
     "rarity": "R パラレル",
-    "buyPrice": 1000,
+    "buyPrice": 900,
     "nowPrice": 980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP17-061_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP17-061/",
@@ -10010,7 +10010,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 980,
-        "buy_price": 1000,
+        "buy_price": 900,
         "source_count": 1
       }
     ]
@@ -10375,7 +10375,7 @@
     "setCode": "OP09",
     "cardNo": "OP09-081",
     "rarity": "L パラレル",
-    "buyPrice": 800,
+    "buyPrice": 900,
     "nowPrice": 1280,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP09-081_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP09-081/",
@@ -10394,7 +10394,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 1280,
-        "buy_price": 800,
+        "buy_price": 900,
         "source_count": 1
       }
     ]
@@ -10503,8 +10503,8 @@
     "setCode": "OP14",
     "cardNo": "OP14-033",
     "rarity": "SR パラレル",
-    "buyPrice": 900,
-    "nowPrice": 1180,
+    "buyPrice": 800,
+    "nowPrice": 2480,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP14-033_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP14-033/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP14-033/",
@@ -10521,8 +10521,8 @@
       },
       {
         "date": "2026-10-19",
-        "sale_price": 1180,
-        "buy_price": 900,
+        "sale_price": 2480,
+        "buy_price": 800,
         "source_count": 1
       }
     ]
@@ -11303,7 +11303,7 @@
     "setCode": "OP17",
     "cardNo": "OP17-005",
     "rarity": "SR パラレル",
-    "buyPrice": 800,
+    "buyPrice": 700,
     "nowPrice": 1280,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP17-005_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP17-005/",
@@ -11322,7 +11322,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 1280,
-        "buy_price": 800,
+        "buy_price": 700,
         "source_count": 1
       }
     ]
@@ -11559,8 +11559,8 @@
     "setCode": "OP14",
     "cardNo": "OP14-069",
     "rarity": "SR パラレル",
-    "buyPrice": 700,
-    "nowPrice": 980,
+    "buyPrice": 900,
+    "nowPrice": 1480,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP14-069_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP14-069/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP14-069/",
@@ -11577,8 +11577,8 @@
       },
       {
         "date": "2026-10-19",
-        "sale_price": 980,
-        "buy_price": 700,
+        "sale_price": 1480,
+        "buy_price": 900,
         "source_count": 1
       }
     ]
@@ -11591,7 +11591,7 @@
     "setCode": "OP16",
     "cardNo": "OP16-041",
     "rarity": "L パラレル",
-    "buyPrice": 700,
+    "buyPrice": 600,
     "nowPrice": 980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP16-041_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP16-041/",
@@ -11610,7 +11610,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 980,
-        "buy_price": 700,
+        "buy_price": 600,
         "source_count": 1
       }
     ]
@@ -11815,7 +11815,7 @@
     "setCode": "EB04",
     "cardNo": "EB04-022",
     "rarity": "R パラレル",
-    "buyPrice": 700,
+    "buyPrice": 600,
     "nowPrice": 780,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB04-022_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB04-022/",
@@ -11834,7 +11834,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 780,
-        "buy_price": 700,
+        "buy_price": 600,
         "source_count": 1
       }
     ]
@@ -11912,7 +11912,7 @@
     "cardNo": "OP10-082",
     "rarity": "SR パラレル",
     "buyPrice": 700,
-    "nowPrice": 780,
+    "nowPrice": 1480,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP10-082_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP10-082/",
     "buyUrl": "https://wanpicagraph.com/op/cards/OP10-082/",
@@ -11929,7 +11929,7 @@
       },
       {
         "date": "2026-10-19",
-        "sale_price": 780,
+        "sale_price": 1480,
         "buy_price": 700,
         "source_count": 1
       }
@@ -12039,7 +12039,7 @@
     "setCode": "OP15",
     "cardNo": "OP15-001",
     "rarity": "L パラレル",
-    "buyPrice": 700,
+    "buyPrice": 600,
     "nowPrice": 720,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP15-001_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP15-001/",
@@ -12058,7 +12058,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 720,
-        "buy_price": 700,
+        "buy_price": 600,
         "source_count": 1
       }
     ]
@@ -14375,7 +14375,7 @@
     "setCode": "OP16",
     "cardNo": "OP16-048",
     "rarity": "SR パラレル",
-    "buyPrice": 400,
+    "buyPrice": 350,
     "nowPrice": 980,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP16-048_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP16-048/",
@@ -14394,7 +14394,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 980,
-        "buy_price": 400,
+        "buy_price": 350,
         "source_count": 1
       }
     ]
@@ -14503,7 +14503,7 @@
     "setCode": "OP10",
     "cardNo": "OP10-058",
     "rarity": "SR パラレル",
-    "buyPrice": 400,
+    "buyPrice": 500,
     "nowPrice": 780,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP10-058_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP10-058/",
@@ -14522,7 +14522,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 780,
-        "buy_price": 400,
+        "buy_price": 500,
         "source_count": 1
       }
     ]
@@ -14983,7 +14983,7 @@
     "setCode": "EB04",
     "cardNo": "EB04-032",
     "rarity": "R",
-    "buyPrice": 400,
+    "buyPrice": 350,
     "nowPrice": 580,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/EB04-032",
     "saleUrl": "https://wanpicagraph.com/op/cards/EB04-032/",
@@ -15002,7 +15002,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 580,
-        "buy_price": 400,
+        "buy_price": 350,
         "source_count": 1
       }
     ]
@@ -15143,7 +15143,7 @@
     "setCode": "OP09",
     "cardNo": "OP09-050",
     "rarity": "R パラレル",
-    "buyPrice": 400,
+    "buyPrice": 350,
     "nowPrice": 580,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP09-050_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP09-050/",
@@ -15162,7 +15162,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 580,
-        "buy_price": 400,
+        "buy_price": 350,
         "source_count": 1
       }
     ]
@@ -15271,7 +15271,7 @@
     "setCode": "OP15",
     "cardNo": "OP15-008",
     "rarity": "SR パラレル",
-    "buyPrice": 400,
+    "buyPrice": 300,
     "nowPrice": 580,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP15-008_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP15-008/",
@@ -15290,7 +15290,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 580,
-        "buy_price": 400,
+        "buy_price": 300,
         "source_count": 1
       }
     ]
@@ -15367,7 +15367,7 @@
     "setCode": "OP15",
     "cardNo": "OP15-003",
     "rarity": "R パラレル",
-    "buyPrice": 400,
+    "buyPrice": 350,
     "nowPrice": 520,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP15-003_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP15-003/",
@@ -15386,7 +15386,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 520,
-        "buy_price": 400,
+        "buy_price": 350,
         "source_count": 1
       }
     ]
@@ -15943,7 +15943,7 @@
     "setCode": "OP09",
     "cardNo": "OP09-048",
     "rarity": "SR パラレル",
-    "buyPrice": 350,
+    "buyPrice": 400,
     "nowPrice": 780,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP09-048_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP09-048/",
@@ -15962,7 +15962,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 780,
-        "buy_price": 350,
+        "buy_price": 400,
         "source_count": 1
       }
     ]

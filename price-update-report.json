@@ -3,67 +3,35 @@
   "total": 500,
   "report": [
     {
-      "id": "PKM-10265831342400",
-      "name": "ゲンガーex",
+      "id": "PKM-10135645421888",
+      "name": "メガシャンデラex",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 7000,
+        "nowPrice": 1300,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/Yo1vIPy63XdgOkDOPPdJy6ZKFRXpWOQg1E8IEH54.webp?v=1790245563"
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar113081m5-9626078.webp?v=1781503452"
       },
       "after": {
-        "nowPrice": 6500,
+        "nowPrice": 1400,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/Yo1vIPy63XdgOkDOPPdJy6ZKFRXpWOQg1E8IEH54.webp?v=1790245563"
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar113081m5-9626078.webp?v=1781503452"
       }
     },
     {
-      "id": "PKM-10265831768384",
-      "name": "ニンフィアex",
+      "id": "PKM-10135644733760",
+      "name": "グラジオの決戦",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 4000,
+        "nowPrice": 1000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/5WhFNlg1GxSEWwxXWQITQamXrBTX41Hzn1f8RzGz.webp?v=1790245554"
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/sar116081m5-7348333.webp?v=1781503453"
       },
       "after": {
-        "nowPrice": 3800,
+        "nowPrice": 1100,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/5WhFNlg1GxSEWwxXWQITQamXrBTX41Hzn1f8RzGz.webp?v=1790245554"
-      }
-    },
-    {
-      "id": "PKM-10265831407936",
-      "name": "ボーマンダex",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/VHh7R26qkQBlpO0Gvwm5AI2i2pNm6fM6SV3GzGv7.webp?v=1790245554"
-      },
-      "after": {
-        "nowPrice": 2400,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/VHh7R26qkQBlpO0Gvwm5AI2i2pNm6fM6SV3GzGv7.webp?v=1790245554"
-      }
-    },
-    {
-      "id": "PKM-10265831309632",
-      "name": "ホゲータex",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/8Cu7QeFMwUpQNQ7VYpt3LuDC9hKVrj9HbRmLl3X3.webp?v=1790245542"
-      },
-      "after": {
-        "nowPrice": 2100,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/8Cu7QeFMwUpQNQ7VYpt3LuDC9hKVrj9HbRmLl3X3.webp?v=1790245542"
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/sar116081m5-7348333.webp?v=1781503453"
       }
     },
     {
@@ -157,19 +125,19 @@
       }
     },
     {
-      "id": "PKM-10265831375168",
-      "name": "ミュウツーex",
+      "id": "PKM-10218576642368",
+      "name": "メガレックウザex",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 6000,
+        "nowPrice": 52000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/RyzzeQgOXJjsS4G4cbEn9x0zJgek8TDUKDI995fS.webp?v=1790245581"
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exmur113076m6-2-7630691.webp?v=1786944551"
       },
       "after": {
-        "nowPrice": 5500,
+        "nowPrice": 50000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/RyzzeQgOXJjsS4G4cbEn9x0zJgek8TDUKDI995fS.webp?v=1790245581"
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exmur113076m6-2-7630691.webp?v=1786944551"
       }
     }
   ]

@@ -15943,7 +15943,7 @@
     "setCode": "OP09",
     "cardNo": "OP09-048",
     "rarity": "SR パラレル",
-    "buyPrice": 400,
+    "buyPrice": 500,
     "nowPrice": 780,
     "image": "https://optcg-api.arjunbansal-ai.workers.dev/images/OP09-048_p1",
     "saleUrl": "https://wanpicagraph.com/op/cards/OP09-048/",
@@ -15962,7 +15962,7 @@
       {
         "date": "2026-10-19",
         "sale_price": 780,
-        "buy_price": 400,
+        "buy_price": 500,
         "source_count": 1
       }
     ]

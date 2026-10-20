@@ -1,37 +1,149 @@
 {
-  "date": "2026-10-19",
+  "date": "2026-10-20",
   "total": 500,
   "report": [
     {
-      "id": "PKM-10135645421888",
-      "name": "メガシャンデラex",
+      "id": "PKM-10265831473472",
+      "name": "ミュウex",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 1300,
+        "nowPrice": 8500,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar113081m5-9626078.webp?v=1781503452"
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/J07bZvfRr0dAyB3Rs2eU5eAjjM4eWbjKyRSJ0VUf.webp?v=1790245550"
       },
       "after": {
-        "nowPrice": 1400,
+        "nowPrice": 8000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar113081m5-9626078.webp?v=1781503452"
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/J07bZvfRr0dAyB3Rs2eU5eAjjM4eWbjKyRSJ0VUf.webp?v=1790245550"
       }
     },
     {
-      "id": "PKM-10135644733760",
-      "name": "グラジオの決戦",
+      "id": "PKM-10265832587584",
+      "name": "ピカチュウex",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 1000,
+        "nowPrice": 7000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/sar116081m5-7348333.webp?v=1781503453"
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/m9qerCWHz1F4sx9Wi04KMfyGg1VEK7oO9XHGVwDx.webp?v=1790245542"
       },
       "after": {
-        "nowPrice": 1100,
+        "nowPrice": 6500,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/sar116081m5-7348333.webp?v=1781503453"
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/m9qerCWHz1F4sx9Wi04KMfyGg1VEK7oO9XHGVwDx.webp?v=1790245542"
+      }
+    },
+    {
+      "id": "PKM-10265831342400",
+      "name": "ゲンガーex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 6500,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/Yo1vIPy63XdgOkDOPPdJy6ZKFRXpWOQg1E8IEH54.webp?v=1790245563"
+      },
+      "after": {
+        "nowPrice": 6000,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/Yo1vIPy63XdgOkDOPPdJy6ZKFRXpWOQg1E8IEH54.webp?v=1790245563"
+      }
+    },
+    {
+      "id": "PKM-10265831964992",
+      "name": "ミュウツーex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 6000,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/h7yniJDEBNz4W1Q2Bwv3o6YftzYwR0mvM1dNTVOy.webp?v=1790245542"
+      },
+      "after": {
+        "nowPrice": 5500,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/h7yniJDEBNz4W1Q2Bwv3o6YftzYwR0mvM1dNTVOy.webp?v=1790245542"
+      }
+    },
+    {
+      "id": "PKM-10265831768384",
+      "name": "ニンフィアex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3800,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/5WhFNlg1GxSEWwxXWQITQamXrBTX41Hzn1f8RzGz.webp?v=1790245554"
+      },
+      "after": {
+        "nowPrice": 3500,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/5WhFNlg1GxSEWwxXWQITQamXrBTX41Hzn1f8RzGz.webp?v=1790245554"
+      }
+    },
+    {
+      "id": "PKM-10265831244096",
+      "name": "ジラーチex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3500,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/uM3mloYrualaX4hwQ9fmkhilvVAlZtUE8DT3soV0.webp?v=1790245560"
+      },
+      "after": {
+        "nowPrice": 3200,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/uM3mloYrualaX4hwQ9fmkhilvVAlZtUE8DT3soV0.webp?v=1790245560"
+      }
+    },
+    {
+      "id": "PKM-10265832358208",
+      "name": "ゲッコウガex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 2200,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/dT8hxvCdlO1EuhI2Le2QX6oloUBaMuVlwjf3Wrc2.webp?v=1790245558"
+      },
+      "after": {
+        "nowPrice": 2000,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/dT8hxvCdlO1EuhI2Le2QX6oloUBaMuVlwjf3Wrc2.webp?v=1790245558"
+      }
+    },
+    {
+      "id": "PKM-10265831407936",
+      "name": "ボーマンダex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 2400,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/VHh7R26qkQBlpO0Gvwm5AI2i2pNm6fM6SV3GzGv7.webp?v=1790245554"
+      },
+      "after": {
+        "nowPrice": 2100,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/VHh7R26qkQBlpO0Gvwm5AI2i2pNm6fM6SV3GzGv7.webp?v=1790245554"
+      }
+    },
+    {
+      "id": "PKM-10265831309632",
+      "name": "ホゲータex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 2100,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/8Cu7QeFMwUpQNQ7VYpt3LuDC9hKVrj9HbRmLl3X3.webp?v=1790245542"
+      },
+      "after": {
+        "nowPrice": 2000,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/8Cu7QeFMwUpQNQ7VYpt3LuDC9hKVrj9HbRmLl3X3.webp?v=1790245542"
       }
     },
     {
@@ -125,19 +237,35 @@
       }
     },
     {
-      "id": "PKM-10218576642368",
-      "name": "メガレックウザex",
+      "id": "PKM-10265831145792",
+      "name": "ミュウex",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 52000,
+        "nowPrice": 8000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exmur113076m6-2-7630691.webp?v=1786944551"
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/ACu1O2ema2S9WQGKlZKUm3gyloSut4hMGL7CAicJ.webp?v=1790245572"
       },
       "after": {
-        "nowPrice": 50000,
+        "nowPrice": 7500,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exmur113076m6-2-7630691.webp?v=1786944551"
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/ACu1O2ema2S9WQGKlZKUm3gyloSut4hMGL7CAicJ.webp?v=1790245572"
+      }
+    },
+    {
+      "id": "PKM-10265831375168",
+      "name": "ミュウツーex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 5500,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/RyzzeQgOXJjsS4G4cbEn9x0zJgek8TDUKDI995fS.webp?v=1790245581"
+      },
+      "after": {
+        "nowPrice": 5000,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/RyzzeQgOXJjsS4G4cbEn9x0zJgek8TDUKDI995fS.webp?v=1790245581"
       }
     }
   ]

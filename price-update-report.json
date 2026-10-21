@@ -8,13 +8,13 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 77000,
+        "nowPrice": 76000,
         "buyPrice": 47000,
         "image": "https://www.hareruya2.com/cdn/shop/products/exsar347190sv4a-2-4176366.jpg?v=1784188272"
       },
       "after": {
         "nowPrice": 76000,
-        "buyPrice": 47000,
+        "buyPrice": 50000,
         "image": "https://www.hareruya2.com/cdn/shop/products/exsar347190sv4a-2-4176366.jpg?v=1784188272"
       }
     },
@@ -24,13 +24,13 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 59000,
+        "nowPrice": 60000,
         "buyPrice": 38000,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar217187sv8a-2039551.webp?v=1781516466"
       },
       "after": {
         "nowPrice": 60000,
-        "buyPrice": 38000,
+        "buyPrice": 44000,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar217187sv8a-2039551.webp?v=1781516466"
       }
     },
@@ -40,13 +40,13 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 58000,
+        "nowPrice": 60000,
         "buyPrice": 37000,
         "image": "https://www.hareruya2.com/cdn/shop/products/exsar201165sv2a-2-7751871.jpg?v=1784189529"
       },
       "after": {
         "nowPrice": 60000,
-        "buyPrice": 37000,
+        "buyPrice": 40000,
         "image": "https://www.hareruya2.com/cdn/shop/products/exsar201165sv2a-2-7751871.jpg?v=1784189529"
       }
     },
@@ -56,13 +56,13 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 43000,
+        "nowPrice": 42000,
         "buyPrice": 27000,
         "image": "https://www.hareruya2.com/cdn/shop/products/exsar090066sv5a-3587541.jpg?v=1781526315"
       },
       "after": {
         "nowPrice": 42000,
-        "buyPrice": 27000,
+        "buyPrice": 28000,
         "image": "https://www.hareruya2.com/cdn/shop/products/exsar090066sv5a-3587541.jpg?v=1781526315"
       }
     },
@@ -72,14 +72,110 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 38000,
+        "nowPrice": 37000,
         "buyPrice": 26000,
         "image": "https://www.hareruya2.com/cdn/shop/products/exsar205165sv2a-2-6411840.jpg?v=1784189472"
       },
       "after": {
         "nowPrice": 37000,
-        "buyPrice": 26000,
+        "buyPrice": 27000,
         "image": "https://www.hareruya2.com/cdn/shop/products/exsar205165sv2a-2-6411840.jpg?v=1784189472"
+      }
+    },
+    {
+      "id": "SV2D-096",
+      "name": "ナンジャモ",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 34000,
+        "buyPrice": 22000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar096071sv2d-2-3739384.jpg?v=1784192290"
+      },
+      "after": {
+        "nowPrice": 34000,
+        "buyPrice": 23000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar096071sv2d-2-3739384.jpg?v=1784192290"
+      }
+    },
+    {
+      "id": "SV4a-349",
+      "name": "リザードンex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 31000,
+        "buyPrice": 19000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar349190sv4a-2-1867817.jpg?v=1784189053"
+      },
+      "after": {
+        "nowPrice": 31000,
+        "buyPrice": 20000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar349190sv4a-2-1867817.jpg?v=1784189053"
+      }
+    },
+    {
+      "id": "SV2a-202",
+      "name": "カメックスex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 18000,
+        "buyPrice": 10000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar202165sv2a-2-9864350.jpg?v=1784189473"
+      },
+      "after": {
+        "nowPrice": 18000,
+        "buyPrice": 11000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar202165sv2a-2-9864350.jpg?v=1784189473"
+      }
+    },
+    {
+      "id": "SV9-126",
+      "name": "リーリエのピッピex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 17000,
+        "buyPrice": 10000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar126100sv9-1588067.webp?v=1781515991"
+      },
+      "after": {
+        "nowPrice": 17000,
+        "buyPrice": 12000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar126100sv9-1588067.webp?v=1781515991"
+      }
+    },
+    {
+      "id": "SV7a-091",
+      "name": "ルチアのアピール",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 16000,
+        "buyPrice": 10000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/sar091064sv7a-7396981.jpg?v=1781520856"
+      },
+      "after": {
+        "nowPrice": 16000,
+        "buyPrice": 11000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/sar091064sv7a-7396981.jpg?v=1781520856"
+      }
+    },
+    {
+      "id": "SV2a-200",
+      "name": "フシギバナex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 15000,
+        "buyPrice": 9000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar200165sv2a-2-8170691.jpg?v=1784189529"
+      },
+      "after": {
+        "nowPrice": 15000,
+        "buyPrice": 10000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar200165sv2a-2-8170691.jpg?v=1784189529"
       }
     },
     {
@@ -88,13 +184,13 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 15000,
+        "nowPrice": 14000,
         "buyPrice": 6000,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar212187sv8a-6263707.webp?v=1781516467"
       },
       "after": {
         "nowPrice": 14000,
-        "buyPrice": 6000,
+        "buyPrice": 7000,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar212187sv8a-6263707.webp?v=1781516467"
       }
     },
@@ -104,14 +200,174 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 12000,
+        "nowPrice": 13000,
         "buyPrice": 8500,
         "image": "https://www.hareruya2.com/cdn/shop/products/exsar204165sv2a-2-1665282.jpg?v=1784189472"
       },
       "after": {
         "nowPrice": 13000,
-        "buyPrice": 8500,
+        "buyPrice": 9500,
         "image": "https://www.hareruya2.com/cdn/shop/products/exsar204165sv2a-2-1665282.jpg?v=1784189472"
+      }
+    },
+    {
+      "id": "SV4a-348",
+      "name": "サーナイトex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 12000,
+        "buyPrice": 7500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar348190sv4a-2-3553258.jpg?v=1784189054"
+      },
+      "after": {
+        "nowPrice": 12000,
+        "buyPrice": 8000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar348190sv4a-2-3553258.jpg?v=1784189054"
+      }
+    },
+    {
+      "id": "S12a-212",
+      "name": "リザードンVSTAR",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 11000,
+        "buyPrice": 6000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar212172s12a-2-4898095.jpg?v=1784197389"
+      },
+      "after": {
+        "nowPrice": 11000,
+        "buyPrice": 6500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar212172s12a-2-4898095.jpg?v=1784197389"
+      }
+    },
+    {
+      "id": "S12a-221",
+      "name": "ミュウツーVSTAR",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 11000,
+        "buyPrice": 7000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar221172s12a-2-2992610.jpg?v=1784197273"
+      },
+      "after": {
+        "nowPrice": 11000,
+        "buyPrice": 7500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar221172s12a-2-2992610.jpg?v=1784197273"
+      }
+    },
+    {
+      "id": "SV5a-092",
+      "name": "サザレ",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 9400,
+        "buyPrice": 6000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar092066sv5a-5944878.jpg?v=1781526314"
+      },
+      "after": {
+        "nowPrice": 9400,
+        "buyPrice": 6500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar092066sv5a-5944878.jpg?v=1781526314"
+      }
+    },
+    {
+      "id": "SV1V-105",
+      "name": "ミモザ",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 8800,
+        "buyPrice": 5000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar105078sv1v-2-9463985.jpg?v=1784195708"
+      },
+      "after": {
+        "nowPrice": 8800,
+        "buyPrice": 5300,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar105078sv1v-2-9463985.jpg?v=1784195708"
+      }
+    },
+    {
+      "id": "PKM-10265831473472",
+      "name": "ミュウex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 8000,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/J07bZvfRr0dAyB3Rs2eU5eAjjM4eWbjKyRSJ0VUf.webp?v=1790245550"
+      },
+      "after": {
+        "nowPrice": 7500,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/J07bZvfRr0dAyB3Rs2eU5eAjjM4eWbjKyRSJ0VUf.webp?v=1790245550"
+      }
+    },
+    {
+      "id": "PKM-10265831899456",
+      "name": "ピカチュウex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 9000,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/BMSwX8NwfHqe1YgtifXULq7bvVEZWhUqEf6NYUzI.webp?v=1790245547"
+      },
+      "after": {
+        "nowPrice": 8000,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/BMSwX8NwfHqe1YgtifXULq7bvVEZWhUqEf6NYUzI.webp?v=1790245547"
+      }
+    },
+    {
+      "id": "SV9-125",
+      "name": "ナンジャモのハラバリーex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 8400,
+        "buyPrice": 5800,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar125100sv9-1673437.webp?v=1781515991"
+      },
+      "after": {
+        "nowPrice": 8400,
+        "buyPrice": 6000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar125100sv9-1673437.webp?v=1781515991"
+      }
+    },
+    {
+      "id": "SV8a-205",
+      "name": "シャワーズex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 7500,
+        "buyPrice": 5000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar205187sv8a-1461712.webp?v=1781516468"
+      },
+      "after": {
+        "nowPrice": 7500,
+        "buyPrice": 5500,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar205187sv8a-1461712.webp?v=1781516468"
+      }
+    },
+    {
+      "id": "SV4M-090",
+      "name": "チルタリスex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 7400,
+        "buyPrice": 4800,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar090066sv4m-2-3275055.jpg?v=1784189292"
+      },
+      "after": {
+        "nowPrice": 7400,
+        "buyPrice": 5000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar090066sv4m-2-3275055.jpg?v=1784189292"
       }
     },
     {
@@ -120,14 +376,286 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 7400,
+        "nowPrice": 7500,
         "buyPrice": 4800,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar200187sv8a-2161840.webp?v=1781516290"
       },
       "after": {
         "nowPrice": 7500,
-        "buyPrice": 4800,
+        "buyPrice": 5500,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar200187sv8a-2161840.webp?v=1781516290"
+      }
+    },
+    {
+      "id": "PKM-10265832587584",
+      "name": "ピカチュウex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 6500,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/m9qerCWHz1F4sx9Wi04KMfyGg1VEK7oO9XHGVwDx.webp?v=1790245542"
+      },
+      "after": {
+        "nowPrice": 6000,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/m9qerCWHz1F4sx9Wi04KMfyGg1VEK7oO9XHGVwDx.webp?v=1790245542"
+      }
+    },
+    {
+      "id": "SV2a-203",
+      "name": "フーディンex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 7000,
+        "buyPrice": 4500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar203165sv2a-2-3502155.jpg?v=1784189472"
+      },
+      "after": {
+        "nowPrice": 7000,
+        "buyPrice": 5000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar203165sv2a-2-3502155.jpg?v=1784189472"
+      }
+    },
+    {
+      "id": "SV8a-206",
+      "name": "グレイシアex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 7000,
+        "buyPrice": 4800,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar206187sv8a-8111613.webp?v=1781516289"
+      },
+      "after": {
+        "nowPrice": 7000,
+        "buyPrice": 5000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar206187sv8a-8111613.webp?v=1781516289"
+      }
+    },
+    {
+      "id": "S12a-211",
+      "name": "リザードンV",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 6800,
+        "buyPrice": 3500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsar211172s12a-2-9209973.jpg?v=1784197388"
+      },
+      "after": {
+        "nowPrice": 6800,
+        "buyPrice": 4000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsar211172s12a-2-9209973.jpg?v=1784197388"
+      }
+    },
+    {
+      "id": "SV2a-206",
+      "name": "エリカの招待",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 6500,
+        "buyPrice": 4200,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar206165sv2a-2-1888118.jpg?v=1784189471"
+      },
+      "after": {
+        "nowPrice": 6500,
+        "buyPrice": 4500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar206165sv2a-2-1888118.jpg?v=1784189471"
+      }
+    },
+    {
+      "id": "SV4a-350",
+      "name": "ナンジャモ",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 6500,
+        "buyPrice": 4500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar350190sv4a-2-1547820.jpg?v=1784189053"
+      },
+      "after": {
+        "nowPrice": 6500,
+        "buyPrice": 4200,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar350190sv4a-2-1547820.jpg?v=1784189053"
+      }
+    },
+    {
+      "id": "SV8a-211",
+      "name": "エーフィex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 6500,
+        "buyPrice": 4000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar211187sv8a-5876148.webp?v=1781516289"
+      },
+      "after": {
+        "nowPrice": 6500,
+        "buyPrice": 4500,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar211187sv8a-5876148.webp?v=1781516289"
+      }
+    },
+    {
+      "id": "SV9-127",
+      "name": "Nのゾロアークex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 6000,
+        "buyPrice": 3500,
+        "image": "https://www.hareruya2.com/cdn/shop/files/nexsar127100sv9-7349903.webp?v=1781515991"
+      },
+      "after": {
+        "nowPrice": 6000,
+        "buyPrice": 4000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/nexsar127100sv9-7349903.webp?v=1781515991"
+      }
+    },
+    {
+      "id": "S12a-210",
+      "name": "リーフィアVSTAR",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 5800,
+        "buyPrice": 2500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar210172s12a-2-4905367.jpg?v=1784197389"
+      },
+      "after": {
+        "nowPrice": 5800,
+        "buyPrice": 3000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar210172s12a-2-4905367.jpg?v=1784197389"
+      }
+    },
+    {
+      "id": "SV5K-097",
+      "name": "マツバの確信",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 5800,
+        "buyPrice": 3700,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar097071sv5k-2995996.jpg?v=1781544848"
+      },
+      "after": {
+        "nowPrice": 5800,
+        "buyPrice": 4000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar097071sv5k-2995996.jpg?v=1781544848"
+      }
+    },
+    {
+      "id": "SV8a-202",
+      "name": "ブースターex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 5500,
+        "buyPrice": 3500,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar202187sv8a-2976024.webp?v=1781516469"
+      },
+      "after": {
+        "nowPrice": 5500,
+        "buyPrice": 3800,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar202187sv8a-2976024.webp?v=1781516469"
+      }
+    },
+    {
+      "id": "S12a-217",
+      "name": "グレイシアVSTAR",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 5300,
+        "buyPrice": 3000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar217172s12a-2-5261850.jpg?v=1784197387"
+      },
+      "after": {
+        "nowPrice": 5300,
+        "buyPrice": 3500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar217172s12a-2-5261850.jpg?v=1784197387"
+      }
+    },
+    {
+      "id": "PKM-10265831964992",
+      "name": "ミュウツーex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 5500,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/h7yniJDEBNz4W1Q2Bwv3o6YftzYwR0mvM1dNTVOy.webp?v=1790245542"
+      },
+      "after": {
+        "nowPrice": 4500,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/h7yniJDEBNz4W1Q2Bwv3o6YftzYwR0mvM1dNTVOy.webp?v=1790245542"
+      }
+    },
+    {
+      "id": "SV3a-085",
+      "name": "ガブリアスex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 4500,
+        "buyPrice": 3000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar085062sv3a-2-4742368.jpg?v=1784188510"
+      },
+      "after": {
+        "nowPrice": 4500,
+        "buyPrice": 3100,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar085062sv3a-2-4742368.jpg?v=1784188510"
+      }
+    },
+    {
+      "id": "SV3a-089",
+      "name": "パラソルおねえさん",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 4500,
+        "buyPrice": 3000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar089062sv3a-2-6233392.jpg?v=1784188510"
+      },
+      "after": {
+        "nowPrice": 4500,
+        "buyPrice": 3100,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar089062sv3a-2-6233392.jpg?v=1784188510"
+      }
+    },
+    {
+      "id": "SV7-129",
+      "name": "バウッツェルex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 4500,
+        "buyPrice": 3100,
+        "image": "https://www.hareruya2.com/cdn/shop/files/GFltzc7OGtUfhRMdO5gzVYCz21AbXGo3doGwiYma.webp?v=1721285468"
+      },
+      "after": {
+        "nowPrice": 4500,
+        "buyPrice": 3200,
+        "image": "https://www.hareruya2.com/cdn/shop/files/GFltzc7OGtUfhRMdO5gzVYCz21AbXGo3doGwiYma.webp?v=1721285468"
+      }
+    },
+    {
+      "id": "SV4K-090",
+      "name": "トドロクツキex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 4300,
+        "buyPrice": 2700,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar090066sv4k-2-3754363.jpg?v=1784188689"
+      },
+      "after": {
+        "nowPrice": 4300,
+        "buyPrice": 2900,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar090066sv4k-2-3754363.jpg?v=1784188689"
       }
     },
     {
@@ -136,14 +664,238 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 4300,
+        "nowPrice": 4400,
         "buyPrice": 2900,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar129100sv9-8642891.webp?v=1781515990"
       },
       "after": {
         "nowPrice": 4400,
-        "buyPrice": 2900,
+        "buyPrice": 3100,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar129100sv9-8642891.webp?v=1781515990"
+      }
+    },
+    {
+      "id": "S12a-215",
+      "name": "スイクンV",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 4300,
+        "buyPrice": 2500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsar215172s12a-2-2478827.jpg?v=1784197387"
+      },
+      "after": {
+        "nowPrice": 4300,
+        "buyPrice": 3000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsar215172s12a-2-2478827.jpg?v=1784197387"
+      }
+    },
+    {
+      "id": "SV8a-209",
+      "name": "サンダースex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 4200,
+        "buyPrice": 2000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar209187sv8a-9743010.webp?v=1781516467"
+      },
+      "after": {
+        "nowPrice": 4200,
+        "buyPrice": 2500,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar209187sv8a-9743010.webp?v=1781516467"
+      }
+    },
+    {
+      "id": "SV3a-087",
+      "name": "サーフゴーex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 4000,
+        "buyPrice": 2800,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar087062sv3a-2-8955206.jpg?v=1784188510"
+      },
+      "after": {
+        "nowPrice": 4000,
+        "buyPrice": 2900,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar087062sv3a-2-8955206.jpg?v=1784188510"
+      }
+    },
+    {
+      "id": "SV5K-094",
+      "name": "ウネルミナモex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 4000,
+        "buyPrice": 2800,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar094071sv5k-1681139.jpg?v=1781544791"
+      },
+      "after": {
+        "nowPrice": 4000,
+        "buyPrice": 2900,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar094071sv5k-1681139.jpg?v=1781544791"
+      }
+    },
+    {
+      "id": "SV8a-223",
+      "name": "イーブイex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 4000,
+        "buyPrice": 2000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar223187sv8a-6067890.webp?v=1781516290"
+      },
+      "after": {
+        "nowPrice": 4000,
+        "buyPrice": 2500,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar223187sv8a-6067890.webp?v=1781516290"
+      }
+    },
+    {
+      "id": "SV4M-089",
+      "name": "テツノブジンex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3900,
+        "buyPrice": 2600,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar089066sv4m-2-4367603.jpg?v=1784189293"
+      },
+      "after": {
+        "nowPrice": 3900,
+        "buyPrice": 2700,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar089066sv4m-2-4367603.jpg?v=1784189293"
+      }
+    },
+    {
+      "id": "SV5K-093",
+      "name": "ウガツホムラex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3900,
+        "buyPrice": 2700,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar093071sv5k-5639021.jpg?v=1781544791"
+      },
+      "after": {
+        "nowPrice": 3900,
+        "buyPrice": 2800,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar093071sv5k-5639021.jpg?v=1781544791"
+      }
+    },
+    {
+      "id": "SV7-130",
+      "name": "テラパゴスex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3500,
+        "buyPrice": 2300,
+        "image": "https://www.hareruya2.com/cdn/shop/files/6iZnRVw5PPZf20n7n4n0hnTkdQJYNFrGEHYM9HYO.webp?v=1721285477"
+      },
+      "after": {
+        "nowPrice": 3500,
+        "buyPrice": 2400,
+        "image": "https://www.hareruya2.com/cdn/shop/files/6iZnRVw5PPZf20n7n4n0hnTkdQJYNFrGEHYM9HYO.webp?v=1721285477"
+      }
+    },
+    {
+      "id": "SV7-131",
+      "name": "タロ",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3500,
+        "buyPrice": 2100,
+        "image": "https://www.hareruya2.com/cdn/shop/files/RJL9Egu2GZkSQGWdmM8wcHp3o4MjaKWHf3ZWm6nb.webp?v=1721285463"
+      },
+      "after": {
+        "nowPrice": 3500,
+        "buyPrice": 2400,
+        "image": "https://www.hareruya2.com/cdn/shop/files/RJL9Egu2GZkSQGWdmM8wcHp3o4MjaKWHf3ZWm6nb.webp?v=1721285463"
+      }
+    },
+    {
+      "id": "S12a-223",
+      "name": "デオキシスVSTAR",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3500,
+        "buyPrice": 2000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar223172s12a-2-8226470.jpg?v=1784193190"
+      },
+      "after": {
+        "nowPrice": 3500,
+        "buyPrice": 2400,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar223172s12a-2-8226470.jpg?v=1784193190"
+      }
+    },
+    {
+      "id": "SV5a-093",
+      "name": "スイレンのお世話",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3400,
+        "buyPrice": 2300,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar093066sv5a-1891733.jpg?v=1781526316"
+      },
+      "after": {
+        "nowPrice": 3400,
+        "buyPrice": 2400,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar093066sv5a-1891733.jpg?v=1781526316"
+      }
+    },
+    {
+      "id": "SV7-127",
+      "name": "カミツオロチex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3300,
+        "buyPrice": 2000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/xvPKE1gZIGVHuAj83FcrcB8pNoONHEz4Xi2lbocO.webp?v=1721285473"
+      },
+      "after": {
+        "nowPrice": 3300,
+        "buyPrice": 2100,
+        "image": "https://www.hareruya2.com/cdn/shop/files/xvPKE1gZIGVHuAj83FcrcB8pNoONHEz4Xi2lbocO.webp?v=1721285473"
+      }
+    },
+    {
+      "id": "SV8a-224",
+      "name": "イーブイex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3300,
+        "buyPrice": 1000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar224187sv8a-4098892.webp?v=1781516290"
+      },
+      "after": {
+        "nowPrice": 3300,
+        "buyPrice": 1900,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar224187sv8a-4098892.webp?v=1781516290"
+      }
+    },
+    {
+      "id": "SV7a-089",
+      "name": "アローラナッシーex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3000,
+        "buyPrice": 2000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar089064sv7a-6115824.jpg?v=1781520856"
+      },
+      "after": {
+        "nowPrice": 3000,
+        "buyPrice": 2100,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar089064sv7a-6115824.jpg?v=1781520856"
       }
     },
     {
@@ -152,14 +904,126 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 2900,
+        "nowPrice": 3000,
         "buyPrice": 2100,
         "image": "https://www.hareruya2.com/cdn/shop/products/sar207165sv2a-2-9092703.jpg?v=1784189471"
       },
       "after": {
         "nowPrice": 3000,
-        "buyPrice": 2100,
+        "buyPrice": 2200,
         "image": "https://www.hareruya2.com/cdn/shop/products/sar207165sv2a-2-9092703.jpg?v=1784189471"
+      }
+    },
+    {
+      "id": "SV3-136",
+      "name": "ピジョットex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 2900,
+        "buyPrice": 2000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar136108sv3-2-4299142.jpg?v=1784192411"
+      },
+      "after": {
+        "nowPrice": 2900,
+        "buyPrice": 2100,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsar136108sv3-2-4299142.jpg?v=1784192411"
+      }
+    },
+    {
+      "id": "SV3a-088",
+      "name": "チリ",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 2900,
+        "buyPrice": 2000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar088062sv3a-2-3926929.jpg?v=1784188509"
+      },
+      "after": {
+        "nowPrice": 2900,
+        "buyPrice": 2100,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar088062sv3a-2-3926929.jpg?v=1784188509"
+      }
+    },
+    {
+      "id": "SV4a-354",
+      "name": "ボタン",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 2800,
+        "buyPrice": 1800,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar354190sv4a-2-6176353.jpg?v=1784190367"
+      },
+      "after": {
+        "nowPrice": 2800,
+        "buyPrice": 1900,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar354190sv4a-2-6176353.jpg?v=1784190367"
+      }
+    },
+    {
+      "id": "S12a-226",
+      "name": "ルカリオVSTAR",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 2700,
+        "buyPrice": 1000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar226172s12a-2-4729358.jpg?v=1784193137"
+      },
+      "after": {
+        "nowPrice": 2700,
+        "buyPrice": 1500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar226172s12a-2-4729358.jpg?v=1784193137"
+      }
+    },
+    {
+      "id": "SV8a-218",
+      "name": "トドロクツキex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 2400,
+        "buyPrice": 1000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar218187sv8a-1544165.webp?v=1781516289"
+      },
+      "after": {
+        "nowPrice": 2400,
+        "buyPrice": 1500,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar218187sv8a-1544165.webp?v=1781516289"
+      }
+    },
+    {
+      "id": "PKM-10265831407936",
+      "name": "ボーマンダex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 2100,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/VHh7R26qkQBlpO0Gvwm5AI2i2pNm6fM6SV3GzGv7.webp?v=1790245554"
+      },
+      "after": {
+        "nowPrice": 2000,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/VHh7R26qkQBlpO0Gvwm5AI2i2pNm6fM6SV3GzGv7.webp?v=1790245554"
+      }
+    },
+    {
+      "id": "SV4K-092",
+      "name": "メロコ",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 2000,
+        "buyPrice": 1300,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar092066sv4k-2-3456137.jpg?v=1784188631"
+      },
+      "after": {
+        "nowPrice": 2000,
+        "buyPrice": 1400,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar092066sv4k-2-3456137.jpg?v=1784188631"
       }
     },
     {
@@ -168,13 +1032,13 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 1900,
+        "nowPrice": 2000,
         "buyPrice": 1300,
         "image": "https://www.hareruya2.com/cdn/shop/products/exsar088066sv4m-2-7991755.jpg?v=1784189293"
       },
       "after": {
         "nowPrice": 2000,
-        "buyPrice": 1300,
+        "buyPrice": 1400,
         "image": "https://www.hareruya2.com/cdn/shop/products/exsar088066sv4m-2-7991755.jpg?v=1784189293"
       }
     },
@@ -184,14 +1048,158 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 1900,
+        "nowPrice": 2000,
         "buyPrice": 1300,
         "image": "https://www.hareruya2.com/cdn/shop/products/sar096071sv5k-3037107.jpg?v=1781544847"
       },
       "after": {
         "nowPrice": 2000,
-        "buyPrice": 1300,
+        "buyPrice": 1400,
         "image": "https://www.hareruya2.com/cdn/shop/products/sar096071sv5k-3037107.jpg?v=1781544847"
+      }
+    },
+    {
+      "id": "S12a-216",
+      "name": "ネオラントV",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 2000,
+        "buyPrice": 1000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsar216172s12a-2-4738272.jpg?v=1784197387"
+      },
+      "after": {
+        "nowPrice": 2000,
+        "buyPrice": 1400,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsar216172s12a-2-4738272.jpg?v=1784197387"
+      }
+    },
+    {
+      "id": "SV7-128",
+      "name": "デンチュラex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 1700,
+        "buyPrice": 1000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/ipGLkzgR1BbXKQgjgumuE4GzkYd9zTIQh2UTvYjQ.webp?v=1721285483"
+      },
+      "after": {
+        "nowPrice": 1700,
+        "buyPrice": 1100,
+        "image": "https://www.hareruya2.com/cdn/shop/files/ipGLkzgR1BbXKQgjgumuE4GzkYd9zTIQh2UTvYjQ.webp?v=1721285483"
+      }
+    },
+    {
+      "id": "SV7a-088",
+      "name": "ブリジュラスex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 1700,
+        "buyPrice": 1100,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar088064sv7a-3368822.jpg?v=1781521515"
+      },
+      "after": {
+        "nowPrice": 1700,
+        "buyPrice": 1200,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar088064sv7a-3368822.jpg?v=1781521515"
+      }
+    },
+    {
+      "id": "SV8a-203",
+      "name": "ソウブレイズex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 1700,
+        "buyPrice": 1000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar203187sv8a-6156475.webp?v=1781516289"
+      },
+      "after": {
+        "nowPrice": 1700,
+        "buyPrice": 1100,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar203187sv8a-6156475.webp?v=1781516289"
+      }
+    },
+    {
+      "id": "SV7-132",
+      "name": "ブライア",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 1500,
+        "buyPrice": 900,
+        "image": "https://www.hareruya2.com/cdn/shop/files/J3r0H38xoyEfRPR12n1BV3oHt8sceqBs13tx0IRA.webp?v=1721285472"
+      },
+      "after": {
+        "nowPrice": 1500,
+        "buyPrice": 1000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/J3r0H38xoyEfRPR12n1BV3oHt8sceqBs13tx0IRA.webp?v=1721285472"
+      }
+    },
+    {
+      "id": "SV4M-092",
+      "name": "リップ",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 1400,
+        "buyPrice": 850,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar092066sv4m-2-5412852.jpg?v=1784189291"
+      },
+      "after": {
+        "nowPrice": 1400,
+        "buyPrice": 900,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar092066sv4m-2-5412852.jpg?v=1784189291"
+      }
+    },
+    {
+      "id": "SV8a-207",
+      "name": "イルカマンex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 1200,
+        "buyPrice": 500,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar207187sv8a-8073514.webp?v=1781516468"
+      },
+      "after": {
+        "nowPrice": 1200,
+        "buyPrice": 600,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar207187sv8a-8073514.webp?v=1781516468"
+      }
+    },
+    {
+      "id": "SV8a-221",
+      "name": "ドラパルトex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 1200,
+        "buyPrice": 300,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar221187sv8a-3474396.webp?v=1781516467"
+      },
+      "after": {
+        "nowPrice": 1200,
+        "buyPrice": 500,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar221187sv8a-3474396.webp?v=1781516467"
+      }
+    },
+    {
+      "id": "S12a-242",
+      "name": "ツツジ",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 1000,
+        "buyPrice": 500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar242172s12a-2-7052650.jpg?v=1784193021"
+      },
+      "after": {
+        "nowPrice": 1000,
+        "buyPrice": 550,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sar242172s12a-2-7052650.jpg?v=1784193021"
       }
     },
     {
@@ -200,23 +1208,21 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 950,
+        "nowPrice": 1000,
         "buyPrice": 650,
         "image": "https://www.hareruya2.com/cdn/shop/products/sar137108sv3-2-6854145.jpg?v=1784192410"
       },
       "after": {
         "nowPrice": 1000,
-        "buyPrice": 650,
+        "buyPrice": 700,
         "image": "https://www.hareruya2.com/cdn/shop/products/sar137108sv3-2-6854145.jpg?v=1784192410"
       }
     },
     {
       "id": "SV4a-353",
       "name": "ペパー",
-      "changed": false,
-      "notes": [
-        "buy failed: SV4a-353 buy HTTP 404"
-      ],
+      "changed": true,
+      "notes": [],
       "before": {
         "nowPrice": 950,
         "buyPrice": 300,
@@ -224,17 +1230,31 @@
       },
       "after": {
         "nowPrice": 950,
-        "buyPrice": 300,
+        "buyPrice": 650,
         "image": "https://www.hareruya2.com/cdn/shop/products/sar353190sv4a-2-3666117.jpg?v=1784190368"
+      }
+    },
+    {
+      "id": "SV8a-230",
+      "name": "スグリ",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 950,
+        "buyPrice": 450,
+        "image": "https://www.hareruya2.com/cdn/shop/files/sar230187sv8a-9436679.webp?v=1781516288"
+      },
+      "after": {
+        "nowPrice": 950,
+        "buyPrice": 500,
+        "image": "https://www.hareruya2.com/cdn/shop/files/sar230187sv8a-9436679.webp?v=1781516288"
       }
     },
     {
       "id": "SV8a-222",
       "name": "タケルライコex",
-      "changed": false,
-      "notes": [
-        "buy failed: SV8a-222 buy HTTP 404"
-      ],
+      "changed": true,
+      "notes": [],
       "before": {
         "nowPrice": 900,
         "buyPrice": 400,
@@ -242,7 +1262,7 @@
       },
       "after": {
         "nowPrice": 900,
-        "buyPrice": 400,
+        "buyPrice": 550,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar222187sv8a-3639101.webp?v=1781516466"
       }
     },
@@ -301,323 +1321,227 @@
       }
     },
     {
-      "id": "PKM-9016126210368",
-      "name": "ミュウツー&ミュウGX",
+      "id": "S12a-261",
+      "name": "ギラティナVSTAR",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 71000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxur222173sm12a-2-5986157.jpg?v=1784213591"
+        "nowPrice": 28000,
+        "buyPrice": 19000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarur261172s12a-2-5074937.jpg?v=1784193849"
       },
       "after": {
-        "nowPrice": 85000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxur222173sm12a-2-5986157.jpg?v=1784213591"
+        "nowPrice": 28000,
+        "buyPrice": 20000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarur261172s12a-2-5074937.jpg?v=1784193849"
       }
     },
     {
-      "id": "PKM-9015733584192",
-      "name": "基本炎エネルギー",
+      "id": "S12a-262",
+      "name": "アルセウスVSTAR",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 32000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur064051sm3h-2-3982356.jpg?v=1784224452"
+        "nowPrice": 18000,
+        "buyPrice": 10000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarur262172s12a-2-5950338.jpg?v=1784193611"
       },
       "after": {
-        "nowPrice": 35000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur064051sm3h-2-3982356.jpg?v=1784224452"
+        "nowPrice": 18000,
+        "buyPrice": 12000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarur262172s12a-2-5950338.jpg?v=1784193611"
       }
     },
     {
-      "id": "PKM-9015692722496",
-      "name": "ネストボール",
+      "id": "S12a-260",
+      "name": "オリジンディアルガVSTAR",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 15000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur071060sm1m-2-9345430.jpg?v=1784226130"
+        "nowPrice": 9500,
+        "buyPrice": 5500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarur260172s12a-2-7273862.jpg?v=1784194028"
       },
       "after": {
-        "nowPrice": 16000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur071060sm1m-2-9345430.jpg?v=1784226130"
+        "nowPrice": 9500,
+        "buyPrice": 6000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarur260172s12a-2-7273862.jpg?v=1784194028"
       }
     },
     {
-      "id": "PKM-9015854596416",
-      "name": "ポケギア3.0",
+      "id": "SV3-139",
+      "name": "リザードンex",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 11000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/30ur069055sm9a-2-1134142.jpg?v=1784217674"
+        "nowPrice": 9500,
+        "buyPrice": 6400,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exur139108sv3-2-8578502.jpg?v=1784192410"
       },
       "after": {
-        "nowPrice": 12000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/30ur069055sm9a-2-1134142.jpg?v=1784217674"
+        "nowPrice": 9500,
+        "buyPrice": 6500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exur139108sv3-2-8578502.jpg?v=1784192410"
       }
     },
     {
-      "id": "PKM-9015759110464",
-      "name": "レスキュータンカ",
+      "id": "SV8a-236",
+      "name": "ピカチュウex",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 10000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur063051sm3n-2-5812392.jpg?v=1784222954"
+        "nowPrice": 8000,
+        "buyPrice": 4000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exur236187sv8a-2224183.webp?v=1781516288"
       },
       "after": {
-        "nowPrice": 9000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur063051sm3n-2-5812392.jpg?v=1784222954"
+        "nowPrice": 8000,
+        "buyPrice": 4500,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exur236187sv8a-2224183.webp?v=1781516288"
       }
     },
     {
-      "id": "PKM-9015765926208",
-      "name": "レインボーエネルギー",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 8400,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur086066sm6b-2-7734900.jpg?v=1784222593"
-      },
-      "after": {
-        "nowPrice": 10000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur086066sm6b-2-7734900.jpg?v=1784222593"
-      }
-    },
-    {
-      "id": "PKM-9015698161984",
-      "name": "基本鋼エネルギー",
+      "id": "PKM-10265831145792",
+      "name": "ミュウex",
       "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 7500,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur073060sm1s-2-5859539.jpg?v=1784226008"
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/ACu1O2ema2S9WQGKlZKUm3gyloSut4hMGL7CAicJ.webp?v=1790245572"
       },
       "after": {
-        "nowPrice": 9000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur073060sm1s-2-5859539.jpg?v=1784226008"
-      }
-    },
-    {
-      "id": "PKM-9015811080512",
-      "name": "カプ・テテフGX",
-      "changed": true,
-      "notes": [],
-      "before": {
         "nowPrice": 6800,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxur247150sm8b-2-6520481.jpg?v=1784220427"
-      },
-      "after": {
-        "nowPrice": 9000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxur247150sm8b-2-6520481.jpg?v=1784220427"
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/ACu1O2ema2S9WQGKlZKUm3gyloSut4hMGL7CAicJ.webp?v=1790245572"
       }
     },
     {
-      "id": "PKM-9015758586176",
-      "name": "スーパーポケモン回収",
+      "id": "PKM-10265831375168",
+      "name": "ミュウツーex",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 5900,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur062051sm3n-2-8304592.jpg?v=1784223008"
-      },
-      "after": {
         "nowPrice": 5000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur062051sm3n-2-8304592.jpg?v=1784223008"
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/RyzzeQgOXJjsS4G4cbEn9x0zJgek8TDUKDI995fS.webp?v=1790245581"
+      },
+      "after": {
+        "nowPrice": 4500,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/RyzzeQgOXJjsS4G4cbEn9x0zJgek8TDUKDI995fS.webp?v=1790245581"
       }
     },
     {
-      "id": "PKM-9062746390848",
+      "id": "SV2a-208",
+      "name": "ミュウex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 5500,
+        "buyPrice": 2000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exur208165sv2a-2-8163306.jpg?v=1784189471"
+      },
+      "after": {
+        "nowPrice": 5500,
+        "buyPrice": 3500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exur208165sv2a-2-8163306.jpg?v=1784189471"
+      }
+    },
+    {
+      "id": "SV4K-095",
+      "name": "基本悪エネルギー",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 4500,
+        "buyPrice": 2700,
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur095066sv4k-2-6428175.jpg?v=1784188629"
+      },
+      "after": {
+        "nowPrice": 4500,
+        "buyPrice": 3000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur095066sv4k-2-6428175.jpg?v=1784188629"
+      }
+    },
+    {
+      "id": "SV1S-108",
+      "name": "基本闘エネルギー",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3100,
+        "buyPrice": 2100,
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur108078sv1s-2-8806548.jpg?v=1784193550"
+      },
+      "after": {
+        "nowPrice": 3100,
+        "buyPrice": 2200,
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur108078sv1s-2-8806548.jpg?v=1784193550"
+      }
+    },
+    {
+      "id": "SV9-130",
+      "name": "ナンジャモのハラバリーex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3100,
+        "buyPrice": 2000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exur130100sv9-6471761.webp?v=1781515990"
+      },
+      "after": {
+        "nowPrice": 3100,
+        "buyPrice": 2100,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exur130100sv9-6471761.webp?v=1781515990"
+      }
+    },
+    {
+      "id": "SV3a-090",
+      "name": "ガブリアスex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3000,
+        "buyPrice": 2100,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exur090062sv3a-2-5104360.jpg?v=1784188509"
+      },
+      "after": {
+        "nowPrice": 3000,
+        "buyPrice": 2200,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exur090062sv3a-2-5104360.jpg?v=1784188509"
+      }
+    },
+    {
+      "id": "SV4M-095",
       "name": "基本鋼エネルギー",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 5800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur062050sm4s-2140550.jpg?v=1781543892"
-      },
-      "after": {
-        "nowPrice": 6000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur062050sm4s-2140550.jpg?v=1781543892"
-      }
-    },
-    {
-      "id": "PKM-9015839555904",
-      "name": "ポケモン通信",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 5300,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur116095sm9-2-5626560.jpg?v=1784218629"
-      },
-      "after": {
-        "nowPrice": 5200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur116095sm9-2-5626560.jpg?v=1784218629"
-      }
-    },
-    {
-      "id": "PKM-9015840047424",
-      "name": "せせらぎの丘",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 5300,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur118095sm9-2-3407628.jpg?v=1784218572"
-      },
-      "after": {
-        "nowPrice": 4000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur118095sm9-2-3407628.jpg?v=1784218572"
-      }
-    },
-    {
-      "id": "PKM-9015811277120",
-      "name": "ウルトラネクロズマGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 5200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxur250150sm8b-2-8782188.jpg?v=1784220369"
-      },
-      "after": {
-        "nowPrice": 6000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxur250150sm8b-2-8782188.jpg?v=1784220369"
-      }
-    },
-    {
-      "id": "PKM-9016061428032",
-      "name": "リーリエのピッピ人形",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 4400,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur074049sm11b-2-2677404.jpg?v=1784214189"
-      },
-      "after": {
-        "nowPrice": 5000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur074049sm11b-2-2677404.jpg?v=1784214189"
-      }
-    },
-    {
-      "id": "PKM-9015762125120",
-      "name": "ユニットエネルギー草炎水",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/ur078066sm5s-2-2084149.jpg?v=1784222951"
+        "nowPrice": 3000,
+        "buyPrice": 2000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur095066sv4m-2-5104817.jpg?v=1784189231"
       },
       "after": {
         "nowPrice": 3000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/ur078066sm5s-2-2084149.jpg?v=1784222951"
+        "buyPrice": 2100,
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur095066sv4m-2-5104817.jpg?v=1784189231"
       }
     },
     {
-      "id": "PKM-9015765696832",
-      "name": "ポケナビ",
+      "id": "S9-125",
+      "name": "アルセウスVSTAR",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 2500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur085066sm6b-2-8623193.jpg?v=1784222594"
+        "nowPrice": 2800,
+        "buyPrice": 1400,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarur125100s9-2-5034847.jpg?v=1784202309"
       },
       "after": {
         "nowPrice": 2800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur085066sm6b-2-8623193.jpg?v=1784222594"
-      }
-    },
-    {
-      "id": "PKM-9015775658304",
-      "name": "ユニットエネルギー雷超鋼",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/ur078066sm5m-2-8327790.jpg?v=1784222420"
-      },
-      "after": {
-        "nowPrice": 2500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/ur078066sm5m-2-8327790.jpg?v=1784222420"
-      }
-    },
-    {
-      "id": "PKM-9015761568064",
-      "name": "ミッシングクローバー",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2100,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur077066sm5s-2-3885377.jpg?v=1784222951"
-      },
-      "after": {
-        "nowPrice": 2800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur077066sm5s-2-3885377.jpg?v=1784222951"
-      }
-    },
-    {
-      "id": "PKM-9015775199552",
-      "name": "エレキパワー",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur071060sm7a-2-7977171.jpg?v=1784222423"
-      },
-      "after": {
-        "nowPrice": 1800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur071060sm7a-2-7977171.jpg?v=1784222423"
-      }
-    },
-    {
-      "id": "PKM-9015733256512",
-      "name": "ムキムキダンベル",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 1900,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur063051sm3h-2-1011777.jpg?v=1784224452"
-      },
-      "after": {
-        "nowPrice": 2500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur063051sm3h-2-1011777.jpg?v=1784224452"
+        "buyPrice": 1900,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarur125100s9-2-5034847.jpg?v=1784202309"
       }
     },
     {
@@ -626,30 +1550,30 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 1900,
+        "nowPrice": 2000,
         "buyPrice": 1300,
         "image": "https://www.hareruya2.com/cdn/shop/products/ur210165sv2a-4471670.jpg?v=1781544071"
       },
       "after": {
         "nowPrice": 2000,
-        "buyPrice": 1300,
+        "buyPrice": 1400,
         "image": "https://www.hareruya2.com/cdn/shop/products/ur210165sv2a-4471670.jpg?v=1781544071"
       }
     },
     {
-      "id": "PKM-9015775625536",
-      "name": "エスケープボード",
+      "id": "SV7-135",
+      "name": "ゼロの大空洞",
       "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 1800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur077066sm5m-2-9714600.jpg?v=1784222420"
+        "buyPrice": 1000,
+        "image": "https://www.hareruya2.com/cdn/shop/files/1VOYijOZP39qMLyqKpgBWYD5mzMSqulI8oRlU33A.webp?v=1721285457"
       },
       "after": {
-        "nowPrice": 2000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur077066sm5m-2-9714600.jpg?v=1784222420"
+        "nowPrice": 1800,
+        "buyPrice": 1100,
+        "image": "https://www.hareruya2.com/cdn/shop/files/1VOYijOZP39qMLyqKpgBWYD5mzMSqulI8oRlU33A.webp?v=1721285457"
       }
     },
     {
@@ -658,110 +1582,14 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 1800,
+        "nowPrice": 1900,
         "buyPrice": 1200,
         "image": "https://www.hareruya2.com/cdn/shop/products/exur100071sv5k-9270364.jpg?v=1781544850"
       },
       "after": {
         "nowPrice": 1900,
-        "buyPrice": 1200,
+        "buyPrice": 1300,
         "image": "https://www.hareruya2.com/cdn/shop/products/exur100071sv5k-9270364.jpg?v=1781544850"
-      }
-    },
-    {
-      "id": "PKM-9015811014976",
-      "name": "カプ・コケコGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 1600,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxur246150sm8b-2-2756646.jpg?v=1784220428"
-      },
-      "after": {
-        "nowPrice": 1800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxur246150sm8b-2-2756646.jpg?v=1784220428"
-      }
-    },
-    {
-      "id": "PKM-9015750394176",
-      "name": "いれかえフロート",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 1400,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur064053sm6a-2-7526852.jpg?v=1784223791"
-      },
-      "after": {
-        "nowPrice": 2000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur064053sm6a-2-7526852.jpg?v=1784223791"
-      }
-    },
-    {
-      "id": "PKM-9015758913856",
-      "name": "ワープエネルギー",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 1300,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur061050sm4s-2-1079386.jpg?v=1784223008"
-      },
-      "after": {
-        "nowPrice": 1900,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur061050sm4s-2-1079386.jpg?v=1784223008"
-      }
-    },
-    {
-      "id": "PKM-9015810883904",
-      "name": "カプ・ブルルGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 1400,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxur244150sm8b-2-9385632.jpg?v=1784220427"
-      },
-      "after": {
-        "nowPrice": 2000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxur244150sm8b-2-9385632.jpg?v=1784220427"
-      }
-    },
-    {
-      "id": "PKM-9015888544064",
-      "name": "リセットスタンプ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 1400,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur068054sm10a-2-4739493.jpg?v=1784216111"
-      },
-      "after": {
-        "nowPrice": 1600,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur068054sm10a-2-4739493.jpg?v=1784216111"
-      }
-    },
-    {
-      "id": "PKM-9016058872128",
-      "name": "タッグコール",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 1300,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur115095sm12-2-9166401.jpg?v=1784214188"
-      },
-      "after": {
-        "nowPrice": 1600,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur115095sm12-2-9166401.jpg?v=1784214188"
       }
     },
     {
@@ -770,1982 +1598,302 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 1300,
+        "nowPrice": 1400,
         "buyPrice": 900,
         "image": "https://www.hareruya2.com/cdn/shop/products/exur106078sv1v-2-1226258.jpg?v=1784195708"
       },
       "after": {
         "nowPrice": 1400,
-        "buyPrice": 900,
+        "buyPrice": 950,
         "image": "https://www.hareruya2.com/cdn/shop/products/exur106078sv1v-2-1226258.jpg?v=1784195708"
       }
     },
     {
-      "id": "PKM-9015853809984",
-      "name": "炎の結晶",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 900,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur114095sm10-2-9580748.jpg?v=1784217730"
-      },
-      "after": {
-        "nowPrice": 1000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur114095sm10-2-9580748.jpg?v=1784217730"
-      }
-    },
-    {
-      "id": "PKM-9015750492480",
-      "name": "竜の鉤爪",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur066053sm6a-2-7588200.jpg?v=1784223791"
-      },
-      "after": {
-        "nowPrice": 1200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur066053sm6a-2-7588200.jpg?v=1784223791"
-      }
-    },
-    {
-      "id": "PKM-9015794630976",
-      "name": "エネポーター",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur108094sm6-2-1274853.jpg?v=1784221569"
-      },
-      "after": {
-        "nowPrice": 1200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur108094sm6-2-1274853.jpg?v=1784221569"
-      }
-    },
-    {
-      "id": "PKM-9015812718912",
-      "name": "デンジャラスドリル",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur064052sm8a-2-9640975.jpg?v=1784220310"
-      },
-      "after": {
-        "nowPrice": 900,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur064052sm8a-2-9640975.jpg?v=1784220310"
-      }
-    },
-    {
-      "id": "PKM-9015890936128",
-      "name": "リサイクルエネルギー",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur069054sm10b-2-7737445.jpg?v=1784216110"
-      },
-      "after": {
-        "nowPrice": 1200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur069054sm10b-2-7737445.jpg?v=1784216110"
-      }
-    },
-    {
-      "id": "PKM-9016069325120",
-      "name": "巨大なカマド",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 700,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur117095sm12-2-5426548.jpg?v=1784213948"
-      },
-      "after": {
-        "nowPrice": 750,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur117095sm12-2-5426548.jpg?v=1784213948"
-      }
-    },
-    {
-      "id": "PKM-9016063885632",
-      "name": "しまめぐりのあかし",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 700,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur116095sm12-2-6803651.jpg?v=1784214187"
-      },
-      "after": {
-        "nowPrice": 600,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur116095sm12-2-6803651.jpg?v=1784214187"
-      }
-    },
-    {
-      "id": "PKM-9015774413120",
-      "name": "あとだしハンマー",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 600,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur109095sm8-2-5317806.jpg?v=1784222425"
-      },
-      "after": {
-        "nowPrice": 750,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur109095sm8-2-5317806.jpg?v=1784222425"
-      }
-    },
-    {
-      "id": "PKM-9015812817216",
-      "name": "メタルゴーグル",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 600,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur065052sm8a-2-6843844.jpg?v=1784220311"
-      },
-      "after": {
-        "nowPrice": 750,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur065052sm8a-2-6843844.jpg?v=1784220311"
-      }
-    },
-    {
-      "id": "PKM-9015888412992",
-      "name": "タッグスイッチ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 600,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur067054sm10a-2-5905807.jpg?v=1784216111"
-      },
-      "after": {
-        "nowPrice": 800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur067054sm10a-2-5905807.jpg?v=1784216111"
-      }
-    },
-    {
-      "id": "PKM-9015854039360",
-      "name": "戒めの祠",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 550,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur115095sm10-2-4369777.jpg?v=1784217730"
-      },
-      "after": {
-        "nowPrice": 750,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur115095sm10-2-4369777.jpg?v=1784217730"
-      }
-    },
-    {
-      "id": "PKM-9015818453312",
-      "name": "レインボーブラシ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur111096sm7-2-5936410.jpg?v=1784220073"
-      },
-      "after": {
-        "nowPrice": 1200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur111096sm7-2-5936410.jpg?v=1784220073"
-      }
-    },
-    {
-      "id": "PKM-9015834837312",
-      "name": "ビーストブリンガー",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur067054sm9b-2-1368306.jpg?v=1784219000"
-      },
-      "after": {
-        "nowPrice": 600,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur067054sm9b-2-1368306.jpg?v=1784219000"
-      }
-    },
-    {
-      "id": "PKM-9015853220160",
-      "name": "電磁レーダー",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur068055sm9a-2-1766317.jpg?v=1784217847"
-      },
-      "after": {
-        "nowPrice": 600,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur068055sm9a-2-1766317.jpg?v=1784217847"
-      }
-    },
-    {
-      "id": "PKM-9015834968384",
-      "name": "メタルコアバリア",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur068054sm9b-2-9974409.jpg?v=1784219000"
-      },
-      "after": {
-        "nowPrice": 750,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur068054sm9b-2-9974409.jpg?v=1784219000"
-      }
-    },
-    {
-      "id": "PKM-9015845421376",
-      "name": "リザードンGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 170000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr209150sm8b-2-8478783.jpg?v=1784218391"
-      },
-      "after": {
-        "nowPrice": 180000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr209150sm8b-2-8478783.jpg?v=1784218391"
-      }
-    },
-    {
-      "id": "PKM-9015856726336",
-      "name": "ブラッキーGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 98000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr229150sm8b-2-2982504.jpg?v=1784217670"
-      },
-      "after": {
-        "nowPrice": 120000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr229150sm8b-2-2982504.jpg?v=1784217670"
-      }
-    },
-    {
-      "id": "PKM-9015788110144",
-      "name": "ニンフィアGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 32000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr238150sm8b-2-6791642.jpg?v=1784221692"
-      },
-      "after": {
-        "nowPrice": 30000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr238150sm8b-2-6791642.jpg?v=1784221692"
-      }
-    },
-    {
-      "id": "PKM-9015852400960",
-      "name": "エーフィGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 20000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr220150sm8b-2-5827137.jpg?v=1784217849"
-      },
-      "after": {
-        "nowPrice": 26000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr220150sm8b-2-5827137.jpg?v=1784217849"
-      }
-    },
-    {
-      "id": "PKM-9015845912896",
-      "name": "レシラムGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 15000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr211150sm8b-2-5704541.jpg?v=1784218390"
-      },
-      "after": {
-        "nowPrice": 14000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr211150sm8b-2-5704541.jpg?v=1784218390"
-      }
-    },
-    {
-      "id": "PKM-9015849222464",
-      "name": "グレイシアGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 9900,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr215150sm8b-2-9545771.jpg?v=1784218387"
-      },
-      "after": {
-        "nowPrice": 9500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr215150sm8b-2-9545771.jpg?v=1784218387"
-      }
-    },
-    {
-      "id": "PKM-9015787749696",
-      "name": "サーナイトGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 8300,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr237150sm8b-2-7401511.jpg?v=1784221990"
-      },
-      "after": {
-        "nowPrice": 8000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr237150sm8b-2-7401511.jpg?v=1784221990"
-      }
-    },
-    {
-      "id": "PKM-9015847846208",
-      "name": "フリーザーGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 7400,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr214150sm8b-2-9744166.jpg?v=1784218390"
-      },
-      "after": {
-        "nowPrice": 9000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr214150sm8b-2-9744166.jpg?v=1784218390"
-      }
-    },
-    {
-      "id": "PKM-9015858921792",
-      "name": "ハッサムGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 7000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr233150sm8b-2-9114493.jpg?v=1784217669"
-      },
-      "after": {
-        "nowPrice": 8000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr233150sm8b-2-9114493.jpg?v=1784217669"
-      }
-    },
-    {
-      "id": "PKM-9015847125312",
-      "name": "アローラキュウコンGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 5000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr213150sm8b-2-8674341.jpg?v=1784218393"
-      },
-      "after": {
-        "nowPrice": 5500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr213150sm8b-2-8674341.jpg?v=1784218393"
-      }
-    },
-    {
-      "id": "PKM-9015858233664",
-      "name": "ゾロアークGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 5000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr231150sm8b-2-2695230.jpg?v=1784217670"
-      },
-      "after": {
-        "nowPrice": 5200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr231150sm8b-2-2695230.jpg?v=1784217670"
-      }
-    },
-    {
-      "id": "PKM-9015788339520",
-      "name": "チルタリスGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 4500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr239150sm8b-2-3563348.jpg?v=1784221692"
-      },
-      "after": {
-        "nowPrice": 5000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr239150sm8b-2-3563348.jpg?v=1784221692"
-      }
-    },
-    {
-      "id": "PKM-9015854399808",
-      "name": "ジガルデGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 3600,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr225150sm8b-2-7971017.jpg?v=1784217729"
-      },
-      "after": {
-        "nowPrice": 4000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr225150sm8b-2-7971017.jpg?v=1784217729"
-      }
-    },
-    {
-      "id": "PKM-9015859380544",
-      "name": "メタグロスGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2900,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr234150sm8b-2-6685354.jpg?v=1784217669"
-      },
-      "after": {
-        "nowPrice": 5000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr234150sm8b-2-6685354.jpg?v=1784217669"
-      }
-    },
-    {
-      "id": "PKM-9015853154624",
-      "name": "ウツロイドGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr222150sm8b-2-1824599.jpg?v=1784217847"
-      },
-      "after": {
-        "nowPrice": 3000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr222150sm8b-2-1824599.jpg?v=1784217847"
-      }
-    },
-    {
-      "id": "PKM-9015858659648",
-      "name": "アクジキングGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr232150sm8b-2-7168725.jpg?v=1784217669"
-      },
-      "after": {
-        "nowPrice": 2500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr232150sm8b-2-7168725.jpg?v=1784217669"
-      }
-    },
-    {
-      "id": "PKM-9015852597568",
-      "name": "ジュペッタGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 1900,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr221150sm8b-2-2585862.jpg?v=1784217847"
-      },
-      "after": {
-        "nowPrice": 2500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr221150sm8b-2-2585862.jpg?v=1784217847"
-      }
-    },
-    {
-      "id": "PKM-9015789453632",
-      "name": "シルヴァディGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 1600,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr242150sm8b-2-1632073.jpg?v=1784221690"
-      },
-      "after": {
-        "nowPrice": 1800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr242150sm8b-2-1632073.jpg?v=1784221690"
-      }
-    },
-    {
-      "id": "PKM-9015855448384",
-      "name": "ルガルガンGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 1700,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr227150sm8b-2-4114539.jpg?v=1784217672"
-      },
-      "after": {
-        "nowPrice": 2500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr227150sm8b-2-4114539.jpg?v=1784217672"
-      }
-    },
-    {
-      "id": "PKM-9015856365888",
-      "name": "マッシブーンGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 1500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr228150sm8b-2-2804470.jpg?v=1784217671"
-      },
-      "after": {
-        "nowPrice": 1600,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr228150sm8b-2-2804470.jpg?v=1784217671"
-      }
-    },
-    {
-      "id": "PKM-9015854924096",
-      "name": "ルガルガンGX",
+      "id": "SV4a-358",
+      "name": "ミライドンex",
       "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 1300,
-        "buyPrice": null,
-        "image": "https://www.hareruya2.com/cdn/shop/products/gxssr226150sm8b-2-5475371.jpg?v=1784217672"
+        "buyPrice": 700,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exur358190sv4a-2-7034439.jpg?v=1784190071"
       },
       "after": {
-        "nowPrice": 2500,
-        "buyPrice": null,
-        "image": "https://www.hareruya2.com/cdn/shop/products/gxssr226150sm8b-2-5475371.jpg?v=1784217672"
+        "nowPrice": 1300,
+        "buyPrice": 800,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exur358190sv4a-2-7034439.jpg?v=1784190071"
       }
     },
     {
-      "id": "PKM-9015790043456",
-      "name": "ジジーロンGX",
+      "id": "SV1S-106",
+      "name": "コライドンex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 1200,
+        "buyPrice": 750,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exur106078sv1s-2-1535946.jpg?v=1784193551"
+      },
+      "after": {
+        "nowPrice": 1200,
+        "buyPrice": 800,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exur106078sv1s-2-1535946.jpg?v=1784193551"
+      }
+    },
+    {
+      "id": "SV5K-099",
+      "name": "ウネルミナモex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 1200,
+        "buyPrice": 800,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exur099071sv5k-9278658.jpg?v=1781544849"
+      },
+      "after": {
+        "nowPrice": 1200,
+        "buyPrice": 850,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exur099071sv5k-9278658.jpg?v=1781544849"
+      }
+    },
+    {
+      "id": "SV4a-360",
+      "name": "コライドンex",
       "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 1000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr243150sm8b-2-7955026.jpg?v=1784221689"
+        "buyPrice": 600,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exur360190sv4a-2-8621024.jpg?v=1784190070"
       },
       "after": {
-        "nowPrice": 1200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxssr243150sm8b-2-7955026.jpg?v=1784221689"
+        "nowPrice": 1000,
+        "buyPrice": 650,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exur360190sv4a-2-8621024.jpg?v=1784190070"
       }
     },
     {
-      "id": "PKM-9015837393216",
-      "name": "ラティアス&ラティオスGX:SA",
+      "id": "SV7-133",
+      "name": "テラパゴスex",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 490000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr105095sm9-2-7054033.jpg?v=1784218869"
+        "nowPrice": 900,
+        "buyPrice": 550,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exur133102sv7-1129289.webp?v=1781523664"
       },
       "after": {
-        "nowPrice": 500000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr105095sm9-2-7054033.jpg?v=1784218869"
+        "nowPrice": 900,
+        "buyPrice": 650,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exur133102sv7-1129289.webp?v=1781523664"
       }
     },
     {
-      "id": "PKM-9015837032768",
-      "name": "ゲンガー&ミミッキュGX:SA",
+      "id": "SV8a-237",
+      "name": "テラパゴスex",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 300000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr103095sm9-2-2885906.jpg?v=1784218872"
+        "nowPrice": 850,
+        "buyPrice": 300,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exur237187sv8a-5735607.webp?v=1781516288"
       },
       "after": {
-        "nowPrice": 320000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr103095sm9-2-2885906.jpg?v=1784218872"
+        "nowPrice": 850,
+        "buyPrice": 500,
+        "image": "https://www.hareruya2.com/cdn/shop/files/exur237187sv8a-5735607.webp?v=1781516288"
       }
     },
     {
-      "id": "PKM-9015836705088",
-      "name": "ピカチュウ&ゼクロムGX:SA",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 300000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr101095sm9-2-5054836.jpg?v=1784218870"
-      },
-      "after": {
-        "nowPrice": 350000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr101095sm9-2-5054836.jpg?v=1784218870"
-      }
-    },
-    {
-      "id": "PKM-9015867572544",
-      "name": "ファイヤー&サンダー&フリーザーGX:SA",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 130000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr060054sm10b-2-7670467.jpg?v=1784216649"
-      },
-      "after": {
-        "nowPrice": 150000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr060054sm10b-2-7670467.jpg?v=1784216649"
-      }
-    },
-    {
-      "id": "PKM-9015847551296",
-      "name": "レシラム&リザードンGX:SA",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 120000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr097095sm10-2-2716683.jpg?v=1784218388"
-      },
-      "after": {
-        "nowPrice": 160000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr097095sm10-2-2716683.jpg?v=1784218388"
-      }
-    },
-    {
-      "id": "PKM-9016019222848",
-      "name": "アルセウス&ディアルガ&パルキアGX:SA",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 120000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr100095sm12-2-1401493.jpg?v=1784214433"
-      },
-      "after": {
-        "nowPrice": 140000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr100095sm12-2-1401493.jpg?v=1784214433"
-      }
-    },
-    {
-      "id": "PKM-9015845060928",
-      "name": "サーナイト&ニンフィアGX:SA",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 110000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr061055sm9a-2-1274946.jpg?v=1784218391"
-      },
-      "after": {
-        "nowPrice": 120000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr061055sm9a-2-1274946.jpg?v=1784218391"
-      }
-    },
-    {
-      "id": "PKM-9016087347520",
-      "name": "ライチュウ&アローラライチュウGX:SA",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 88000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr057054sm10a-2-3145643.jpg?v=1784213832"
-      },
-      "after": {
-        "nowPrice": 100000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr057054sm10a-2-3145643.jpg?v=1784213832"
-      }
-    },
-    {
-      "id": "PKM-9015816388928",
-      "name": "レックウザGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 68000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr101096sm7-2-4811745.jpg?v=1784220129"
-      },
-      "after": {
-        "nowPrice": 60000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr101096sm7-2-4811745.jpg?v=1784220129"
-      }
-    },
-    {
-      "id": "PKM-9015990026560",
-      "name": "イーブイGX:SA",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 61000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr188173sm12a-2-1428914.jpg?v=1784214672"
-      },
-      "after": {
-        "nowPrice": 65000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr188173sm12a-2-1428914.jpg?v=1784214672"
-      }
-    },
-    {
-      "id": "PKM-9015868784960",
-      "name": "ヤドン&コダックGX:SA",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 58000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr096094sm11-2-8699763.jpg?v=1784216593"
-      },
-      "after": {
-        "nowPrice": 60000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr096094sm11-2-8699763.jpg?v=1784216593"
-      }
-    },
-    {
-      "id": "PKM-9016059855168",
-      "name": "エーフィ&デオキシスGX:SA",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 57000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr177173sm12a-2-8595059.jpg?v=1784214189"
-      },
-      "after": {
-        "nowPrice": 60000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr177173sm12a-2-8595059.jpg?v=1784214189"
-      }
-    },
-    {
-      "id": "PKM-9015739351360",
-      "name": "ニンフィアGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 53000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr057051sm1p-2-3191833.jpg?v=1784224330"
-      },
-      "after": {
-        "nowPrice": 50000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr057051sm1p-2-3191833.jpg?v=1784224330"
-      }
-    },
-    {
-      "id": "PKM-9015920984384",
-      "name": "カメックス&ポッチャマGX:SA",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 53000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr070064sm11a-2-8378487.jpg?v=1784215452"
-      },
-      "after": {
-        "nowPrice": 60000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr070064sm11a-2-8378487.jpg?v=1784215452"
-      }
-    },
-    {
-      "id": "PKM-9016023286080",
-      "name": "ソルガレオ&ルナアーラGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 49000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr063049sm11b-2-4390747.jpg?v=1784214432"
-      },
-      "after": {
-        "nowPrice": 47000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr063049sm11b-2-4390747.jpg?v=1784214432"
-      }
-    },
-    {
-      "id": "PKM-9016091672896",
-      "name": "ガブリアス&ギラティナGX:SA",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 47000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr060054sm10a-2-2394753.jpg?v=1784213831"
-      },
-      "after": {
-        "nowPrice": 50000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr060054sm10a-2-2394753.jpg?v=1784213831"
-      }
-    },
-    {
-      "id": "PKM-9016023875904",
-      "name": "メガミミロップ&プリンGX:SA",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 44000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr104095sm12-2-1183732.jpg?v=1784214432"
-      },
-      "after": {
-        "nowPrice": 36000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr104095sm12-2-1183732.jpg?v=1784214432"
-      }
-    },
-    {
-      "id": "PKM-9015836868928",
-      "name": "ゲンガー&ミミッキュGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 43000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr102095sm9-2-7968307.jpg?v=1784218870"
-      },
-      "after": {
-        "nowPrice": 36000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr102095sm9-2-7968307.jpg?v=1784218870"
-      }
-    },
-    {
-      "id": "PKM-9015994253632",
-      "name": "カスミ&カンナ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 41000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr191173sm12a-2-8423803.jpg?v=1784214670"
-      },
-      "after": {
-        "nowPrice": 45000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr191173sm12a-2-8423803.jpg?v=1784214670"
-      }
-    },
-    {
-      "id": "PKM-9015750099264",
-      "name": "ヒガナ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 40000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr059053sm6a-2-5909384.jpg?v=1784223791"
-      },
-      "after": {
-        "nowPrice": 60000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr059053sm6a-2-5909384.jpg?v=1784223791"
-      }
-    },
-    {
-      "id": "PKM-9015996055872",
-      "name": "グリーンの戦略",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 37000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr193173sm12a-2-8308660.jpg?v=1784214670"
-      },
-      "after": {
-        "nowPrice": 50000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr193173sm12a-2-8308660.jpg?v=1784214670"
-      }
-    },
-    {
-      "id": "PKM-9015786635584",
-      "name": "シロナ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 36000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr153150sm8b-2-8989407.jpg?v=1784221991"
-      },
-      "after": {
-        "nowPrice": 30000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr153150sm8b-2-8989407.jpg?v=1784221991"
-      }
-    },
-    {
-      "id": "PKM-9016037212480",
-      "name": "リーリエの全力",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 34000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr068049sm11b-2-7276270.jpg?v=1784214428"
-      },
-      "after": {
-        "nowPrice": 30000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr068049sm11b-2-7276270.jpg?v=1784214428"
-      }
-    },
-    {
-      "id": "PKM-9015790600512",
-      "name": "おじょうさま",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 30000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr100094sm6-2-1381569.jpg?v=1784221633"
-      },
-      "after": {
-        "nowPrice": 28000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr100094sm6-2-1381569.jpg?v=1784221633"
-      }
-    },
-    {
-      "id": "PKM-9015757177152",
-      "name": "ビッケ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 29000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr057051sm3n-2-3470357.jpg?v=1784223131"
-      },
-      "after": {
-        "nowPrice": 30000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr057051sm3n-2-3470357.jpg?v=1784223131"
-      }
-    },
-    {
-      "id": "PKM-9015756783936",
-      "name": "グラジオ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 23000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr055050sm4s-2-1560859.jpg?v=1784223428"
-      },
-      "after": {
-        "nowPrice": 26000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr055050sm4s-2-1560859.jpg?v=1784223428"
-      }
-    },
-    {
-      "id": "PKM-9015696884032",
-      "name": "エーフィGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 20000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr062060sm1s-2-5494540.jpg?v=1784226010"
-      },
-      "after": {
-        "nowPrice": 26000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr062060sm1s-2-5494540.jpg?v=1784226010"
-      }
-    },
-    {
-      "id": "PKM-9015744987456",
-      "name": "TVレポーター",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 20000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/tvsr074066sm6b-2-4348048.jpg?v=1784224089"
-      },
-      "after": {
-        "nowPrice": 19000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/tvsr074066sm6b-2-4348048.jpg?v=1784224089"
-      }
-    },
-    {
-      "id": "PKM-9015837786432",
-      "name": "エリカのおもてなし",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 19000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr107095sm9-2-3731083.jpg?v=1784218869"
-      },
-      "after": {
-        "nowPrice": 18000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr107095sm9-2-3731083.jpg?v=1784218869"
-      }
-    },
-    {
-      "id": "PKM-9016028594496",
-      "name": "シロナ&カトレア",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 16000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr106095sm12-2-1226224.jpg?v=1784214430"
-      },
-      "after": {
-        "nowPrice": 17000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr106095sm12-2-1226224.jpg?v=1784214430"
-      }
-    },
-    {
-      "id": "PKM-9015812391232",
-      "name": "ミカン",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 15000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr058052sm8a-2-5402378.jpg?v=1784220311"
-      },
-      "after": {
-        "nowPrice": 14000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr058052sm8a-2-5402378.jpg?v=1784220311"
-      }
-    },
-    {
-      "id": "PKM-9015758750016",
-      "name": "マーズ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 14000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr072066sm5s-2-9684627.jpg?v=1784223008"
-      },
-      "after": {
-        "nowPrice": 18000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr072066sm5s-2-9684627.jpg?v=1784223008"
-      }
-    },
-    {
-      "id": "PKM-9015729488192",
-      "name": "ホウオウGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 11000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr053051sm3h-2-8682778.jpg?v=1784224512"
-      },
-      "after": {
-        "nowPrice": 12000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr053051sm3h-2-8682778.jpg?v=1784224512"
-      }
-    },
-    {
-      "id": "PKM-9015791059264",
-      "name": "カルネ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 11000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr101094sm6-2-4826628.jpg?v=1784221632"
-      },
-      "after": {
-        "nowPrice": 12000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr101094sm6-2-4826628.jpg?v=1784221632"
-      }
-    },
-    {
-      "id": "PKM-9016070504768",
-      "name": "オーロット&ヨノワールGX:SA",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 9800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr179173sm12a-2-8182850.jpg?v=1784213948"
-      },
-      "after": {
-        "nowPrice": 9000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr179173sm12a-2-8182850.jpg?v=1784213948"
-      }
-    },
-    {
-      "id": "PKM-9015989043520",
-      "name": "イーブイGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 9300,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr187173sm12a-2-7064983.jpg?v=1784214740"
-      },
-      "after": {
-        "nowPrice": 10000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr187173sm12a-2-7064983.jpg?v=1784214740"
-      }
-    },
-    {
-      "id": "PKM-9015838179648",
-      "name": "ナツメの暗示",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 8900,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr109095sm9-2-7049172.jpg?v=1784218867"
-      },
-      "after": {
-        "nowPrice": 9000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr109095sm9-2-7049172.jpg?v=1784218867"
-      }
-    },
-    {
-      "id": "PKM-9016053891392",
-      "name": "エーフィ&デオキシスGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 8300,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr176173sm12a-2-7787187.jpg?v=1784214190"
-      },
-      "after": {
-        "nowPrice": 9000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr176173sm12a-2-7787187.jpg?v=1784214190"
-      }
-    },
-    {
-      "id": "PKM-9016089674048",
-      "name": "ガブリアス&ギラティナGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 8400,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr059054sm10a-2-5289001.jpg?v=1784213831"
-      },
-      "after": {
-        "nowPrice": 7800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr059054sm10a-2-5289001.jpg?v=1784213831"
-      }
-    },
-    {
-      "id": "PKM-9015787848000",
-      "name": "ゲッコウガGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 8000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr095094sm6-2-3477570.jpg?v=1784221988"
-      },
-      "after": {
-        "nowPrice": 10000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr095094sm6-2-3477570.jpg?v=1784221988"
-      }
-    },
-    {
-      "id": "PKM-9015796891968",
-      "name": "グレイシアGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 7900,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr067066sm5m-2-2675104.jpg?v=1784221514"
-      },
-      "after": {
-        "nowPrice": 9000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr067066sm5m-2-2675104.jpg?v=1784221514"
-      }
-    },
-    {
-      "id": "PKM-9015788962112",
-      "name": "ルスワール",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 7800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr159150sm8b-2-1277675.jpg?v=1784221691"
-      },
-      "after": {
-        "nowPrice": 8000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr159150sm8b-2-1277675.jpg?v=1784221691"
-      }
-    },
-    {
-      "id": "PKM-9015697342784",
-      "name": "イリマ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 7500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr065060sm1s-2-5950579.jpg?v=1784226010"
-      },
-      "after": {
-        "nowPrice": 8000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr065060sm1s-2-5950579.jpg?v=1784226010"
-      }
-    },
-    {
-      "id": "PKM-9015750066496",
-      "name": "カツラの一発勝負",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 7400,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr058053sm6a-2-3783960.jpg?v=1784223791"
-      },
-      "after": {
-        "nowPrice": 9000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr058053sm6a-2-3783960.jpg?v=1784223791"
-      }
-    },
-    {
-      "id": "PKM-9015756685632",
-      "name": "サーナイトGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 7300,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr055051sm3n-2-6458339.jpg?v=1784223428"
-      },
-      "after": {
-        "nowPrice": 9000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr055051sm3n-2-6458339.jpg?v=1784223428"
-      }
-    },
-    {
-      "id": "PKM-9016210653504",
-      "name": "ヨシダ警部補",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 7200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr025024smp2-2-5376113.jpg?v=1784213047"
-      },
-      "after": {
-        "nowPrice": 8000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr025024smp2-2-5376113.jpg?v=1784213047"
-      }
-    },
-    {
-      "id": "PKM-9015786438976",
-      "name": "グズマ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 6900,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr152150sm8b-2-2174928.jpg?v=1784221992"
-      },
-      "after": {
-        "nowPrice": 7500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr152150sm8b-2-2174928.jpg?v=1784221992"
-      }
-    },
-    {
-      "id": "PKM-9015848698176",
-      "name": "ベトベトン&アローラベトベトンGX:SA",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 6900,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr099095sm10-2-8498558.jpg?v=1784218387"
-      },
-      "after": {
-        "nowPrice": 8200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsasr099095sm10-2-8498558.jpg?v=1784218387"
-      }
-    },
-    {
-      "id": "PKM-9016002216256",
-      "name": "マツリカ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 7000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr198173sm12a-2-6423671.jpg?v=1784214669"
-      },
-      "after": {
-        "nowPrice": 8000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr198173sm12a-2-6423671.jpg?v=1784214669"
-      }
-    },
-    {
-      "id": "PKM-9015727522112",
-      "name": "ギャラドスGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 6600,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr051050sm4a-2-8528961.jpg?v=1784224869"
-      },
-      "after": {
-        "nowPrice": 9000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr051050sm4a-2-8528961.jpg?v=1784224869"
-      }
-    },
-    {
-      "id": "PKM-9015683711296",
-      "name": "アローラキュウコンGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 6000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr052050sm2k-2-6637770.jpg?v=1784226428"
-      },
-      "after": {
-        "nowPrice": 8000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr052050sm2k-2-6637770.jpg?v=1784226428"
-      }
-    },
-    {
-      "id": "PKM-9015744168256",
-      "name": "フリーザーGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 6000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr067066sm6b-2-6433123.jpg?v=1784224092"
-      },
-      "after": {
-        "nowPrice": 8000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr067066sm6b-2-6433123.jpg?v=1784224092"
-      }
-    },
-    {
-      "id": "PKM-9015756882240",
-      "name": "リーフィアGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 5800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr067066sm5s-2-5259776.jpg?v=1784223132"
-      },
-      "after": {
-        "nowPrice": 8000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr067066sm5s-2-5259776.jpg?v=1784223132"
-      }
-    },
-    {
-      "id": "PKM-9015788470592",
-      "name": "ラジュルネ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 5800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr158150sm8b-2-4354085.jpg?v=1784221691"
-      },
-      "after": {
-        "nowPrice": 6000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr158150sm8b-2-4354085.jpg?v=1784221691"
-      }
-    },
-    {
-      "id": "PKM-9015749968192",
-      "name": "カイリューGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 5500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr056053sm6a-2-6902477.jpg?v=1784223792"
-      },
-      "after": {
-        "nowPrice": 6000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr056053sm6a-2-6902477.jpg?v=1784223792"
-      }
-    },
-    {
-      "id": "PKM-9016030691648",
-      "name": "Nの覚悟",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 5400,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/nsr066049sm11b-2-8770211.jpg?v=1784214431"
-      },
-      "after": {
-        "nowPrice": 5000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/nsr066049sm11b-2-8770211.jpg?v=1784214431"
-      }
-    },
-    {
-      "id": "PKM-9015730667840",
-      "name": "カキ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 5400,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr056051sm3h-2-5758841.jpg?v=1784224511"
-      },
-      "after": {
-        "nowPrice": 6000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr056051sm3h-2-5758841.jpg?v=1784224511"
-      }
-    },
-    {
-      "id": "PKM-9015789125952",
-      "name": "ラニュイ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 5000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr160150sm8b-2-6607218.jpg?v=1784221690"
-      },
-      "after": {
-        "nowPrice": 6000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr160150sm8b-2-6607218.jpg?v=1784221690"
-      }
-    },
-    {
-      "id": "PKM-9015746068800",
-      "name": "ディアルガGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 5000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr054050sm5p-2-7030908.jpg?v=1784223850"
-      },
-      "after": {
-        "nowPrice": 5200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr054050sm5p-2-7030908.jpg?v=1784223850"
-      }
-    },
-    {
-      "id": "PKM-9015816651072",
-      "name": "フウとラン",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 4800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr103096sm7-2-9348898.jpg?v=1784220127"
-      },
-      "after": {
-        "nowPrice": 5000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr103096sm7-2-9348898.jpg?v=1784220127"
-      }
-    },
-    {
-      "id": "PKM-9015879631168",
-      "name": "グリーンの戦略",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 4600,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr106094sm11-2-3652318.jpg?v=1784216590"
-      },
-      "after": {
-        "nowPrice": 4500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr106094sm11-2-3652318.jpg?v=1784216590"
-      }
-    },
-    {
-      "id": "PKM-9015787946304",
-      "name": "ルミタン",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 4500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr157150sm8b-2-1196649.jpg?v=1784221693"
-      },
-      "after": {
-        "nowPrice": 6000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr157150sm8b-2-1196649.jpg?v=1784221693"
-      }
-    },
-    {
-      "id": "PKM-9015815995712",
-      "name": "バシャーモGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 4400,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr098096sm7-2-5234765.jpg?v=1784220128"
-      },
-      "after": {
-        "nowPrice": 5000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr098096sm7-2-5234765.jpg?v=1784220128"
-      }
-    },
-    {
-      "id": "PKM-9015922196800",
-      "name": "ローラースケーター",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 4000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr073064sm11a-2-2736687.jpg?v=1784215452"
-      },
-      "after": {
-        "nowPrice": 3000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr073064sm11a-2-2736687.jpg?v=1784215452"
-      }
-    },
-    {
-      "id": "PKM-9015787258176",
-      "name": "ノボリとクダリ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 4000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr155150sm8b-2-6920456.jpg?v=1784221990"
-      },
-      "after": {
-        "nowPrice": 4500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr155150sm8b-2-6920456.jpg?v=1784221990"
-      }
-    },
-    {
-      "id": "PKM-9015750000960",
-      "name": "ホワイトキュレムGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 3600,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr057053sm6a-2-2208559.jpg?v=1784223792"
-      },
-      "after": {
-        "nowPrice": 4000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr057053sm6a-2-2208559.jpg?v=1784223792"
-      }
-    },
-    {
-      "id": "PKM-9015744266560",
-      "name": "バリヤードGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 3500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr069066sm6b-2-7539793.jpg?v=1784224091"
-      },
-      "after": {
-        "nowPrice": 5000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr069066sm6b-2-7539793.jpg?v=1784224091"
-      }
-    },
-    {
-      "id": "PKM-9015769923904",
-      "name": "スイクンGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 3500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr098095sm8-2-6187175.jpg?v=1784222476"
-      },
-      "after": {
-        "nowPrice": 4500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr098095sm8-2-6187175.jpg?v=1784222476"
-      }
-    },
-    {
-      "id": "PKM-9016064737600",
-      "name": "オーロット&ヨノワールGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 3400,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr178173sm12a-2-6227454.jpg?v=1784214187"
-      },
-      "after": {
-        "nowPrice": 3200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr178173sm12a-2-6227454.jpg?v=1784214187"
-      }
-    },
-    {
-      "id": "PKM-9016075944256",
-      "name": "ジラーチGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 3500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr180173sm12a-2-5895594.jpg?v=1784213889"
-      },
-      "after": {
-        "nowPrice": 4000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr180173sm12a-2-5895594.jpg?v=1784213889"
-      }
-    },
-    {
-      "id": "PKM-9015730274624",
-      "name": "オンバーンGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 3100,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr055051sm3h-2-7809457.jpg?v=1784224511"
-      },
-      "after": {
-        "nowPrice": 4000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr055051sm3h-2-7809457.jpg?v=1784224511"
-      }
-    },
-    {
-      "id": "PKM-9015744233792",
-      "name": "マルマインGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 3000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr068066sm6b-2-2718309.jpg?v=1784224091"
-      },
-      "after": {
-        "nowPrice": 4000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr068066sm6b-2-2718309.jpg?v=1784224091"
-      }
-    },
-    {
-      "id": "PKM-9015844831552",
-      "name": "カメックスGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 3000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr057054sm9b-2-5618740.jpg?v=1784218392"
-      },
-      "after": {
-        "nowPrice": 4000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr057054sm9b-2-5618740.jpg?v=1784218392"
-      }
-    },
-    {
-      "id": "PKM-9016021909824",
-      "name": "メガミミロップ&プリンGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 3000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr103095sm12-2-7825133.jpg?v=1784214433"
-      },
-      "after": {
-        "nowPrice": 4000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr103095sm12-2-7825133.jpg?v=1784214433"
-      }
-    },
-    {
-      "id": "PKM-9015869505856",
-      "name": "ラティオスGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr099094sm11-2-5008751.jpg?v=1784216592"
-      },
-      "after": {
-        "nowPrice": 3000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr099094sm11-2-5008751.jpg?v=1784216592"
-      }
-    },
-    {
-      "id": "PKM-9015785423168",
-      "name": "アローラキュウコンGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr053050sm7b-2-7224405.jpg?v=1784221993"
-      },
-      "after": {
-        "nowPrice": 3000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr053050sm7b-2-7224405.jpg?v=1784221993"
-      }
-    },
-    {
-      "id": "PKM-9015788667200",
-      "name": "イベルタルGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2400,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr097094sm6-2-8094356.jpg?v=1784221691"
-      },
-      "after": {
-        "nowPrice": 3500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr097094sm6-2-8094356.jpg?v=1784221691"
-      }
-    },
-    {
-      "id": "PKM-9015797416256",
-      "name": "パルキアGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr069066sm5m-2-4152540.jpg?v=1784221514"
-      },
-      "after": {
-        "nowPrice": 4500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr069066sm5m-2-4152540.jpg?v=1784221514"
-      }
-    },
-    {
-      "id": "PKM-9015846142272",
-      "name": "アンズ",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2300,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr062055sm9a-2-6147007.jpg?v=1784218390"
-      },
-      "after": {
-        "nowPrice": 3000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr062055sm9a-2-6147007.jpg?v=1784218390"
-      }
-    },
-    {
-      "id": "PKM-9015789977920",
-      "name": "ウルトラネクロズマGX",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2300,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr099094sm6-2-5654093.jpg?v=1784221690"
-      },
-      "after": {
-        "nowPrice": 3000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr099094sm6-2-5654093.jpg?v=1784221690"
-      }
-    },
-    {
-      "id": "PKM-9015842931008",
-      "name": "デデンネGX",
+      "id": "SV4a-327",
+      "name": "ミュウex",
       "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr057055sm9a-2-2336285.jpg?v=1784218568"
+        "buyPrice": 1000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exssr327190sv4a-2-9477758.jpg?v=1784188332"
       },
       "after": {
-        "nowPrice": 3500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr057055sm9a-2-2336285.jpg?v=1784218568"
-      }
-    },
-    {
-      "id": "PKM-9015851614528",
-      "name": "溶接工",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2300,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr106095sm10-2-2286729.jpg?v=1784218328"
-      },
-      "after": {
-        "nowPrice": 3000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr106095sm10-2-2286729.jpg?v=1784218328"
-      }
-    },
-    {
-      "id": "PKM-9015685742912",
-      "name": "カプ・コケコGX",
-      "changed": true,
-      "notes": [],
-      "before": {
         "nowPrice": 2200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr053050sm2k-2-2557384.jpg?v=1784226372"
-      },
-      "after": {
-        "nowPrice": 2500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr053050sm2k-2-2557384.jpg?v=1784226372"
+        "buyPrice": 1400,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exssr327190sv4a-2-9477758.jpg?v=1784188332"
       }
     },
     {
-      "id": "PKM-9015851450688",
-      "name": "サカキの追放",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr105095sm10-2-6652243.jpg?v=1784218328"
-      },
-      "after": {
-        "nowPrice": 3000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr105095sm10-2-6652243.jpg?v=1784218328"
-      }
-    },
-    {
-      "id": "PKM-9015922000192",
-      "name": "オーキド博士のセッティング",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2200,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr072064sm11a-2-2721480.jpg?v=1784215452"
-      },
-      "after": {
-        "nowPrice": 3000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr072064sm11a-2-2721480.jpg?v=1784215452"
-      }
-    },
-    {
-      "id": "PKM-9015878353216",
-      "name": "きとうし",
+      "id": "SV4a-331",
+      "name": "リザードンex",
       "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr105094sm11-2-2639469.jpg?v=1784216591"
+        "buyPrice": 600,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exssr331190sv4a-2-7615282.jpg?v=1784188330"
+      },
+      "after": {
+        "nowPrice": 2000,
+        "buyPrice": 1000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exssr331190sv4a-2-7615282.jpg?v=1784188330"
+      }
+    },
+    {
+      "id": "S9a-083",
+      "name": "スターミーV",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 12000,
+        "buyPrice": 8000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vcsr083067s9a-2-5354856.jpg?v=1784198289"
+      },
+      "after": {
+        "nowPrice": 12000,
+        "buyPrice": 8500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vcsr083067s9a-2-5354856.jpg?v=1784198289"
+      }
+    },
+    {
+      "id": "S9-103",
+      "name": "リザードンV:SA",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 35000,
+        "buyPrice": 20000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsasr103100s9-2-1538512.jpg?v=1784201233"
+      },
+      "after": {
+        "nowPrice": 35000,
+        "buyPrice": 24000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsasr103100s9-2-1538512.jpg?v=1784201233"
+      }
+    },
+    {
+      "id": "S9-112",
+      "name": "アルセウスV",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 8400,
+        "buyPrice": 5000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsasr112100s9-2-9337984.jpg?v=1784202612"
+      },
+      "after": {
+        "nowPrice": 8400,
+        "buyPrice": 5500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsasr112100s9-2-9337984.jpg?v=1784202612"
+      }
+    },
+    {
+      "id": "SV2a-185",
+      "name": "リザードンex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 4500,
+        "buyPrice": 2000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsr185165sv2a-2-5978390.jpg?v=1784189533"
+      },
+      "after": {
+        "nowPrice": 4500,
+        "buyPrice": 2500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsr185165sv2a-2-5978390.jpg?v=1784189533"
+      }
+    },
+    {
+      "id": "SV5K-088",
+      "name": "ゲンガーex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 4200,
+        "buyPrice": 2000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsr088071sv5k-4321962.jpg?v=1781544633"
+      },
+      "after": {
+        "nowPrice": 4200,
+        "buyPrice": 2500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsr088071sv5k-4321962.jpg?v=1781544633"
+      }
+    },
+    {
+      "id": "SV2D-091",
+      "name": "ナンジャモ",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3300,
+        "buyPrice": 1000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sr091071sv2d-2-5228970.jpg?v=1784192291"
+      },
+      "after": {
+        "nowPrice": 3300,
+        "buyPrice": 2000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/sr091071sv2d-2-5228970.jpg?v=1784192291"
+      }
+    },
+    {
+      "id": "S12-108",
+      "name": "レジドラゴV:SA",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3500,
+        "buyPrice": 2300,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsasr108098s12-2-4543213.jpg?v=1784196489"
+      },
+      "after": {
+        "nowPrice": 3500,
+        "buyPrice": 2500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsasr108098s12-2-4543213.jpg?v=1784196489"
+      }
+    },
+    {
+      "id": "SV3-125",
+      "name": "リザードンex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3000,
+        "buyPrice": 2000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsr125108sv3-2-3094146.jpg?v=1784190432"
       },
       "after": {
         "nowPrice": 3000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/sr105094sm11-2-2639469.jpg?v=1784216591"
+        "buyPrice": 2100,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsr125108sv3-2-3094146.jpg?v=1784190432"
+      }
+    },
+    {
+      "id": "S12-103",
+      "name": "アンノーンV:SA",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 2900,
+        "buyPrice": 1400,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsasr103098s12-2-8408348.jpg?v=1784194824"
+      },
+      "after": {
+        "nowPrice": 2900,
+        "buyPrice": 1900,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsasr103098s12-2-8408348.jpg?v=1784194824"
+      }
+    },
+    {
+      "id": "SV2a-195",
+      "name": "ミュウex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 2300,
+        "buyPrice": 1400,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsr195165sv2a-2-9017635.jpg?v=1784189531"
+      },
+      "after": {
+        "nowPrice": 2300,
+        "buyPrice": 1600,
+        "image": "https://www.hareruya2.com/cdn/shop/products/exsr195165sv2a-2-9017635.jpg?v=1784189531"
       }
     }
   ]

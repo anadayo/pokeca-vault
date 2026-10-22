@@ -1,23 +1,7 @@
 {
-  "date": "2026-10-22",
+  "date": "2026-10-23",
   "total": 500,
   "report": [
-    {
-      "id": "PKM-10218576249152",
-      "name": "メガゴルーグex",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 850,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar109076m6-2-5724998.webp?v=1786944607"
-      },
-      "after": {
-        "nowPrice": 800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar109076m6-2-5724998.webp?v=1786944607"
-      }
-    },
     {
       "id": "SV8a-201",
       "name": "オーガポン みどりのめんex",

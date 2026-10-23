@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-16T22:09:46.263Z",
+  "generatedAt": "2026-10-23T22:29:02.149Z",
   "requested": 500,
   "fetchedProducts": 6000,
-  "validCards": 5108,
+  "validCards": 5120,
   "selected": 500,
-  "retainedBuyLinks": 126,
+  "retainedBuyLinks": 125,
   "source": "https://www.hareruya2.com/products.json"
 }

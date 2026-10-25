@@ -3,6 +3,70 @@
   "total": 500,
   "report": [
     {
+      "id": "PKM-10265831473472",
+      "name": "ミュウex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 6500,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/J07bZvfRr0dAyB3Rs2eU5eAjjM4eWbjKyRSJ0VUf.webp?v=1790245550"
+      },
+      "after": {
+        "nowPrice": 6000,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/J07bZvfRr0dAyB3Rs2eU5eAjjM4eWbjKyRSJ0VUf.webp?v=1790245550"
+      }
+    },
+    {
+      "id": "PKM-10265831964992",
+      "name": "ミュウツーex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3300,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/h7yniJDEBNz4W1Q2Bwv3o6YftzYwR0mvM1dNTVOy.webp?v=1790245542"
+      },
+      "after": {
+        "nowPrice": 3200,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/h7yniJDEBNz4W1Q2Bwv3o6YftzYwR0mvM1dNTVOy.webp?v=1790245542"
+      }
+    },
+    {
+      "id": "PKM-10265831407936",
+      "name": "ボーマンダex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 2000,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/VHh7R26qkQBlpO0Gvwm5AI2i2pNm6fM6SV3GzGv7.webp?v=1790245554"
+      },
+      "after": {
+        "nowPrice": 1900,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/VHh7R26qkQBlpO0Gvwm5AI2i2pNm6fM6SV3GzGv7.webp?v=1790245554"
+      }
+    },
+    {
+      "id": "PKM-10265831309632",
+      "name": "ホゲータex",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 2000,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/8Cu7QeFMwUpQNQ7VYpt3LuDC9hKVrj9HbRmLl3X3.webp?v=1790245542"
+      },
+      "after": {
+        "nowPrice": 1900,
+        "buyPrice": null,
+        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/8Cu7QeFMwUpQNQ7VYpt3LuDC9hKVrj9HbRmLl3X3.webp?v=1790245542"
+      }
+    },
+    {
       "id": "SV8a-201",
       "name": "オーガポン みどりのめんex",
       "changed": false,

@@ -3,86 +3,6 @@
   "total": 500,
   "report": [
     {
-      "id": "PKM-10218576412992",
-      "name": "メガレックウザex",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 32000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar110076m6-2-8460187.webp?v=1786944608"
-      },
-      "after": {
-        "nowPrice": 32000,
-        "buyPrice": null,
-        "image": "https://www.hareruya2.com/cdn/shop/files/exsar110076m6-2-8460187.webp?v=1786944608"
-      }
-    },
-    {
-      "id": "PKM-10265831899456",
-      "name": "ピカチュウex",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 7000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/BMSwX8NwfHqe1YgtifXULq7bvVEZWhUqEf6NYUzI.webp?v=1790245547"
-      },
-      "after": {
-        "nowPrice": 7000,
-        "buyPrice": null,
-        "image": "https://www.hareruya2.com/cdn/shop/files/BMSwX8NwfHqe1YgtifXULq7bvVEZWhUqEf6NYUzI.webp?v=1790245547"
-      }
-    },
-    {
-      "id": "PKM-10265831407936",
-      "name": "ボーマンダex",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 1900,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/VHh7R26qkQBlpO0Gvwm5AI2i2pNm6fM6SV3GzGv7.webp?v=1790245554"
-      },
-      "after": {
-        "nowPrice": 1800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/VHh7R26qkQBlpO0Gvwm5AI2i2pNm6fM6SV3GzGv7.webp?v=1790245554"
-      }
-    },
-    {
-      "id": "PKM-10265832358208",
-      "name": "ゲッコウガex",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2100,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/dT8hxvCdlO1EuhI2Le2QX6oloUBaMuVlwjf3Wrc2.webp?v=1790245558"
-      },
-      "after": {
-        "nowPrice": 2000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/dT8hxvCdlO1EuhI2Le2QX6oloUBaMuVlwjf3Wrc2.webp?v=1790245558"
-      }
-    },
-    {
-      "id": "PKM-10265831309632",
-      "name": "ホゲータex",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 1900,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/8Cu7QeFMwUpQNQ7VYpt3LuDC9hKVrj9HbRmLl3X3.webp?v=1790245542"
-      },
-      "after": {
-        "nowPrice": 1800,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/8Cu7QeFMwUpQNQ7VYpt3LuDC9hKVrj9HbRmLl3X3.webp?v=1790245542"
-      }
-    },
-    {
       "id": "SV8a-201",
       "name": "オーガポン みどりのめんex",
       "changed": false,
@@ -134,22 +54,6 @@
         "nowPrice": 600,
         "buyPrice": 400,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar216187sv8a-6467871.webp?v=1781516289"
-      }
-    },
-    {
-      "id": "PKM-10265831375168",
-      "name": "ミュウツーex",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 4000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/RyzzeQgOXJjsS4G4cbEn9x0zJgek8TDUKDI995fS.webp?v=1790245581"
-      },
-      "after": {
-        "nowPrice": 4500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/RyzzeQgOXJjsS4G4cbEn9x0zJgek8TDUKDI995fS.webp?v=1790245581"
       }
     }
   ]

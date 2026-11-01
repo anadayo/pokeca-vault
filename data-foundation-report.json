@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T07:26:02.559Z",
+  "generated_at": "2026-11-01T16:05:38.397Z",
   "sites": [
     {
       "gameId": "pokemon-card-game",
       "cards": 500,
       "products": 500,
       "prices": 1000,
-      "observedAt": "2026-11-01"
+      "observedAt": "2026-11-02"
     },
     {
       "gameId": "one-piece-card-game",
       "cards": 500,
       "products": 500,
       "prices": 1000,
-      "observedAt": "2026-11-01"
+      "observedAt": "2026-11-02"
     }
   ]
 }

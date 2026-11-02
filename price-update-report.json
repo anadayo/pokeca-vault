@@ -1,119 +1,7 @@
 {
-  "date": "2026-11-02",
+  "date": "2026-11-03",
   "total": 500,
   "report": [
-    {
-      "id": "PKM-10218576412992",
-      "name": "メガレックウザex",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 31000,
-        "buyPrice": null,
-        "image": "https://www.hareruya2.com/cdn/shop/files/exsar110076m6-2-8460187.webp?v=1786944608"
-      },
-      "after": {
-        "nowPrice": 30000,
-        "buyPrice": null,
-        "image": "https://www.hareruya2.com/cdn/shop/files/exsar110076m6-2-8460187.webp?v=1786944608"
-      }
-    },
-    {
-      "id": "PKM-10135645585728",
-      "name": "メガダークライex",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 20000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar114081m5-4117994.webp?v=1781503451"
-      },
-      "after": {
-        "nowPrice": 19000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar114081m5-4117994.webp?v=1781503451"
-      }
-    },
-    {
-      "id": "PKM-10218576085312",
-      "name": "ライコウex",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 4500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar108076m6-2-4697357.webp?v=1786944608"
-      },
-      "after": {
-        "nowPrice": 4400,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar108076m6-2-4697357.webp?v=1786944608"
-      }
-    },
-    {
-      "id": "PKM-10135645290816",
-      "name": "メガゼラオラex",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 2100,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar112081m5-4444559.webp?v=1781503452"
-      },
-      "after": {
-        "nowPrice": 2000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar112081m5-4444559.webp?v=1781503452"
-      }
-    },
-    {
-      "id": "PKM-10218576380224",
-      "name": "ヒガナの信頼",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 1600,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/sar112076m6-2-3581556.webp?v=1786944608"
-      },
-      "after": {
-        "nowPrice": 1500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/sar112076m6-2-3581556.webp?v=1786944608"
-      }
-    },
-    {
-      "id": "PKM-10135644733760",
-      "name": "グラジオの決戦",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 1000,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/sar116081m5-7348333.webp?v=1781503453"
-      },
-      "after": {
-        "nowPrice": 1100,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/sar116081m5-7348333.webp?v=1781503453"
-      }
-    },
-    {
-      "id": "PKM-10218576249152",
-      "name": "メガゴルーグex",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 750,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar109076m6-2-5724998.webp?v=1786944607"
-      },
-      "after": {
-        "nowPrice": 700,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar109076m6-2-5724998.webp?v=1786944607"
-      }
-    },
     {
       "id": "SV8a-201",
       "name": "オーガポン みどりのめんex",
@@ -166,22 +54,6 @@
         "nowPrice": 600,
         "buyPrice": 400,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar216187sv8a-6467871.webp?v=1781516289"
-      }
-    },
-    {
-      "id": "PKM-10218576576832",
-      "name": "ギリー",
-      "changed": true,
-      "notes": [],
-      "before": {
-        "nowPrice": 500,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/sar111076m6-2-6274197.webp?v=1786944551"
-      },
-      "after": {
-        "nowPrice": 600,
-        "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/sar111076m6-2-6274197.webp?v=1786944551"
       }
     }
   ]

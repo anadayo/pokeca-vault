@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "game_id": "pokemon-card-game",
-  "generated_from": "2026-11-03",
+  "generated_from": "2026-11-04",
   "products": [
     {
       "game_id": "pokemon-card-game",
@@ -6304,7 +6304,7 @@
       "rarity": "SR",
       "variant": "SR",
       "release_date": null,
-      "image_url": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxsr067064sm11a-2-1216360.jpg?v=1784215688",
+      "image_url": "https://www.hareruya2.com/cdn/shop/products/gxsr067064sm11a-2-1216360.jpg?v=1784215688",
       "product_type": "single_card",
       "language": "ja",
       "market_status": "active",

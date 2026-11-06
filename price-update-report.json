@@ -3,19 +3,19 @@
   "total": 500,
   "report": [
     {
-      "id": "S12a-223",
-      "name": "デオキシスVSTAR",
+      "id": "S12a-215",
+      "name": "スイクンV",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 3800,
-        "buyPrice": 2700,
-        "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar223172s12a-2-8226470.jpg?v=1784193190"
+        "nowPrice": 4300,
+        "buyPrice": 3000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsar215172s12a-2-2478827.jpg?v=1784197387"
       },
       "after": {
-        "nowPrice": 3700,
-        "buyPrice": 2700,
-        "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar223172s12a-2-8226470.jpg?v=1784193190"
+        "nowPrice": 4300,
+        "buyPrice": 3200,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsar215172s12a-2-2478827.jpg?v=1784197387"
       }
     },
     {
@@ -37,19 +37,67 @@
       }
     },
     {
+      "id": "S12a-262",
+      "name": "アルセウスVSTAR",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 19000,
+        "buyPrice": 12000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarur262172s12a-2-5950338.jpg?v=1784193611"
+      },
+      "after": {
+        "nowPrice": 19000,
+        "buyPrice": 14000,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vstarur262172s12a-2-5950338.jpg?v=1784193611"
+      }
+    },
+    {
+      "id": "S9a-083",
+      "name": "スターミーV",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 13000,
+        "buyPrice": 9200,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vcsr083067s9a-2-5354856.jpg?v=1784198289"
+      },
+      "after": {
+        "nowPrice": 13000,
+        "buyPrice": 9500,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vcsr083067s9a-2-5354856.jpg?v=1784198289"
+      }
+    },
+    {
       "id": "S9-103",
       "name": "リザードンV:SA",
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 34000,
+        "nowPrice": 33000,
         "buyPrice": 23000,
         "image": "https://www.hareruya2.com/cdn/shop/products/vsasr103100s9-2-1538512.jpg?v=1784201233"
       },
       "after": {
         "nowPrice": 33000,
-        "buyPrice": 23000,
+        "buyPrice": 24000,
         "image": "https://www.hareruya2.com/cdn/shop/products/vsasr103100s9-2-1538512.jpg?v=1784201233"
+      }
+    },
+    {
+      "id": "S12-108",
+      "name": "レジドラゴV:SA",
+      "changed": true,
+      "notes": [],
+      "before": {
+        "nowPrice": 3900,
+        "buyPrice": 2800,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsasr108098s12-2-4543213.jpg?v=1784196489"
+      },
+      "after": {
+        "nowPrice": 3900,
+        "buyPrice": 2900,
+        "image": "https://www.hareruya2.com/cdn/shop/products/vsasr108098s12-2-4543213.jpg?v=1784196489"
       }
     },
     {
@@ -58,13 +106,13 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 3000,
+        "nowPrice": 2900,
         "buyPrice": 2000,
         "image": "https://www.hareruya2.com/cdn/shop/products/vsasr103098s12-2-8408348.jpg?v=1784194824"
       },
       "after": {
         "nowPrice": 2900,
-        "buyPrice": 2000,
+        "buyPrice": 2100,
         "image": "https://www.hareruya2.com/cdn/shop/products/vsasr103098s12-2-8408348.jpg?v=1784194824"
       }
     }

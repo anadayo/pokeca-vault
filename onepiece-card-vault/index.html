@@ -41,6 +41,7 @@ window.ONEPIECE_ANALYTICS_ENABLED = location.hostname === 'anadayo.github.io';
 gtag('config', 'G-1RKFX1HCCV', { send_page_view: window.ONEPIECE_ANALYTICS_ENABLED });
 </script>
 <script src="adsense.js" defer></script>
+<link rel="stylesheet" href="monetization-v2.css?v=20261015-2">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13949,7 +13950,8 @@ function createMercariAffiliateUrl(card, { soldOnly=true }={}){
 }
 function mercariAffiliateAttributes(card, placement, options){
   const href = createMercariAffiliateUrl(card, options);
-  return `href="${escapeHtml(href)}" target="_blank" rel="sponsored noopener" data-mercari-affiliate="1" data-mc-id="${escapeHtml(card.id)}" data-mc-name="${escapeHtml(card.name)}" data-mc-placement="${escapeHtml(placement)}"`;
+  const purpose = options?.soldOnly === false ? 'buy' : 'research';
+  return `href="${escapeHtml(href)}" target="_blank" rel="sponsored noopener" data-mercari-affiliate="1" data-mc-id="${escapeHtml(card.id)}" data-mc-name="${escapeHtml(card.name)}" data-mc-placement="${escapeHtml(placement)}" data-offer-purpose="${purpose}"`;
 }
 function previousPrice(card, days=1){
   const change = changePct(card, days);
@@ -13957,14 +13959,9 @@ function previousPrice(card, days=1){
 }
 function changeAmount(card, days=1){ const previous = previousPrice(card, days); return previous === null ? null : currentPrice(card) - previous; }
 function freshnessInfo(){
-  const updated = new Date(PRICE_DATA_META.updatedAt + 'T21:00:00+09:00');
-  const now = new Date();
-  const diffMin = Math.max(0, Math.floor((now - updated) / 60000));
-  if (!Number.isFinite(diffMin)) return { label:'更新確認中', sub:'価格データの日時を確認中', stale:true, minutes:null };
-  if (diffMin < 60) return { label:`${diffMin}分前`, sub:'朝・昼・夕方・夜の更新枠に対応', stale:false, minutes:diffMin };
-  const hours = Math.floor(diffMin / 60);
-  if (hours < 24) return { label:`${hours}時間前`, sub:'次回更新までこの価格を表示', stale:false, minutes:diffMin };
-  return { label:`${Math.floor(hours / 24)}日前`, sub:'更新確認中の価格があります', stale:true, minutes:diffMin };
+  return window.VaultCommerce
+    ? window.VaultCommerce.freshness(PRICE_DATA_META.observedAt || PRICE_DATA_META.updatedAt)
+    : { label:`確認日 ${PRICE_DATA_META.updatedAt}`, sub:'日付単位で確認した価格です', stale:false, minutes:null };
 }
 function priceStatusLabel(card){
   if (Number(card?.buyPrice) > 0) return freshnessInfo().label;
@@ -14020,7 +14017,7 @@ function toggleWatch(cardId, type='watch'){
 function upsertAlert(cardId, kind, threshold){
   state.alerts ||= [];
   const existing = state.alerts.find(a => a.cardId === cardId && a.kind === kind);
-  const alert = { cardId, kind, threshold:Number(threshold) || 0, channel:'in_app_future', enabled:true, updatedAt:today() };
+  const alert = { cardId, kind, threshold:Number(threshold) || 0, channel:'in_app', enabled:true, updatedAt:today() };
   if (existing) Object.assign(existing, alert);
   else state.alerts.push({ id:'a' + Date.now(), createdAt:today(), ...alert });
   saveState();
@@ -14511,7 +14508,7 @@ function renderMarket(){
   if (!list.length){
     const popular = [...CARD_MASTER].sort((a,b) => currentPrice(b) - currentPrice(a)).slice(0, 4);
     $('#cardList').innerHTML = `<div class="empty"><div class="em">🔍</div><h3>見つかりませんでした</h3><p>カード番号・収録弾・レアリティでも検索できます</p><div class="search-suggest" style="justify-content:center">${popular.map(c => `<button class="suggest-chip" data-detail="${c.id}" data-detail-placement="search_no_result">${escapeHtml(c.name)}<small>${escapeHtml(c.rarity)} ${escapeHtml(c.cardNo)}</small></button>`).join('')}</div></div>`;
-    if (q) track('search_no_result', { search_term:q });
+    if (q) track('search_no_result', { query_length:q.length });
     return;
   }
   $('#cardList').innerHTML = list.map(c => {
@@ -14925,7 +14922,7 @@ function openDetail(cardId, detailPlacement='direct'){
         <div class="signal-cell"><div class="k">30日最安値</div><div class="v num">${lo30 === null ? '比較不可' : yen(lo30)}</div></div>
       </div>
       <div class="mini-note">※ 売買判断を保証するものではありません。価格差・変動率・買取比率から見た参考表示です。</div>
-      <a class="btn btn-mercari btn-sm btn-block" style="margin-top:10px" ${mercariAffiliateAttributes(card, 'detail_signal')}>売買前に成約相場を確認<span class="pr-tag">PR</span></a>
+      <a class="btn btn-mercari btn-sm btn-block" style="margin-top:10px" ${mercariAffiliateAttributes(card, 'detail_signal', { soldOnly:true })}>売却済み価格を調べる<span class="pr-tag">PR</span></a>
     </div>
 
     <div class="section-title" style="margin-top:14px">買取価格 <span class="right muted">掲載なしは最低保証</span></div>
@@ -14948,7 +14945,8 @@ function openDetail(cardId, detailPlacement='direct'){
         <span class="num" style="font-weight:600">${yen(mercariEstimate(card))}</span>
       </div>
     </div>
-    <a class="btn btn-mercari btn-sm btn-block" style="margin-top:8px" ${mercariAffiliateAttributes(card, 'detail_price_compare')}>実際のメルカリ成約相場を見る<span class="pr-tag">PR</span></a>
+    <a class="btn btn-mercari btn-sm btn-block" style="margin-top:8px" ${mercariAffiliateAttributes(card, 'detail_price_compare', { soldOnly:false })}>販売中の商品を見る<span class="pr-tag">PR</span></a>
+    <a class="btn btn-ghost btn-sm btn-block" style="margin-top:8px" ${mercariAffiliateAttributes(card, 'detail_sold_research', { soldOnly:true })}>売却済み価格を調べる<span class="pr-tag">PR</span></a>
 
     <div class="watch-actions">
       <button class="btn btn-ghost btn-sm ${watched ? 'watch-on' : ''}" data-watch="${card.id}" data-watch-type="watch">${watched ? 'ウォッチ中' : 'ウォッチ'}</button>
@@ -14959,10 +14957,10 @@ function openDetail(cardId, detailPlacement='direct'){
     </div>
 
     <div class="alert-box">
-      <div class="section-title" style="margin:0 0 8px">価格アラート基盤</div>
-      <div class="field"><label>買取価格がこの金額以上になったら通知予定</label><input type="number" id="alertBuyPrice" inputmode="numeric" value="${Math.max(best.price, currentPrice(card))}"></div>
-      <button class="btn btn-ghost btn-block" id="btnSaveAlert">アラート条件を保存</button>
-      <p class="mini-note" style="margin-top:8px">今はこの端末に条件を保存します。将来、Web通知・LINE・Discord・メールへ拡張できる形式です。</p>
+      <div class="section-title" style="margin:0 0 8px">サイト内価格チェック</div>
+      <div class="field"><label>買取価格がこの金額以上になったか次回確認</label><input type="number" id="alertBuyPrice" inputmode="numeric" value="${Math.max(best.price, currentPrice(card))}"></div>
+      <button class="btn btn-ghost btn-block" id="btnSaveAlert">確認条件をこの端末に保存</button>
+      <p class="mini-note" style="margin-top:8px">ブラウザを閉じている間に通知は届きません。次にこのサイトを開いた時に確認できます。</p>
     </div>
 
     <div class="section-title" style="margin-top:16px">今売った場合の利益</div>
@@ -15358,8 +15356,9 @@ function isMercariAffiliateUrl(url){
 function recordMercariAffiliateClick(anchor){
   const cardId = anchor.dataset.mcId || '';
   const card = cardById(cardId);
+  const purpose = anchor.dataset.offerPurpose || 'research';
   if (!isMercariAffiliateUrl(anchor.href) && card){
-    anchor.href = createMercariAffiliateUrl(card, { soldOnly:true });
+    anchor.href = createMercariAffiliateUrl(card, { soldOnly:purpose !== 'buy' });
   }
   if (!isMercariAffiliateUrl(anchor.href)){
     console.error('Mercari affiliate URL validation failed', { cardId, placement:anchor.dataset.mcPlacement || 'unknown' });
@@ -15400,11 +15399,18 @@ function recordMercariAffiliateClick(anchor){
     card_name: item.cardName,
     placement: item.placement,
     destination: 'mercari',
-    link_url: item.destinationUrl,
     anonymous_session_id: item.sessionId,
     device_type: item.deviceType,
     affiliate_program: 'mercari_ambassador',
     transport_type: 'beacon',
+  });
+  track('offer_outbound', {
+    game_id: 'one-piece-card-game',
+    offer_id: `mercari:${item.cardId}:${purpose}`,
+    provider: 'mercari',
+    purpose,
+    placement: item.placement,
+    is_affiliate: true,
   });
 }
 
@@ -15526,8 +15532,8 @@ $('#searchInput').addEventListener('input', e => {
     searchTrackTimer = setTimeout(() => {
       rememberSearch(marketFilter.q);
       recordMetric('search', { query: marketFilter.q });
-      track('onepiece_search', { search_term: marketFilter.q });
-      track('search_submit', { search_term:marketFilter.q });
+      track('onepiece_search', { query_length: marketFilter.q.length });
+      track('search_submit', { query_length:marketFilter.q.length });
     }, 700);
   }
 });
@@ -15573,5 +15579,7 @@ renderAll();
 recordMetric('view', { view:'home', initial:true });
 openCardFromHash();
 </script>
+<script src="vault-commerce-core.js?v=20261015-2"></script>
+<script src="monetization-v2.js?v=20261015-2"></script>
 </body>
 </html>

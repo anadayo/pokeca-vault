@@ -11,6 +11,7 @@ const TODAY_JST = new Intl.DateTimeFormat('sv-SE', {
   month: '2-digit',
   day: '2-digit',
 }).format(new Date());
+const OBSERVED_AT = new Date().toISOString();
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -20,10 +21,13 @@ function extractCards(html) {
   return Function('return ' + match[1])();
 }
 
-function replaceCards(html, cards) {
-  return html
-    .replace(/const PRICE_DATA_META = \{ updatedAt: '[^']+' \};/, `const PRICE_DATA_META = { updatedAt: '${TODAY_JST}' };`)
-    .replace(/const CARD_MASTER = \[[\s\S]*?\n\];/, `const CARD_MASTER = ${JSON.stringify(cards, null, 2)};`);
+function replaceCards(html, cards, refreshMeta) {
+  const withCards = html.replace(/const CARD_MASTER = \[[\s\S]*?\n\];/, `const CARD_MASTER = ${JSON.stringify(cards, null, 2)};`);
+  if (!refreshMeta) return withCards;
+  return withCards.replace(
+    /const PRICE_DATA_META = \{[^}]+\};/,
+    `const PRICE_DATA_META = { updatedAt: '${TODAY_JST}', observedAt: '${OBSERVED_AT}' };`,
+  );
 }
 
 function parseBuyPrice(html) {
@@ -127,8 +131,9 @@ async function updateCard(card) {
     else notes.push('image replacement not found');
   }
 
-  const withHistory = appendPriceSnapshot(next, TODAY_JST, { salePrice, buyPrice, sourceCount: 1 });
-  return { next: withHistory, notes };
+  const successfulSources = Number(Boolean(salePrice)) + Number(Boolean(buyPrice));
+  const withHistory = appendPriceSnapshot(next, TODAY_JST, { salePrice, buyPrice, sourceCount: successfulSources });
+  return { next: withHistory, notes, successfulSources };
 }
 
 async function main() {
@@ -139,22 +144,40 @@ async function main() {
 
   for (let i = 0; i < cards.length; i++) {
     const card = cards[i];
-    const { next, notes } = await updateCard(card);
+    const { next, notes, successfulSources } = await updateCard(card);
     updated.push(next);
     const changed = next.nowPrice !== card.nowPrice || next.buyPrice !== card.buyPrice || next.image !== card.image || next.buyUrl !== card.buyUrl;
-    if (changed || notes.length) {
-      report.push({ id: card.id, name: card.name, changed, notes, before: { nowPrice: card.nowPrice, buyPrice: card.buyPrice, image: card.image }, after: { nowPrice: next.nowPrice, buyPrice: next.buyPrice, image: next.image } });
-    }
+    report.push({
+      id: card.id,
+      name: card.name,
+      ok: successfulSources > 0,
+      successfulSources,
+      changed,
+      notes,
+      before: { nowPrice: card.nowPrice, buyPrice: card.buyPrice, image: card.image },
+      after: { nowPrice: next.nowPrice, buyPrice: next.buyPrice, image: next.image },
+    });
     console.log(`${i + 1}/${cards.length} ${card.id} ${card.name}`);
   }
 
+  const successfulCards = report.filter(item => item.ok).length;
+  const changedCards = report.filter(item => item.changed).length;
+  const failedCards = report.length - successfulCards;
   for (const file of TARGET_FILES) {
     const content = fs.readFileSync(file, 'utf8');
-    fs.writeFileSync(file, replaceCards(content, updated));
+    fs.writeFileSync(file, replaceCards(content, updated, successfulCards > 0));
   }
 
-  fs.writeFileSync('price-update-report.json', JSON.stringify({ date: TODAY_JST, total: cards.length, report }, null, 2));
-  console.log(`Updated ${cards.length} cards for ${TODAY_JST}. Report items: ${report.length}`);
+  fs.writeFileSync('price-update-report.json', JSON.stringify({
+    date: TODAY_JST,
+    total: cards.length,
+    successfulCards,
+    changedCards,
+    failedCards,
+    report,
+  }, null, 2));
+  console.log(`Observed ${successfulCards}/${cards.length} cards; changed ${changedCards}; failed ${failedCards}.`);
+  if (successfulCards === 0) throw new Error('Safety stop: no price observations succeeded; freshness date was not advanced');
 }
 
 main().catch(error => {

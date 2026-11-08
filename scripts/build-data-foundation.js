@@ -18,7 +18,7 @@ function extractCards(file) {
 
 function updatedAt(file) {
   const html = fs.readFileSync(file, 'utf8');
-  return html.match(/const PRICE_DATA_META = \{ updatedAt: '([^']+)' \};/)?.[1] ?? null;
+  return html.match(/const PRICE_DATA_META = \{[^}]*updatedAt: '([^']+)'[^}]*\};/)?.[1] ?? null;
 }
 
 function writeJson(file, value) {

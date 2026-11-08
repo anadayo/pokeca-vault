@@ -79,6 +79,9 @@ function build() {
     .replaceAll('https://anadayo.github.io/pokeca-vault/', 'https://anadayo.github.io/onepiece-card-vault/')
     .replaceAll('https://anadayo.github.io/onepiece-card-vault/assets/ogp.png', 'https://anadayo.github.io/onepiece-card-vault/ogp.png')
     .replace('src="assets/adsense.js"', 'src="adsense.js"')
+    .replace('href="assets/monetization-v2.css?v=20261015-2"', 'href="monetization-v2.css?v=20261015-2"')
+    .replace('src="assets/vault-commerce-core.js?v=20261015-2"', 'src="vault-commerce-core.js?v=20261015-2"')
+    .replace('src="assets/monetization-v2.js?v=20261015-2"', 'src="monetization-v2.js?v=20261015-2"')
     .replace('<body>', `<body>\n<script>\nif (location.hostname === 'anadayo.github.io' && location.pathname.startsWith('/pokeca-vault/onepiece-card-vault')) {\n  location.replace('https://anadayo.github.io/onepiece-card-vault/' + location.search + location.hash);\n}\n</script>`)
     .replaceAll('POKÉCA VAULT', 'ONE PIECE CARD VAULT')
     .replaceAll('POKECA VAULT', 'ONE PIECE CARD VAULT')
@@ -92,6 +95,7 @@ function build() {
     .replaceAll("track('search'", "track('onepiece_search'")
     .replaceAll("track('share'", "track('onepiece_share'")
     .replace("const context = { source_view: activeView || 'unknown', ...(params || {}) };", "const context = { service: 'onepiece_card_vault', source_view: activeView || 'unknown', ...(params || {}) };")
+    .replace("game_id: 'pokemon-card-game'", "game_id: 'one-piece-card-game'")
     .replace(/const PRICE_DATA_META = \{ updatedAt: '[^']+' \};/, `const PRICE_DATA_META = { updatedAt: '${TODAY_JST}' };`)
     .replace('<div class="brand">ONE PIECE CARD VAULT<small>CARD MARKET SIMULATOR</small></div>', '<div class="brand">OP CARD VAULT<small>ONE PIECE CARD MARKET</small></div>')
     .replaceAll('人気カード500種類', `買取注目カード${cards.length}種類`)
@@ -129,6 +133,9 @@ function build() {
 
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
   fs.writeFileSync(OUTPUT, html);
+  for (const file of ['adsense.js', 'vault-commerce-core.js', 'monetization-v2.js', 'monetization-v2.css']) {
+    fs.copyFileSync(path.join(ROOT, 'assets', file), path.join(OUTPUT_DIR, file));
+  }
   console.log(`Built ${path.relative(ROOT, OUTPUT)} with ${cards.length} cards`);
 }
 

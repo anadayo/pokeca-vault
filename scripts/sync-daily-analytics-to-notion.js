@@ -11,6 +11,7 @@ const SERVICES = [
     siteUrl: 'https://anadayo.github.io/pokeca-vault/',
     pagePath: '/pokeca-vault/',
     priceFile: 'index.html',
+    priceReportFile: 'price-update-report.json',
     events: ['mercari_affiliate_click', 'mercari_click', 'card_detail_view', 'search', 'share'],
     eventNames: { mercari: ['mercari_affiliate_click', 'mercari_click'], detail: 'card_detail_view', search: 'search', share: 'share' },
   },
@@ -21,6 +22,7 @@ const SERVICES = [
     siteUrl: 'https://anadayo.github.io/onepiece-card-vault/',
     pagePath: '/onepiece-card-vault/',
     priceFile: 'onepiece-card-vault/index.html',
+    priceReportFile: 'onepiece-price-update-report.json',
     events: ['onepiece_mercari_affiliate_click', 'onepiece_card_detail_view', 'onepiece_search', 'onepiece_share'],
     eventNames: { mercari: ['onepiece_mercari_affiliate_click'], detail: 'onepiece_card_detail_view', search: 'onepiece_search', share: 'onepiece_share' },
   },
@@ -139,7 +141,21 @@ function eventCounts(report) {
 
 function priceDataDate(file) {
   const html = fs.readFileSync(file, 'utf8');
-  return html.match(/const PRICE_DATA_META = \{ updatedAt: '([^']+)' \};/)?.[1] || '';
+  return html.match(/const PRICE_DATA_META = \{[^}]*updatedAt:\s*'([^']+)'[^}]*\};/)?.[1] || '';
+}
+
+function priceHealth(service) {
+  const priceDate = service.priceFile ? priceDataDate(service.priceFile) : '';
+  if (!service.priceReportFile || !fs.existsSync(service.priceReportFile)) {
+    return { priceDate, successfulCards: 0, changedCards: 0, failedCards: 0, reportAvailable: false };
+  }
+  const report = JSON.parse(fs.readFileSync(service.priceReportFile, 'utf8'));
+  const rows = Array.isArray(report.report) ? report.report : [];
+  const successfulCards = Number(report.successfulCards ?? rows.filter(item => item.ok === true).length);
+  const changedCards = Number(report.changedCards ?? rows.filter(item => item.changed === true
+    || (Array.isArray(item.before) && Array.isArray(item.after) && item.before.some((value, index) => value !== item.after[index]))).length);
+  const failedCards = Number(report.failedCards ?? Math.max(0, Number(report.total || rows.length) - successfulCards));
+  return { priceDate, successfulCards, changedCards, failedCards, reportAvailable: true };
 }
 
 async function notionRequest(path, token, options = {}) {
@@ -177,7 +193,7 @@ function number(value) {
   return { number: Number.isFinite(value) ? value : 0 };
 }
 
-function reportProperties(service, date, metrics, events, priceDate) {
+function reportProperties(service, date, metrics, events, health) {
   if (service.kind === 'dating') {
     return {
       '日次レポート': { title: [{ text: { content: reportTitle(service, date) } }] },
@@ -196,10 +212,14 @@ function reportProperties(service, date, metrics, events, priceDate) {
       'エリアEXP投下': number(events[service.eventNames.areaExp] || 0),
       'TAG SPOT抽選': number(events[service.eventNames.spotDraw] || 0),
       '装飾交換': number(events[service.eventNames.cosmetic] || 0),
+      '計測状態': { rich_text: [{ text: { content: '取得済み' } }] },
+      '改善メモ': { rich_text: [{ text: { content: 'GA4 Data API取得成功。0は取得不可ではなく実測0です。' } }] },
       'サイト': { url: service.siteUrl },
       '同期日時': { date: { start: jstNowIso() } },
     };
   }
+  const priceDate = health.priceDate;
+  const priceVerified = health.reportAvailable && health.successfulCards > 0;
   const mercariClicks = service.eventNames.mercari.reduce((total, name) => total + (events[name] || 0), 0);
   const pageViews = metrics.screenPageViews || 0;
   return {
@@ -215,8 +235,15 @@ function reportProperties(service, date, metrics, events, priceDate) {
     'カード詳細表示': number(events[service.eventNames.detail] || 0),
     '検索回数': number(events[service.eventNames.search] || 0),
     'Xシェア': number(events[service.eventNames.share] || 0),
+    '価格成功件数': number(health.successfulCards),
+    '価格失敗件数': number(health.failedCards),
+    '実更新件数': number(health.changedCards),
     '価格データ日': priceDate ? { date: { start: priceDate } } : { date: null },
-    '価格更新': { select: { name: priceDate >= date ? '最新' : '要確認' } },
+    '価格更新': { select: { name: priceVerified && priceDate >= date ? '最新' : '要確認' } },
+    '計測状態': { rich_text: [{ text: { content: '取得済み' } }] },
+    '改善メモ': { rich_text: [{ text: { content: priceVerified
+      ? `GA4取得成功。価格成功${health.successfulCards}件・実更新${health.changedCards}件。`
+      : 'GA4取得成功。価格レポートに成功実績がないため価格鮮度は要確認。' } }] },
     'サイト': { url: service.siteUrl },
     '同期日時': { date: { start: jstNowIso() } },
   };
@@ -367,9 +394,9 @@ async function main() {
     ]);
     const metrics = metricObject(summaryReport);
     const events = eventCounts(eventReport);
-    const priceDate = service.priceFile ? priceDataDate(service.priceFile) : '';
-    const result = await upsertNotion(service, dataSourceId, date, reportProperties(service, date, metrics, events, priceDate));
-    results.push({ service: service.name, date, metrics, events, priceDate, cleanup, ...result });
+    const health = service.priceFile ? priceHealth(service) : {};
+    const result = await upsertNotion(service, dataSourceId, date, reportProperties(service, date, metrics, events, health));
+    results.push({ service: service.name, date, metrics, events, priceHealth: health, cleanup, ...result });
   }
 
   console.log(JSON.stringify(results, null, 2));

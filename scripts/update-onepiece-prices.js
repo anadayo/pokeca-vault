@@ -9,6 +9,7 @@ const CONCURRENCY = Number(process.env.ONEPIECE_PRICE_CONCURRENCY || 6);
 const TODAY_JST = new Intl.DateTimeFormat('sv-SE', {
   timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit',
 }).format(new Date());
+const OBSERVED_AT = new Date().toISOString();
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -85,13 +86,28 @@ async function main() {
   }
   await Promise.all(Array.from({ length: Math.max(1, CONCURRENCY) }, worker));
 
-  const output = html
-    .replace(/const PRICE_DATA_META = \{ updatedAt: '[^']+' \};/, `const PRICE_DATA_META = { updatedAt: '${TODAY_JST}' };`)
-    .replace(/const CARD_MASTER = \[[\s\S]*?\n\];/, `const CARD_MASTER = ${JSON.stringify(updated, null, 2)};`);
+  const successfulCards = report.filter(item => item.ok).length;
+  const changedCards = report.filter(item => item.ok && item.before.some((value, index) => value !== item.after[index])).length;
+  const failedCards = report.length - successfulCards;
+  let output = html.replace(/const CARD_MASTER = \[[\s\S]*?\n\];/, `const CARD_MASTER = ${JSON.stringify(updated, null, 2)};`);
+  if (successfulCards > 0) {
+    output = output.replace(
+      /const PRICE_DATA_META = \{[^}]+\};/,
+      `const PRICE_DATA_META = { updatedAt: '${TODAY_JST}', observedAt: '${OBSERVED_AT}' };`,
+    );
+  }
   fs.writeFileSync(TARGET_FILE, output);
   fs.writeFileSync(CATALOG_FILE, `${JSON.stringify(updated, null, 2)}\n`);
-  fs.writeFileSync('onepiece-price-update-report.json', JSON.stringify({ date: TODAY_JST, report }, null, 2));
-  console.log(`Updated ${report.filter(item => item.ok).length}/${cards.length} ONE PIECE cards`);
+  fs.writeFileSync('onepiece-price-update-report.json', JSON.stringify({
+    date: TODAY_JST,
+    total: cards.length,
+    successfulCards,
+    changedCards,
+    failedCards,
+    report,
+  }, null, 2));
+  console.log(`Observed ${successfulCards}/${cards.length} ONE PIECE cards; changed ${changedCards}; failed ${failedCards}.`);
+  if (successfulCards === 0) throw new Error('Safety stop: no price observations succeeded; freshness date was not advanced');
 }
 
 main().catch(error => {

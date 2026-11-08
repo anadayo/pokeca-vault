@@ -58,6 +58,36 @@ const SERVICES = [
       cosmetic: 'tagtokyo_cosmetic_exchanged',
     },
   },
+  {
+    name: 'VOCALU',
+    kind: 'game',
+    notionDataSourceEnv: 'NOTION_VOCALU_DATA_SOURCE_ID',
+    siteUrl: 'https://anadayo.github.io/vocalu/',
+    pagePath: '/vocalu/',
+    pageMatchType: 'BEGINS_WITH',
+    events: [
+      'lobby_view',
+      'pack_open',
+      'collection_view',
+      'deck_build_complete',
+      'battle_start',
+      'battle_complete',
+      'ranked_match_start',
+      'share_x',
+      'game_error',
+    ],
+    eventNames: {
+      lobby: 'lobby_view',
+      pack: 'pack_open',
+      collection: 'collection_view',
+      deck: 'deck_build_complete',
+      battleStart: 'battle_start',
+      battleComplete: 'battle_complete',
+      ranked: 'ranked_match_start',
+      share: 'share_x',
+      error: 'game_error',
+    },
+  },
 ];
 
 function required(name) {
@@ -194,6 +224,38 @@ function number(value) {
 }
 
 function reportProperties(service, date, metrics, events, health) {
+  if (service.kind === 'game') {
+    const activeUsers = Number(metrics.activeUsers || 0);
+    const newUsers = Number(metrics.newUsers || 0);
+    const returningUsers = Math.max(0, activeUsers - newUsers);
+    const averagePlaySeconds = activeUsers
+      ? Number(metrics.userEngagementDuration || 0) / activeUsers
+      : 0;
+    return {
+      '日次レポート': { title: [{ text: { content: reportTitle(service, date) } }] },
+      '日付': { date: { start: date } },
+      '月': { rich_text: [{ text: { content: date.slice(0, 7) } }] },
+      'アクティブユーザー': number(activeUsers),
+      '新規ユーザー': number(newUsers),
+      '再訪ユーザー': number(returningUsers),
+      'セッション': number(metrics.sessions),
+      'PV': number(metrics.screenPageViews),
+      '平均プレイ時間秒': number(averagePlaySeconds),
+      'ロビー表示': number(events[service.eventNames.lobby] || 0),
+      'パック開封': number(events[service.eventNames.pack] || 0),
+      'コレクション表示': number(events[service.eventNames.collection] || 0),
+      'デッキ構築完了': number(events[service.eventNames.deck] || 0),
+      '対戦開始': number(events[service.eventNames.battleStart] || 0),
+      '対戦完了': number(events[service.eventNames.battleComplete] || 0),
+      'ランクマッチ開始': number(events[service.eventNames.ranked] || 0),
+      'Xシェア': number(events[service.eventNames.share] || 0),
+      '計測元': { select: { name: 'GA4' } },
+      '計測状態': { select: { name: '実測' } },
+      '改善メモ': { rich_text: [{ text: { content: `GA4 Data API取得成功。ゲームエラー${events[service.eventNames.error] || 0}件。` } }] },
+      'サイト': { url: service.siteUrl },
+      '同期日時': { date: { start: jstNowIso() } },
+    };
+  }
   if (service.kind === 'dating') {
     return {
       '日次レポート': { title: [{ text: { content: reportTitle(service, date) } }] },
@@ -361,7 +423,7 @@ async function main() {
       : undefined;
     const [summaryReport, eventReport] = await Promise.all([
       runGaReport(accessToken, date, {
-        metrics: ['activeUsers', 'newUsers', 'sessions', 'screenPageViews'].map(name => ({ name })),
+        metrics: ['activeUsers', 'newUsers', 'sessions', 'screenPageViews', 'userEngagementDuration'].map(name => ({ name })),
         dimensionFilter: {
           filter: {
             fieldName: 'pagePath',
@@ -402,7 +464,11 @@ async function main() {
   console.log(JSON.stringify(results, null, 2));
 }
 
-main().catch(error => {
-  console.error(error);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch(error => {
+    console.error(error);
+    process.exit(1);
+  });
+}
+
+module.exports = { SERVICES, eventCounts, metricObject, reportProperties };

@@ -39,6 +39,9 @@ jobs:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_POKECA_DATA_SOURCE_ID: '3d7c9239-b3c9-802c-8506-000b712815e5'
           NOTION_ONEPIECE_DATA_SOURCE_ID: '077c9239-b3c9-82fb-b8bf-87cf83077643'
+          NOTION_VOCALU_DATA_SOURCE_ID: '569e14d2-b05e-4ea8-921e-c844f1b66ec0'
           REPORT_DATE: ${{ inputs.report_date }}
           NORMALIZE_HISTORY: ${{ inputs.normalize_history }}
-        run: node scripts/sync-daily-analytics-to-notion.js
+        run: |
+          node scripts/test-vocalu-analytics-sync.js
+          node scripts/sync-daily-analytics-to-notion.js

@@ -1,9 +1,9 @@
 {
-  "date": "2026-11-12",
+  "date": "2026-11-13",
   "total": 500,
-  "successfulCards": 500,
+  "successfulCards": 499,
   "changedCards": 0,
-  "failedCards": 0,
+  "failedCards": 1,
   "report": [
     {
       "id": "OP05-119-V5",
@@ -4819,15 +4819,8 @@
     },
     {
       "id": "EB01-013-V1",
-      "ok": true,
-      "before": [
-        750,
-        600
-      ],
-      "after": [
-        750,
-        600
-      ]
+      "ok": false,
+      "error": "fetch failed"
     },
     {
       "id": "OP12-073-V1",

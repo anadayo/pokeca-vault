@@ -2,7 +2,7 @@
   "date": "2026-11-12",
   "total": 500,
   "successfulCards": 500,
-  "changedCards": 9,
+  "changedCards": 67,
   "failedCards": 0,
   "report": [
     {
@@ -190,10 +190,10 @@
       "name": "メガダークライex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 19000,
+        "nowPrice": 18000,
         "buyPrice": null,
         "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar114081m5-4117994.webp?v=1781503451"
       },
@@ -640,7 +640,7 @@
       "name": "ミュウex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 5000,
@@ -648,7 +648,7 @@
         "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/J07bZvfRr0dAyB3Rs2eU5eAjjM4eWbjKyRSJ0VUf.webp?v=1790245550"
       },
       "after": {
-        "nowPrice": 5000,
+        "nowPrice": 5200,
         "buyPrice": null,
         "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/J07bZvfRr0dAyB3Rs2eU5eAjjM4eWbjKyRSJ0VUf.webp?v=1790245550"
       }
@@ -1288,10 +1288,10 @@
       "name": "ムク",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 2700,
+        "nowPrice": 3000,
         "buyPrice": null,
         "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/sar117081m5-8459543.webp?v=1781503453"
       },
@@ -1396,10 +1396,10 @@
       "name": "メガゼラオラex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 1900,
+        "nowPrice": 2100,
         "buyPrice": null,
         "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar112081m5-4444559.webp?v=1781503452"
       },
@@ -1522,7 +1522,7 @@
       "name": "ゲッコウガex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 1200,
@@ -1532,7 +1532,7 @@
       "after": {
         "nowPrice": 1200,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/dT8hxvCdlO1EuhI2Le2QX6oloUBaMuVlwjf3Wrc2.webp?v=1790245558"
+        "image": "https://www.hareruya2.com/cdn/shop/files/dT8hxvCdlO1EuhI2Le2QX6oloUBaMuVlwjf3Wrc2.webp?v=1790245558"
       }
     },
     {
@@ -1561,14 +1561,14 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 1500,
+        "nowPrice": 1600,
         "buyPrice": null,
         "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/sar112076m6-2-3581556.webp?v=1786944608"
       },
       "after": {
         "nowPrice": 1600,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/sar112076m6-2-3581556.webp?v=1786944608"
+        "image": "https://www.hareruya2.com/cdn/shop/files/sar112076m6-2-3581556.webp?v=1786944608"
       }
     },
     {
@@ -1576,7 +1576,7 @@
       "name": "ホゲータex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 800,
@@ -1586,7 +1586,7 @@
       "after": {
         "nowPrice": 800,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/8Cu7QeFMwUpQNQ7VYpt3LuDC9hKVrj9HbRmLl3X3.webp?v=1790245542"
+        "image": "https://www.hareruya2.com/cdn/shop/files/8Cu7QeFMwUpQNQ7VYpt3LuDC9hKVrj9HbRmLl3X3.webp?v=1790245542"
       }
     },
     {
@@ -1594,7 +1594,7 @@
       "name": "ボーマンダex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 900,
@@ -1604,7 +1604,7 @@
       "after": {
         "nowPrice": 900,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/VHh7R26qkQBlpO0Gvwm5AI2i2pNm6fM6SV3GzGv7.webp?v=1790245554"
+        "image": "https://www.hareruya2.com/cdn/shop/files/VHh7R26qkQBlpO0Gvwm5AI2i2pNm6fM6SV3GzGv7.webp?v=1790245554"
       }
     },
     {
@@ -1702,7 +1702,7 @@
       "name": "メガシャンデラex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 1200,
@@ -1712,7 +1712,7 @@
       "after": {
         "nowPrice": 1200,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar113081m5-9626078.webp?v=1781503452"
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar113081m5-9626078.webp?v=1781503452"
       }
     },
     {
@@ -1741,14 +1741,14 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 1100,
+        "nowPrice": 1200,
         "buyPrice": null,
         "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/sar116081m5-7348333.webp?v=1781503453"
       },
       "after": {
         "nowPrice": 1200,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/sar116081m5-7348333.webp?v=1781503453"
+        "image": "https://www.hareruya2.com/cdn/shop/files/sar116081m5-7348333.webp?v=1781503453"
       }
     },
     {
@@ -1885,14 +1885,14 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 800,
+        "nowPrice": 900,
         "buyPrice": null,
         "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar109076m6-2-5724998.webp?v=1786944607"
       },
       "after": {
         "nowPrice": 900,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar109076m6-2-5724998.webp?v=1786944607"
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar109076m6-2-5724998.webp?v=1786944607"
       }
     },
     {
@@ -1957,14 +1957,14 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 700,
+        "nowPrice": 750,
         "buyPrice": null,
         "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar107076m6-2-2838914.webp?v=1786944609"
       },
       "after": {
         "nowPrice": 750,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exsar107076m6-2-2838914.webp?v=1786944609"
+        "image": "https://www.hareruya2.com/cdn/shop/files/exsar107076m6-2-2838914.webp?v=1786944609"
       }
     },
     {
@@ -2029,14 +2029,14 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 600,
+        "nowPrice": 650,
         "buyPrice": null,
         "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/sar111076m6-2-6274197.webp?v=1786944551"
       },
       "after": {
         "nowPrice": 650,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/sar111076m6-2-6274197.webp?v=1786944551"
+        "image": "https://www.hareruya2.com/cdn/shop/files/sar111076m6-2-6274197.webp?v=1786944551"
       }
     },
     {
@@ -2116,10 +2116,10 @@
       "name": "メガレックウザex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 55000,
+        "nowPrice": 58000,
         "buyPrice": null,
         "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/exmur113076m6-2-7630691.webp?v=1786944551"
       },
@@ -2764,7 +2764,7 @@
       "name": "ミュウex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 5500,
@@ -2772,7 +2772,7 @@
         "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/ACu1O2ema2S9WQGKlZKUm3gyloSut4hMGL7CAicJ.webp?v=1790245572"
       },
       "after": {
-        "nowPrice": 5500,
+        "nowPrice": 5300,
         "buyPrice": null,
         "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/ACu1O2ema2S9WQGKlZKUm3gyloSut4hMGL7CAicJ.webp?v=1790245572"
       }
@@ -2854,7 +2854,7 @@
       "name": "アクアパッチ",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 6200,
@@ -2864,7 +2864,7 @@
       "after": {
         "nowPrice": 6200,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur060050sm2l-2-9258335.jpg?v=1784226129"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur060050sm2l-2-9258335.jpg?v=1784226129"
       }
     },
     {
@@ -2872,7 +2872,7 @@
       "name": "ソルガレオGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 6000,
@@ -2882,7 +2882,7 @@
       "after": {
         "nowPrice": 6000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxur249150sm8b-2-3170475.jpg?v=1784220368"
+        "image": "https://www.hareruya2.com/cdn/shop/products/gxur249150sm8b-2-3170475.jpg?v=1784220368"
       }
     },
     {
@@ -2890,7 +2890,7 @@
       "name": "ウルトラネクロズマGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 6000,
@@ -2900,7 +2900,7 @@
       "after": {
         "nowPrice": 6000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxur250150sm8b-2-8782188.jpg?v=1784220369"
+        "image": "https://www.hareruya2.com/cdn/shop/products/gxur250150sm8b-2-8782188.jpg?v=1784220369"
       }
     },
     {
@@ -2908,7 +2908,7 @@
       "name": "基本鋼エネルギー",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 6000,
@@ -2918,7 +2918,7 @@
       "after": {
         "nowPrice": 6000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur062050sm4s-2140550.jpg?v=1781543892"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur062050sm4s-2140550.jpg?v=1781543892"
       }
     },
     {
@@ -2926,7 +2926,7 @@
       "name": "ポケモン通信",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 5200,
@@ -2936,7 +2936,7 @@
       "after": {
         "nowPrice": 5200,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur116095sm9-2-5626560.jpg?v=1784218629"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur116095sm9-2-5626560.jpg?v=1784218629"
       }
     },
     {
@@ -2962,7 +2962,7 @@
       "name": "スーパーポケモン回収",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 5000,
@@ -2972,7 +2972,7 @@
       "after": {
         "nowPrice": 5000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur062051sm3n-2-8304592.jpg?v=1784223008"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur062051sm3n-2-8304592.jpg?v=1784223008"
       }
     },
     {
@@ -2980,7 +2980,7 @@
       "name": "リーリエのピッピ人形",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 5000,
@@ -2990,7 +2990,7 @@
       "after": {
         "nowPrice": 5000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur074049sm11b-2-2677404.jpg?v=1784214189"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur074049sm11b-2-2677404.jpg?v=1784214189"
       }
     },
     {
@@ -2998,7 +2998,7 @@
       "name": "ミュウツーex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 3800,
@@ -3008,7 +3008,7 @@
       "after": {
         "nowPrice": 3800,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/RyzzeQgOXJjsS4G4cbEn9x0zJgek8TDUKDI995fS.webp?v=1790245581"
+        "image": "https://www.hareruya2.com/cdn/shop/files/RyzzeQgOXJjsS4G4cbEn9x0zJgek8TDUKDI995fS.webp?v=1790245581"
       }
     },
     {
@@ -3034,7 +3034,7 @@
       "name": "火打石",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 4500,
@@ -3044,7 +3044,7 @@
       "after": {
         "nowPrice": 4500,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur065053sm6a-2-2413316.jpg?v=1784223790"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur065053sm6a-2-2413316.jpg?v=1784223790"
       }
     },
     {
@@ -3052,7 +3052,7 @@
       "name": "ネットボール",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 4500,
@@ -3062,7 +3062,7 @@
       "after": {
         "nowPrice": 4500,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur061050sm7b-2-2149049.jpg?v=1784221690"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur061050sm7b-2-2149049.jpg?v=1784221690"
       }
     },
     {
@@ -3070,7 +3070,7 @@
       "name": "まんたんのくすり",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 4200,
@@ -3080,7 +3080,7 @@
       "after": {
         "nowPrice": 4200,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur061050sm2k-2-6591824.jpg?v=1784226369"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur061050sm2k-2-6591824.jpg?v=1784226369"
       }
     },
     {
@@ -3088,7 +3088,7 @@
       "name": "せせらぎの丘",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 4000,
@@ -3098,7 +3098,7 @@
       "after": {
         "nowPrice": 4000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur118095sm9-2-3407628.jpg?v=1784218572"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur118095sm9-2-3407628.jpg?v=1784218572"
       }
     },
     {
@@ -3124,7 +3124,7 @@
       "name": "ユニットエネルギー草炎水",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 3000,
@@ -3134,7 +3134,7 @@
       "after": {
         "nowPrice": 3000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/ur078066sm5s-2-2084149.jpg?v=1784222951"
+        "image": "https://www.hareruya2.com/cdn/shop/files/ur078066sm5s-2-2084149.jpg?v=1784222951"
       }
     },
     {
@@ -3196,7 +3196,7 @@
       "name": "改造ハンマー",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2900,
@@ -3206,7 +3206,7 @@
       "after": {
         "nowPrice": 2900,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur061050sm2l-2-6986256.jpg?v=1784226129"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur061050sm2l-2-6986256.jpg?v=1784226129"
       }
     },
     {
@@ -3214,7 +3214,7 @@
       "name": "ミッシングクローバー",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2800,
@@ -3224,7 +3224,7 @@
       "after": {
         "nowPrice": 2800,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur077066sm5s-2-3885377.jpg?v=1784222951"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur077066sm5s-2-3885377.jpg?v=1784222951"
       }
     },
     {
@@ -3232,7 +3232,7 @@
       "name": "ポケナビ",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2800,
@@ -3242,7 +3242,7 @@
       "after": {
         "nowPrice": 2800,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur085066sm6b-2-8623193.jpg?v=1784222594"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur085066sm6b-2-8623193.jpg?v=1784222594"
       }
     },
     {
@@ -3268,7 +3268,7 @@
       "name": "ねがいのバトン",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2600,
@@ -3278,7 +3278,7 @@
       "after": {
         "nowPrice": 2600,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur060050sm4a-2-6150149.jpg?v=1784224454"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur060050sm4a-2-6150149.jpg?v=1784224454"
       }
     },
     {
@@ -3286,7 +3286,7 @@
       "name": "プレシャスボール",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2600,
@@ -3296,7 +3296,7 @@
       "after": {
         "nowPrice": 2600,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur113094sm11-2-6041567.jpg?v=1784216468"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur113094sm11-2-6041567.jpg?v=1784216468"
       }
     },
     {
@@ -3304,7 +3304,7 @@
       "name": "マルチつけかえ",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2500,
@@ -3314,7 +3314,7 @@
       "after": {
         "nowPrice": 2500,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur065049sm2p-2-6718966.jpg?v=1784224870"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur065049sm2p-2-6718966.jpg?v=1784224870"
       }
     },
     {
@@ -3322,7 +3322,7 @@
       "name": "ムキムキダンベル",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2500,
@@ -3332,7 +3332,7 @@
       "after": {
         "nowPrice": 2500,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur063051sm3h-2-1011777.jpg?v=1784224452"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur063051sm3h-2-1011777.jpg?v=1784224452"
       }
     },
     {
@@ -3340,7 +3340,7 @@
       "name": "ユニットエネルギー雷超鋼",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2500,
@@ -3350,7 +3350,7 @@
       "after": {
         "nowPrice": 2500,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/files/ur078066sm5m-2-8327790.jpg?v=1784222420"
+        "image": "https://www.hareruya2.com/cdn/shop/files/ur078066sm5m-2-8327790.jpg?v=1784222420"
       }
     },
     {
@@ -3358,7 +3358,7 @@
       "name": "ダートじてんしゃ",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2500,
@@ -3368,7 +3368,7 @@
       "after": {
         "nowPrice": 2500,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur110096sm7-2-2840108.jpg?v=1784220074"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur110096sm7-2-2840108.jpg?v=1784220074"
       }
     },
     {
@@ -3376,7 +3376,7 @@
       "name": "カプ・レヒレGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2400,
@@ -3386,7 +3386,7 @@
       "after": {
         "nowPrice": 2400,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxur245150sm8b-2-3483598.jpg?v=1784220427"
+        "image": "https://www.hareruya2.com/cdn/shop/products/gxur245150sm8b-2-3483598.jpg?v=1784220427"
       }
     },
     {
@@ -3394,7 +3394,7 @@
       "name": "ビーストリング",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2200,
@@ -3404,7 +3404,7 @@
       "after": {
         "nowPrice": 2200,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur062050sm5p-2-7336256.jpg?v=1784221994"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur062050sm5p-2-7336256.jpg?v=1784221994"
       }
     },
     {
@@ -3412,7 +3412,7 @@
       "name": "鋼鉄のフライパン",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2200,
@@ -3422,7 +3422,7 @@
       "after": {
         "nowPrice": 2200,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur063050sm5p-2-3427877.jpg?v=1784221994"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur063050sm5p-2-3427877.jpg?v=1784221994"
       }
     },
     {
@@ -3430,7 +3430,7 @@
       "name": "トキワの森",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2200,
@@ -3440,7 +3440,7 @@
       "after": {
         "nowPrice": 2200,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur068054sm10b-2-4320010.jpg?v=1784216110"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur068054sm10b-2-4320010.jpg?v=1784216110"
       }
     },
     {
@@ -3448,7 +3448,7 @@
       "name": "こだわりハチマキ",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2000,
@@ -3458,7 +3458,7 @@
       "after": {
         "nowPrice": 2000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur064049sm2p-2-1868664.jpg?v=1784224870"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur064049sm2p-2-1868664.jpg?v=1784224870"
       }
     },
     {
@@ -3466,7 +3466,7 @@
       "name": "いれかえフロート",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2000,
@@ -3476,7 +3476,7 @@
       "after": {
         "nowPrice": 2000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur064053sm6a-2-7526852.jpg?v=1784223791"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur064053sm6a-2-7526852.jpg?v=1784223791"
       }
     },
     {
@@ -3484,7 +3484,7 @@
       "name": "エスケープボード",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2000,
@@ -3494,7 +3494,7 @@
       "after": {
         "nowPrice": 2000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur077066sm5m-2-9714600.jpg?v=1784222420"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur077066sm5m-2-9714600.jpg?v=1784222420"
       }
     },
     {
@@ -3502,7 +3502,7 @@
       "name": "ユニットエネルギー闘悪妖",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2000,
@@ -3512,7 +3512,7 @@
       "after": {
         "nowPrice": 2000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur110094sm6-2-3444601.jpg?v=1784221568"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur110094sm6-2-3444601.jpg?v=1784221568"
       }
     },
     {
@@ -3520,7 +3520,7 @@
       "name": "カプ・ブルルGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2000,
@@ -3530,7 +3530,7 @@
       "after": {
         "nowPrice": 2000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/gxur244150sm8b-2-9385632.jpg?v=1784220427"
+        "image": "https://www.hareruya2.com/cdn/shop/products/gxur244150sm8b-2-9385632.jpg?v=1784220427"
       }
     },
     {
@@ -3772,7 +3772,7 @@
       "name": "竜の鉤爪",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 1200,
@@ -3782,7 +3782,7 @@
       "after": {
         "nowPrice": 1200,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur066053sm6a-2-7588200.jpg?v=1784223791"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur066053sm6a-2-7588200.jpg?v=1784223791"
       }
     },
     {
@@ -3790,7 +3790,7 @@
       "name": "エネポーター",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 1200,
@@ -3800,7 +3800,7 @@
       "after": {
         "nowPrice": 1200,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur108094sm6-2-1274853.jpg?v=1784221569"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur108094sm6-2-1274853.jpg?v=1784221569"
       }
     },
     {
@@ -3808,7 +3808,7 @@
       "name": "レインボーブラシ",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 1200,
@@ -3818,7 +3818,7 @@
       "after": {
         "nowPrice": 1200,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur111096sm7-2-5936410.jpg?v=1784220073"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur111096sm7-2-5936410.jpg?v=1784220073"
       }
     },
     {
@@ -3826,7 +3826,7 @@
       "name": "リサイクルエネルギー",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 1200,
@@ -3836,7 +3836,7 @@
       "after": {
         "nowPrice": 1200,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur069054sm10b-2-7737445.jpg?v=1784216110"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur069054sm10b-2-7737445.jpg?v=1784216110"
       }
     },
     {
@@ -3880,7 +3880,7 @@
       "name": "ふっかつそう",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 1100,
@@ -3890,7 +3890,7 @@
       "after": {
         "nowPrice": 1100,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur084066sm6b-2-1327929.jpg?v=1784222593"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur084066sm6b-2-1327929.jpg?v=1784222593"
       }
     },
     {
@@ -3916,7 +3916,7 @@
       "name": "のぞきみレッドカード",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 1000,
@@ -3926,7 +3926,7 @@
       "after": {
         "nowPrice": 1000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur076066sm5s-2-8163729.jpg?v=1784222952"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur076066sm5s-2-8163729.jpg?v=1784222952"
       }
     },
     {
@@ -3934,7 +3934,7 @@
       "name": "炎の結晶",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 1000,
@@ -3944,7 +3944,7 @@
       "after": {
         "nowPrice": 1000,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur114095sm10-2-9580748.jpg?v=1784217730"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur114095sm10-2-9580748.jpg?v=1784217730"
       }
     },
     {
@@ -3970,7 +3970,7 @@
       "name": "デンジャラスドリル",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 900,
@@ -3980,7 +3980,7 @@
       "after": {
         "nowPrice": 900,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur064052sm8a-2-9640975.jpg?v=1784220310"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur064052sm8a-2-9640975.jpg?v=1784220310"
       }
     },
     {
@@ -3988,7 +3988,7 @@
       "name": "エーテルパラダイス保護区",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 900,
@@ -3998,7 +3998,7 @@
       "after": {
         "nowPrice": 900,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur070055sm9a-2-9080932.jpg?v=1784217672"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur070055sm9a-2-9080932.jpg?v=1784217672"
       }
     },
     {
@@ -4006,7 +4006,7 @@
       "name": "カスタムキャッチャー",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 800,
@@ -4016,7 +4016,7 @@
       "after": {
         "nowPrice": 800,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur072060sm7a-2-8502671.jpg?v=1784222423"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur072060sm7a-2-8502671.jpg?v=1784222423"
       }
     },
     {
@@ -4024,7 +4024,7 @@
       "name": "ハッスルベルト",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 800,
@@ -4034,7 +4034,7 @@
       "after": {
         "nowPrice": 800,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur112096sm7-2-2723838.jpg?v=1784220073"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur112096sm7-2-2723838.jpg?v=1784220073"
       }
     },
     {
@@ -4042,7 +4042,7 @@
       "name": "タッグスイッチ",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 800,
@@ -4052,7 +4052,7 @@
       "after": {
         "nowPrice": 800,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur067054sm10a-2-5905807.jpg?v=1784216111"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur067054sm10a-2-5905807.jpg?v=1784216111"
       }
     },
     {
@@ -4060,7 +4060,7 @@
       "name": "格闘道場",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 800,
@@ -4070,7 +4070,7 @@
       "after": {
         "nowPrice": 800,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur079064sm11a-2-5808022.jpg?v=1784215451"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur079064sm11a-2-5808022.jpg?v=1784215451"
       }
     },
     {
@@ -4096,7 +4096,7 @@
       "name": "あとだしハンマー",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 900,
@@ -4106,7 +4106,7 @@
       "after": {
         "nowPrice": 900,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur109095sm8-2-5317806.jpg?v=1784222425"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur109095sm8-2-5317806.jpg?v=1784222425"
       }
     },
     {
@@ -4114,7 +4114,7 @@
       "name": "メタルゴーグル",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 750,
@@ -4124,7 +4124,7 @@
       "after": {
         "nowPrice": 750,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur065052sm8a-2-6843844.jpg?v=1784220311"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur065052sm8a-2-6843844.jpg?v=1784220311"
       }
     },
     {
@@ -4132,7 +4132,7 @@
       "name": "メタルコアバリア",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 750,
@@ -4142,7 +4142,7 @@
       "after": {
         "nowPrice": 750,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur068054sm9b-2-9974409.jpg?v=1784219000"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur068054sm9b-2-9974409.jpg?v=1784219000"
       }
     },
     {
@@ -4150,7 +4150,7 @@
       "name": "テンガン山",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 750,
@@ -4160,7 +4160,7 @@
       "after": {
         "nowPrice": 750,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur069054sm9b-2-8917405.jpg?v=1784219000"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur069054sm9b-2-8917405.jpg?v=1784219000"
       }
     },
     {
@@ -4168,7 +4168,7 @@
       "name": "戒めの祠",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 750,
@@ -4178,7 +4178,7 @@
       "after": {
         "nowPrice": 750,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur115095sm10-2-4369777.jpg?v=1784217730"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur115095sm10-2-4369777.jpg?v=1784217730"
       }
     },
     {
@@ -4186,7 +4186,7 @@
       "name": "ジャイアントボム",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 750,
@@ -4196,7 +4196,7 @@
       "after": {
         "nowPrice": 750,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur114094sm11-2-8490437.jpg?v=1784216168"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur114094sm11-2-8490437.jpg?v=1784216168"
       }
     },
     {
@@ -4204,7 +4204,7 @@
       "name": "無人発電所",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 750,
@@ -4214,7 +4214,7 @@
       "after": {
         "nowPrice": 750,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur075049sm11b-2-3452630.jpg?v=1784214187"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur075049sm11b-2-3452630.jpg?v=1784214187"
       }
     },
     {
@@ -4222,7 +4222,7 @@
       "name": "巨大なカマド",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 750,
@@ -4232,7 +4232,7 @@
       "after": {
         "nowPrice": 750,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur117095sm12-2-5426548.jpg?v=1784213948"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur117095sm12-2-5426548.jpg?v=1784213948"
       }
     },
     {
@@ -4240,7 +4240,7 @@
       "name": "ロストミキサー",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 700,
@@ -4250,7 +4250,7 @@
       "after": {
         "nowPrice": 700,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur110095sm8-2-8099052.jpg?v=1784222424"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur110095sm8-2-8099052.jpg?v=1784222424"
       }
     },
     {
@@ -4258,7 +4258,7 @@
       "name": "ウィークガードエネルギー",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 700,
@@ -4268,7 +4268,7 @@
       "after": {
         "nowPrice": 700,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur115094sm11-2-9200102.jpg?v=1784216168"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur115094sm11-2-9200102.jpg?v=1784216168"
       }
     },
     {
@@ -4276,7 +4276,7 @@
       "name": "Uターンボード",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 700,
@@ -4286,7 +4286,7 @@
       "after": {
         "nowPrice": 700,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/uur067054sm10b-2-3252725.jpg?v=1784216110"
+        "image": "https://www.hareruya2.com/cdn/shop/products/uur067054sm10b-2-3252725.jpg?v=1784216110"
       }
     },
     {
@@ -4294,7 +4294,7 @@
       "name": "スイレンのつりざお",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 700,
@@ -4304,7 +4304,7 @@
       "after": {
         "nowPrice": 700,
         "buyPrice": null,
-        "image": "https://cdn.shopify.com/s/files/1/0763/0536/7360/products/ur073049sm11b-2-1824650.jpg?v=1784214190"
+        "image": "https://www.hareruya2.com/cdn/shop/products/ur073049sm11b-2-1824650.jpg?v=1784214190"
       }
     },
     {

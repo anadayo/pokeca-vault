@@ -22502,6 +22502,12 @@
         "sale_price": 750,
         "buy_price": 600,
         "source_count": 1
+      },
+      {
+        "date": "2026-11-13",
+        "sale_price": 750,
+        "buy_price": 600,
+        "source_count": 1
       }
     ]
   },

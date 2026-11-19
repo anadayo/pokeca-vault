@@ -1,9 +1,9 @@
 {
   "date": "2026-11-19",
   "total": 500,
-  "successfulCards": 499,
+  "successfulCards": 500,
   "changedCards": 0,
-  "failedCards": 1,
+  "failedCards": 0,
   "report": [
     {
       "id": "OP05-119-V5",
@@ -5731,8 +5731,15 @@
     },
     {
       "id": "OP10-046-V1",
-      "ok": false,
-      "error": "fetch failed"
+      "ok": true,
+      "before": [
+        580,
+        400
+      ],
+      "after": [
+        580,
+        400
+      ]
     },
     {
       "id": "OP10-071-V1",

@@ -2,7 +2,7 @@
   "date": "2026-11-19",
   "total": 500,
   "successfulCards": 500,
-  "changedCards": 6,
+  "changedCards": 0,
   "failedCards": 0,
   "report": [
     {
@@ -190,10 +190,10 @@
       "name": "メガダークライex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 16000,
+        "nowPrice": 15000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar114081m5-4117994.webp?v=1781503451"
       },
@@ -1036,10 +1036,10 @@
       "name": "ムク",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 3000,
+        "nowPrice": 3200,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/sar117081m5-8459543.webp?v=1781503453"
       },
@@ -1144,10 +1144,10 @@
       "name": "モルペコex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 3000,
+        "nowPrice": 2900,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar115081m5-3045693.webp?v=1781503454"
       },
@@ -1540,10 +1540,10 @@
       "name": "ヒガナの信頼",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 1500,
+        "nowPrice": 1400,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/sar112076m6-2-3581556.webp?v=1786944608"
       },
@@ -1918,10 +1918,10 @@
       "name": "ギリー",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 650,
+        "nowPrice": 600,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/sar111076m6-2-6274197.webp?v=1786944551"
       },
@@ -8992,10 +8992,10 @@
       "name": "メガレックウザex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 2600,
+        "nowPrice": 2500,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsr095076m6-2-8774144.webp?v=1786944609"
       },

@@ -1,8 +1,8 @@
 {
-  "date": "2026-11-24",
+  "date": "2026-11-25",
   "total": 500,
   "successfulCards": 500,
-  "changedCards": 9,
+  "changedCards": 0,
   "failedCards": 0,
   "report": [
     {
@@ -154,10 +154,10 @@
       "name": "メガレックウザex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 30000,
+        "nowPrice": 28000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar110076m6-2-8460187.webp?v=1786944608"
       },
@@ -316,11 +316,11 @@
       "name": "リザードンVSTAR",
       "ok": true,
       "successfulSources": 2,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
         "nowPrice": 12000,
-        "buyPrice": 8500,
+        "buyPrice": 9000,
         "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar212172s12a-2-4898095.jpg?v=1784197389"
       },
       "after": {
@@ -334,11 +334,11 @@
       "name": "ミュウツーVSTAR",
       "ok": true,
       "successfulSources": 2,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
         "nowPrice": 12000,
-        "buyPrice": 8500,
+        "buyPrice": 9000,
         "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar221172s12a-2-2992610.jpg?v=1784197273"
       },
       "after": {
@@ -874,11 +874,11 @@
       "name": "グレイシアVSTAR",
       "ok": true,
       "successfulSources": 2,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
         "nowPrice": 4000,
-        "buyPrice": 2000,
+        "buyPrice": 2500,
         "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar217172s12a-2-5261850.jpg?v=1784197387"
       },
       "after": {
@@ -1252,11 +1252,11 @@
       "name": "ルカリオVSTAR",
       "ok": true,
       "successfulSources": 2,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
         "nowPrice": 2700,
-        "buyPrice": 1500,
+        "buyPrice": 1800,
         "image": "https://www.hareruya2.com/cdn/shop/products/vstarsar226172s12a-2-4729358.jpg?v=1784193137"
       },
       "after": {
@@ -2242,11 +2242,11 @@
       "name": "ギラティナVSTAR",
       "ok": true,
       "successfulSources": 2,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
         "nowPrice": 28000,
-        "buyPrice": 21000,
+        "buyPrice": 22000,
         "image": "https://www.hareruya2.com/cdn/shop/products/vstarur261172s12a-2-5074937.jpg?v=1784193849"
       },
       "after": {
@@ -2584,11 +2584,11 @@
       "name": "オリジンディアルガVSTAR",
       "ok": true,
       "successfulSources": 2,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
         "nowPrice": 9500,
-        "buyPrice": 6500,
+        "buyPrice": 6600,
         "image": "https://www.hareruya2.com/cdn/shop/products/vstarur260172s12a-2-7273862.jpg?v=1784194028"
       },
       "after": {
@@ -5266,11 +5266,11 @@
       "name": "スターミーV",
       "ok": true,
       "successfulSources": 2,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
         "nowPrice": 13000,
-        "buyPrice": 9500,
+        "buyPrice": 10000,
         "image": "https://www.hareruya2.com/cdn/shop/products/vcsr083067s9a-2-5354856.jpg?v=1784198289"
       },
       "after": {
@@ -7318,11 +7318,11 @@
       "name": "アルセウスV",
       "ok": true,
       "successfulSources": 2,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
         "nowPrice": 8200,
-        "buyPrice": 5700,
+        "buyPrice": 5800,
         "image": "https://www.hareruya2.com/cdn/shop/products/vsasr112100s9-2-9337984.jpg?v=1784202612"
       },
       "after": {

@@ -1,8 +1,8 @@
 {
-  "date": "2026-11-25",
+  "date": "2026-11-26",
   "total": 500,
   "successfulCards": 500,
-  "changedCards": 50,
+  "changedCards": 12,
   "failedCards": 0,
   "report": [
     {
@@ -640,7 +640,7 @@
       "name": "ピカチュウex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 5800,
@@ -648,7 +648,7 @@
         "image": "https://www.hareruya2.com/cdn/shop/files/BMSwX8NwfHqe1YgtifXULq7bvVEZWhUqEf6NYUzI.webp?v=1790245547"
       },
       "after": {
-        "nowPrice": 5800,
+        "nowPrice": 5700,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/BMSwX8NwfHqe1YgtifXULq7bvVEZWhUqEf6NYUzI.webp?v=1790245547"
       }
@@ -658,7 +658,7 @@
       "name": "ミュウex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 6500,
@@ -666,7 +666,7 @@
         "image": "https://www.hareruya2.com/cdn/shop/files/J07bZvfRr0dAyB3Rs2eU5eAjjM4eWbjKyRSJ0VUf.webp?v=1790245550"
       },
       "after": {
-        "nowPrice": 6500,
+        "nowPrice": 6400,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/J07bZvfRr0dAyB3Rs2eU5eAjjM4eWbjKyRSJ0VUf.webp?v=1790245550"
       }
@@ -838,7 +838,7 @@
       "name": "ライコウex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 4200,
@@ -846,7 +846,7 @@
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar108076m6-2-4697357.webp?v=1786944608"
       },
       "after": {
-        "nowPrice": 4200,
+        "nowPrice": 4100,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar108076m6-2-4697357.webp?v=1786944608"
       }
@@ -1162,7 +1162,7 @@
       "name": "ミュウツーex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 3000,
@@ -1170,7 +1170,7 @@
         "image": "https://www.hareruya2.com/cdn/shop/files/h7yniJDEBNz4W1Q2Bwv3o6YftzYwR0mvM1dNTVOy.webp?v=1790245542"
       },
       "after": {
-        "nowPrice": 3000,
+        "nowPrice": 2900,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/h7yniJDEBNz4W1Q2Bwv3o6YftzYwR0mvM1dNTVOy.webp?v=1790245542"
       }
@@ -1432,7 +1432,7 @@
       "name": "メガゼラオラex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 1900,
@@ -1440,7 +1440,7 @@
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar112081m5-4444559.webp?v=1781503452"
       },
       "after": {
-        "nowPrice": 1900,
+        "nowPrice": 1800,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar112081m5-4444559.webp?v=1781503452"
       }
@@ -1594,7 +1594,7 @@
       "name": "ヒガナの信頼",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 1400,
@@ -1602,7 +1602,7 @@
         "image": "https://www.hareruya2.com/cdn/shop/files/sar112076m6-2-3581556.webp?v=1786944608"
       },
       "after": {
-        "nowPrice": 1400,
+        "nowPrice": 1300,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/sar112076m6-2-3581556.webp?v=1786944608"
       }
@@ -1684,7 +1684,7 @@
       "name": "グラジオの決戦",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 1000,
@@ -1692,7 +1692,7 @@
         "image": "https://www.hareruya2.com/cdn/shop/files/sar116081m5-7348333.webp?v=1781503453"
       },
       "after": {
-        "nowPrice": 1000,
+        "nowPrice": 950,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/sar116081m5-7348333.webp?v=1781503453"
       }
@@ -1774,7 +1774,7 @@
       "name": "メガゴルーグex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 900,
@@ -1782,7 +1782,7 @@
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar109076m6-2-5724998.webp?v=1786944607"
       },
       "after": {
-        "nowPrice": 900,
+        "nowPrice": 850,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar109076m6-2-5724998.webp?v=1786944607"
       }
@@ -1828,7 +1828,7 @@
       "name": "ボーマンダex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 850,
@@ -1836,7 +1836,7 @@
         "image": "https://www.hareruya2.com/cdn/shop/files/VHh7R26qkQBlpO0Gvwm5AI2i2pNm6fM6SV3GzGv7.webp?v=1790245554"
       },
       "after": {
-        "nowPrice": 850,
+        "nowPrice": 800,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/VHh7R26qkQBlpO0Gvwm5AI2i2pNm6fM6SV3GzGv7.webp?v=1790245554"
       }
@@ -1900,7 +1900,7 @@
       "name": "メガグソクムシャex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 700,
@@ -1908,7 +1908,7 @@
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar107076m6-2-2838914.webp?v=1786944609"
       },
       "after": {
-        "nowPrice": 700,
+        "nowPrice": 600,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar107076m6-2-2838914.webp?v=1786944609"
       }
@@ -2098,10 +2098,10 @@
       "name": "ピカチュウ&ゼクロムGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 62000,
+        "nowPrice": 60000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxur221173sm12a-2-3282668.jpg?v=1784213591"
       },
@@ -2116,10 +2116,10 @@
       "name": "レシラム&リザードンGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 52000,
+        "nowPrice": 50000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxur220173sm12a-2-5342003.jpg?v=1784213591"
       },
@@ -2134,10 +2134,10 @@
       "name": "ダブル無色エネルギー",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 37000,
+        "nowPrice": 36000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/ur067051sm1p-2-4210867.jpg?v=1784224091"
       },
@@ -2260,10 +2260,10 @@
       "name": "ガブリアス&ギラティナGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 25000,
+        "nowPrice": 24000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxur225173sm12a-2-8973779.jpg?v=1784213590"
       },
@@ -2422,10 +2422,10 @@
       "name": "ネストボール",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 15000,
+        "nowPrice": 14000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/ur071060sm1m-2-9345430.jpg?v=1784226130"
       },
@@ -2926,7 +2926,7 @@
       "name": "ミュウex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 5800,
@@ -2934,7 +2934,7 @@
         "image": "https://www.hareruya2.com/cdn/shop/files/ACu1O2ema2S9WQGKlZKUm3gyloSut4hMGL7CAicJ.webp?v=1790245572"
       },
       "after": {
-        "nowPrice": 5800,
+        "nowPrice": 5700,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/ACu1O2ema2S9WQGKlZKUm3gyloSut4hMGL7CAicJ.webp?v=1790245572"
       }
@@ -2944,10 +2944,10 @@
       "name": "ポケモン通信",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 5200,
+        "nowPrice": 5000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/ur116095sm9-2-5626560.jpg?v=1784218629"
       },
@@ -2998,7 +2998,7 @@
       "name": "ミュウツーex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 4500,
@@ -3006,7 +3006,7 @@
         "image": "https://www.hareruya2.com/cdn/shop/files/RyzzeQgOXJjsS4G4cbEn9x0zJgek8TDUKDI995fS.webp?v=1790245581"
       },
       "after": {
-        "nowPrice": 4500,
+        "nowPrice": 4400,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/RyzzeQgOXJjsS4G4cbEn9x0zJgek8TDUKDI995fS.webp?v=1790245581"
       }
@@ -4546,10 +4546,10 @@
       "name": "ブラッキーGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 120000,
+        "nowPrice": 110000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxssr229150sm8b-2-2982504.jpg?v=1784217670"
       },
@@ -4564,10 +4564,10 @@
       "name": "レックウザGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 110000,
+        "nowPrice": 100000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxssr240150sm8b-2-9531048.jpg?v=1784221692"
       },
@@ -4582,10 +4582,10 @@
       "name": "ゲッコウガGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 35000,
+        "nowPrice": 34000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxssr216150sm8b-2-2985628.jpg?v=1784218388"
       },
@@ -4600,10 +4600,10 @@
       "name": "ミュウツーGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 34000,
+        "nowPrice": 33000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxssr219150sm8b-2-1194208.jpg?v=1784218328"
       },
@@ -4636,10 +4636,10 @@
       "name": "ダークライGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 28000,
+        "nowPrice": 27000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxssr230150sm8b-2-6128334.jpg?v=1784217670"
       },
@@ -4708,10 +4708,10 @@
       "name": "レシラムGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 14000,
+        "nowPrice": 13000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxssr211150sm8b-2-5704541.jpg?v=1784218390"
       },
@@ -5320,10 +5320,10 @@
       "name": "ゲンガー&ミミッキュGX:SA",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 320000,
+        "nowPrice": 310000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsasr103095sm9-2-2885906.jpg?v=1784218872"
       },
@@ -5392,10 +5392,10 @@
       "name": "ルチア",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 200000,
+        "nowPrice": 190000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr104096sm7-9337766.jpg?v=1781538850"
       },
@@ -5410,10 +5410,10 @@
       "name": "ルザミーネ",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 170000,
+        "nowPrice": 160000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr055050sm4a-2-5157701.jpg?v=1784224512"
       },
@@ -5428,10 +5428,10 @@
       "name": "レシラム&リザードンGX:SA",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 160000,
+        "nowPrice": 150000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsasr097095sm10-2-2716683.jpg?v=1784218388"
       },
@@ -5464,10 +5464,10 @@
       "name": "アルセウス&ディアルガ&パルキアGX:SA",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 150000,
+        "nowPrice": 140000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsasr100095sm12-2-1401493.jpg?v=1784214433"
       },
@@ -5482,10 +5482,10 @@
       "name": "ルザミーネ",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 140000,
+        "nowPrice": 130000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr120114sm4p-2-2620751.jpg?v=1784225530"
       },
@@ -5500,10 +5500,10 @@
       "name": "コイキング&ホエルオーGX:SA",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 140000,
+        "nowPrice": 130000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsasr099095sm9-2-4216302.jpg?v=1784218997"
       },
@@ -5518,10 +5518,10 @@
       "name": "リザードンGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 130000,
+        "nowPrice": 120000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsr052051sm3h-2-9837921.jpg?v=1784224513"
       },
@@ -5536,10 +5536,10 @@
       "name": "サーナイト&ニンフィアGX:SA",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 120000,
+        "nowPrice": 110000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsasr061055sm9a-2-1274946.jpg?v=1784218391"
       },
@@ -5554,10 +5554,10 @@
       "name": "かんこうきゃく",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 120000,
+        "nowPrice": 110000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr192173sm12a-2-1150524.jpg?v=1784214671"
       },
@@ -5572,10 +5572,10 @@
       "name": "ライチュウ&アローラライチュウGX:SA",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 100000,
+        "nowPrice": 95000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsasr057054sm10a-2-3145643.jpg?v=1784213832"
       },
@@ -5608,10 +5608,10 @@
       "name": "シロナ",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 80000,
+        "nowPrice": 75000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr070066sm5m-2-7567034.jpg?v=1784222422"
       },
@@ -5626,10 +5626,10 @@
       "name": "リザードン&テールナーGX:SA",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 79000,
+        "nowPrice": 75000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsasr068064sm11a-2-1839721.jpg?v=1784215454"
       },
@@ -5644,10 +5644,10 @@
       "name": "ブラッキーGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 67000,
+        "nowPrice": 66000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsr063060sm1m-2-8220781.jpg?v=1784226132"
       },
@@ -5698,10 +5698,10 @@
       "name": "ブルーの探索",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 64000,
+        "nowPrice": 62000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr196173sm12a-2-9220874.jpg?v=1784214669"
       },
@@ -5716,10 +5716,10 @@
       "name": "ヒガナ",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 60000,
+        "nowPrice": 59000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr059053sm6a-2-5909384.jpg?v=1784223791"
       },
@@ -5788,10 +5788,10 @@
       "name": "スイレン",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 55000,
+        "nowPrice": 54000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr118114sm4p-2-8996650.jpg?v=1784225530"
       },
@@ -5806,10 +5806,10 @@
       "name": "レックウザGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 55000,
+        "nowPrice": 50000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsr101096sm7-2-4811745.jpg?v=1784220129"
       },
@@ -5860,10 +5860,10 @@
       "name": "メイ",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 50000,
+        "nowPrice": 48000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr067049sm11b-2-9306360.jpg?v=1784214429"
       },
@@ -5878,10 +5878,10 @@
       "name": "ガブリアス&ギラティナGX:SA",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 50000,
+        "nowPrice": 48000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsasr060054sm10a-2-2394753.jpg?v=1784213831"
       },
@@ -5896,10 +5896,10 @@
       "name": "ソルガレオ&ルナアーラGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 47000,
+        "nowPrice": 45000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsr063049sm11b-2-4390747.jpg?v=1784214432"
       },
@@ -5914,10 +5914,10 @@
       "name": "カスミ&カンナ",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 45000,
+        "nowPrice": 44000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr191173sm12a-2-8423803.jpg?v=1784214670"
       },
@@ -5932,10 +5932,10 @@
       "name": "レシラム&ゼクロムGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 44000,
+        "nowPrice": 42000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsr064049sm11b-2-7062638.jpg?v=1784214432"
       },
@@ -5968,10 +5968,10 @@
       "name": "マオ",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 38000,
+        "nowPrice": 37000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr055050sm2l-2-9434334.jpg?v=1784226129"
       },
@@ -6040,10 +6040,10 @@
       "name": "ゲッコウガ&ゾロアークGX:SA",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 35000,
+        "nowPrice": 34000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsasr059055sm9a-2-2441404.jpg?v=1784218507"
       },
@@ -6058,10 +6058,10 @@
       "name": "ミュウツー&ミュウGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 34000,
+        "nowPrice": 32000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsr097094sm11-2-4111277.jpg?v=1784216593"
       },
@@ -6094,10 +6094,10 @@
       "name": "ルギアGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 30000,
+        "nowPrice": 28000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsr100095sm8-2-9591070.jpg?v=1784222475"
       },
@@ -6166,10 +6166,10 @@
       "name": "カスミのおねがい",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 29000,
+        "nowPrice": 28000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr104094sm11-2-1504846.jpg?v=1784216591"
       },
@@ -6346,10 +6346,10 @@
       "name": "ムサシとコジロウ",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 25000,
+        "nowPrice": 24000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr062054sm10b-2-9823815.jpg?v=1784216595"
       },
@@ -6364,10 +6364,10 @@
       "name": "おじょうさま",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 23000,
+        "nowPrice": 22000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr100094sm6-2-1381569.jpg?v=1784221633"
       },
@@ -6382,10 +6382,10 @@
       "name": "ブルーの探索",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 23000,
+        "nowPrice": 22000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr061054sm9b-2-9744458.jpg?v=1784218329"
       },
@@ -6400,10 +6400,10 @@
       "name": "モノマネむすめ",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 22000,
+        "nowPrice": 21000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr077066sm6b-2-7177956.jpg?v=1784222652"
       },
@@ -6490,10 +6490,10 @@
       "name": "レシラム&リザードンGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 19000,
+        "nowPrice": 18000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsr096095sm10-2-1702956.jpg?v=1784218389"
       },
@@ -6760,10 +6760,10 @@
       "name": "シロナ&カトレア",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 14000,
+        "nowPrice": 13000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr106095sm12-2-1226224.jpg?v=1784214430"
       },
@@ -7048,10 +7048,10 @@
       "name": "エーフィ&デオキシスGX",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 10000,
+        "nowPrice": 11000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/gxsr176173sm12a-2-7787187.jpg?v=1784214190"
       },
@@ -7174,10 +7174,10 @@
       "name": "カヒリ",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 8000,
+        "nowPrice": 7500,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr065060sm7a-2-8264915.jpg?v=1784222425"
       },
@@ -7840,10 +7840,10 @@
       "name": "ラニュイ",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 6000,
+        "nowPrice": 5500,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr160150sm8b-2-6607218.jpg?v=1784221690"
       },
@@ -8866,10 +8866,10 @@
       "name": "きとうし",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 3000,
+        "nowPrice": 2900,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/products/sr105094sm11-2-2639469.jpg?v=1784216591"
       },

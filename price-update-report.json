@@ -2,7 +2,7 @@
   "date": "2026-11-26",
   "total": 500,
   "successfulCards": 500,
-  "changedCards": 12,
+  "changedCards": 3,
   "failedCards": 0,
   "report": [
     {
@@ -643,12 +643,12 @@
       "changed": true,
       "notes": [],
       "before": {
-        "nowPrice": 5800,
+        "nowPrice": 5700,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/BMSwX8NwfHqe1YgtifXULq7bvVEZWhUqEf6NYUzI.webp?v=1790245547"
       },
       "after": {
-        "nowPrice": 5700,
+        "nowPrice": 5600,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/BMSwX8NwfHqe1YgtifXULq7bvVEZWhUqEf6NYUzI.webp?v=1790245547"
       }
@@ -658,10 +658,10 @@
       "name": "ミュウex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 6500,
+        "nowPrice": 6400,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/J07bZvfRr0dAyB3Rs2eU5eAjjM4eWbjKyRSJ0VUf.webp?v=1790245550"
       },
@@ -784,7 +784,7 @@
       "name": "ピカチュウex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 4600,
@@ -792,7 +792,7 @@
         "image": "https://www.hareruya2.com/cdn/shop/files/m9qerCWHz1F4sx9Wi04KMfyGg1VEK7oO9XHGVwDx.webp?v=1790245542"
       },
       "after": {
-        "nowPrice": 4600,
+        "nowPrice": 4500,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/m9qerCWHz1F4sx9Wi04KMfyGg1VEK7oO9XHGVwDx.webp?v=1790245542"
       }
@@ -838,10 +838,10 @@
       "name": "ライコウex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 4200,
+        "nowPrice": 4100,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar108076m6-2-4697357.webp?v=1786944608"
       },
@@ -1162,10 +1162,10 @@
       "name": "ミュウツーex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 3000,
+        "nowPrice": 2900,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/h7yniJDEBNz4W1Q2Bwv3o6YftzYwR0mvM1dNTVOy.webp?v=1790245542"
       },
@@ -1288,7 +1288,7 @@
       "name": "ニンフィアex",
       "ok": true,
       "successfulSources": 1,
-      "changed": false,
+      "changed": true,
       "notes": [],
       "before": {
         "nowPrice": 2700,
@@ -1296,7 +1296,7 @@
         "image": "https://www.hareruya2.com/cdn/shop/files/5WhFNlg1GxSEWwxXWQITQamXrBTX41Hzn1f8RzGz.webp?v=1790245554"
       },
       "after": {
-        "nowPrice": 2700,
+        "nowPrice": 2400,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/5WhFNlg1GxSEWwxXWQITQamXrBTX41Hzn1f8RzGz.webp?v=1790245554"
       }
@@ -1432,10 +1432,10 @@
       "name": "メガゼラオラex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 1900,
+        "nowPrice": 1800,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar112081m5-4444559.webp?v=1781503452"
       },
@@ -1594,10 +1594,10 @@
       "name": "ヒガナの信頼",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 1400,
+        "nowPrice": 1300,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/sar112076m6-2-3581556.webp?v=1786944608"
       },
@@ -1684,10 +1684,10 @@
       "name": "グラジオの決戦",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 1000,
+        "nowPrice": 950,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/sar116081m5-7348333.webp?v=1781503453"
       },
@@ -1774,10 +1774,10 @@
       "name": "メガゴルーグex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 900,
+        "nowPrice": 850,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar109076m6-2-5724998.webp?v=1786944607"
       },
@@ -1828,10 +1828,10 @@
       "name": "ボーマンダex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 850,
+        "nowPrice": 800,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/VHh7R26qkQBlpO0Gvwm5AI2i2pNm6fM6SV3GzGv7.webp?v=1790245554"
       },
@@ -1900,10 +1900,10 @@
       "name": "メガグソクムシャex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 700,
+        "nowPrice": 600,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar107076m6-2-2838914.webp?v=1786944609"
       },
@@ -2926,10 +2926,10 @@
       "name": "ミュウex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 5800,
+        "nowPrice": 5700,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/ACu1O2ema2S9WQGKlZKUm3gyloSut4hMGL7CAicJ.webp?v=1790245572"
       },
@@ -2998,10 +2998,10 @@
       "name": "ミュウツーex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 4500,
+        "nowPrice": 4400,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/RyzzeQgOXJjsS4G4cbEn9x0zJgek8TDUKDI995fS.webp?v=1790245581"
       },

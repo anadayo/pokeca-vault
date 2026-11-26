@@ -1,8 +1,8 @@
 {
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "total": 500,
   "successfulCards": 500,
-  "changedCards": 3,
+  "changedCards": 0,
   "failedCards": 0,
   "report": [
     {
@@ -640,10 +640,10 @@
       "name": "ピカチュウex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 5700,
+        "nowPrice": 5600,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/BMSwX8NwfHqe1YgtifXULq7bvVEZWhUqEf6NYUzI.webp?v=1790245547"
       },
@@ -784,10 +784,10 @@
       "name": "ピカチュウex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 4600,
+        "nowPrice": 4500,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/m9qerCWHz1F4sx9Wi04KMfyGg1VEK7oO9XHGVwDx.webp?v=1790245542"
       },
@@ -1288,10 +1288,10 @@
       "name": "ニンフィアex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 2700,
+        "nowPrice": 2400,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/5WhFNlg1GxSEWwxXWQITQamXrBTX41Hzn1f8RzGz.webp?v=1790245554"
       },

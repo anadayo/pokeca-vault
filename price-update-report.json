@@ -1,8 +1,8 @@
 {
-  "date": "2026-11-27",
+  "date": "2026-11-28",
   "total": 500,
   "successfulCards": 500,
-  "changedCards": 3,
+  "changedCards": 0,
   "failedCards": 0,
   "report": [
     {
@@ -154,10 +154,10 @@
       "name": "メガレックウザex",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 28000,
+        "nowPrice": 27000,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/exsar110076m6-2-8460187.webp?v=1786944608"
       },
@@ -1018,10 +1018,10 @@
       "name": "ムク",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 3100,
+        "nowPrice": 3200,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/sar117081m5-8459543.webp?v=1781503453"
       },
@@ -1990,10 +1990,10 @@
       "name": "ギリー",
       "ok": true,
       "successfulSources": 1,
-      "changed": true,
+      "changed": false,
       "notes": [],
       "before": {
-        "nowPrice": 600,
+        "nowPrice": 650,
         "buyPrice": null,
         "image": "https://www.hareruya2.com/cdn/shop/files/sar111076m6-2-6274197.webp?v=1786944551"
       },
